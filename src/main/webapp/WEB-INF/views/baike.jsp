@@ -45,9 +45,9 @@
         <div class="encyclo-banner"><img src="${staticurl}/images/encyclo_banner.jpg" alt=""/></div>
         <div class="breadcrumbs clearfix f123" style="margin-bottom:10px">
             <div class="fl breadcrumbs-area f123 " id="navigation">
-                <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/">购房百科</a><span class="fsm"> &gt; </span><a id="second"
+                <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/" class="f123">购房百科</a><span class="fsm"> &gt; </span><a id="second"
                                                                                                     href="/${cityen}/baike/c${type}/p${page}/"
-                                                                                                    style="color:#A39FA1">${news.get(0).TypeName == null?types[0].columnsName:news.get(0).TypeName}</a>
+                                                                                                    style="color:#A39FA1">${typeName}</a>
             </div>
         </div>
 
@@ -121,7 +121,7 @@
                                     <dd>
 
                                         <h3 class="f000 f16">
-                                            对不起，暂无“<span class="cRed">${news.get(0).TypeName == null?types[0].columnsName:news.get(0).TypeName}</span>”相关的资讯内容</h3>
+                                            对不起，暂无“<span class="cRed">${typeName}</span>”相关的资讯内容</h3>
                                     </dd>
                                 </dl>
                             </div>

@@ -1,7 +1,9 @@
 package com.news.web.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
 import com.news.web.model.NewsType;
 import com.news.web.util.PageUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -337,6 +339,35 @@ public class NewsController {
 
     /**
      * @param: cityen 城市
+     * @description: 默认百科资讯列表
+     * @return:
+     * @author: zouyuan1
+     * @date: 2020-05-25
+     */
+    private JSONObject newsListByBaike(String cityen, String location , Integer page, Integer pagesize, Integer order, String key) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("cityen", cityen);
+        map.put("location", location);
+        map.put("page", page);
+        map.put("pagesize", pagesize);
+        map.put("order", order);
+        if (StringUtils.hasText(key)) {
+            map.put("typeid", null);
+        }
+        map.put("title", key);
+        map.put("description", key);
+        JSONObject jSONObject = restTemplate.getForObject(apiurl +
+                        "GetNewsList?cityen={cityen}&platform=pc&location={location}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}"
+                , JSONObject.class, map);
+        JSONObject newsList = jSONObject.getJSONObject(RESULT);
+        if (newsList.isEmpty()) {
+            log.error("请求文章列表为空=>{}", newsList);
+        }
+        return newsList;
+    }
+
+    /**
+     * @param: cityen 城市
      * @description: 详情
      * @return:
      * @author: zouyuan1
@@ -410,51 +441,67 @@ public class NewsController {
         if (null != types && !types.isEmpty()) {
             baikeTypes = types.get(0).getChildList();
         }
-        List<Integer> typeList = new ArrayList<>();
+
         if(!baikeTypes.isEmpty() && baikeTypes.size()>1){
             type = ObjectUtils.isEmpty(type) ? null : type;
-            for(NewsType newsType : types){
-                List<NewsType> newTypes = JSON.parseArray(JSON.toJSONString(newsType.getChildList()) , NewsType.class);
-                for(NewsType newsType1 : newTypes){
-                    typeList.add(newsType1.getId());
-                    List<NewsType> newTypes2 = JSON.parseArray(JSON.toJSONString(newsType1.getChildList()) , NewsType.class);
-                    for(NewsType newsType2 : newTypes2){
-                        typeList.add(newsType2.getId());
-                    }
-                }
-            }
-            System.out.println("typeList = " + typeList);
         }else if(baikeTypes.size()==1){
             //东北sy,cc,dl,hrb层级结构不一样
             type = ObjectUtils.isEmpty(type) ? null : type;
-            typeList = baikeTypes.get(0).getChildList().stream().map(NewsType::getId).collect(Collectors.toList());
         }
 
         //文章列表
-        JSONObject result = null;
+        JSONObject result;
         if(type != null) {//type不为空，正常去取
             List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
             //文章列表
             result = newsList(cityen, typeid, page, pagesize, null, null);
+
+            //定义栏目名称集合
+            List<String> typeNameList = Lists.newArrayList();
+            //取出栏目名称
+            Integer finalType = type;
+            types.get(0).getChildList().stream().forEach(l -> {
+                //判断id是否和type相等,相等就取出对应的栏目名称
+                if(Objects.equals(finalType, l.getId())) typeNameList.add(l.getColumnsName());
+                //如果是子集对象，取出子级
+                List<NewsType> newsTypes = JSONArray.parseArray(JSON.toJSONString(l.getChildList()), NewsType.class);
+                //循环遍历子级，查询是否相等
+                newsTypes.stream().forEach(k -> {
+                    //判断id是否和type相等,相等就取出对应的栏目名称
+                    if(Objects.equals(finalType, k.getId())) typeNameList.add(k.getColumnsName());
+                    //如果是子集对象，取出子级
+                    List<NewsType> newsTypesTemp = JSONArray.parseArray(JSON.toJSONString(k.getChildList()), NewsType.class);
+                    if(!CollectionUtils.isEmpty(newsTypesTemp)) {
+                        //循环遍历子级，查询是否相等
+                        newsTypesTemp.stream().forEach(m -> {
+                            //判断id是否和type相等,相等就取出对应的栏目名称
+                            if (Objects.equals(finalType, m.getId())) typeNameList.add(m.getColumnsName());
+                        });
+                    }
+                });
+            });
+            //存储栏目id
             model.addAttribute("type" , type);
             model.addAttribute("typeid", type);
+
+            //存储栏目名称
+            model.addAttribute("typeName", typeNameList.get(0));
         }else {//type为空，默认取出数据了就跳出循环
             //循环typeList
-            for(Integer typeId : typeList){
-                //文章列表
-                result = newsList(cityen, Arrays.asList(typeId), page, pagesize, null, null);
-                List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
-                if(!CollectionUtils.isEmpty(news)){
-                    break;
-                }
-            }
+            result = newsListByBaike(cityen, "baike", page, pagesize, null, null);
 
             //如果新闻列表有数据，存在对应的栏目id
             List<Map> news1 = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
             if(!CollectionUtils.isEmpty(news1)) {
+                //获取栏目id
                 Integer typeid = (Integer) news1.get(0).get("TypeID");
+                //获取栏目名称
+                String typeName = (String) news1.get(0).get("TypeName");
+                //存储栏目id
                 model.addAttribute("type", typeid);
                 model.addAttribute("typeid", typeid);
+                //存储栏目名称
+                model.addAttribute("typeName", typeName);
             }
         }
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
