@@ -11,6 +11,7 @@
    <meta http-equiv="x-ua-compatible" content="IE=edge">-->
     <meta http-equiv="Cache-Control" content="max-age=100"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
@@ -74,9 +75,7 @@
                         <c:set target="${myDate}" property="time" value="${detail.PublishDate*1000}"/>
                         <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <fmt:formatDate pattern="hh:mm" value="${myDate}" type="both"/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        来源:${detail.Sources}</p>
+                        来源:&nbsp;&nbsp;${detail.Sources}</p>
                 <%--    <p class="share clearfix">
                         <a href=""></a>
                         <a href=""></a>
@@ -184,7 +183,7 @@
     //获取请求链接
     function getlink(type) {
         let searchkey = $('.search-ipt').val();
-        let cityen = '${cityen}';
+        let cityen = '{cityen}';
         let obj = {
             0: "/"+ cityen +"/list/?key=" + searchkey,
             1: "//" + cityen + ".centanet.com/xinfang/?key=" + searchkey,

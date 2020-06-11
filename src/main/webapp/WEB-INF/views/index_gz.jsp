@@ -9,6 +9,7 @@
    <meta http-equiv="x-ua-compatible" content="IE=edge">-->
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta name="keywords" content="广州最新房产新闻,广州房产资讯,广州楼市政策,广州房产资讯,广州房地产新闻">
+    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
     <meta name="description"
           content="广州房产新闻,广州中原地产提供最及时广州房产新闻、广州房地产资讯，为您解读广州房产最新政策，预测广州房价走势，分析广州楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
     <title>广州房地产资讯_广州最新房产新闻－广州中原地产</title>

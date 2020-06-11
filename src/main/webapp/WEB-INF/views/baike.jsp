@@ -9,9 +9,12 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta name="keywords" content="">
     <meta name="description" content=""/>
+    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
     <title>资讯百科</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/css/icons.css?v=${ver}">
+    <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
+
     <link rel="stylesheet" href="${staticurl}/css/headp2.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/css/encyclop2.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
@@ -20,6 +23,9 @@
     <script src="${staticurl}/sidebar/quick_links.js"></script>
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js?v=${ver}"></script>
+    <script src="${staticurl}/js/totalexchange.js"></script>
+
+
     <script>
         function getIframe(id) {
             return document.getElementById(id).contentWindow.document;
@@ -39,67 +45,94 @@
         <div class="encyclo-banner"><img src="${staticurl}/images/encyclo_banner.jpg" alt=""/></div>
         <div class="breadcrumbs clearfix f123" style="margin-bottom:10px">
             <div class="fl breadcrumbs-area f123 " id="navigation">
-                <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a id="second"
-                                                                                                    href="/bj/baike/"
-                                                                                                    style="color:#A39FA1">购房百科</a><span
-                    class="fsm"> &gt; </span><a style="color:#A39FA1">列表</a>
+                <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/">购房百科</a><span class="fsm"> &gt; </span><a id="second"
+                                                                                                    href="/${cityen}/baike/c${type}/p${page}/"
+                                                                                                    style="color:#A39FA1">${news.get(0).TypeName == null?types[0].columnsName:news.get(0).TypeName}</a>
             </div>
         </div>
 
-        <div class="encyclo-main fr" style="display: ${news.size()>0?'block':'none'}">
-            <h5 class="title">${news.get(0).TypeName == null?types[0].columnsName:news.get(0).TypeName}</h5>
-            <ul class="encyclo-list">
-                <%--百科新闻列表--%>
-                <c:forEach items="${news}" var="n">
-                    <li>
-                        <p class="tit">
-                            <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Title}</a>
-                        </p>
-                        <p class="hd">
-                            <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Description} </a>
-                        </p>
-                        <p class="fd">
-                            <i></i>
-                            <span class="mr15">
-                                <jsp:useBean id="myDate" class="java.util.Date"/>
-                                <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
-                                <fmt:formatDate pattern="yyyy年MM月dd日" value="${myDate}" type="both"/>
-                            </span>阅读：${n.Click}次</p>
-                    </li>
-                </c:forEach>
-            </ul>
-            <c:if test="${p.pageCount>1}">
-                <div class="section-wrap section-pager">
-                    <div class="pager-box">
-                        <div class="pager-inner">
-                            <c:if test="${p.currpageNum<=1}">
-                                <a href="javacript:void(0);" class="fsm fb">&gt;首页</a>
-                            </c:if>
-                            <c:if test="${p.currpageNum>1}">
-                                <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}" class="fsm fb">&gt;上一页</a>
-                            </c:if>
-                            <c:if test="${p.currpageNum>3}">
-                                <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-2}">${p.currpageNum-2}</a>
-                            </c:if>
-                            <c:if test="${p.currpageNum>2}">
-                                <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}">${p.currpageNum-1}</a>
-                            </c:if>
-                            <span class="curr">${p.currpageNum}</span>
-                            <c:if test="${p.pageCount-p.currpageNum>=1}">
-                                <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}">${p.currpageNum+1}</a>
-                            </c:if>
-                            <c:if test="${p.pageCount-p.currpageNum>=2}">
-                                <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+2}">${p.currpageNum+2}</a>
-                                <a class="normal" href="">...</a>
-                            </c:if>
-                            <c:if test="${p.hasNextPage}">
-                                <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}" class="fsm fb">下一页&lt;</a>
-                            </c:if>
+        <c:choose>
+            <c:when test="${p.pageCount>=1}">
+
+                <div class="encyclo-main fr" style="display: ${news.size()>0?'block':'none'}">
+                    <h5 class="title">${news.get(0).TypeName == null?types[0].columnsName:news.get(0).TypeName}</h5>
+                    <ul class="encyclo-list">
+                        <%--百科新闻列表--%>
+                        <c:forEach items="${news}" var="n">
+                            <li>
+                                <p class="tit">
+                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Title}</a>
+                                </p>
+                                <p class="hd">
+                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Description} </a>
+                                </p>
+                                <p class="fd">
+                                    <i></i>
+                                    <span class="mr15">
+                                        <jsp:useBean id="myDate" class="java.util.Date"/>
+                                        <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                        <fmt:formatDate pattern="yyyy年MM月dd日" value="${myDate}" type="both"/>
+                                    </span>阅读：${n.Click}次</p>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                        <c:if test="${p.pageCount>1}">
+                            <div class="section-wrap section-pager">
+                                <div class="pager-box">
+                                    <div class="pager-inner">
+                                        <c:if test="${p.currpageNum<=1}">
+                                            <a href="javacript:void(0);" class="fsm fb">&gt;首页</a>
+                                        </c:if>
+                                        <c:if test="${p.currpageNum>1}">
+                                            <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}" class="fsm fb">&gt;上一页</a>
+                                        </c:if>
+                                        <c:if test="${p.currpageNum>3}">
+                                            <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-2}">${p.currpageNum-2}</a>
+                                        </c:if>
+                                        <c:if test="${p.currpageNum>2}">
+                                            <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}">${p.currpageNum-1}</a>
+                                        </c:if>
+                                        <span class="curr">${p.currpageNum}</span>
+                                        <c:if test="${p.pageCount-p.currpageNum>=1}">
+                                            <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}">${p.currpageNum+1}</a>
+                                        </c:if>
+                                        <c:if test="${p.pageCount-p.currpageNum>=2}">
+                                            <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+2}">${p.currpageNum+2}</a>
+                                            <a class="normal" href="">...</a>
+                                        </c:if>
+                                        <c:if test="${p.hasNextPage}">
+                                            <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}" class="fsm fb">下一页&lt;</a>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="centmain-wraper centmain-wraper-infor"  style="width: 70%;float: right; margin-right: 60px;">
+                    <div class="centmain-inner">
+                        <div class="infor-wrapper">
+                            <div class="node-dl-wrapper">
+                                <dl class="none_dl clearfix">
+                                    <dt>
+                                        <img  src="${staticurl}/images/noplay.jpg" alt="">
+                                    </dt>
+                                    <dd>
+
+                                        <h3 class="f000 f16">
+                                            对不起，暂无“<span class="cRed">${news.get(0).TypeName == null?types[0].columnsName:news.get(0).TypeName}</span>”相关的资讯内容</h3>
+                                    </dd>
+                                </dl>
+                            </div>
                         </div>
                     </div>
+                    <div class="infor-space"></div>
+                    <!-- E;centmain-inner -->
                 </div>
-            </c:if>
-        </div>
+
+            </c:otherwise>
+        </c:choose>
         <%--left 左侧栏--%>
         <%-- <c:if test="${types!= null && fn:length(types) > 0}">--%>
         <div class="encyclo-side fl">
@@ -109,11 +142,21 @@
              <%--   <c:if test="${!fn:contains(dbcitys, cityen)}">--%>
                     <c:forEach items="${types}" var="item">
                         <%--一级 top--%>
-                        <dt><a href="/${cityen}/baike/c${item.id}/p1" title="${item.columnsName}">${item.columnsName}</a></dt>
+                        <c:if test="${item.id == type}">
+                            <dt class="curr"><a href="/${cityen}/baike/c${item.id}/p1" title="${item.columnsName}" style="color: red;">${item.columnsName}</a></dt>
+                        </c:if>
+                        <c:if test="${item.id != type}">
+                            <dt><a href="/${cityen}/baike/c${item.id}/p1" title="${item.columnsName}">${item.columnsName}</a></dt>
+                        </c:if>
                         <%--二级 child--%>
                         <dd>
                             <c:forEach items="${item.childList}" var="ch">
-                                <a href="/${cityen}/baike/c${ch.id}/p1" class="curr" title="${ch.columnsName}">${ch.columnsName}</a>
+                                <c:if test="${ch.id == type}">
+                                    <a href="/${cityen}/baike/c${ch.id}/p1" class="curr" style="color: red;" title="${ch.columnsName}">${ch.columnsName}</a>
+                                </c:if>
+                                <c:if test="${ch.id != type}">
+                                    <a href="/${cityen}/baike/c${ch.id}/p1" title="${ch.columnsName}">${ch.columnsName}</a>
+                                </c:if>
                             </c:forEach>
                         </dd>
                     </c:forEach>

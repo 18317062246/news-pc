@@ -6,6 +6,7 @@
 <head>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
@@ -167,7 +168,7 @@
                                 <p class="news_time">
                                     <jsp:useBean id="myDate" class="java.util.Date"/>
                                     <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>
-                                    <fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${myDate}" type="both"/>
+                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
                                 </p>
                                 <ul>
                                     <c:forEach items="${item.LabelList}" var="l">
@@ -180,7 +181,23 @@
                 </c:forEach>
 
                 <c:if test="${news == null || news.size()==0}">
-                    <dl class="infor-news-item clearfix">
+
+                                <div class="node-dl-wrapper" style="margin-right: 200px;">
+                                    <dl class="none_dl clearfix">
+                                        <dt>
+                                            <img  src="${staticurl}/images/noplay.jpg" alt="">
+                                        </dt>
+                                        <dd>
+
+                                            <h3 class="f000 f16">
+                                                对不起，暂无“<span class="cRed">${key}</span>”相关的资讯内容</h3>
+                                        </dd>
+                                    </dl>
+                                </div>
+                        <div class="infor-space"></div>
+                        <!-- E;centmain-inner -->
+
+                   <%-- <dl class="infor-news-item clearfix">
                         <dt>
                             <img src="${staticurl}/images/noplay.jpg" alt="">
                         </dt>
@@ -188,7 +205,7 @@
                             <h3 class="f000 f16">
                                 对不起，暂无“<span class="cRed">${key}</span>”相关的问答内容</h3>
                         </dd>
-                    </dl>
+                    </dl>--%>
                 </c:if>
 
                 </div>
@@ -197,23 +214,71 @@
                 <div class="infor-pager">
                     <div class="infor-pager-inner">
                         <c:if test="${p.hasPrePage}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/"><span class="fsm">&lt;</span>上一页</a>
+                            <c:choose>
+                                <c:when test="${key != null}">
+                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}"><span class="fsm">&lt;</span>上一页</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/"><span class="fsm">&lt;</span>上一页</a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:if>
                         <c:if test="${p.currpageNum>2}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/">${p.currpageNum-2}</a>
+                            <c:choose>
+                                <c:when test="${key != null}">
+                                    <a href="/${cityen}/list/p${p.currpageNum-2}/?key=${key}">${p.currpageNum-2}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/">${p.currpageNum-2}</a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:if>
                         <c:if test="${p.currpageNum>1}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/">${p.currpageNum-1}</a>
+                            <c:choose>
+                                <c:when test="${key != null}">
+                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}">${p.currpageNum-1}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/">${p.currpageNum-1}</a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:if>
                         <span class="curr">${p.currpageNum}</span>
                         <c:if test="${p.pageCount-p.currpageNum>=1}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">${p.currpageNum+1}</a>
+                            <c:choose>
+                                <c:when test="${key != null}">
+                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}">${p.currpageNum+1}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">${p.currpageNum+1}</a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:if>
                         <c:if test="${p.pageCount-p.currpageNum>=2}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/">${p.currpageNum+2}</a>
+                            <c:choose>
+                                <c:when test="${key != null}">
+                                    <a href="/${cityen}/list/p${p.currpageNum+2}/?key=${key}">${p.currpageNum+2}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/">${p.currpageNum+2}</a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:if>
                         <c:if test="${p.hasNextPage}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">下一页<span class="fsm">&gt;</span></a>
+                            <c:choose>
+                                <c:when test="${key != null}">
+                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}">下一页<span class="fsm">&gt;</span></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">下一页<span class="fsm">&gt;</span></a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:if>
                     </div>
                 </div>

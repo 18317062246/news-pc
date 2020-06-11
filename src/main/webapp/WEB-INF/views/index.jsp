@@ -7,6 +7,7 @@
     <meta http-equiv="Cache-Control" content="max-age=1000"/>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
@@ -63,10 +64,23 @@
                         <ul class="programa">
                             <c:forEach items="${types}" var="type" varStatus="status">
                                 <c:if test="${type.location != 'right' && type.location != 'baike'}">
-                                    <li ref="${type.id}">
-                                        <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
-                                           class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
-                                    </li>
+                                    <c:choose>
+                                        <c:when test="${cityen == 'dg'}">
+                                            <c:if test="${type.columnsName != '东莞成交走势'}">
+                                                <li ref="${type.id}">
+                                                    <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
+                                                       class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
+                                                </li>
+                                            </c:if>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li ref="${type.id}">
+                                                <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
+                                                   class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </c:if>
                             </c:forEach>
                         </ul>
@@ -98,7 +112,7 @@
                                         <p class="news_time">
                                             <jsp:useBean id="myDate" class="java.util.Date"/>
                                             <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>
-                                            <fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${myDate}" type="both"/>
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
                                         </p>
                                         <ul>
                                             <c:forEach items="${item.LabelList}" var="l">

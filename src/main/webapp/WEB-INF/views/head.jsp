@@ -961,7 +961,7 @@
         <div class="search-box fl">
             <div class="search-entry">
                 <div class="sear_choosebox" id="J_searchtype"><span class="type-txt">资讯</span>
-                    <%--<ul class="search-choose">
+                    <ul class="search-choose">
                         <c:if test="${cityen == 'bj' || cityen == 'tj' || cityen == 'dg'}">
                             <li onclick="searchType(7);" class><span class="search_qiehuan"><a onclick="searchType(7);">租房</a></span></li>
                             <li onclick="searchType(2);" class><span class="search_qiehuan"><a onclick="searchType(2);">小区</a></span></li>
@@ -1021,7 +1021,7 @@
                             <li onclick="searchType(3);" class><span class="search_qiehuan"><a onclick="searchType(3);">经纪人</a></span></li>
                             <li onclick="searchType(4);" class><span class="search_qiehuan"><a onclick="searchType(4)">门店</a></span></li>
                         </c:if>
-                    </ul>--%>
+                    </ul>
                     <span class="icons-arr"></span></div>
                 <span class="line"></span>
                 <span class="icons-search"></span>

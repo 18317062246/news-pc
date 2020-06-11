@@ -72,7 +72,7 @@
             </c:if>
         </dl>
         <dl class="all-hlink">
-            <c:set var="xiaoqu" value="bj,tj,gz,sz,cd,cq,nj,wh,hz,dg,cc,dl,sy,nn,fs,hrb,wx,,xm,xy,zh,"></c:set>
+            <c:set var="xiaoqu" value="bj,tj,gz,sz,cd,cq,hz,dg,nn,fs,hrb,wx,xy,"></c:set>
             <c:if test="${fn:contains(xiaoqu, cityen)}">
             <dt>小区检索：</dt>
                 <dd>

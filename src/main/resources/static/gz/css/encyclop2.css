@@ -1,0 +1,159 @@
+.encyclo-banner{
+	width: 100%;
+	height: 150px;
+	margin:0 auto 38px;
+}
+.encyclo-main{
+	width: 838px;
+	height: auto;
+	border:1px solid #e8e8e8;
+	height: auto;
+	box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+	margin-bottom: 50px;
+}
+.encyclo-side{
+	width: 210px;
+	padding:10px 15px 0;
+	height: auto;
+	border:1px solid #e5e5e5;
+	box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+}
+.centmain-wraper-infor .centmain-inner{
+	width: 1120px;
+	height: auto;
+	margin:0 auto;margin-top: 30px;
+}
+.encyclo-classify{
+	width: 100%;
+	height: auto;
+}
+.encyclo-classify dt{
+	width: 100%;
+	height: 30px;
+	font-size:18px;
+	color:#000;
+	background: url(../images/encyclo-tit.png) 50% 50% no-repeat;
+	margin: 15px 0;
+	text-align:center;
+	line-height: 30px;
+}
+.encyclo-classify dt.curr a{color:#cc0000!important;}
+.encyclo-classify dd{
+	width: 100%;
+	height: auto;
+	margin-bottom: 20px;
+}
+.encyclo-classify dd a{
+	display:inline-block;
+	width: 100px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	font-size:14px;
+}
+.encyclo-classify dd a:link,
+.encyclo-classify dd a:visited,
+.encyclo-classify dd a:active{
+	color:#333;
+}
+.encyclo-classify dd a:hover{
+	color:#d95555;
+}
+.encyclo-classify dd a.curr{
+	color:#d95555;
+}
+.encyclo-main .title{
+	font-size:20px;
+	padding:20px 0 0 20px;
+	font-weight: bold;
+	color:#000;
+}
+.encyclo-list{
+	width: 92%;
+	padding:0 4% 2%;
+	height: auto;
+}
+.encyclo-list li{
+	width: 100%;
+	height: auto;
+	padding:20px 0;
+	border-bottom:1px dotted #e8e8e8;
+}
+.encyclo-list li .tit{
+	color:#000;
+	font-size:18px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+.encyclo-list li .tit a:link,.encyclo-list li .tit a:visited,.encyclo-list li .tit a:active{color:#000;}
+.encyclo-list li .tit a:hover{color:#bc0000;}
+.encyclo-list li .hd{
+	color:#898989;
+	font-size:14px;
+	line-height: 1.6;
+	margin-bottom: 8px;
+}
+.encyclo-list li .hd .cBlue{margin-left: 7px;}
+.encyclo-list li .fd{
+	font-size:12px;
+	color:#333;
+}
+.encyclo-list li .fd i{
+	display: inline-block;
+	margin-right: 10px;
+	width: 2px;
+	height: 16px;
+	background: #d95555;
+	vertical-align: middle;
+}
+.mr15{margin-right: 15px;}
+.f666{color:#666;}
+.section-pager { margin: 30px 0;height: 40px; }
+.section-pager .pager-box { position: absolute; left: 50%; top: 0; }
+.section-pager .pager-box .pager-inner { position: relative; left: -50%; }
+.section-pager .pager-box .pager-inner a, .section-pager .pager-box .pager-inner span { display: inline-block; margin: 0 2px; padding: 0 10px;height:30px;line-height: 30px;
+ border: 1px solid #c6c6c6; color: #333; text-decoration: none;vertical-align: middle; }
+.section-pager .pager-box .pager-inner span.curr, .section-pager .pager-box .pager-inner a:hover { background: #ededed; }
+.section-pager .pager-box .pager-inner a.normal { border: none; }
+.section-pager .pager-box .pager-inner a.fsm,.section-pager .pager-box .pager-inner span.fsm{height:28px;padding:2px 10px 0 10px;line-height: 28px;}
+.sharep{width: 100%;height: 35px;margin:20px 0;}
+.sharep a{display: inline-block;margin-right: 15px;font-size:12px;color:#666;}
+.sharep a:hover{text-decoration: none;color:#333;}
+.sharep i{width: 25px;height: 25px;vertical-align: middle;display: inline-block;margin-right: 3px;}
+.weixi i{height: 20px; background: url(../images/icons-weixi.png) 0 0 no-repeat;}
+.weibo i{height: 20px;background: url(../images/icons-weibo.png) 0 0 no-repeat;}
+.qq i{background: url(../images/icons-qq.png) 0 0 no-repeat;}
+.kj i{background: url(../images/icons-kj.png) 0 0 no-repeat;}
+.zai i{margin-left: 50px;width: 20px;background: url(../images/icons-zai.png) 0 0 no-repeat;}
+.grayzai i{margin-left: 50px;width: 20px; background: url(../images/icons-grayzai.png) 0 0 no-repeat;}
+.gray-btn{
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	padding:0 20px;
+	border:1px solid #ccc;
+	box-shadow: 1px 1px 5px rgba(0,0,0,.2);margin-right: 20px;
+}
+.gray-btn:link,.gray-btn:visited,.gray-btn:active{color:#000;}
+.toptitle{
+	width: 92%;
+	margin:30px auto 25px;
+	padding-bottom:15px;
+	border-bottom:1px solid #dedede;
+}
+.toptitle h5{font-size:24px;color:#333;margin-bottom: 5px;}
+.toptitle p{font-size:12px;}
+.encyclo-cont{width: 92%;margin:0 auto;}
+.encyclo-cont p.f666{color:#666;font-size:14px;line-height: 1.8;}
+.encyclo-cont p.caption{color:#000;margin-top: 20px;font-size:14px;}
+.encyclo-cont p.tc{text-align:center;margin:15px auto;}
+.encyclo-dl{width: 100%;height: auto;}
+.encyclo-dl dt{font-size:18px;color:#000;margin-bottom: 15px;}
+.encyclo-dl dd{line-height: 1.4;font-size:14px;margin-bottom: 20px;}
+
+.encyclo-classify_cs dd a{
+		display:block;
+		text-align: center;
+		width:100%;
+		margin-bottom:10px;
+}

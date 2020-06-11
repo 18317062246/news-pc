@@ -14,6 +14,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -65,8 +67,11 @@ public class NewsController {
     @GetMapping(value = {"/{cityen}", "/{cityen}/c{type}"})
     public String index(Model model,
                         @PathVariable(name = "cityen") String cityen,
-                        @PathVariable(name = "type", required = false) Integer type) {
+                        @PathVariable(name = "type", required = false) Integer type , HttpServletRequest request) {
+
         setCommon(model, cityen);
+        //获取session
+        HttpSession session = request.getSession();
         //获取栏目类型
         List<NewsType> types = typeList(cityen, null);
         List<NewsType> jtTypes = typeList(CENTANET, null);
@@ -76,6 +81,8 @@ public class NewsController {
         }
         List<NewsType> baiketype = typeList(cityen, "baike");
         model.addAttribute("baiketype", !baiketype.isEmpty());
+        //将城市是否存在baike存在session当中
+        session.setAttribute("baiketype", !baiketype.isEmpty());
         //过滤右侧栏目type
         List<NewsType> rightType = new ArrayList<>();
         rightType = types.stream().filter(t -> RIGHT.equals(t.getLocation())).collect(Collectors.toList());
@@ -230,13 +237,13 @@ public class NewsController {
      * @param page   页码
      * @return
      */
-    @GetMapping(value = {"/{cityen}/list/c{type}/p{page}", "/{cityen}/list", "/{cityen}/list/c{type}"})
+    @GetMapping(value = {"/{cityen}/list/c{type}/p{page}", "/{cityen}/list", "/{cityen}/list/c{type}" , "/{cityen}/list/p{page}"})
     public String index(Model model
             , @PathVariable(name = "cityen") String cityen
             , @PathVariable(name = "type", required = false) Integer type
             , @PathVariable(name = "page", required = false) Integer page
             , @RequestParam(value = "key", required = false) String key
-            , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize) {
+            , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize ) {
       /*  model.addAttribute("cityen", cityen);
         model.addAttribute("staticurl", staticurl);*/
         setCommon(model, cityen);
@@ -337,8 +344,15 @@ public class NewsController {
     @GetMapping("/{cityen}/detail/{id}.html")
     public String detail(Model model
             , @PathVariable("cityen") String cityen
-            , @PathVariable("id") String id) {
+            , @PathVariable("id") String id , HttpServletRequest request) {
         log.info("detail id=>{}", id);
+
+        //获取session
+        HttpSession session = request.getSession();
+        //从session中获取是否存在百科
+        Boolean baiketype = (Boolean) session.getAttribute("baiketype");
+        model.addAttribute("baiketype" , baiketype);
+
         setCommon(model, cityen);
         //热点排行
         JSONObject newsList = newsList(cityen, null, 1, 10, 1, null);
@@ -380,7 +394,14 @@ public class NewsController {
     public String baike(Model model, @PathVariable("cityen") String cityen,
                         @PathVariable(value = "type", required = false) Integer type,
                         @PathVariable(value = "page", required = false) Integer page,
-                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize) {
+                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize , HttpServletRequest request) {
+
+        //获取session
+        HttpSession session = request.getSession();
+        //从session中获取是否存在百科
+        Boolean baiketype = (Boolean) session.getAttribute("baiketype");
+        model.addAttribute("baiketype" , baiketype);
+
         page = ObjectUtils.isEmpty(page) ? 1 : page;
         //栏目类型
         List<NewsType> types = typeList(cityen, "baike");
@@ -388,23 +409,43 @@ public class NewsController {
         if (null != types && !types.isEmpty()) {
             baikeTypes = types.get(0).getChildList();
         }
+        List<Integer> typeList = new ArrayList<>();
         if(!baikeTypes.isEmpty() && baikeTypes.size()>1){
-            type = ObjectUtils.isEmpty(type) ? types.get(0).getChildList().get(0).getId() : type;
+            type = ObjectUtils.isEmpty(type) ? null : type;
+            typeList = types.get(0).getChildList().stream().map(NewsType::getId).collect(Collectors.toList());
         }else if(baikeTypes.size()==1){
             //东北sy,cc,dl,hrb层级结构不一样
-            type = ObjectUtils.isEmpty(type) ? baikeTypes.get(0).getChildList().get(0).getId() : type;
+            type = ObjectUtils.isEmpty(type) ? null : type;
+            typeList = baikeTypes.get(0).getChildList().stream().map(NewsType::getId).collect(Collectors.toList());
         }
-        List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
+
         //文章列表
-        JSONObject result = newsList(cityen, typeid, page, pagesize, null, null);
+        JSONObject result = null;
+        if(type != null) {
+            List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
+            //文章列表
+            result = newsList(cityen, typeid, page, pagesize, null, null);
+            model.addAttribute("type" , type);
+            model.addAttribute("typeid", type);
+        }else {
+            //文章列表
+            result = newsList(cityen, typeList, page, pagesize, null, null);
+            List<Map> news1 = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
+            Integer typeid = (Integer) news1.get(0).get("TypeID");
+            System.out.println("typeid = " + typeid);
+            model.addAttribute("type" , typeid);
+            model.addAttribute("typeid", typeid);
+        }
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
         setCommon(model, cityen);
+
         model.addAttribute("types", baikeTypes);
-        model.addAttribute("typeid", 5);
+
         model.addAttribute("news", news);
         Integer pageCount = result.getInteger("PageTotal");
         PageUtil p = new PageUtil(pageCount, page, pagesize);
         model.addAttribute("p", p);
+        model.addAttribute("page", page);
         return "baike";
     }
 }
