@@ -388,7 +388,12 @@ public class NewsController {
         if (null != types && !types.isEmpty()) {
             baikeTypes = types.get(0).getChildList();
         }
-        type = ObjectUtils.isEmpty(type) ? types.get(0).getChildList().get(0).getId() : type;
+        if(!baikeTypes.isEmpty() && baikeTypes.size()>1){
+            type = ObjectUtils.isEmpty(type) ? types.get(0).getChildList().get(0).getId() : type;
+        }else if(baikeTypes.size()==1){
+            //东北sy,cc,dl,hrb层级结构不一样
+            type = ObjectUtils.isEmpty(type) ? baikeTypes.get(0).getChildList().get(0).getId() : type;
+        }
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
         //文章列表
         JSONObject result = newsList(cityen, typeid, page, pagesize, null, null);
