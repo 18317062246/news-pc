@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -421,20 +422,30 @@ public class NewsController {
 
         //文章列表
         JSONObject result = null;
-        if(type != null) {
+        if(type != null) {//type不为空，正常去取
             List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
             //文章列表
             result = newsList(cityen, typeid, page, pagesize, null, null);
             model.addAttribute("type" , type);
             model.addAttribute("typeid", type);
-        }else {
-            //文章列表
-            result = newsList(cityen, typeList, page, pagesize, null, null);
+        }else {//type为空，默认取出数据了就跳出循环
+            //循环typeList
+            for(Integer typeId : typeList){
+                //文章列表
+                result = newsList(cityen, Arrays.asList(typeId), page, pagesize, null, null);
+                List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
+                if(!CollectionUtils.isEmpty(news)){
+                    break;
+                }
+            }
+
+            //如果新闻列表有数据，存在对应的栏目id
             List<Map> news1 = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
-            Integer typeid = (Integer) news1.get(0).get("TypeID");
-            System.out.println("typeid = " + typeid);
-            model.addAttribute("type" , typeid);
-            model.addAttribute("typeid", typeid);
+            if(!CollectionUtils.isEmpty(news1)) {
+                Integer typeid = (Integer) news1.get(0).get("TypeID");
+                model.addAttribute("type", typeid);
+                model.addAttribute("typeid", typeid);
+            }
         }
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
         setCommon(model, cityen);
