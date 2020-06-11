@@ -33,7 +33,7 @@
         String str = (String) request.getAttribute("name");
 
     %>
-    城市简拼:<%=str%>
+    城市简拼:${name}
     <a onclick="clickMe('<%=str%>','<%=str%>')">点击我</a>
 
     <p>

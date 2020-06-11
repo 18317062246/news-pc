@@ -20,7 +20,8 @@ target/
 *.ipr
 *.cmd
 mvnw
-
+src/test
+/logs
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

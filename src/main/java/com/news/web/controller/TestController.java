@@ -15,7 +15,6 @@ public class TestController {
 
     @RequestMapping("/index/{name}")
     public String testJsp(Model model , @PathVariable(name = "name") String name){
-
         List<Users> list = new ArrayList<>();
         list.add(new Users(1,"张三",20));
         list.add(new Users(2,"李四",22));
@@ -31,7 +30,6 @@ public class TestController {
     @RequestMapping("index1")
     public String testIndex1(HttpServletRequest request , Model model ){
         String name = request.getParameter("name");
-        System.out.println("name = " + name);
         List<Users> list = new ArrayList<>();
         list.add(new Users(1,"张三",20));
         list.add(new Users(2,"李四",22));
