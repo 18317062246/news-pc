@@ -413,7 +413,17 @@ public class NewsController {
         List<Integer> typeList = new ArrayList<>();
         if(!baikeTypes.isEmpty() && baikeTypes.size()>1){
             type = ObjectUtils.isEmpty(type) ? null : type;
-            typeList = types.get(0).getChildList().stream().map(NewsType::getId).collect(Collectors.toList());
+            for(NewsType newsType : types){
+                List<NewsType> newTypes = JSON.parseArray(JSON.toJSONString(newsType.getChildList()) , NewsType.class);
+                for(NewsType newsType1 : newTypes){
+                    typeList.add(newsType1.getId());
+                    List<NewsType> newTypes2 = JSON.parseArray(JSON.toJSONString(newsType1.getChildList()) , NewsType.class);
+                    for(NewsType newsType2 : newTypes2){
+                        typeList.add(newsType2.getId());
+                    }
+                }
+            }
+            System.out.println("typeList = " + typeList);
         }else if(baikeTypes.size()==1){
             //东北sy,cc,dl,hrb层级结构不一样
             type = ObjectUtils.isEmpty(type) ? null : type;
