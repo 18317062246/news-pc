@@ -440,8 +440,8 @@ public class NewsController {
         //获取session
         HttpSession session = request.getSession();
         //从session中获取是否存在百科
-        Boolean baiketype = (Boolean) session.getAttribute("baiketype");
-        model.addAttribute("baiketype" , baiketype);
+        List<NewsType> baiketype = typeList(cityen, "baike");
+        model.addAttribute("baiketype", !baiketype.isEmpty());
 
         setCommon(model, cityen);
         //热点排行
@@ -488,13 +488,13 @@ public class NewsController {
 
         //获取session
         HttpSession session = request.getSession();
-        //从session中获取是否存在百科
-        Boolean baiketype = (Boolean) session.getAttribute("baiketype");
-        model.addAttribute("baiketype" , baiketype);
+
+
 
         page = ObjectUtils.isEmpty(page) ? 1 : page;
         //栏目类型
         List<NewsType> types = typeList(cityen, "baike");
+        model.addAttribute("baiketype" , !types.isEmpty());
         List<NewsType> baikeTypes = new ArrayList<>();
         if (null != types && !types.isEmpty()) {
             baikeTypes = types.get(0).getChildList();
@@ -558,8 +558,7 @@ public class NewsController {
                 //获取栏目名称
                 String typeName = (String) news1.get(0).get("TypeName");
                 //存储栏目id
-                //用于控制列表，是否需要携带栏目
-                model.addAttribute("type", typeid);
+                model.addAttribute("type", 0);
                 //控制当前栏目
                 model.addAttribute("typeid", 0);
                 //存储栏目名称
