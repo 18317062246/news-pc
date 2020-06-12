@@ -53,7 +53,7 @@
                 <div class="special-item">
                     <a href="/${cityen}/detail/${item.ID}.html" class="link" title="${item.Title}">
                         <img class="lazy" src="${item.LitPic}?x-oss-process=style/180x130"
-                             data-original="${item.LitPic}?x-oss-process=style/180x130" alt="${item.Title}" onerror="this.src='${defaultpic}'"/><span >${fn:substring(item.Title,0,18)}</span>
+                             data-original="${item.LitPic}?x-oss-process=style/180x130" alt="${item.Title}" onerror="this.src='${defaultpic}'"/><span >${fn:substring(item.Title,0,16)}</span>
                     </a>
                 </div>
             </c:forEach>
