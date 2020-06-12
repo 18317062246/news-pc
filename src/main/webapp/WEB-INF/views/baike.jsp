@@ -81,15 +81,15 @@
                                 <div class="pager-box">
                                     <div class="pager-inner">
                                         <c:if test="${p.currpageNum<=1}">
-                                            <a href="javacript:void(0);" class="fsm fb">&gt;首页</a>
+                                            <a href="javacript:void(0);" class="fsm fb">&lt;&nbsp;首页</a>
                                         </c:if>
                                         <c:if test="${p.currpageNum>1}">
                                             <c:choose>
                                                 <c:when test="${typeid == 0}">
-                                                    <a href="/${cityen}/baike/p${p.currpageNum-1}" class="fsm fb">&lt;上一页</a>
+                                                    <a href="/${cityen}/baike/p${p.currpageNum-1}" class="fsm fb">&lt;&nbsp;上一页</a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}" class="fsm fb">&lt;上一页</a>
+                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}" class="fsm fb">&lt;&nbsp;上一页</a>
                                                 </c:otherwise>
                                             </c:choose>
 
@@ -138,15 +138,15 @@
                                                 </c:otherwise>
                                             </c:choose>
 
-                                            <a class="normal" href="">...</a>
+                                           <%-- <a class="normal" href="">...</a>--%>
                                         </c:if>
                                         <c:if test="${p.hasNextPage}">
                                             <c:choose>
                                                 <c:when test="${typeid == 0}">
-                                                    <a href="/${cityen}/baike/p${p.currpageNum+1}" class="fsm fb">下一页&gt;</a>
+                                                    <a href="/${cityen}/baike/p${p.currpageNum+1}" class="fsm fb">下一页&nbsp;&gt;</a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}" class="fsm fb">下一页&gt;</a>
+                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}" class="fsm fb">&nbsp;下一页&gt;</a>
                                                 </c:otherwise>
                                             </c:choose>
 

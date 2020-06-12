@@ -946,8 +946,11 @@
 
 
 
+        <div class="login-iframe fr" >
+                <%--<iframe frameborder="0"  scrolling="no"  id="iframeA" src="//passport.centanet.com/page/top.aspx?from=" allowTransparency="true" ></iframe>--%>
+            <iframe src="https://passport.centanet.com/page/top.aspx?from=" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/page/top.aspx?from=" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
 
-        <div class="login-iframe fr"> <iframe frameborder="0" allowtransparency="true"  scrolling="no" src="//passport.centanet.com/page/top.aspx?from=" id="iframeA"></iframe></div>
+        </div>
         <p class="hot-phone fr">热线：${cityTelphone}</p>
     </div>
 </div>
@@ -1044,6 +1047,14 @@
 </div>
 <script type="text/javascript">
 
+    //判断是否为ie浏览器
+    if(window.ActiveXObject || "ActiveXObject" in window){
+        //如果是ie浏览器，设置iframe的透明度
+            var ifra=document.getElementsByTagName('iframeA');
+            for(var i=0,l=ifra.length;i<l;i++) {
+                ifra[i].setAttribute('allowTransparency','true');
+            }
+    }
     //点击搜索
     $(".icons-searchred-btn").click(function () {
         console.log('search btn');

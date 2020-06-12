@@ -76,32 +76,32 @@
             <c:if test="${fn:contains(xiaoqu, cityen)}">
             <dt>小区检索：</dt>
                 <dd>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/a/">A</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/b/">B</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/c/">C</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/d/">D</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/e/">E</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/f/">F</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/g/">G</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/h/">H</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/i/">I</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/j/">J</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/k/">K</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/l/">L</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/m/">M</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/n/">N</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/o/">O</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/p/">P</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/q/">Q</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/r/">R</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/s/">S</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/t/">T</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/u/">U</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/v/">V</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/w/">W</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/x/">X</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/y/">Y</a>
-                    <a target="_blank" href="//bj.centanet.com/xiaoqu-ditu/z/">Z</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/a/">A</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/b/">B</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/c/">C</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/d/">D</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/e/">E</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/f/">F</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/g/">G</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/h/">H</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/i/">I</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/j/">J</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/k/">K</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/l/">L</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/m/">M</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/n/">N</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/o/">O</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/p/">P</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/q/">Q</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/r/">R</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/s/">S</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/t/">T</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/u/">U</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/v/">V</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/w/">W</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/x/">X</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/y/">Y</a>
+                    <a target="_blank" href="//${cityen}.centanet.com/xiaoqu-ditu/z/">Z</a>
                 </dd>
             </c:if>
         </dl>
