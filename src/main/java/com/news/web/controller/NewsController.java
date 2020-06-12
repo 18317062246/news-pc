@@ -221,7 +221,7 @@ public class NewsController {
         map.put("xy", "襄阳");
         map.put("zh", "珠海");
         map.put("cs", "长沙");
-        map.put("zj", "镇江");
+        map.put("zj", "杭州");
         map.put("ganzhou", "赣州");
         map.put("hf", "合肥");
         map.put("jn", "济南");
