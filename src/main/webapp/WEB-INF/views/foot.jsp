@@ -114,7 +114,7 @@
     <div class="section-wrap section-footer-secondary">
         <div class="section">
         <c:if test="${cityen!='jtdr'}">
-            <p class="bot-link"><a href="">最新资讯</a>
+            <p class="bot-link"><%--<a href="">最新资讯</a>--%>
                 <c:if test="${cityen == 'bj' || cityen == 'gz' || cityen == 'nj'  || cityen == 'dg'}">
                     <a href="/${cityen}/" target="_blank">最新资讯</a>
                     <a href="//${cityen}.centanet.com/ershoufang/u7/" target="_blank">最新房源</a>
@@ -196,7 +196,7 @@
                     <a href="//${cityen}.centanet.com/job/" target="_blank">加入我们</a>
                 </c:if>
             </p>
-            其它城市：
+           <%-- 其它城市：--%>
         </c:if>
             <p class="copyright">
                 本站所载各种成交信息和数据仅供参考，不构成任何投资建议；公司不对成交数据的准确性作出承诺，也不对任何错误负任何法律责任。所有合同均以最终签约为准。<br>
