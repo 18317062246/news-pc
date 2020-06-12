@@ -163,7 +163,7 @@
                         </dt>
                         <dd class="fl">
                             <h6 class="f18"><a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank">${item.Title}</a></h6>
-                            <p class="f14 f999">${item.Description}<a href="" class="cBlue ml_15"></a></p>
+                            <p class="f14 f999">${item.Description}<span>...</span><a href="" class="cBlue ml_15"></a></p>
                             <div class="tag clearfix">
                                 <p class="news_time">
                                     <jsp:useBean id="myDate" class="java.util.Date"/>

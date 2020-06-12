@@ -51,7 +51,7 @@
             <div class="fl breadcrumbs-area">
                 <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
                 <span class="fsm">&gt;</span>
-                <span>${citycn}资讯</span>
+                <a href="/${cityen}/" class="f123">${citycn}资讯</a>
                 <span class="fsm">&gt;</span>
                 <span class="colName"></span>
             </div>
@@ -101,11 +101,11 @@
                                 <dd class="fl">
                                     <h6 class="f18">
                                         <a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank" title="${item.Title}">
-                                             ${fn:substring(item.Title,0,23)}
+                                             ${item.Title}
                                         </a>
                                     </h6>
                                     <p class="f14 f999">
-                                            ${item.Description}
+                                            ${item.Description}<span>...</span>
                                         <a href="" class="cBlue ml_15"></a>
                                     </p>
                                     <div class="tag clearfix">
@@ -354,7 +354,7 @@
     //获取请求链接
     function getlink(type) {
         let searchkey = $('.search-ipt').val();
-        let cityen = '${cityen}';
+        let cityen = '{cityen}';
         let obj = {
             0: "/" + cityen + "/list/?key=" + searchkey,
             1: "//" + cityen + ".centanet.com/xinfang/?key=" + searchkey,

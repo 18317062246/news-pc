@@ -102,7 +102,7 @@
                         <div class="column_block_text_title">
                             <a href="/${cityen}/detail/${ID}.html" target="_blank">${n.Title}</a>
                         </div>
-                        <p class="column_block_text_para">${n.Description}</p>
+                        <p class="column_block_text_para">${n.Description}<span>...</span></p>
                         <div class="column_block_text_time"><span>
                             <jsp:useBean id="myDate" class="java.util.Date"/>
                             <c:set target="${myDate}" property="time" value="${n.PublishDate}"/>

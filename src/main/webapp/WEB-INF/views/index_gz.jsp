@@ -42,9 +42,11 @@
     <div class="section">
         <div class="breadcrumbs clearfix">
             <div class="fl breadcrumbs-area f123 ">
-                <a href="${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
                 <span class="fsm">&gt;</span>
-                <span>${citycn}资讯</span>
+                <a href="/${cityen}/" class="f123">${citycn}资讯</a>
+                <span class="fsm">&gt;</span>
+                <span class="colName"></span>
             </div>
         </div>
     </div>
@@ -76,7 +78,7 @@
                                     </dt>
                                     <dd>
                                         <p class="f14 f999">
-                                            ${n.Description}
+                                            ${n.Description}<span>...</span>
                                             <a href="" class="cBlue ml_15"></a>
                                         </p>
                                     </dd>

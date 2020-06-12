@@ -45,9 +45,14 @@
         <div class="encyclo-banner"><img src="${staticurl}/images/encyclo_banner.jpg" alt=""/></div>
         <div class="breadcrumbs clearfix f123" style="margin-bottom:10px">
             <div class="fl breadcrumbs-area f123 " id="navigation">
-                <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/" class="f123">购房百科</a><span class="fsm"> &gt; </span><a id="second"
-                                                                                                    href="/${cityen}/baike/c${type}/p${page}/"
-                                                                                                    style="color:#A39FA1">${typeName}</a>
+                <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/" class="f123">购房百科</a><span class="fsm"> &gt; </span>
+                <c:if test="${typeid == 0}">
+                    <a id="second" href="/${cityen}/baike/p${page}/" style="color:#A39FA1">${typeName}</a>
+                </c:if>
+                <c:if test="${typeid != 0}">
+                    <a id="second" href="/${cityen}/baike/c${typeid}/p${page}/" style="color:#A39FA1">${typeName}</a>
+                </c:if>
+
             </div>
         </div>
 
@@ -64,7 +69,7 @@
                                     <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Title}</a>
                                 </p>
                                 <p class="hd">
-                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Description} </a>
+                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Description} <span>...</span></a>
                                 </p>
                                 <p class="fd">
                                     <i></i>
@@ -186,29 +191,60 @@
         <div class="encyclo-side fl">
             <c:set var="dbcitys" value="sy,cc,hrb,cs"></c:set>
             <dl class="encyclo-classify ${fn:contains(dbcitys, cityen)?'encyclo-classify_cs':''}">
-
-             <%--   <c:if test="${!fn:contains(dbcitys, cityen)}">--%>
+                <%--判断栏目长度是否>=1--%>
+                <c:if test="${typesSize > 1}">
+                    <%--   <c:if test="${!fn:contains(dbcitys, cityen)}">--%>
                     <c:forEach items="${types}" var="item">
                         <%--一级 top--%>
-                        <c:if test="${item.id == type}">
-                            <dt class="curr"><a href="/${cityen}/baike/c${item.id}/p1" title="${item.columnsName}" style="color: red;">${item.columnsName}</a></dt>
+                        <c:if test="${item.id == typeid}">
+                            <dt class="curr"><span style="color: red;">${item.columnsName}</span></dt>
                         </c:if>
-                        <c:if test="${item.id != type}">
-                            <dt><a href="/${cityen}/baike/c${item.id}/p1" title="${item.columnsName}">${item.columnsName}</a></dt>
+                        <c:if test="${item.id != typeid}">
+                            <dt><span>${item.columnsName}</span></dt>
                         </c:if>
                         <%--二级 child--%>
                         <dd>
                             <c:forEach items="${item.childList}" var="ch">
-                                <c:if test="${ch.id == type}">
+                                <c:if test="${ch.id == typeid}">
                                     <a href="/${cityen}/baike/c${ch.id}/p1" class="curr" style="color: red;" title="${ch.columnsName}">${ch.columnsName}</a>
                                 </c:if>
-                                <c:if test="${ch.id != type}">
+                                <c:if test="${ch.id != typeid}">
                                     <a href="/${cityen}/baike/c${ch.id}/p1" title="${ch.columnsName}">${ch.columnsName}</a>
                                 </c:if>
                             </c:forEach>
                         </dd>
                     </c:forEach>
-                <%--</c:if>--%>
+                    <%--</c:if>--%>
+                </c:if>
+
+                    <%--判断栏目长度是否==1--%>
+                    <c:if test="${typesSize == 1}">
+                        <%--   <c:if test="${!fn:contains(dbcitys, cityen)}">--%>
+                        <c:forEach items="${types}" var="item">
+                            <%--一级 top--%>
+                            <c:if test="${item.id == typeid}">
+                                <dt class="curr"><span style="color: red;">${item.columnsName}</span></dt>
+                            </c:if>
+                            <c:if test="${item.id != typeid}">
+                                <dt><span>${item.columnsName}</span></dt>
+                            </c:if>
+                            <%--二级 child--%>
+
+                                <c:forEach items="${item.childList}" var="ch">
+                                    <dd>
+                                    <c:if test="${ch.id == typeid}">
+                                        <a href="/${cityen}/baike/c${ch.id}/p1" class="curr" style="color: red;" title="${ch.columnsName}">${ch.columnsName}</a>
+                                    </c:if>
+                                    <c:if test="${ch.id != typeid}">
+                                        <a href="/${cityen}/baike/c${ch.id}/p1" title="${ch.columnsName}">${ch.columnsName}</a>
+                                    </c:if>
+                                    </dd>
+                                </c:forEach>
+
+                        </c:forEach>
+                        <%--</c:if>--%>
+                    </c:if>
+
             </dl>
             <%-- <dl class="encyclo-classify">
                  <c:forEach items="${types}" var="bkitme">

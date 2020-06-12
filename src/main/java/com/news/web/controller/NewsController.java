@@ -538,9 +538,6 @@ public class NewsController {
                 });
             });
             //存储栏目id
-            //用于控制列表，是否需要携带栏目
-            model.addAttribute("type", type);
-            //控制当前栏目
             model.addAttribute("typeid", type);
 
             //存储栏目名称
@@ -552,13 +549,9 @@ public class NewsController {
             //如果新闻列表有数据，存在对应的栏目id
             List<Map> news1 = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
             if (!CollectionUtils.isEmpty(news1)) {
-                //获取栏目id
-                Integer typeid = (Integer) news1.get(0).get("TypeID");
                 //获取栏目名称
                 String typeName = (String) news1.get(0).get("TypeName");
                 //存储栏目id
-                model.addAttribute("type", 0);
-                //控制当前栏目
                 model.addAttribute("typeid", 0);
                 //存储栏目名称
                 model.addAttribute("typeName", typeName);
@@ -568,6 +561,8 @@ public class NewsController {
         setCommon(model, cityen);
 
         model.addAttribute("types", baikeTypes);
+        //存储百科左侧栏目大小
+        model.addAttribute("typesSize", baikeTypes.size());
 
         model.addAttribute("news", news);
         Integer pageCount = result.getInteger("PageTotal");

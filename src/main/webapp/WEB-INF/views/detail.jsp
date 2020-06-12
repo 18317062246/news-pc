@@ -130,9 +130,7 @@
 <!-- footer -->
 <%@include file="/WEB-INF/views/foot.jsp" %>
 <script type="text/javascript">
-  /*  jQuery(document).ready(function ($) {
-        $("img.lazy").lazyload({effect: "fadeIn"});
-    });*/
+
 </script>
 <script type="text/javascript">
     $(function () {
