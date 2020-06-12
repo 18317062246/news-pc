@@ -22,7 +22,7 @@
 <div class="section-wrap section-inform " >
 	<div class="section">
 		<div class="title-box clearfix">
-		<h5 class="title">${cityen}热点资讯</h5>
+		<h5 class="title">${citycn}热点资讯</h5>
 		<p class="description">提供房产新闻</p>		
 	</div>
 		<%--left--%>
@@ -77,7 +77,7 @@
 <div class="section-wrap section-informHS section-inform-national">
 	<div class="section ">
 		<div class="title-box clearfix">
-		<h5 class="title">${cityen}热点资讯</h5>
+		<h5 class="title">${citycn}热点资讯</h5>
 		<p class="description">提供房产新闻</p>		
 	</div>
 			<%--bottom-left--%>
