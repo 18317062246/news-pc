@@ -193,6 +193,8 @@ public class NewsController {
         model.addAttribute("staticurl", staticurl);
         model.addAttribute("ver", ver);
         model.addAttribute("citycn", citymap(cityen));
+        model.addAttribute("cityTelphone", cityTelphone(cityen));
+
 
     }
 
@@ -216,8 +218,8 @@ public class NewsController {
         map.put("hrb", "哈尔滨");
         map.put("xm", "厦门");
         map.put("wx", "无锡");
-        map.put("xy", "无锡");
-        map.put("zh", "无锡");
+        map.put("xy", "襄阳");
+        map.put("zh", "珠海");
         map.put("cs", "长沙");
         map.put("zj", "镇江");
         map.put("ganzhou", "赣州");
@@ -228,10 +230,51 @@ public class NewsController {
         map.put("xa", "西安");
         map.put("zs", "中山");
         map.put("zq", "肇庆");
-        map.put("zz", "无锡");
+        map.put("zz", "郑州");
         String citycn = (String) map.get(cityen);
         return citycn;
     }
+
+    private String cityTelphone(String cityen) {
+        Map map = new HashMap();
+        map.put("bj", "400-812-5166");
+        map.put("tj", "4008-985-666");
+        map.put("gz", "4008-103-313");
+        map.put("sz", "4008-192-186");
+        map.put("cd", "400-028-8484");
+        map.put("cq", "4008-110-117");
+        map.put("nj", "400-876-6988");
+        map.put("wh", "400-810-0188");
+        map.put("hz", "400-819-6038");
+        map.put("cc", "400-819-0218");
+        map.put("dl", "400-810-0596");
+        map.put("sy", "400-810-8620");
+        map.put("dg", "400-815-1699");
+        map.put("nn", "400-819-3688");
+        map.put("fs", "400-819-8990");
+        map.put("hrb", "400-819-7123");
+        map.put("xm", "400-819-7679");
+        map.put("wx", "400-928-0668");
+        map.put("xy", "400-810-0188");
+        map.put("zh", "400-819-0196");
+        map.put("cs", "400-810-0388");
+        map.put("zj", "400-819-7103");
+        map.put("ganzhou", "400-819-6038");
+        map.put("hf", "0551-65667801");
+        map.put("jn", "0531-86922966");
+        map.put("km", "0871-63193010");
+        map.put("nb", "0574-87289000");
+        map.put("xa", "029-81773952");
+        map.put("zs", "88231922-880");
+        map.put("zq", "400-819-8990");
+        map.put("zz", "0371-66375760");
+        map.put("nc", "0791-86296696");
+        map.put("fz", "400-819-8990");
+        String cityTelphone = (String) map.get(cityen);
+        return cityTelphone;
+    }
+
+
 
     /**
      * @param model
@@ -261,6 +304,13 @@ public class NewsController {
             model.addAttribute("colName", currTypes.get(0).getColumnsName());
         }
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
+
+        //判断是否为热门专题
+        Integer hotTypeId = types.stream().filter(l -> l.getColumnsName().equals("热门专题")).mapToInt(NewsType::getId).sum();
+        //如果是热门专题，默认取8条数据
+        if(hotTypeId != null && hotTypeId > 0 && hotTypeId.equals(type)){
+            pagesize = 8;
+        }
         //文章列表
         JSONObject result = newsList(cityen, typeid, page, pagesize, null, key);
         if (ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
@@ -279,8 +329,16 @@ public class NewsController {
         model.addAttribute("topList", topList);
         model.addAttribute("type", type);
         model.addAttribute("key", key);
+        model.addAttribute("page", page);
         PageUtil p = new PageUtil(pageCount, page, pagesize);
+        System.out.println("p = " + p);
         model.addAttribute("p", p);
+
+
+        //如果是热门专题，跳往热门专题列表
+        if(hotTypeId != null && hotTypeId > 0 && hotTypeId.equals(type)){
+            return "topic_list";
+        }
         return "news_list";
     }
 
@@ -422,7 +480,7 @@ public class NewsController {
      * @author: zouyuan1
      * @date: 2020-05-27
      */
-    @GetMapping(value = {"/{cityen}/baike", "/{cityen}/baike/c{type}/p{page}"})
+    @GetMapping(value = {"/{cityen}/baike", "/{cityen}/baike/c{type}/p{page}", "/{cityen}/baike/p{page}"})
     public String baike(Model model, @PathVariable("cityen") String cityen,
                         @PathVariable(value = "type", required = false) Integer type,
                         @PathVariable(value = "page", required = false) Integer page,
@@ -481,13 +539,15 @@ public class NewsController {
                 });
             });
             //存储栏目id
+            //用于控制列表，是否需要携带栏目
             model.addAttribute("type" , type);
+            //控制当前栏目
             model.addAttribute("typeid", type);
 
             //存储栏目名称
             model.addAttribute("typeName", typeNameList.get(0));
-        }else {//type为空，默认取出数据了就跳出循环
-            //循环typeList
+        }else {//type为空，默认取出百科数据了
+
             result = newsListByBaike(cityen, "baike", page, pagesize, null, null);
 
             //如果新闻列表有数据，存在对应的栏目id
@@ -498,8 +558,10 @@ public class NewsController {
                 //获取栏目名称
                 String typeName = (String) news1.get(0).get("TypeName");
                 //存储栏目id
+                //用于控制列表，是否需要携带栏目
                 model.addAttribute("type", typeid);
-                model.addAttribute("typeid", typeid);
+                //控制当前栏目
+                model.addAttribute("typeid", 0);
                 //存储栏目名称
                 model.addAttribute("typeName", typeName);
             }

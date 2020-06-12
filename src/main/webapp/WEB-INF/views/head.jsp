@@ -948,7 +948,7 @@
 
 
         <div class="login-iframe fr"> <iframe frameborder="0" allowtransparency="true"  scrolling="no" src="//passport.centanet.com/page/top.aspx?from=" id="iframeA"></iframe></div>
-        <p class="hot-phone fr">热线：4008-089-123</p>
+        <p class="hot-phone fr">热线：${cityTelphone}</p>
     </div>
 </div>
 </c:if>
@@ -969,7 +969,7 @@
                             <li onclick="searchType(4);" class><span  class="search_qiehuan"><a onclick="searchType(4)">门店</a></span></li>
                             <li onclick="searchType(5);" class><span class="search_qiehuan"><a onclick="searchType(5)">成交走势</a></span></li>
                             <li onclick="searchType(6);" class><span class="search_qiehuan"><a onclick="searchType(6)">二手房</a></span></li>
-&lt;%&ndash;                            <li onclick="searchType(1);" class><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>&ndash;%&gt;
+                            <li onclick="searchType(1);" class><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>
                         </c:if>
 
                         <c:if test="${cityen == 'gz' }">

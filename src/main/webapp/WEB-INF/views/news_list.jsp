@@ -145,7 +145,7 @@
                 <span class="fsm">&gt;</span>
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a>
                 <span class="fsm">&gt;</span>
-                <span>${colName}</span>
+                <a href="/${cityen}/list/c${type}/p${page}/" class="f123">${colName}</a>
             </div>
         </div>
         <div class="infor-main fl">
@@ -196,16 +196,6 @@
                                 </div>
                         <div class="infor-space"></div>
                         <!-- E;centmain-inner -->
-
-                   <%-- <dl class="infor-news-item clearfix">
-                        <dt>
-                            <img src="${staticurl}/images/noplay.jpg" alt="">
-                        </dt>
-                        <dd>
-                            <h3 class="f000 f16">
-                                对不起，暂无“<span class="cRed">${key}</span>”相关的问答内容</h3>
-                        </dd>
-                    </dl>--%>
                 </c:if>
 
                 </div>

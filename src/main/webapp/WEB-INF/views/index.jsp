@@ -94,8 +94,8 @@
                                 <dt class="fl">
                                     <a href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
                                         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                        <img class="lazy" src="${item.LitPic}?x-oss-process=style/180x130"
-                                             data-original="${item.LitPic}?x-oss-process=style/180x130" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
+                                        <img class="lazy" src="${item.LitPic}?x-oss-process=style/master"
+                                             data-original="${item.LitPic}?x-oss-process=style/master" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
                                     </a>
                                 </dt>
                                 <dd class="fl">
@@ -174,8 +174,8 @@
                                             <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">
                                                 <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                            <%--     <img src="${n.LitPic}" alt="" onerror="this.src='${defaultpic}'">--%>
-                                                <img class="lazy" src="${n.LitPic}?x-oss-process=style/300x210"
-                                                     data-original="${n.LitPic}?x-oss-process=style/180x130" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
+                                                <img class="lazy" src="${n.LitPic}?x-oss-process=style/master"
+                                                     data-original="${n.LitPic}?x-oss-process=style/master" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
                                             </a>
                                         </dd>
                                     </c:if>
