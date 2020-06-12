@@ -8,4 +8,4 @@ server:
 static:
   path: D:/100workspace/160code/news-html/pc/
   #url: http://static.dev.com.cn:8118
-  url: https://static.centanet.com/news/2020060816/pc
+  url: https://static.centanet.com/news/2020061215/pc

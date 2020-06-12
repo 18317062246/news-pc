@@ -963,69 +963,9 @@
         <div class="clear"></div>
         <div class="search-box fl">
             <div class="search-entry">
-                <div class="sear_choosebox" id="J_searchtype"><span class="type-txt">资讯</span>
-                    <ul class="search-choose">
-                        <c:if test="${cityen == 'bj' || cityen == 'tj' || cityen == 'dg'}">
-                            <li onclick="searchType(7);" class><span class="search_qiehuan"><a onclick="searchType(7);">租房</a></span></li>
-                            <li onclick="searchType(2);" class><span class="search_qiehuan"><a onclick="searchType(2);">小区</a></span></li>
-                            <li onclick="searchType(3);" class><span class="search_qiehuan"><a onclick="searchType(3);">经纪人</a></span></li>
-                            <li onclick="searchType(4);" class><span  class="search_qiehuan"><a onclick="searchType(4)">门店</a></span></li>
-                            <li onclick="searchType(5);" class><span class="search_qiehuan"><a onclick="searchType(5)">成交走势</a></span></li>
-                            <li onclick="searchType(6);" class><span class="search_qiehuan"><a onclick="searchType(6)">二手房</a></span></li>
-                            <li onclick="searchType(1);" class><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>
-                        </c:if>
-
-                        <c:if test="${cityen == 'gz' }">
-                            <li onclick="searchType(6);" class><span class="search_qiehuan"><a onclick="searchType(6)">二手房</a></span></li>
-                            <li onclick="searchType(1);" class=><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>
-                            <li onclick="searchType(2);" class><span class="search_qiehuan"><a onclick="searchType(2);">小区</a></span></li>
-                            <li class="curr" onclick="searchType(7);" class><span class="search_qiehuan"><a onclick="searchType(7);">租房</a></span></li>
-                            <li onclick="searchType(3);" class><span class="search_qiehuan"><a onclick="searchType(3);">经纪人</a></span></li>
-                            <li onclick="searchType(4);" class><span class="search_qiehuan"><a onclick="searchType(4)">门店</a></span></li>
-                        </c:if>
-
-                        <c:if test="${cityen == 'sz' }">
-                            <li onclick="searchType(6);" class><span class="search_qiehuan"><a onclick="searchType(6)">二手房</a></span></li>
-                            <li onclick="searchType(1);" class><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>
-                            <li onclick="searchType(2);" class><span class="search_qiehuan"><a onclick="searchType(2);">小区</a></span></li>
-                            <li class="curr" onclick="searchType(7);" class><span  class="search_qiehuan"><a onclick="searchType(7);">租房</a></span></li>
-                            <li onclick="searchType(3);" class><span class="search_qiehuan"><a onclick="searchType(3);">经纪人</a></span></li>
-                            <li onclick="searchType(4);" class><span class="search_qiehuan"><a onclick="searchType(4)">门店</a></span></li>
-                            <li onclick="searchType(9);" class><span class="search_qiehuan"><a onclick="searchType(9)">商铺</a></span></li>
-                            <li onclick="searchType(10);" class><span class="search_qiehuan"><a onclick="searchType(10)">写字楼</a></span></li>
-                        </c:if>
-
-                        <c:if test="${cityen == 'cd' || cityen == 'cq'}">
-                            <li onclick="searchType(6);" class><span class="search_qiehuan"><a onclick="searchType(6)">二手房</a></span></li>
-                            <li onclick="searchType(1);" class><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>
-                            <li onclick="searchType(2);" class><span class="search_qiehuan"><a onclick="searchType(2);">小区</a></span></li>
-                            <li class="curr" onclick="searchType(7);" class><span class="search_qiehuan"><a onclick="searchType(7);">租房</a></span></li>
-                            <li onclick="searchType(5);" class><span class="search_qiehuan"><a onclick="searchType(5)">成交走势</a></span></li>
-                            <li onclick="searchType(3);" class><span class="search_qiehuan"><a onclick="searchType(3);">经纪人</a></span></li>
-                            <li onclick="searchType(4);" class><span class="search_qiehuan"><a onclick="searchType(4)">门店</a></span></li>
-                        </c:if>
-
-                        <c:if test="${cityen == 'nj' || cityen == 'wh' || cityen == 'cs' || cityen == 'cc' || cityen == 'dl'
-                                               || cityen == 'sy' || cityen == 'nn' || cityen == 'zj'  || cityen == 'nc' || cityen == 'fs'
-                                               || cityen == 'fz' || cityen == 'ganzhou' || cityen == 'hf' || cityen == 'hrb'
-                                               || cityen == 'jn' || cityen == 'km' || cityen == 'nb' || cityen == 'wx'
-                                               || cityen == 'xa' || cityen == 'xm'  || cityen == 'xy' || cityen == 'zh'
-                                               || cityen == 'zs' || cityen == 'zq' || cityen == 'zz'}">
-                            <li onclick="searchType(1);" class><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>
-                        </c:if>
-
-                        <c:if test="${cityen == 'hz'}">
-                            <li onclick="searchType(6);" class><span class="search_qiehuan"><a onclick="searchType(6)">二手房</a></span></li>
-                            <li onclick="searchType(1);" class><span class="search_qiehuan"><a onclick="searchType(1);">新房</a></span></li>
-                            <li onclick="searchType(2);" class><span class="search_qiehuan"><a onclick="searchType(2);">小区</a></span></li>
-                            <li class="curr" onclick="searchType(7);" class><span class="search_qiehuan"><a onclick="searchType(7);">租房</a></span></li>
-                            <li onclick="searchType(5);" class><span class="search_qiehuan"><a onclick="searchType(5)">成交走势</a></span></li>
-                            <li onclick="searchType(8);" class><span class="search_qiehuan"><a onclick="searchType(8)">学校</a></span></li>
-                            <li onclick="searchType(3);" class><span class="search_qiehuan"><a onclick="searchType(3);">经纪人</a></span></li>
-                            <li onclick="searchType(4);" class><span class="search_qiehuan"><a onclick="searchType(4)">门店</a></span></li>
-                        </c:if>
-                    </ul>
-                    <span class="icons-arr"></span></div>
+                <div class="sear_choosebox" id="J_searchtype">
+                    <span class="type-txt">资讯</span>
+                </div>
                 <span class="line"></span>
                 <span class="icons-search"></span>
                 <input class="search-ipt" placeholder="请输入资讯标题或内容" type="text">
