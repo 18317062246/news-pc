@@ -298,10 +298,20 @@ public class NewsController {
         }
         //获取栏目类型
         List<NewsType> types = typeList(cityen, null);
+        //判断当前的分类id是否和当前城市右侧栏目的id相等，若相等，就取出对应的栏目名称
         List<NewsType> currTypes = types.stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
         if (currTypes != null && !currTypes.isEmpty()) {
             model.addAttribute("colName", currTypes.get(0).getColumnsName());
         }
+
+        //获取集团资讯的栏目类型
+        List<NewsType> jtyyTypes = typeList("jtyy", null);
+        //判断当前的分类id是否和集团右侧栏目的id相等，若相等，就取出对应的栏目名称
+        List<NewsType> jtyyCurrTypes = jtyyTypes.get(0).getChildList().stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
+        if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
+            model.addAttribute("colName", jtyyCurrTypes.get(0).getColumnsName());
+        }
+
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
 
         //判断是否为热门专题
