@@ -304,6 +304,18 @@ public class NewsController {
             model.addAttribute("colName", currTypes.get(0).getColumnsName());
         }
 
+        //获取东三省公用频道
+        //判断当前的分类名称是否和东三省共用频道相等
+        List<NewsType> eastThreeProvinceTypeList = types.stream().filter(t -> t.getColumnsName().equals("东三省共用频道")).collect(Collectors.toList());
+        //判断东三省共用频道childList是否合法
+       if(!CollectionUtils.isEmpty(eastThreeProvinceTypeList) && !CollectionUtils.isEmpty(eastThreeProvinceTypeList.get(0).getChildList())){
+           //过滤东三省共用频道childList , 判断栏目id是否和其相等，相等就存储其栏目id
+           List<NewsType> eastThreeProvinceTypeCurrTypes = eastThreeProvinceTypeList.get(0).getChildList().stream().filter(l -> l.getId().equals(type)).collect(Collectors.toList());
+           if (eastThreeProvinceTypeCurrTypes != null && !eastThreeProvinceTypeCurrTypes.isEmpty()) {
+               model.addAttribute("colName", eastThreeProvinceTypeCurrTypes.get(0).getColumnsName());
+           }
+       }
+
         //获取集团资讯的栏目类型
         List<NewsType> jtyyTypes = typeList("jtyy", null);
         //判断当前的分类id是否和集团右侧栏目的id相等，若相等，就取出对应的栏目名称
@@ -311,6 +323,8 @@ public class NewsController {
         if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
             model.addAttribute("colName", jtyyCurrTypes.get(0).getColumnsName());
         }
+
+
 
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
 
