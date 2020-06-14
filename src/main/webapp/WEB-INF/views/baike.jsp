@@ -47,10 +47,10 @@
             <div class="fl breadcrumbs-area f123 " id="navigation">
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/" class="f123">购房百科</a><span class="fsm"> &gt; </span>
                 <c:if test="${typeid == 0}">
-                    <a id="second" href="/${cityen}/baike/p${page}/" style="color:#A39FA1">${typeName}</a>
+                    <a href="/${cityen}/baike/p${page}/"  class="f123">${typeName}</a>
                 </c:if>
                 <c:if test="${typeid != 0}">
-                    <a id="second" href="/${cityen}/baike/c${typeid}/p${page}/" style="color:#A39FA1">${typeName}</a>
+                    <a href="/${cityen}/baike/c${typeid}/p${page}/" class="f123">${typeName}</a>
                 </c:if>
 
             </div>
