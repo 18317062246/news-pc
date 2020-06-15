@@ -62,6 +62,7 @@ public class NewsController {
     private static final String COL_NAME = "colName";
     private static final String LOCATION = "location";
     private static final String TYPE_ID = "typeid";
+    private static final String GOU_FANG_TEXT = "购房百科";
 
 
     /**
@@ -572,12 +573,10 @@ public class NewsController {
             //如果新闻列表有数据，存在对应的栏目id
             List<Map> news1 = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
             if (!CollectionUtils.isEmpty(news1)) {
-                //获取栏目名称
-                String typeName = (String) news1.get(0).get("TypeName");
                 //存储栏目id
                 model.addAttribute(TYPE_ID, 0);
                 //存储栏目名称
-                model.addAttribute("typeName", typeName);
+                model.addAttribute("typeName", GOU_FANG_TEXT);
             }
         }
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);

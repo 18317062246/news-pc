@@ -42,7 +42,7 @@
 <!-- S;centmain-wraper -->
 <div class="centmain-wraper centmain-wraper-infor">
     <div class="centmain-inner">
-        <div class="encyclo-banner"><img src="${staticurl}/images/encyclo_banner.jpg" alt=""/></div>
+        <div class="encyclo-banner"><img src="//pic.centanet.com/other/news/uploads/allimg/170420/111f4201r6050l.jpg" alt=""/></div>
         <div class="breadcrumbs clearfix f123" style="margin-bottom:10px">
             <div class="fl breadcrumbs-area f123 " id="navigation">
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/" class="f123">购房百科</a><span class="fsm"> &gt; </span>
@@ -60,7 +60,7 @@
             <c:when test="${p.pageCount>=1}">
 
                 <div class="encyclo-main fr" style="display: ${news.size()>0?'block':'none'}">
-                    <h5 class="title">${news.get(0).TypeName == null?types[0].columnsName:news.get(0).TypeName}</h5>
+                    <h5 class="title">${typeName}</h5>
                     <ul class="encyclo-list">
                         <%--百科新闻列表--%>
                         <c:forEach items="${news}" var="n">
