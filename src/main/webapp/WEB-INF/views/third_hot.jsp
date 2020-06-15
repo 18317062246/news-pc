@@ -48,12 +48,12 @@
 			<div class="expert">
 				<%--右上图片--%>
 				<div class="expert-phone">
-					<a href=""><img src="${right[1].LitPic}" alt=""></a>
+					<a href=""><img src="${right[1].LitPic}?x-oss-process=style/450x320" alt=""></a>
 				</div>
 					<%--右下--%>
 				<ul class="expert-comment">
 					<c:forEach items="${right}" var="r" begin="0" end="3">
-						<li><a href="">${r.Title}</a></li>
+						<li><a href="//news.centanet.com/${cityen}/detail/${r.ID}.html" target="_blank">${r.Title}</a></li>
 					<%--	<li><a href="">我们都有选择恐惧症</a></li>
 						<li><a href="">东风吹战鼓擂，拆迁之喜轮到谁</a></li>
 						<li><a href="">碧桂园底价摘宝坻京津新城57号地（楼面价3058元/平）</a></li>--%>

@@ -21,13 +21,13 @@
         <div class="section" >
             <div class="top_caption">
                 <h5 class="tit">资讯百科</h5>
-                <p><a href="" class="tu f9">全部百科</a></p>
+                <p><a href="//news.centanet.com/${cityen}/" class="tu f9">全部百科<%--${baike}--%></a></p>
             </div>
             <ul class="encyclo-list">
-                <c:forEach items="${baike}" var="itme">
+                <c:forEach items="${baike}" var="item">
                     <li>
                         <i></i>
-                        <a href="" class="f3">${item.Title}</a>
+                        <a href="/${cityen}/detail/${item.ID}.html" class="f3">${item.Title}</a>
                         <span class="date f9">
                                 <jsp:useBean id="myDate" class="java.util.Date"/>
                                 <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>

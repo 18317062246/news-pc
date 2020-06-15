@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Controller
-@CrossOrigin
+//@CrossOrigin(origins = "*",maxAge = 3600)
 public class NewsController {
 
 
@@ -332,9 +332,12 @@ public class NewsController {
         }
         //文章列表
         JSONObject result = newsList(cityen, typeid, page, pagesize, null, key, null);
-        if (ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
-            log.info("当前城市未获取到新闻列表,尝试jtyy获取=>{}", cityen);
-            result = newsList(CENTANET, typeid, page, pagesize, null, key, null);
+        for (NewsType t : jtyyTypes.get(0).getChildList()) {
+            //若是集团栏目类型用jtyy查询获取文章列表
+            if (type.equals(t.getId())) {
+                log.info("当前栏目type是集团栏目类型=>{}", type);
+                result = newsList(CENTANET, typeid, page, pagesize, null, key, null);
+            }
         }
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
         //是否有百科栏目
@@ -608,20 +611,24 @@ public class NewsController {
         for (int i = 0; i < types.size(); i++) {
             //文章列表
             List<Integer> typeid = new ArrayList<>(Arrays.asList(types.get(i).getId()));
-            JSONObject result = newsList(cityen, typeid, 1, 10, null, null, null);
+            JSONObject result = newsList(cityen, typeid, 1, 5, null, null, null);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
+                List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
                 switch (i) {
                     case 0:
-                        leftUp.addAll(JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class));
+                        //左上
+                        leftUp.addAll(news);
                         break;
                     case 1:
-                        leftDown.addAll(JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class));
+                        //左下
+                        leftDown.addAll(news);
                         break;
                     case 2:
-                        right.addAll(JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class));
+                        //右边
+                        right.addAll(news);
                         break;
                     default:
-                        leftUp.addAll(JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class));
+                        leftUp.addAll(news);
                 }
             }
         }
