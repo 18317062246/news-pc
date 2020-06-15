@@ -44,12 +44,9 @@ public class NewsController {
     public String dealCitys;
 
     private static final String GUANG_ZHOU = "gz";
-    private static final String WU_HAN = "wh";
-    private static final String CHANG_SHA = "cs";
     private static final String NEWS_LIST = "NewsList";
     private static final String RESULT = "Result";
     private static final String PUBLIC_COL = "东三省共用频道";
-    private static final String LOOP = "轮播广告位";
     /**
      * 热门专题
      */
@@ -57,6 +54,12 @@ public class NewsController {
     private static final String RIGHT = "right";
     private static final String BAIKE = "baike";
     private static final String CENTANET = "jtyy";
+    private static final String BAIKE_TYPE = "baiketype";
+    private static final String TYPES = "types";
+    private static final String CITYEN = "cityen";
+    private static final String COL_NAME = "colName";
+    private static final String LOCATION = "location";
+    private static final String TYPE_ID = "typeid";
 
 
     /**
@@ -82,13 +85,12 @@ public class NewsController {
             log.error("栏目类型空值=>{}", cityen);
             return "index";
         }
-        List<NewsType> baiketype = typeList(cityen, "baike");
-        model.addAttribute("baiketype", !baiketype.isEmpty());
+        List<NewsType> baiketype = typeList(cityen, BAIKE);
+        model.addAttribute(BAIKE_TYPE, !baiketype.isEmpty());
         //将城市是否存在baike存在session当中
-        session.setAttribute("baiketype", !baiketype.isEmpty());
+        session.setAttribute(BAIKE_TYPE, !baiketype.isEmpty());
         //过滤右侧栏目type
-        List<NewsType> rightType = new ArrayList<>();
-        rightType = types.stream().filter(t -> RIGHT.equals(t.getLocation())).collect(Collectors.toList());
+        List<NewsType> rightType = types.stream().filter(t -> RIGHT.equals(t.getLocation())).collect(Collectors.toList());
 
         List<Map> leftNews = new ArrayList<>();
         for (NewsType t : types) {
@@ -124,7 +126,7 @@ public class NewsController {
         List<Map> centaNews = new ArrayList<>();
         if (null != jtTypes && !jtTypes.isEmpty()) {
             List<NewsType> jt = jtTypes.get(0).getChildList();
-            //rightType.addAll(jt);
+
             for (NewsType t : jt) {
                 JSONObject right = newsList(CENTANET, Arrays.asList(t.getId()), 1, 5, null, null, null);
                 if (!ObjectUtils.isEmpty(right.get(NEWS_LIST))) {
@@ -132,18 +134,15 @@ public class NewsController {
                 }
             }
         }
-            /*rightNews.forEach(item->{
-                if(item.get(""))
-            });*/
+
         model.addAttribute("rightNews", rightNews);
         model.addAttribute("centaNews", centaNews);
-        //}
         //成交走势信息
         if (dealCitys.contains(cityen)) {
             Map dealinfo = getDealPathInfo(cityen);
             model.addAttribute("dealinfo", dealinfo);
         }
-        model.addAttribute("types", types);
+        model.addAttribute(TYPES, types);
         model.addAttribute("jtTypes", jtTypes);
         model.addAttribute("rightType", rightTypeAdd);
         model.addAttribute("tabtype", types.get(0).getId());
@@ -188,8 +187,7 @@ public class NewsController {
      * @date: 2020-05-27
      */
     private void setCommon(Model model, String cityen) {
-        model.addAttribute("cityen", cityen);
-        //model.addAttribute("citys", citylist);
+        model.addAttribute(CITYEN, cityen);
         model.addAttribute("staticurl", staticurl);
         model.addAttribute("ver", ver);
         model.addAttribute("citycn", citymap(cityen));
@@ -231,8 +229,7 @@ public class NewsController {
         map.put("zs", "中山");
         map.put("zq", "肇庆");
         map.put("zz", "郑州");
-        String citycn = (String) map.get(cityen);
-        return citycn;
+        return (String) map.get(cityen);
     }
 
     private String cityTelphone(String cityen) {
@@ -269,7 +266,7 @@ public class NewsController {
         map.put("zq", "400-819-8990");
         map.put("zz", "0371-66375760");
         map.put("nc", "0791-86296696");
-        map.put("fz", "400-819-8990");
+        map.put("fz", "400-819-8852");
         String cityTelphone = (String) map.get(cityen);
         return cityTelphone;
     }
@@ -289,8 +286,7 @@ public class NewsController {
             , @PathVariable(name = "page", required = false) Integer page
             , @RequestParam(value = "key", required = false) String key
             , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize) {
-      /*  model.addAttribute("cityen", cityen);
-        model.addAttribute("staticurl", staticurl);*/
+
         setCommon(model, cityen);
         log.info("search btn=>{}", key);
         if (StringUtils.isEmpty(page)) {
@@ -301,18 +297,18 @@ public class NewsController {
         //判断当前的分类id是否和当前城市右侧栏目的id相等，若相等，就取出对应的栏目名称
         List<NewsType> currTypes = types.stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
         if (currTypes != null && !currTypes.isEmpty()) {
-            model.addAttribute("colName", currTypes.get(0).getColumnsName());
+            model.addAttribute(COL_NAME, currTypes.get(0).getColumnsName());
         }
 
         //获取东三省公用频道
         //判断当前的分类名称是否和东三省共用频道相等
-        List<NewsType> eastThreeProvinceTypeList = types.stream().filter(t -> t.getColumnsName().equals("东三省共用频道")).collect(Collectors.toList());
+        List<NewsType> eastThreeProvinceTypeList = types.stream().filter(t -> t.getColumnsName().equals(PUBLIC_COL)).collect(Collectors.toList());
         //判断东三省共用频道childList是否合法
        if(!CollectionUtils.isEmpty(eastThreeProvinceTypeList) && !CollectionUtils.isEmpty(eastThreeProvinceTypeList.get(0).getChildList())){
            //过滤东三省共用频道childList , 判断栏目id是否和其相等，相等就存储其栏目id
            List<NewsType> eastThreeProvinceTypeCurrTypes = eastThreeProvinceTypeList.get(0).getChildList().stream().filter(l -> l.getId().equals(type)).collect(Collectors.toList());
            if (eastThreeProvinceTypeCurrTypes != null && !eastThreeProvinceTypeCurrTypes.isEmpty()) {
-               model.addAttribute("colName", eastThreeProvinceTypeCurrTypes.get(0).getColumnsName());
+               model.addAttribute(COL_NAME, eastThreeProvinceTypeCurrTypes.get(0).getColumnsName());
            }
        }
 
@@ -321,7 +317,7 @@ public class NewsController {
         //判断当前的分类id是否和集团右侧栏目的id相等，若相等，就取出对应的栏目名称
         List<NewsType> jtyyCurrTypes = jtyyTypes.get(0).getChildList().stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
         if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
-            model.addAttribute("colName", jtyyCurrTypes.get(0).getColumnsName());
+            model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
         }
 
 
@@ -342,8 +338,8 @@ public class NewsController {
         }
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
         //是否有百科栏目
-        List<NewsType> baiketype = typeList(cityen, "baike");
-        model.addAttribute("baiketype", !baiketype.isEmpty());
+        List<NewsType> baiketype = typeList(cityen, BAIKE);
+        model.addAttribute(BAIKE_TYPE, !baiketype.isEmpty());
         //toplist
         JSONObject top = newsList(cityen, null, page, pagesize, 1, null, null);
         List<Map> topList = JSON.parseArray(JSON.toJSONString(top.get(NEWS_LIST)), Map.class);
@@ -354,7 +350,6 @@ public class NewsController {
         model.addAttribute("key", key);
         model.addAttribute("page", page);
         PageUtil p = new PageUtil(pageCount, page, pagesize);
-        System.out.println("p = " + p);
         model.addAttribute("p", p);
 
 
@@ -374,9 +369,9 @@ public class NewsController {
      */
     private List<NewsType> typeList(String cityen, String location) {
         Map map = new HashMap();
-        map.put("cityen", cityen);
+        map.put(CITYEN, cityen);
         map.put("platform", "pc");
-        map.put("location", location);
+        map.put(LOCATION, location);
         JSONObject jSONObject = restTemplate.getForObject(apiurl
                 + "GetColumnList?cityen={cityen}&platform={platform}&location={location}", JSONObject.class, map);
         String data = JSON.toJSONString(jSONObject.get(RESULT));
@@ -396,19 +391,19 @@ public class NewsController {
      */
     private JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
         Map<String, Object> map = new HashMap<>();
-        map.put("cityen", cityen);
+        map.put(CITYEN, cityen);
         List<Integer> empty = new ArrayList<>();
         typeIds = ObjectUtils.isEmpty(typeIds) ? empty : typeIds;
-        map.put("typeid", typeIds.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
+        map.put(TYPE_ID, typeIds.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
         map.put("page", page);
         map.put("pagesize", pagesize);
         map.put("order", order);
         if (StringUtils.hasText(key)) {
-            map.put("typeid", null);
+            map.put(TYPE_ID, null);
         }
         map.put("title", key);
         map.put("description", key);
-        map.put("location", location);
+        map.put(LOCATION, location);
         JSONObject jSONObject = restTemplate.getForObject(apiurl +
                         "GetNewsList?cityen={cityen}&platform=pc&typeid={typeid}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&location={location}"
                 , JSONObject.class, map);
@@ -428,13 +423,13 @@ public class NewsController {
      */
     private JSONObject newsListByBaike(String cityen, String location, Integer page, Integer pagesize, Integer order, String key) {
         Map<String, Object> map = new HashMap<>();
-        map.put("cityen", cityen);
-        map.put("location", location);
+        map.put(CITYEN, cityen);
+        map.put(LOCATION, location);
         map.put("page", page);
         map.put("pagesize", pagesize);
         map.put("order", order);
         if (StringUtils.hasText(key)) {
-            map.put("typeid", null);
+            map.put(TYPE_ID, null);
         }
         map.put("title", key);
         map.put("description", key);
@@ -458,14 +453,11 @@ public class NewsController {
     @GetMapping("/{cityen}/detail/{id}.html")
     public String detail(Model model
             , @PathVariable("cityen") String cityen
-            , @PathVariable("id") String id, HttpServletRequest request) {
+            , @PathVariable("id") String id) {
         log.info("detail id=>{}", id);
-
-        //获取session
-        HttpSession session = request.getSession();
         //从session中获取是否存在百科
-        List<NewsType> baiketype = typeList(cityen, "baike");
-        model.addAttribute("baiketype", !baiketype.isEmpty());
+        List<NewsType> baiketype = typeList(cityen, BAIKE);
+        model.addAttribute(BAIKE_TYPE, !baiketype.isEmpty());
 
         setCommon(model, cityen);
         //热点排行
@@ -475,7 +467,7 @@ public class NewsController {
         JSONObject result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + id + "&cityen=bj&platform=pc", JSONObject.class);
         JSONObject detail = result.getJSONObject(RESULT);
         //热门专题
-        List<NewsType> types = typeList(cityen, "right");
+        List<NewsType> types = typeList(cityen, RIGHT);
         types.forEach(item -> {
             if (HOT.equals(item.getColumnsName())) {
                 Integer typeid = item.getId();
@@ -508,16 +500,12 @@ public class NewsController {
     public String baike(Model model, @PathVariable("cityen") String cityen,
                         @PathVariable(value = "type", required = false) Integer type,
                         @PathVariable(value = "page", required = false) Integer page,
-                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize, HttpServletRequest request) {
-
-        //获取session
-        HttpSession session = request.getSession();
-
+                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize) {
 
         page = ObjectUtils.isEmpty(page) ? 1 : page;
         //栏目类型
-        List<NewsType> types = typeList(cityen, "baike");
-        model.addAttribute("baiketype", !types.isEmpty());
+        List<NewsType> types = typeList(cityen, BAIKE);
+        model.addAttribute(BAIKE_TYPE, !types.isEmpty());
         List<NewsType> baikeTypes = new ArrayList<>();
         if (null != types && !types.isEmpty()) {
             baikeTypes = types.get(0).getChildList();
@@ -562,13 +550,13 @@ public class NewsController {
                 });
             });
             //存储栏目id
-            model.addAttribute("typeid", type);
+            model.addAttribute(TYPE_ID, type);
 
             //存储栏目名称
             model.addAttribute("typeName", typeNameList.get(0));
         } else {//type为空，默认取出百科数据了
 
-            result = newsListByBaike(cityen, "baike", page, pagesize, null, null);
+            result = newsListByBaike(cityen, BAIKE, page, pagesize, null, null);
 
             //如果新闻列表有数据，存在对应的栏目id
             List<Map> news1 = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
@@ -576,7 +564,7 @@ public class NewsController {
                 //获取栏目名称
                 String typeName = (String) news1.get(0).get("TypeName");
                 //存储栏目id
-                model.addAttribute("typeid", 0);
+                model.addAttribute(TYPE_ID, 0);
                 //存储栏目名称
                 model.addAttribute("typeName", typeName);
             }
@@ -584,7 +572,7 @@ public class NewsController {
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
         setCommon(model, cityen);
 
-        model.addAttribute("types", baikeTypes);
+        model.addAttribute(TYPES, baikeTypes);
         //存储百科左侧栏目大小
         model.addAttribute("typesSize", baikeTypes.size());
 
@@ -644,7 +632,7 @@ public class NewsController {
         model.addAttribute("leftUp", leftUp);
         model.addAttribute("leftDown", leftDown);
         model.addAttribute("right", right);
-        model.addAttribute("types", types);
+        model.addAttribute(TYPES, types);
         if ("type1".equals(type)) {
             return "third_hot";
         } else if ("type2".equals(type)) {

@@ -4,7 +4,6 @@ package com.news.web.model;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  *
