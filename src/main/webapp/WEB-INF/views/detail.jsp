@@ -88,7 +88,7 @@
                 </div>
                 <div class="infor-detail-mid">
 
-                    ${detail.Content}
+                    ${detailContent}
                 </div>
             </div>
         </div>

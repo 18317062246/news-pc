@@ -8,6 +8,7 @@
      目前IE最新的正常模式去浏览
   <meta http-equiv="x-ua-compatible" content="IE=edge">-->
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
     <meta name="keywords" content="北京最新房产新闻,北京房产资讯,北京楼市政策,北京房产资讯,北京房地产新闻">
     <meta name="description" content="北京房产新闻,北京中原地产提供最及时北京房产新闻、北京房地产资讯，为您解读北京房产最新政策，预测北京房价走势，分析北京楼市成交数据。中原地产最资深最可靠的房地产网站。" />
     <title>${citycn}房地产资讯_${citycn}专题列表－${citycn}中原地产</title>

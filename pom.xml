@@ -34,6 +34,13 @@
         </dependency>
         <!-- test end -->
 
+        <!--common-lang3 start -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!--common-lang3 end-->
+
         <!--jsp页面使用jstl标签 start -->
         <dependency>
             <groupId>javax.servlet</groupId>

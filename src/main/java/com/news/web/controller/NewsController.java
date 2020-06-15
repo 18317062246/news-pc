@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Controller
+@CrossOrigin
 public class NewsController {
 
 
@@ -267,8 +268,7 @@ public class NewsController {
         map.put("zz", "0371-66375760");
         map.put("nc", "0791-86296696");
         map.put("fz", "400-819-8852");
-        String cityTelphone = (String) map.get(cityen);
-        return cityTelphone;
+        return (String) map.get(cityen);
     }
 
 
@@ -376,7 +376,7 @@ public class NewsController {
                 + "GetColumnList?cityen={cityen}&platform={platform}&location={location}", JSONObject.class, map);
         String data = JSON.toJSONString(jSONObject.get(RESULT));
         List<NewsType> types = JSON.parseArray(data, NewsType.class);
-        if (types.isEmpty()) {
+        if (CollectionUtils.isEmpty(types)) {
             log.error("请求栏目列表为空=>{}", types);
         }
         return types;
@@ -480,6 +480,13 @@ public class NewsController {
                 model.addAttribute("hotType", item.getId());
             }
         });
+        
+        //将文章内容进行格式化
+        String content = (String) detail.get("Content");
+        if(!StringUtils.isEmpty(content)){
+            model.addAttribute("detailContent", content.replace("crossorigin=\"anonymous\"" , ""));
+        }
+
 
         if (!ObjectUtils.isEmpty(detail.get("Url"))) {
             return "redirect:" + detail.get("Url");
@@ -507,16 +514,12 @@ public class NewsController {
         List<NewsType> types = typeList(cityen, BAIKE);
         model.addAttribute(BAIKE_TYPE, !types.isEmpty());
         List<NewsType> baikeTypes = new ArrayList<>();
-        if (null != types && !types.isEmpty()) {
+        if (!CollectionUtils.isEmpty(types)) {
             baikeTypes = types.get(0).getChildList();
         }
 
-        if (!baikeTypes.isEmpty() && baikeTypes.size() > 1) {
-            type = ObjectUtils.isEmpty(type) ? null : type;
-        } else if (baikeTypes.size() == 1) {
-            //东北sy,cc,dl,hrb层级结构不一样
-            type = ObjectUtils.isEmpty(type) ? null : type;
-        }
+        //当栏目id为空，赋值为null，否则就取type的值
+        type = ObjectUtils.isEmpty(type) ? null : type;
 
         //文章列表
         JSONObject result;
@@ -581,7 +584,7 @@ public class NewsController {
         PageUtil p = new PageUtil(pageCount, page, pagesize);
         model.addAttribute("p", p);
         model.addAttribute("page", page);
-        return "baike";
+        return BAIKE;
     }
 
     /**
@@ -601,7 +604,7 @@ public class NewsController {
         List<Map> leftUp = new ArrayList<>();
         List<Map> leftDown = new ArrayList<>();
         List<Map> right = new ArrayList<>();
-        List<Map> news = new ArrayList<>();
+
         for (int i = 0; i < types.size(); i++) {
             //文章列表
             List<Integer> typeid = new ArrayList<>(Arrays.asList(types.get(i).getId()));
@@ -625,13 +628,13 @@ public class NewsController {
         if (BAIKE.equals(type)) {
             JSONObject result = newsList(cityen, null, 0, 2, null, null, BAIKE);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
-                model.addAttribute("baike", JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class));
+                model.addAttribute(BAIKE, JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class));
             }
             return "third_baike";
         }
         model.addAttribute("leftUp", leftUp);
         model.addAttribute("leftDown", leftDown);
-        model.addAttribute("right", right);
+        model.addAttribute(RIGHT, right);
         model.addAttribute(TYPES, types);
         if ("type1".equals(type)) {
             return "third_hot";
