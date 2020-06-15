@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta name="keywords" content="">
     <meta name="description" content=""/>
-    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
     <title>${typeName}-中原地产资讯列表</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/css/icons.css?v=${ver}">
