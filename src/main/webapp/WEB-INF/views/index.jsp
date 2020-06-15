@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="max-age=1000"/>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <link rel="icon" href="https://news.centanet.com/uploads/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
