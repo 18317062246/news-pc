@@ -74,7 +74,7 @@
                                 <dl class="infor-news-itemB clearfix type${n.TypeID}">
                                    <%-- <c:if test="${n.TypeName != '轮播广告位'}">--%>
                                     <dt>
-                                        <h6 class="f18"><a href="/${cityen}/detail/${n.ID}.html" class="f000">${n.TypeName}${n.Title}</a></h6>
+                                        <h6 class="f18"><a href="/${cityen}/detail/${n.ID}.html" class="f000" target="_blank">${n.TypeName}${n.Title}</a></h6>
                                     </dt>
                                     <dd>
                                         <p class="f14 f999">
@@ -94,7 +94,7 @@
                         <c:forEach items="${news}" var="n" begin="0" end="4">
                             <div class="inforSlid">
                                 <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}"><img src="${n.LitPic}" alt="${n.Title}" onerror="this.src='${defaultpic}'"></a>
+                                <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}" target="_blank"><img src="${n.LitPic}"  alt="${n.Title}" onerror="this.src='${defaultpic}'"></a>
                                 <p>${n.Title}</p>
                             </div>
                         </c:forEach>

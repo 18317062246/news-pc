@@ -480,7 +480,7 @@ public class NewsController {
                 model.addAttribute("hotType", item.getId());
             }
         });
-        
+
         //将文章内容进行格式化
         String content = (String) detail.get("Content");
         if(!StringUtils.isEmpty(content)){

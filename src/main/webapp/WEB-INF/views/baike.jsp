@@ -66,10 +66,10 @@
                         <c:forEach items="${news}" var="n">
                             <li>
                                 <p class="tit">
-                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Title}</a>
+                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}" target="_blank">${n.Title}</a>
                                 </p>
                                 <p class="hd">
-                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}">${n.Description} <span>...</span></a>
+                                    <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}" target="_blank">${n.Description} <span>...</span></a>
                                 </p>
                                 <p class="fd">
                                     <i></i>

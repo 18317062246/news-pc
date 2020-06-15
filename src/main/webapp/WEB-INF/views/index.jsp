@@ -69,14 +69,14 @@
                                             <c:if test="${type.columnsName != '东莞成交走势'}">
                                                 <li ref="${type.id}">
                                                     <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
-                                                       class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
+                                                       class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</a>
                                                 </li>
                                             </c:if>
                                         </c:when>
                                         <c:otherwise>
                                             <li ref="${type.id}">
                                                 <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
-                                                   class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
+                                                   class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</a>
                                             </li>
                                         </c:otherwise>
                                     </c:choose>

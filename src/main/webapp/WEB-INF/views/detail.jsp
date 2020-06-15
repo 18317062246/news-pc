@@ -99,7 +99,7 @@
                     <c:set var="classArray" value="${fn:split('hightlight,hightlightB,hightlightC', ',')}" />
                     <c:forEach items="${news}" var="n" varStatus="status">
                         <p><i class="${classArray[status.index]}">${status.count}</i>
-                            <a title="${n.Title}" class="f000" href="/${cityen}/detail/${n.ID}.html">${fn:substring(n.Title, 0, 18)}</a></p>
+                            <a title="${n.Title}" class="f000" href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title, 0, 18)}</a></p>
                     </c:forEach>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                         <dl class="infor-side-pB">
                             <c:forEach items="${infoNews}" var="info" varStatus="status">
                                 <dt class="${status.index==0?'curr':''}"><a class="f000" href="javacript:void(0);" title="${info.Title}">${fn:substring(info.Title, 0, 18)}</a></dt>
-                                <dd><a href="/${cityen}/detail/${info.ID}.html" class="f000" title="${info.Title}">
+                                <dd><a href="/${cityen}/detail/${info.ID}.html" target="_blank" class="f000" title="${info.Title}">
                                     <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                     <img class="lazy" src="${info.LitPic}?x-oss-process=style/300x210"
                                          data-original="${info.LitPic}?x-oss-process=style/300x210" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
