@@ -57,14 +57,45 @@
             </div>
         </div>
         <div class="infor-index-wrapper">
+            <div class="infor-index-top clearfix" style="display:none;">
+
+            </div>
             <div class="info-container">
-                <div class="infor-index-mid fl">
-                    <div class="infor-indexmid-top">
-                        <input type="hidden" value="${tabtype}" id="tabtype">
-                        <ul class="programa">
-                            <c:forEach items="${types}" var="type" varStatus="status">
-                                <c:if test="${type.location != 'right' && type.location != 'baike'}">
-                                    <c:choose>
+                <div class="infor-mid-box fl">
+                    <div class="infor-index-mid">
+                        <div class="infor-indexmid-top">
+                            <input type="hidden" value="${tabtype}" id="tabtype">
+                            <ul class="programa">
+                                <c:forEach items="${types}" var="type" varStatus="status">
+                                  <%--  <c:if test="${type.location != 'right' && type.location != 'baike'}">
+                                        <li ref="${type.id}">
+                                            <a ref="${type.id}" href="" title="${type.columnsName}"
+                                               class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</ a>
+                                        </li>
+                                    </c:if>--%>
+                                    <c:if test="${type.location != 'right' && type.location != 'baike'}">
+                                        <li ref="${type.id}">
+                                            <a ref="${type.id}" href="javascript:void(0);" title="${type.columnsName}"
+                                               class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
+                                        </li>
+                                    </c:if>
+                                   <%-- <c:choose>
+                                        <c:when test="${cityen == 'dg'}">
+                                            <c:if test="${type.columnsName !=    '东莞成交走势'}">
+                                                <li ref="${type.id}">
+                                                    <a ref="${type.id}" href=" " title="${type.columnsName}"
+                                                       class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</ a>
+                                                </li>
+                                            </c:if>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li ref="${type.id}">
+                                                <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
+                                                   class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</ a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>--%>
+                                   <%-- <c:choose>
                                         <c:when test="${cityen == 'dg'}">
                                             <c:if test="${type.columnsName != '东莞成交走势'}">
                                                 <li ref="${type.id}">
@@ -79,56 +110,68 @@
                                                    class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</a>
                                             </li>
                                         </c:otherwise>
-                                    </c:choose>
-
-                                </c:if>
-                            </c:forEach>
-                        </ul>
-                        <c:if test="${types !=null && types.size()>0}">
-                            <a href="/${cityen}/list/c${tabtype}/" class="morelink f000">更多</a>
-                        </c:if>
-                    </div>
-                    <div class="infor-news">
-                        <c:forEach items="${news}" var="item" varStatus="status">
-                            <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%>>
-                                <dt class="fl">
-                                    <a href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
-                                        <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                        <img class="lazy" src="${item.LitPic}?x-oss-process=style/master"
-                                             data-original="${item.LitPic}?x-oss-process=style/master" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
-                                    </a>
-                                </dt>
-                                <dd class="fl">
-                                    <h6 class="f18">
-                                        <a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank" title="${item.Title}">
-                                             ${item.Title}
+                                    </c:choose>--%>
+                                </c:forEach>
+                            </ul>
+                            <c:if test="${types !=null && types.size()>0}">
+                                <a href="/${cityen}/list/c${tabtype}/" class="morelink f000">更多</a>
+                            </c:if>
+                        </div>
+                        <div class="infor-news">
+                            <c:forEach items="${news}" var="item" varStatus="status">
+                                <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%>>
+                                    <dt class="fl">
+                                        <a href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
+                                            <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+                                            <img class="lazy" src="${item.LitPic}?x-oss-process=style/master"
+                                                 data-original="${item.LitPic}?x-oss-process=style/master" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
                                         </a>
-                                    </h6>
-                                    <p class="f14 f999">
-                                            ${item.Description}<span>...</span>
-                                        <a href="" class="cBlue ml_15"></a>
-                                    </p>
-                                    <div class="tag clearfix">
-                                        <p class="news_time">
-                                            <jsp:useBean id="myDate" class="java.util.Date"/>
-                                            <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>
-                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                    </dt>
+                                    <dd class="fl">
+                                        <h6 class="f18">
+                                            <a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank" title="${item.Title}">
+                                                 ${item.Title}
+                                            </a>
+                                        </h6>
+                                        <p class="f14 f999">
+                                                ${item.Description}<span>...</span>
+                                            <a href="" class="cBlue ml_15"></a>
                                         </p>
-                                        <ul>
-                                            <c:forEach items="${item.LabelList}" var="l">
-                                                <li><span class="tag_item">${l.title}</span></li>
-                                            </c:forEach>
+                                        <div class="tag clearfix">
+                                            <p class="news_time">
+                                                <jsp:useBean id="myDate" class="java.util.Date"/>
+                                                <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>
+                                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                            </p>
+                                            <ul>
+                                                <c:forEach items="${item.LabelList}" var="l">
+                                                    <li><span class="tag_item">${l.title}</span></li>
+                                                </c:forEach>
 
-                                                <%--  <li><span class="tag_item">标签二</span></li>
-                                                  <li><span class="tag_item">标签三</span></li>--%>
-                                        </ul>
-                                    </div>
-                                </dd>
-                            </dl>
-                        </c:forEach>
+                                                    <%--  <li><span class="tag_item">标签二</span></li>
+                                                      <li><span class="tag_item">标签三</span></li>--%>
+                                            </ul>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </c:forEach>
+                        </div>
                     </div>
-                </div>
-                <c:if test="${news !=null && news.size() >15}">
+                    <c:if test="${cityen == 'gz'}">
+                        <div class="infor-index-banner fr">
+                            <div class="infor-scroll" id="inforSlides">
+                                <c:forEach items="${dealinfo}" var="n">
+                                    <div class="inforSlid">
+                                        <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+                                        <a href="${n.targetUrl}" title="" target="_blank"><img src="${n.imageUrl}" alt="" onerror="this.src='${defaultpic}'"></a>
+                                         <p></p>
+                                     </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${news !=null && news.size() >15}">
                     <div class="page_ul f1">
                         <div class="page_ul_div" style="display: none">
                             ——————<span></span>
@@ -137,6 +180,7 @@
                         </div>
                     </div>
                 </c:if>
+                </div>
             </div>
             <%--right--%>
             <div class="infor-index-side fr">
@@ -146,10 +190,10 @@
                     <div class="infor-side-box">
                             <%-- <h2 class="title-top"><span class="f18 f333 fb">成交走势</span></h2>--%>
                         <div class="infor-chart">
-                            <a target="_blank" href="${dealinfo.targetUrl}" title="${dealinfo.Title}">
+                            <a target="_blank" href="${dealinfo[0].targetUrl}" title="">
                                 <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                <img class="lazy" src="${dealinfo.imageUrl}?x-oss-process=style/180x130"
-                                     data-original="${dealinfo.imageUrl}?x-oss-process=style/180x130" alt="${dealinfo.Title}" onerror="this.src='${defaultpic}'"/>
+                                <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
+                                     data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt="" onerror="this.src='${defaultpic}'"/>
                             </a>
                         </div>
                         <%--<p class="tr mt_15 f999">数据来源于中原成交系统</p>--%>
@@ -168,7 +212,7 @@
                                 <c:forEach items="${rightNews}" var="n" begin="1" end="5" varStatus="status">
                                     <c:if test="${t.id==n.TypeID}">
                                         <dt class="${status.count==1?'curr':''}"><i></i>
-                                            <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,28)}</a>
+                                            <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,36)}</a>
                                         </dt>
                                         <dd style="display: block;">
                                             <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">

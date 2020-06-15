@@ -189,7 +189,7 @@
         <%--left 左侧栏--%>
         <%-- <c:if test="${types!= null && fn:length(types) > 0}">--%>
         <div class="encyclo-side fl">
-            <c:set var="dbcitys" value="sy,cc,hrb,cs"></c:set>
+            <c:set var="dbcitys" value="sy,cc,hrb,cs,dl"></c:set>
             <dl class="encyclo-classify ${fn:contains(dbcitys, cityen)?'encyclo-classify_cs':''}">
                 <%--判断栏目长度是否>=1--%>
                 <c:if test="${typesSize > 1}">

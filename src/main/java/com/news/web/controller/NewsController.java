@@ -48,6 +48,7 @@ public class NewsController {
     private static final String NEWS_LIST = "NewsList";
     private static final String RESULT = "Result";
     private static final String PUBLIC_COL = "东三省共用频道";
+    private static final String LOOP_AD = "轮播广告位";
     /**
      * 热门专题
      */
@@ -127,11 +128,10 @@ public class NewsController {
         List<Map> centaNews = new ArrayList<>();
         if (null != jtTypes && !jtTypes.isEmpty()) {
             List<NewsType> jt = jtTypes.get(0).getChildList();
-
             for (NewsType t : jt) {
-                JSONObject right = newsList(CENTANET, Arrays.asList(t.getId()), 1, 5, null, null, null);
-                if (!ObjectUtils.isEmpty(right.get(NEWS_LIST))) {
-                    centaNews.addAll(JSON.parseArray(JSON.toJSONString(right.get(NEWS_LIST)), Map.class));
+                JSONObject centa = newsList(CENTANET, Arrays.asList(t.getId()), 1, 5, null, null, null);
+                if (!ObjectUtils.isEmpty(centa.get(NEWS_LIST))) {
+                    centaNews.addAll(JSON.parseArray(JSON.toJSONString(centa.get(NEWS_LIST)), Map.class));
                 }
             }
         }
@@ -140,18 +140,23 @@ public class NewsController {
         model.addAttribute("centaNews", centaNews);
         //成交走势信息
         if (dealCitys.contains(cityen)) {
-            Map dealinfo = getDealPathInfo(cityen);
+            List<Map> dealinfo = getDealPathInfo(cityen);
             model.addAttribute("dealinfo", dealinfo);
+        }
+        //移除广州轮播广告位
+        if (GUANG_ZHOU.equals(cityen)) {
+            List<NewsType> newsTypes = types.stream().filter(s -> !s.getColumnsName().equals(LOOP_AD)).collect(Collectors.toList());
+            types = newsTypes;
         }
         model.addAttribute(TYPES, types);
         model.addAttribute("jtTypes", jtTypes);
         model.addAttribute("rightType", rightTypeAdd);
         model.addAttribute("tabtype", types.get(0).getId());
         model.addAttribute("news", leftNews);
-        if (GUANG_ZHOU.equals(cityen)) {
+       /* if (GUANG_ZHOU.equals(cityen)) {
             //广州资讯主页
             return "index_gz";
-        }
+        }*/
         return "index";
     }
 
@@ -161,13 +166,14 @@ public class NewsController {
      * @param cityen
      * @return
      */
-    private Map getDealPathInfo(String cityen) {
+    private List<Map> getDealPathInfo(String cityen) {
         Map map = new HashMap();
         map.put("dg", 418);
         map.put("bj", 419);
         map.put("nj", 420);
         map.put("fs", 421);
         map.put("zq", 422);
+        map.put("gz", 426);
         if (StringUtils.isEmpty(cityen)) {
             return null;
         }
@@ -177,7 +183,7 @@ public class NewsController {
         if (null == dealinfos || dealinfos.isEmpty()) {
             return null;
         }
-        return dealinfos.get(0);
+        return dealinfos;
     }
 
     /**
@@ -279,7 +285,7 @@ public class NewsController {
      * @param page   页码
      * @return
      */
-    @GetMapping(value = {"/{cityen}/list/c{type}/p{page}", "/{cityen}/list", "/{cityen}/list/c{type}", "/{cityen}/list/p{page}"})
+    @GetMapping(value = {"/{cityen}/list/c{type}/p{page}", "/{cityen}/list/", "/{cityen}/list/c{type}", "/{cityen}/list/p{page}"})
     public String index(Model model
             , @PathVariable(name = "cityen") String cityen
             , @PathVariable(name = "type", required = false) Integer type
@@ -304,13 +310,13 @@ public class NewsController {
         //判断当前的分类名称是否和东三省共用频道相等
         List<NewsType> eastThreeProvinceTypeList = types.stream().filter(t -> t.getColumnsName().equals(PUBLIC_COL)).collect(Collectors.toList());
         //判断东三省共用频道childList是否合法
-       if(!CollectionUtils.isEmpty(eastThreeProvinceTypeList) && !CollectionUtils.isEmpty(eastThreeProvinceTypeList.get(0).getChildList())){
-           //过滤东三省共用频道childList , 判断栏目id是否和其相等，相等就存储其栏目id
-           List<NewsType> eastThreeProvinceTypeCurrTypes = eastThreeProvinceTypeList.get(0).getChildList().stream().filter(l -> l.getId().equals(type)).collect(Collectors.toList());
-           if (eastThreeProvinceTypeCurrTypes != null && !eastThreeProvinceTypeCurrTypes.isEmpty()) {
-               model.addAttribute(COL_NAME, eastThreeProvinceTypeCurrTypes.get(0).getColumnsName());
-           }
-       }
+        if (!CollectionUtils.isEmpty(eastThreeProvinceTypeList) && !CollectionUtils.isEmpty(eastThreeProvinceTypeList.get(0).getChildList())) {
+            //过滤东三省共用频道childList , 判断栏目id是否和其相等，相等就存储其栏目id
+            List<NewsType> eastThreeProvinceTypeCurrTypes = eastThreeProvinceTypeList.get(0).getChildList().stream().filter(l -> l.getId().equals(type)).collect(Collectors.toList());
+            if (eastThreeProvinceTypeCurrTypes != null && !eastThreeProvinceTypeCurrTypes.isEmpty()) {
+                model.addAttribute(COL_NAME, eastThreeProvinceTypeCurrTypes.get(0).getColumnsName());
+            }
+        }
 
         //获取集团资讯的栏目类型
         List<NewsType> jtyyTypes = typeList("jtyy", null);
@@ -319,7 +325,6 @@ public class NewsController {
         if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
             model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
         }
-
 
 
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
@@ -334,7 +339,7 @@ public class NewsController {
         JSONObject result = newsList(cityen, typeid, page, pagesize, null, key, null);
         for (NewsType t : jtyyTypes.get(0).getChildList()) {
             //若是集团栏目类型用jtyy查询获取文章列表
-            if (type.equals(t.getId())) {
+            if (!ObjectUtils.isEmpty(type) && type.equals(t.getId())) {
                 log.info("当前栏目type是集团栏目类型=>{}", type);
                 result = newsList(CENTANET, typeid, page, pagesize, null, key, null);
             }
@@ -486,8 +491,8 @@ public class NewsController {
 
         //将文章内容进行格式化
         String content = (String) detail.get("Content");
-        if(!StringUtils.isEmpty(content)){
-            model.addAttribute("detailContent", content.replace("crossorigin=\"anonymous\"" , ""));
+        if (!StringUtils.isEmpty(content)) {
+            model.addAttribute("detailContent", content.replace("crossorigin=\"anonymous\"", ""));
         }
 
 

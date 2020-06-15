@@ -72,17 +72,17 @@
                         <c:forEach items="${news}" var="n" varStatus="status">
                             <c:if test="${n.TypeName != '轮播广告位'}">
                                 <dl class="infor-news-itemB clearfix type${n.TypeID}">
-                                   <%-- <c:if test="${n.TypeName != '轮播广告位'}">--%>
-                                    <dt>
-                                        <h6 class="f18"><a href="/${cityen}/detail/${n.ID}.html" class="f000" target="_blank">${n.TypeName}${n.Title}</a></h6>
-                                    </dt>
-                                    <dd>
-                                        <p class="f14 f999">
-                                            ${n.Description}<span>...</span>
-                                            <a href="" class="cBlue ml_15"></a>
-                                        </p>
-                                    </dd>
-                                   <%-- </c:if>--%>
+                                    <c:if test="${n.TypeName != '轮播广告位'}">
+                                        <dt>
+                                            <h6 class="f18"><a href="/${cityen}/detail/${n.ID}.html" class="f000" target="_blank">${n.Title}</a></h6>
+                                        </dt>
+                                        <dd>
+                                            <p class="f14 f999">
+                                                ${n.Description}<span>...</span>
+                                                <a href="" class="cBlue ml_15"></a>
+                                            </p>
+                                        </dd>
+                                    </c:if>
                                 </dl>
                             </c:if>
                         </c:forEach>
