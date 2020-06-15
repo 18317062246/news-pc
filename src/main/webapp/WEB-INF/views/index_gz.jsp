@@ -91,10 +91,10 @@
                 <%--下方banner--%>
                 <div class="infor-index-banner">
                     <div class="infor-scroll" id="inforSlides">
-                        <c:forEach items="${news}" var="n" begin="1" end="5">
+                        <c:forEach items="${news}" var="n" begin="0" end="4">
                             <div class="inforSlid">
                                 <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                <a href="javacript:void(0);" title="${n.Title}"><img src="${n.LitPic}" alt="${n.Title}" onerror="this.src='${defaultpic}'"></a>
+                                <a href="/${cityen}/detail/${n.ID}.html" title="${n.Title}"><img src="${n.LitPic}" alt="${n.Title}" onerror="this.src='${defaultpic}'"></a>
                                 <p>${n.Title}</p>
                             </div>
                         </c:forEach>
