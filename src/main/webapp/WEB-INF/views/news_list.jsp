@@ -183,18 +183,19 @@
 
                 <c:if test="${news == null || news.size()==0}">
 
-                                <div class="node-dl-wrapper" style="margin-right: 200px;">
-                                    <dl class="none_dl clearfix">
-                                        <dt>
-                                            <img  src="${staticurl}/images/noplay.jpg" alt="">
-                                        </dt>
-                                        <dd>
+                    <div class="node-dl-wrapper" style="margin-right: 200px;">
+                        <dl class="none_dl clearfix" style="width: 300px;">
+                            <dt>
+                                <img  src="${staticurl}/images/noplay.jpg" alt="">
+                            </dt>
+                            <dd style="width: 300px;">
 
-                                            <h3 class="f000 f16">
-                                                对不起，暂无“<span class="cRed">${key}</span>”相关的资讯内容</h3>
-                                        </dd>
-                                    </dl>
-                                </div>
+                                <h3 class="f000 f16">
+                                    对不起，暂无“<span class="cRed">${key}</span>”相关的资讯内容</h3>
+                            </dd>
+                        </dl>
+                    </div>
+
                         <div class="infor-space"></div>
                         <!-- E;centmain-inner -->
                 </c:if>
@@ -276,30 +277,32 @@
             </c:if>
         </div>
         <%--right--%>
-        <div class="infor-side fr">
-            <div class="rankingList">
-                <h2 class="title">热点排行榜</h2>
-                <div class="ranking-list">
-                    <c:set var="arr" value="${fn:split('hightlight,hightlightB,hightlightC',',')}"></c:set>
-                    <c:forEach items="${topList}" var="t" varStatus="status">
-                        <p>
-                            <i class="${arr[status.index]}">${status.count}</i>
-                            <a href="/${cityen}/detail/${t.ID}.html" target="_blank" class="f000" title="${t.Title}">${fn:substring(t.Title,0,18)}</a>
-                        </p>
-                    </c:forEach>
+        <c:if test="${p.pageCount>1}">
+            <div class="infor-side fr">
+                <div class="rankingList">
+                    <h2 class="title">热点排行榜</h2>
+                    <div class="ranking-list">
+                        <c:set var="arr" value="${fn:split('hightlight,hightlightB,hightlightC',',')}"></c:set>
+                        <c:forEach items="${topList}" var="t" varStatus="status">
+                            <p>
+                                <i class="${arr[status.index]}">${status.count}</i>
+                                <a href="/${cityen}/detail/${t.ID}.html" target="_blank" class="f000" title="${t.Title}">${fn:substring(t.Title,0,18)}</a>
+                            </p>
+                        </c:forEach>
 
-               <%--     <p><i class="hightlightB">2</i><a href="">施永青：目前中原没有条件打败链家</a></p>
-                    <p><i class="hightlightC">3</i><a href="">中原：今年已出“地王”152宗 或影... ...</a></p>
-                    <p><i>4</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
-                    <p><i>5</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
-                    <p><i>6</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
-                    <p><i>7</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
-                    <p><i>8</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
-                    <p><i>9</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
-                    <p><i>10</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>--%>
+                   <%--     <p><i class="hightlightB">2</i><a href="">施永青：目前中原没有条件打败链家</a></p>
+                        <p><i class="hightlightC">3</i><a href="">中原：今年已出“地王”152宗 或影... ...</a></p>
+                        <p><i>4</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
+                        <p><i>5</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
+                        <p><i>6</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
+                        <p><i>7</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
+                        <p><i>8</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
+                        <p><i>9</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
+                        <p><i>10</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>--%>
+                    </div>
                 </div>
             </div>
-        </div>
+        </c:if>
         <div class="clear mb_28"></div>
     </div>
     <!-- E;centmain-inner -->
@@ -349,7 +352,7 @@
   /*  //获取请求链接
     function getlink(type) {
         let searchkey = $('.search-ipt').val();
-        let cityen = '${cityen}';
+        let cityen = '{cityen}';
         let obj = {
             0: "/"+ cityen +"/list/?key=" + searchkey,
             1: "//" + cityen + ".centanet.com/xinfang/?key=" + searchkey,

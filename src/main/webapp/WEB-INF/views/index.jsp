@@ -263,7 +263,7 @@
                                 <c:if test="${t.id==n.TypeID}">
                                     <li>
                                         <c:if test="${status.index==0}">
-                                            <img src="${staticurl}/images/hot.png" alt="${n.Title}" style="vertical-align:-11px;margin-right:3px;">
+                                            <img src="${staticurl}/images/hot.png" alt="${n.Title}" style="vertical-align:-11px;margin-right:3px;width: auto;">
                                         </c:if>
                                         <c:if test="${status.index!=0}">
                                             <i></i>
