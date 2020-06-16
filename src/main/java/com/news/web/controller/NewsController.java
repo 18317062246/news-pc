@@ -642,7 +642,7 @@ public class NewsController {
                 }
             }
         }
-        if (BAIKE.equals(type)) {
+        if (BAIKE.equals(type)) {//购房百科
             JSONObject result = newsList(cityen, null, 0, 2, null, null, BAIKE);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
                 model.addAttribute(BAIKE, JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class));
@@ -653,11 +653,11 @@ public class NewsController {
         model.addAttribute("leftDown", leftDown);
         model.addAttribute(RIGHT, right);
         model.addAttribute(TYPES, types);
-        if ("index".equals(type)) {
-            return "third_hot";
-        } else if ("info".equals(type)) {
-            return "third_info";
+        if ("index".equals(type)) {//二手房
+            return "third_esf";
+        } else if ("info".equals(type)) {//新房
+            return "third_xf";
         }
-        return "third_hot";
+        return "third_index";
     }
 }

@@ -42,7 +42,7 @@
 <!-- S;centmain-wraper -->
 <div class="centmain-wraper centmain-wraper-infor">
     <div class="centmain-inner">
-        <div class="encyclo-banner"><img src="//pic.centanet.com/other/news/uploads/allimg/170420/111f4201r6050l.jpg" alt=""/></div>
+        <div class="encyclo-banner"><img src="//pic.centanet.com/other/news/uploads/allimg/170420/111f4201r6050l.jpg" alt="" style="max-width: 1120px;"/></div>
         <div class="breadcrumbs clearfix f123" style="margin-bottom:10px">
             <div class="fl breadcrumbs-area f123 " id="navigation">
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a><span class="fsm"> &gt; </span><a href="/${cityen}/baike/" class="f123">购房百科</a><span class="fsm"> &gt; </span>
@@ -246,32 +246,7 @@
                     </c:if>
 
             </dl>
-            <%-- <dl class="encyclo-classify">
-                 <c:forEach items="${types}" var="bkitme">
-                     <dt><a href="/${cityen}/baike/123/">${bkitem.ColumnsName}${bkitem.Id}</a></dt>
-                     <dd>
-                         <c:forEach items="${bkitem.ChildList}" var="ch">
-                             <a href="/bj/baike/goufangxuzhi/fczc/">房产政策</a>
-                            &lt;%&ndash; <a href="/bj/baike/goufangxuzhi/fwdk/">房屋贷款</a>
-                             <a href="/bj/baike/goufangxuzhi/fwzx/">房屋装修 </a>
-                             <a href="/bj/baike/goufangxuzhi/cqbg/">产权/变更</a>&ndash;%&gt;
-                         </c:forEach>
-                     </dd>
-                 </c:forEach>
-             </dl>--%>
-           <%-- <c:set var="dbcitys" value="sy,cc,hrb"></c:set>
-            <c:if test="${fn:contains(dbcitys, cityen)}">
-                <c:forEach items="${types}" var="t2">
-                    <dl class="encyclo-classify encyclo-classify_cs">
-                        <dt><a href="/${cityen}/baike/c${t2.id}/p1">${t2.columnsName}</a></dt>
-                        <dd>
-                        <c:forEach items="${item.ChildList}" var="t3">
-                            <a href="/${cityen}/baike/c${chr.id}/p1">${t3.columnsName}</a>
-                        </c:forEach>
-                        </dd>
-                    </dl>
-                </c:forEach>
-            </c:if>--%>
+
         </div>
         <%--</c:if>--%>
         <div class="clear mb_28"></div>
@@ -283,114 +258,9 @@
 <%--统计代码--%>
 <%@include file="/WEB-INF/views/statistics_code.jsp" %>
 <!--右侧贴边导航quick_links.js控制-->
-<%--<div class="mui-mbar-tabs">
-    <div class="quick_link_mian ">
-        <div class="quick_links_panel">
-            <div id="quick_links" class="quick_links">
-
-
-                <li class="view_li">
-                    <a href="#" class="view_list"><i class="view"></i><span class="cart_num">3</span></a>
-                    <div class="mp_tooltip">约看单<i class="icon_arrow_right_black"></i>
-                    </div>
-                </li>
-                <li class="histroy_li">
-                    <a href="#" class="mpbtn_histroy"><i class="zuji"></i></a>
-                    <div class="mp_tooltip">足迹<i class="icon_arrow_right_black"></i></div>
-                </li>
-                <li class="follow_li">
-                    <a href="#" class="mpbtn_follow"><i class="follow"></i></a>
-                    <div class="mp_tooltip">关注<i class="icon_arrow_right_black"></i></div>
-                </li>
-                <li class="intent_li">
-                    <a href="#" class="my_intent"><i class="setting"></i>
-                    </a>
-                    <div class="mp_tooltip">我的意向<i class="icon_arrow_right_black"></i>
-                    </div>
-                </li>
-
-
-                <li class="calculator_li">
-                    <a href="#" class="mpbtn_calculator"><i class="calculator"></i></a>
-                    <div class="mp_tooltip">房贷计算器<i class="icon_arrow_right_black"></i></div>
-                </li>
-
-                <li class="chat_li">
-                    <a href="#" class="mpbtn_chat"><i class="chat"></i></a>
-                    <div class="mp_tooltip">聊天<i class="icon_arrow_right_black"></i></div>
-                </li>
-                <li class="survey_li">
-                    <a href="#" class="mpbtn_survey"><i class="survey"></i></a>
-                    <div class="mp_tooltip">反馈问卷<i class="icon_arrow_right_black"></i></div>
-                </li>
-                <li class="app_li">
-                    <a href="#" class="my_app"><i class="app"></i></a>
-                    <div class="mp_qrcode">
-                        <img src="${staticurl}/images/app.jpg" alt="">
-                        <span>下载中原找房APP</span>
-                        <i class="icon_arrow_right_black"></i></div>
-                </li>
-                <li class="toTop"><a href="#top" class="return_top"><i class="top"></i></a>
-                    <div class="mp_tooltip">返回顶部<i class="icon_arrow_right_black"></i></div>
-                </li>
-            </div>
-
-        </div>
-        <div id="quick_links_pop" class="quick_links_pop "></div>
-    </div>
-</div>--%>
 <!--[if lte IE 8]>
 <script src="sidebar/ieBetter.js"></script>
 <![endif]-->
-<%--<script type="application/javascript">
-    //点击搜索
-    $(".icons-searchred-btn").click(function () {
-        console.log('search btn');
-        let keyword = $('.search-ipt').val();
-        let type = $("#J_searchtype").val() || 0;
-        location.href = getlink(type);
-    })
-    //search button text
-    let arr = [
-        "请输入楼盘名/地址",
-        "请输入楼盘名/地址",
-        "请输入经纪人姓名",
-        "请输入门店名",
-        "请输入资讯标题或内容",
-        "请请输入小区名称/学校/区域",
-        "请输入小区名称",
-        "请输入学校名称",
-        "请输入商铺名称",
-        "请输入写字楼名称"
-    ];
-
-    //切换文本框填充
-    function searchType(type) {
-        //如果是新房为1，小区为2，经纪人为3，门店为4，查成交为5，二手房为6，租房为7，学校为8，商铺为9，写字楼为10，默认为0
-        $("#J_searchtype").val(type);
-        $(".search-ipt").prop('placeholder', arr[type]);
-    }
-
-    //获取请求链接
-    function getlink(type) {
-        let searchkey = $('.search-ipt').val();
-        let cityen = '${cityen}';
-        let obj = {
-            0: "/" + cityen + "/list/?key=" + searchkey,
-            1: "//" + cityen + ".centanet.com/xinfang/?key=" + searchkey,
-            2: "//" + cityen + ".centanet.com/xiaoqu/?key=" + searchkey,
-            3: "//" + cityen + ".centanet.com/jingjiren/?key=" + searchkey,
-            4: "//" + cityen + ".centanet.com/mendian/?key=" + searchkey,
-            5: "//" + cityen + ".centanet.com/chengjiao/contrast/?key=" + searchkey,
-            6: "//" + cityen + ".centanet.com/ershoufang/?key=" + searchkey,
-            7: "//" + cityen + ".centanet.com/zufang/?key=" + searchkey,
-            8: "//" + cityen + ".centanet.com/ershoufang-xuexiao/?key=" + searchkey,
-            9: "//" + cityen + ".centanet.com/gongshangpu/chushou/?key=" + searchkey,
-            10: "//" + cityen + ".centanet.com/xiezilou/loupan/?key=" + searchkey
-        };
-        return obj[type];
-    }
-</script>--%>
 <script src="${staticurl}/js/cent_lists.js?v=${ver}"></script>
 </body>
 </html>

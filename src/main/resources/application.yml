@@ -13,10 +13,7 @@ spring:
 #日志路径
 log:
   path: ./logs
-#api地址
-api:
-  #domain: http://10.58.2.27:8066/api/
-  domain: https://testnews.centanet.com/api/
+
 #静态文件版本号
 static:
   version: 20200616

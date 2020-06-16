@@ -11,8 +11,8 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1" />
 	<meta name="renderer" content="webkit">
 	<title>官网首页</title>
-	<link rel="stylesheet" href="${staticurl}/css/basev6.css" >
-	<link rel="stylesheet" href="${staticurl}/css/xfhome.css" >
+	<%--<link rel="stylesheet" href="${staticurl}/css/basev6.css" >
+	<link rel="stylesheet" href="${staticurl}/css/xfhome.css" >--%>
 
 
 </head>
@@ -31,7 +31,7 @@
 			<div class="inform-special">
 				<h5 class="caption">${types[0].columnsName}</h5>
 					<div class="special-item">
-					<a href="">					
+					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/">
 						<p class="photo fl">
 							<img src="${leftUp[0].LitPic}?x-oss-process=style/450x320" alt="">
 						</p>
@@ -43,7 +43,7 @@
 				<dl class="inform-quest fl">				
 					<dd>
 						<c:forEach items="${leftUp}" var="l" begin="1" end="5">
-							<p><i></i><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html">${l.Title}</a></p>
+							<p><i></i><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html/">${l.Title}</a></p>
 							<%--<p><i></i><a href="">11月底鲁东房成交增28%再破1万套年底推盘或井喷</a></p>
 							<p><i></i><a href="">允许进城落户者自愿有偿退出或转让宅基地</a></p>
 							<p><i></i><a href="">11月底鲁东房成交增28%再破1万套年底推盘或井喷</a></p>--%>
@@ -53,17 +53,18 @@
 			</div>			
 		</div>
 		<%--right--%>
+
 		<div class="inform-side fr">
 			<h5 class="caption">${types[2].columnsName}</h5>
 			<div class="expert">
 				<div class="expert-phone">
-					<a href=""><img src="${leftDown[0].LitPic}" alt="${leftDown[0].Title}"></a>
+					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/"><img src="${leftDown[0].LitPic}" alt="${leftDown[0].Title}"></a>
 					<p class="txt"><a href="">${leftDown[0].Title}</a></p>
 					<p class="opacity_bg"></p>
 				</div>
 				<ul class="expert-comment">
 					<c:forEach items="${leftDown}" var="item" begin="0" end="3">
-						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html">${item.Title}</a></li>
+						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/">${item.Title}</a></li>
 						<%--<li><a href="">全款购房买卖双方需要准备的资料?</a></li>
 						<li><a href="">2016北京房价全面解析：买一套房比三年前高百万</a></li>
 						<li><a href="">2016北京房价全面解析</a></li>--%>
@@ -72,16 +73,18 @@
 			</div>
 		</div>
 		<div class="clear"></div>
+
 	</div>
 </div>
+ <p class="bot_link tc"><a href="//news.centanet.com/${cityen}" class="white_btn">更多新鲜资讯</a></p>
 
-<div class="section-wrap section-informHS section-inform-national">
+<%--<div class="section-wrap section-informHS section-inform-national">
 	<div class="section ">
 		<div class="title-box clearfix">
 		<h5 class="title">${citycn}热点资讯</h5>
 		<p class="description">提供房产新闻</p>		
 	</div>
-			<%--bottom-left--%>
+			&lt;%&ndash;bottom-left&ndash;%&gt;
 		<div class="inform-main fl">
 			<div class="inform-main-top">
 				<dl class="inform-quest ">
@@ -90,8 +93,8 @@
 						<c:forEach items="${leftUp}" var="l" begin="0" end="1">
 							<p>${l.Title}</p>
 						</c:forEach>
-					<%--	<p>经市政府批准，自2018年5月1日起，本市将进一步扩大租房补贴保障范围，上调补贴标准，同时扩大出租人补贴范围，补贴政策调整力度为近年来最大的一次。</p>
-						<p>经市政府批准，自2018年5月1日起，本市将进一步扩大租房补贴保障范围，上调补贴标准，同时扩大出租人补贴范围，补贴政策调整力度为近年来最大的一次。</p>--%>
+					&lt;%&ndash;	<p>经市政府批准，自2018年5月1日起，本市将进一步扩大租房补贴保障范围，上调补贴标准，同时扩大出租人补贴范围，补贴政策调整力度为近年来最大的一次。</p>
+						<p>经市政府批准，自2018年5月1日起，本市将进一步扩大租房补贴保障范围，上调补贴标准，同时扩大出租人补贴范围，补贴政策调整力度为近年来最大的一次。</p>&ndash;%&gt;
 						<p class="bot"><a href="/${cityen}/c${types[0].id}" class="tdu">@${types[0].columnsName}</a></p>
 					</dd>
 				</dl>
@@ -106,7 +109,7 @@
 				</dl>
 			</div>		
 		</div>
-		<%--<bottom-right>--%>
+		&lt;%&ndash;<bottom-right>&ndash;%&gt;
 		<div class="inform-side fl">			
 			<div class="expert">
 				<div class="expert-phone">
@@ -115,9 +118,9 @@
 					<ul class="expert-comment">
 					<c:forEach items="${right}" var="ri" begin="1" end="3">
 						<li><a href="//news.centanet.com/${cityen}/detail/${ri.ID}.html" target="_blank">${ri.Title}</a></li>
-						<%--<li><a href="">我们都有选择恐惧症</a></li>
+						&lt;%&ndash;<li><a href="">我们都有选择恐惧症</a></li>
 						<li><a href="">东风吹战鼓擂，拆迁之喜轮到谁</a></li>
-						<li><a href="">碧桂园底价摘宝坻京津新城57号地（楼面价3058元/平）</a></li>--%>
+						<li><a href="">碧桂园底价摘宝坻京津新城57号地（楼面价3058元/平）</a></li>&ndash;%&gt;
 					</c:forEach>
 				</ul>
 				<p class="bot "><a href="" class="tdu f666">@${types[2].columnsName}</a></p>
@@ -126,6 +129,6 @@
 		<div class="clear"></div>
 		 <p class="bot_link tc"><a href="//news.centanet.com/${cityen}" class="white_btn">更多新鲜资讯</a></p>
 	</div>
-</div>
+</div>--%>
 </body>
 </html>

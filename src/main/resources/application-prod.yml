@@ -9,3 +9,7 @@ static:
   path: D:/100workspace/160code/news-html/pc/
   #url: http://static.dev.com.cn:8118
   url: https://static.centanet.com/news/2020061519/pc
+#api地址
+api:
+  #domain: http://10.58.2.27:8066/api/
+  domain: http://127.0.0.1:8044/api/

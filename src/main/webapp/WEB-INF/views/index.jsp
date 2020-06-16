@@ -290,7 +290,9 @@
 <%@include file="/WEB-INF/views/statistics_code.jsp" %>
 
 <script>
+
     $(function () {
+
         if ($("#inforSlides .inforSlid").length > 1) {
             $('#inforSlides').slidesjs({
                 width: 604,
@@ -367,53 +369,8 @@
         //图片延迟加载
         $("img.lazy").lazyload({effect: "fadeIn"});
     });
-   /* //点击搜索
-    $(".icons-searchred-btn").click(function () {
-        console.log('search btn');
-        let keyword = $('.search-ipt').val();
-        let type = $("#J_searchtype").val() || 0;
-        location.href = getlink(type);
-    })
-    //search button text
-    let arr = [
-        "请输入楼盘名/地址",
-        "请输入楼盘名/地址",
-        "请输入经纪人姓名",
-        "请输入门店名",
-        "请输入资讯标题或内容",
-        "请请输入小区名称/学校/区域",
-        "请输入小区名称",
-        "请输入学校名称",
-        "请输入商铺名称",
-        "请输入写字楼名称"
-    ];
 
-    //切换文本框填充
-    function searchType(type) {
-        //如果是新房为1，小区为2，经纪人为3，门店为4，查成交为5，二手房为6，租房为7，学校为8，商铺为9，写字楼为10，默认为0
-        $("#J_searchtype").val(type);
-        $(".search-ipt").prop('placeholder', arr[type]);
-    }
 
-    //获取请求链接
-    function getlink(type) {
-        let searchkey = $('.search-ipt').val();
-        let cityen = '{cityen}';
-        let obj = {
-            0: "/" + cityen + "/list/?key=" + searchkey,
-            1: "//" + cityen + ".centanet.com/xinfang/?key=" + searchkey,
-            2: "//" + cityen + ".centanet.com/xiaoqu/?key=" + searchkey,
-            3: "//" + cityen + ".centanet.com/jingjiren/?key=" + searchkey,
-            4: "//" + cityen + ".centanet.com/mendian/?key=" + searchkey,
-            5: "//" + cityen + ".centanet.com/chengjiao/contrast/?key=" + searchkey,
-            6: "//" + cityen + ".centanet.com/ershoufang/?key=" + searchkey,
-            7: "//" + cityen + ".centanet.com/zufang/?key=" + searchkey,
-            8: "//" + cityen + ".centanet.com/ershoufang-xuexiao/?key=" + searchkey,
-            9: "//" + cityen + ".centanet.com/gongshangpu/chushou/?key=" + searchkey,
-            10: "//" + cityen + ".centanet.com/xiezilou/loupan/?key=" + searchkey
-        };
-        return obj[type];
-    }*/
 </script>
 <script src="${staticurl}/js/cent_lists.js?v=${ver}"></script>
 </body>
