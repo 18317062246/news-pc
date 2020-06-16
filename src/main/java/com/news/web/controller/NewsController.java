@@ -647,9 +647,9 @@ public class NewsController {
         model.addAttribute("leftDown", leftDown);
         model.addAttribute(RIGHT, right);
         model.addAttribute(TYPES, types);
-        if ("type1".equals(type)) {
+        if ("index".equals(type)) {
             return "third_hot";
-        } else if ("type2".equals(type)) {
+        } else if ("info".equals(type)) {
             return "third_info";
         }
         return "third_hot";

@@ -57,7 +57,7 @@
 			<h5 class="caption">${types[2].columnsName}</h5>
 			<div class="expert">
 				<div class="expert-phone">
-					<a href=""><img src="${leftDown[0].LitPic}?x-oss-process=style/450*320" alt="${leftDown[0].Title}"></a>
+					<a href=""><img src="${leftDown[0].LitPic}" alt="${leftDown[0].Title}"></a>
 					<p class="txt"><a href="">${leftDown[0].Title}</a></p>
 					<p class="opacity_bg"></p>
 				</div>
