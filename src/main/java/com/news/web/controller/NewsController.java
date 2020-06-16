@@ -479,7 +479,7 @@ public class NewsController {
         JSONObject newsList = newsList(cityen, null, 1, 10, 1, null, null);
         List<Map> news = JSON.parseArray(JSON.toJSONString(newsList.get(NEWS_LIST)), Map.class);
         //详情信息
-        JSONObject result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + id + "&cityen=bj&platform=pc", JSONObject.class);
+        JSONObject result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + id + "&cityen="+cityen+"&platform=pc", JSONObject.class);
         JSONObject detail = result.getJSONObject(RESULT);
         //热门专题
         List<NewsType> types = typeList(cityen, RIGHT);

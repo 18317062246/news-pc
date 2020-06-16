@@ -277,7 +277,7 @@
             </c:if>
         </div>
         <%--right--%>
-        <c:if test="${p.pageCount>1}">
+        <c:if test="${p.pageCount>=1}">
             <div class="infor-side fr">
                 <div class="rankingList">
                     <h2 class="title">热点排行榜</h2>

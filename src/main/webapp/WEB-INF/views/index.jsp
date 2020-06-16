@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
     <meta http-equiv="Cache-Control" content="max-age=1000"/>
@@ -232,51 +233,154 @@
                 <%-- //右侧上部文章--%>
                 <c:forEach items="${rightType}" var="t" varStatus="status">
                     <c:if test="${t.location=='right' && status.index!=0}">
-                        <div class="infor-side-box">
-                            <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                            </h2>
-                            <ul class="infor-side-p">
-                                    <%--遍历文章--%>
-                                <c:forEach items="${rightNews}" var="n" varStatus="status">
-                                    <c:if test="${t.id==n.TypeID}">
-                                        <li><i></i><a class="f000"
-                                                href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,28)}</a>
-                                        </li>
-                                    </c:if>
-                                </c:forEach>
-                            </ul>
-                        </div>
+                        <c:choose>
+                            <c:when test="${cityen == 'tj'}">
+                                <c:if test="${t.columnsName != '新闻热点' && t.columnsName != '购房指南'}">
+                                    <div class="infor-side-box">
+                                        <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                        </h2>
+                                        <ul class="infor-side-p">
+                                                <%--遍历文章--%>
+                                            <c:forEach items="${rightNews}" var="n" varStatus="status">
+                                                <c:if test="${t.id==n.TypeID}">
+                                                    <li><i></i><a class="f000"
+                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,28)}</a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="infor-side-box">
+                                    <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                    </h2>
+                                    <ul class="infor-side-p">
+                                            <%--遍历文章--%>
+                                        <c:forEach items="${rightNews}" var="n" varStatus="status">
+                                            <c:if test="${t.id==n.TypeID}">
+                                                <li><i></i><a class="f000"
+                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,28)}</a>
+                                                </li>
+                                            </c:if>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
+
+
+
                     </c:if>
                 </c:forEach>
+
                 <%-- 右侧下部集团jt文章--%>
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
-                    <%--  <c:if test="${t.location=='right' && status.index!=0}">--%>
-                    <div class="infor-side-box">
-                        <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                                <%-- <a href="javascript:doPost('addStudent.action', {"name":"张三"})"  class="morelink">更多</a>--%>
-                        </h2>
-                        <ul class="infor-side-p">
-                                <%--遍历文章--%>
-                            <c:forEach items="${centaNews}" var="n" varStatus="status">
-                                <c:if test="${t.id==n.TypeID}">
-                                    <li>
-                                        <c:if test="${status.index==0}">
-                                            <img src="${staticurl}/images/hot.png" alt="${n.Title}" style="vertical-align:-11px;margin-right:3px;width: auto;">
+                    <%--<c:choose>
+                        <c:when test="${cityen == 'tj'}">
+                            <c:if test="${t.columnsName == '品牌部'}">
+                                <div class="infor-side-box">
+                                    <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                            &lt;%&ndash; <a href="javascript:doPost('addStudent.action', {"name":"张三"})"  class="morelink">更多</a>&ndash;%&gt;
+                                    </h2>
+                                    <ul class="infor-side-p">
+                                            &lt;%&ndash;遍历文章&ndash;%&gt;
+                                        <c:forEach items="${centaNews}" var="n" varStatus="status">
+                                            <c:if test="${t.id==n.TypeID}">
+                                                <li>
+                                                    <c:if test="${status.index==0}">
+                                                        <img src="${staticurl}/images/hot.png" alt="${n.Title}" style="vertical-align:-11px;margin-right:3px;width: auto;">
+                                                    </c:if>
+                                                    <c:if test="${status.index!=0}">
+                                                        <i></i>
+                                                    </c:if>
+                                                    <a class="f000" title="${n.Title}"
+                                                       href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,28)}</a>
+                                                </li>
+                                            </c:if>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </c:when>
+                        <c:otherwise>--%>
+                            <div class="infor-side-box">
+                                <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                    <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                        <%-- <a href="javascript:doPost('addStudent.action', {"name":"张三"})"  class="morelink">更多</a>--%>
+                                </h2>
+                                <ul class="infor-side-p">
+                                        <%--遍历文章--%>
+                                    <c:forEach items="${centaNews}" var="n" varStatus="status">
+                                        <c:if test="${t.id==n.TypeID}">
+                                            <li>
+                                                <c:if test="${status.index==0}">
+                                                    <img src="${staticurl}/images/hot.png" alt="${n.Title}" style="vertical-align:-11px;margin-right:3px;width: auto;">
+                                                </c:if>
+                                                <c:if test="${status.index!=0}">
+                                                    <i></i>
+                                                </c:if>
+                                                <a class="f000" title="${n.Title}"
+                                                   href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,28)}</a>
+                                            </li>
                                         </c:if>
-                                        <c:if test="${status.index!=0}">
-                                            <i></i>
-                                        </c:if>
-                                        <a class="f000" title="${n.Title}"
-                                            href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,28)}</a>
-                                    </li>
-                                </c:if>
-                            </c:forEach>
-                        </ul>
-                    </div>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                       <%-- </c:otherwise>
+                    </c:choose>--%>
+
+
                     <%--  </c:if>--%>
                 </c:forEach>
+
+                    <c:if test="${cityen == 'tj'}">
+                        <%--天津的新闻热点和购房指南--%>
+                        <c:forEach items="${rightType}" var="t" varStatus="status">
+                            <c:if test="${t.location=='right'}">
+                                <c:if test="${t.columnsName == '新闻热点' || t.columnsName == '购房指南'}">
+                                    <c:if test="${t.columnsName == '新闻热点'}">
+                                        <div class="infor-side-box">
+                                            <p class="title-top"><span class="f18 f333 fb">${t.columnsName}</span><a href="/${cityen}/list/c${t.id}/" class="morelink f000" >更多</a></p>
+                                            <dl class="infor-side-pC">
+                                                <c:forEach items="${rightNews}" var="n" varStatus="status">
+                                                    <c:if test="${status.index == 0}">
+                                                        <dt class="curr"><i></i><a href="/${cityen}/detail/${n.ID}.html/"  title="${n.Title}" class="f333">${fn:substring(n.Title,0,28)}</a>
+                                                        </dt>
+                                                        <dd><a href="/${cityen}/detail/${n.ID}.html/"><img class="lazy"  title="${n.Title}"  data-original="${n.LitPic}?x-oss-process=style/300x210" src="${n.LitPic}?x-oss-process=style/300x210" onerror="this.src='${error_img}'" /></a></dd>
+                                                    </c:if>
+                                                    <c:if test="${status.index != 0}">
+                                                        <dt><i></i><a href="/${cityen}/detail/${n.ID}.html/"  title="${n.Title}" class="f333">${fn:substring(n.Title,0,28)}</a>
+                                                        </dt>
+                                                        <dd><a href="/${cityen}/detail/${n.ID}.html/"  title="${n.Title}" ><img class="lazy"  data-original="${n.LitPic}?x-oss-process=style/300x210" src="${n.LitPic}?x-oss-process=style/300x210" onerror="this.src='${error_img}'" /></a></dd>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </dl>
+                                        </div>
+                                    </c:if>
+
+                                    <c:if test="${t.columnsName == '购房指南'}">
+                                        <div class="infor-side-box">
+                                            <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span><a href="/${cityen}/list/c${t.id}/" class="morelink f000" >更多</a></h2>
+                                            <ul class="infor-side-p">
+                                                <c:forEach items="${rightNews}" var="n">
+                                                    <li><i></i><a href="/${cityen}/detail/${n.ID}.html/" target="_blank">${n.Title}</a></li>
+                                                </c:forEach>
+                                            </ul>
+                                        </div>
+
+                                    </c:if>
+
+                                </c:if>
+
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
 
             </div>
             <div class="clear"></div>

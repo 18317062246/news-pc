@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,9 +32,9 @@
 			<div class="inform-special">
 				<h5 class="caption">${types[0].columnsName}</h5>
 					<div class="special-item">
-					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/">
+					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/" target="_blank">
 						<p class="photo fl">
-							<img src="${leftUp[0].LitPic}?x-oss-process=style/450x320" alt="">
+							<img src="${leftUp[0].LitPic}?x-oss-process=style/450x320" alt="${leftUp[0].Title}">
 						</p>
 						<p class="title fl">${leftUp[0].Title}</p>
 						<p class="txt fl">${leftUp[0].Description}</p></a>
@@ -43,10 +44,7 @@
 				<dl class="inform-quest fl">				
 					<dd>
 						<c:forEach items="${leftUp}" var="l" begin="1" end="5">
-							<p><i></i><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html/">${l.Title}</a></p>
-							<%--<p><i></i><a href="">11月底鲁东房成交增28%再破1万套年底推盘或井喷</a></p>
-							<p><i></i><a href="">允许进城落户者自愿有偿退出或转让宅基地</a></p>
-							<p><i></i><a href="">11月底鲁东房成交增28%再破1万套年底推盘或井喷</a></p>--%>
+							<p><i></i><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html/" target="_blank">${l.Title}</a></p>
 						</c:forEach>
 					</dd>
 				</dl>
@@ -58,16 +56,13 @@
 			<h5 class="caption">${types[2].columnsName}</h5>
 			<div class="expert">
 				<div class="expert-phone">
-					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/"><img src="${leftDown[0].LitPic}" alt="${leftDown[0].Title}"></a>
-					<p class="txt"><a href="">${leftDown[0].Title}</a></p>
+					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank"><img src="${right[0].LitPic}" alt="${right[0].Title}"></a>
+					<p class="txt"><a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank">${right[0].Title}</a></p>
 					<p class="opacity_bg"></p>
 				</div>
 				<ul class="expert-comment">
-					<c:forEach items="${leftDown}" var="item" begin="0" end="3">
-						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/">${item.Title}</a></li>
-						<%--<li><a href="">全款购房买卖双方需要准备的资料?</a></li>
-						<li><a href="">2016北京房价全面解析：买一套房比三年前高百万</a></li>
-						<li><a href="">2016北京房价全面解析</a></li>--%>
+					<c:forEach items="${right}" var="item" begin="0" end="3">
+						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/" target="_blank" title="${item.Title}">${fn:substring(item.Title,0,20)}</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -78,57 +73,5 @@
 </div>
  <p class="bot_link tc"><a href="//news.centanet.com/${cityen}" class="white_btn">更多新鲜资讯</a></p>
 
-<%--<div class="section-wrap section-informHS section-inform-national">
-	<div class="section ">
-		<div class="title-box clearfix">
-		<h5 class="title">${citycn}热点资讯</h5>
-		<p class="description">提供房产新闻</p>		
-	</div>
-			&lt;%&ndash;bottom-left&ndash;%&gt;
-		<div class="inform-main fl">
-			<div class="inform-main-top">
-				<dl class="inform-quest ">
-					<dt class="caption"><a href="">${right[0].Title}</a></dt>
-					<dd>
-						<c:forEach items="${leftUp}" var="l" begin="0" end="1">
-							<p>${l.Title}</p>
-						</c:forEach>
-					&lt;%&ndash;	<p>经市政府批准，自2018年5月1日起，本市将进一步扩大租房补贴保障范围，上调补贴标准，同时扩大出租人补贴范围，补贴政策调整力度为近年来最大的一次。</p>
-						<p>经市政府批准，自2018年5月1日起，本市将进一步扩大租房补贴保障范围，上调补贴标准，同时扩大出租人补贴范围，补贴政策调整力度为近年来最大的一次。</p>&ndash;%&gt;
-						<p class="bot"><a href="/${cityen}/c${types[0].id}" class="tdu">@${types[0].columnsName}</a></p>
-					</dd>
-				</dl>
-			</div>
-			<div class="inform-main-bot">
-				<dl class="inform-quest ">
-					<dt class="caption"><a href="">${right[1].Title}</a></dt>
-					<dd>
-						<p>${right[0].Description}</p>
-						<p class="bot"><a href="" class="tdu">@${types[2].columnsName}</a></p>
-					</dd>
-				</dl>
-			</div>		
-		</div>
-		&lt;%&ndash;<bottom-right>&ndash;%&gt;
-		<div class="inform-side fl">			
-			<div class="expert">
-				<div class="expert-phone">
-					<a href=""><img src="${right[1].LitPic}?x-oss-process=style/450x320" alt=""></a>
-				</div>
-					<ul class="expert-comment">
-					<c:forEach items="${right}" var="ri" begin="1" end="3">
-						<li><a href="//news.centanet.com/${cityen}/detail/${ri.ID}.html" target="_blank">${ri.Title}</a></li>
-						&lt;%&ndash;<li><a href="">我们都有选择恐惧症</a></li>
-						<li><a href="">东风吹战鼓擂，拆迁之喜轮到谁</a></li>
-						<li><a href="">碧桂园底价摘宝坻京津新城57号地（楼面价3058元/平）</a></li>&ndash;%&gt;
-					</c:forEach>
-				</ul>
-				<p class="bot "><a href="" class="tdu f666">@${types[2].columnsName}</a></p>
-			</div>
-		</div>
-		<div class="clear"></div>
-		 <p class="bot_link tc"><a href="//news.centanet.com/${cityen}" class="white_btn">更多新鲜资讯</a></p>
-	</div>
-</div>--%>
 </body>
 </html>

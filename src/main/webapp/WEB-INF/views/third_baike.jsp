@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
                 <c:forEach items="${baike}" var="item">
                     <li>
                         <i></i>
-                        <a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/" class="f3">${item.Title}</a>
+                        <a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/" class="f3" target="_blank" title="${item.Title}">${fn:substring(item.Title,0,20)}</a>
                         <span class="date f9">
                                 <jsp:useBean id="myDate" class="java.util.Date"/>
                                 <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>
