@@ -63,6 +63,7 @@ public class NewsController {
     private static final String LOCATION = "location";
     private static final String TYPE_ID = "typeid";
     private static final String GOU_FANG_TEXT = "购房百科";
+    private static final String SEARCH_TEXT = "搜索列表";
 
 
     /**
@@ -327,6 +328,11 @@ public class NewsController {
             model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
         }
 
+        //判断是否为搜索页面
+        if(!StringUtils.isEmpty(key)){
+            model.addAttribute(COL_NAME, SEARCH_TEXT);
+        }
+
 
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
 
@@ -350,7 +356,7 @@ public class NewsController {
         List<NewsType> baiketype = typeList(cityen, BAIKE);
         model.addAttribute(BAIKE_TYPE, !baiketype.isEmpty());
         //toplist
-        JSONObject top = newsList(cityen, null, page, pagesize, 1, null, null);
+        JSONObject top = newsList(cityen, null, 1, 10, 1, null, null);
         List<Map> topList = JSON.parseArray(JSON.toJSONString(top.get(NEWS_LIST)), Map.class);
         Integer pageCount = result.getInteger("PageTotal");
         model.addAttribute("news", news);
