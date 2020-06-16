@@ -13,10 +13,10 @@
     <meta name="description" content="北京房产新闻,北京中原地产提供最及时北京房产新闻、北京房地产资讯，为您解读北京房产最新政策，预测北京房价走势，分析北京楼市成交数据。中原地产最资深最可靠的房地产网站。" />
     <title>${citycn}房地产资讯_${citycn}专题列表－${citycn}中原地产</title>
     <link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
+    <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
-    <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
+    <link rel="stylesheet" href="${staticurl}/css/cent_information.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>

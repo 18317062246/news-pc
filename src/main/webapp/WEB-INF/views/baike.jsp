@@ -13,7 +13,7 @@
     <title>${typeName}-中原地产资讯列表</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/css/icons.css?v=${ver}">
-    <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
+    <link rel="stylesheet" href="${staticurl}/css/cent_information.css?v=${ver}">
 
     <link rel="stylesheet" href="${staticurl}/css/headp2.css?v=${ver}">
     <link rel="stylesheet" href="${staticurl}/css/encyclop2.css?v=${ver}">
