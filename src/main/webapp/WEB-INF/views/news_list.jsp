@@ -149,7 +149,11 @@
                 <a href="/${cityen}/list/c${type}/p${page}/" class="f123">${colName}</a>
             </div>
         </div>
-        <div class="infor-main fl">
+        <div class="infor-main fl"
+                <c:if test="${news == null || news.size() == 0}">
+                    style="width:1000px;"
+                </c:if>
+        >
             <div class="infor-lists">
                 <div class="infor-news">
                 <c:forEach items="${news}" var="item">
@@ -188,10 +192,10 @@
                             <dt>
                                 <img  src="${staticurl}/images/noplay.jpg" alt="">
                             </dt>
-                            <dd style="width: 300px;">
+                            <dd style="text-align: center;">
 
-                                <h3 class="f000 f16">
-                                    对不起，暂无“<span class="cRed">${key}</span>”相关的资讯内容</h3>
+                                <h3 class="f000 f16" >
+                                    对不起，暂无“<span class="cRed" style="color: red;">${key}</span>”相关的资讯内容</h3>
                             </dd>
                         </dl>
                     </div>
@@ -289,16 +293,6 @@
                                 <a href="/${cityen}/detail/${t.ID}.html" target="_blank" class="f000" title="${t.Title}">${fn:substring(t.Title,0,18)}</a>
                             </p>
                         </c:forEach>
-
-                   <%--     <p><i class="hightlightB">2</i><a href="">施永青：目前中原没有条件打败链家</a></p>
-                        <p><i class="hightlightC">3</i><a href="">中原：今年已出“地王”152宗 或影... ...</a></p>
-                        <p><i>4</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
-                        <p><i>5</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
-                        <p><i>6</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
-                        <p><i>7</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
-                        <p><i>8</i><a href="">链家要在深圳同中原全面开战 7亿的... ...</a></p>
-                        <p><i>9</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>
-                        <p><i>10</i><a href="">佳兆业逆袭：旧改正走向全国 ，前5... ...</a></p>--%>
                     </div>
                 </div>
             </div>
@@ -320,55 +314,10 @@
         //图片延迟加载
         $("img.lazy").lazyload({effect: "fadeIn"});
     })
-  /*  //点击搜索
-    $(".icons-searchred-btn").click(function () {
-        console.log('search btn');
-        let keyword = $('.search-ipt').val();
-        let type = $("#J_searchtype").val() || 0;
-        location.href = getlink(type);
-    })
-    //search button text
-    let arr = [
-        "请输入资讯标题或内容",
-        "请输入楼盘名/地址",
-        "请请输入小区名称/学校/区域",
-       /!* "请输入楼盘名/地址",
-        "请输入楼盘名/地址",*!/
-        "请输入经纪人姓名",
-        "请输入门店名",
-        "请输入资讯标题或内容",
-        "请请输入小区名称/学校/区域",
-        "请输入小区名称",
-        "请输入学校名称",
-        "请输入商铺名称",
-        "请输入写字楼名称"
-    ];
-    //切换文本框填充
-    function searchType(type) {
-        //如果是新房为1，小区为2，经纪人为3，门店为4，查成交为5，二手房为6，租房为7，学校为8，商铺为9，写字楼为10，默认为0
-        $("#J_searchtype").val(type);
-        $(".search-ipt").prop('placeholder', arr[type]);
-    }*/
-  /*  //获取请求链接
-    function getlink(type) {
-        let searchkey = $('.search-ipt').val();
-        let cityen = '{cityen}';
-        let obj = {
-            0: "/"+ cityen +"/list/?key=" + searchkey,
-            1: "//" + cityen + ".centanet.com/xinfang/?key=" + searchkey,
-            2: "//" + cityen + ".centanet.com/xiaoqu/?key=" + searchkey,
-            3: "//" + cityen + ".centanet.com/jingjiren/?key=" + searchkey,
-            4: "//" + cityen + ".centanet.com/mendian/?key=" + searchkey,
-            5: "//" + cityen + ".centanet.com/chengjiao/contrast/?key=" + searchkey,
-            6: "//" + cityen + ".centanet.com/ershoufang/?key=" + searchkey,
-            7: "//" + cityen + ".centanet.com/zufang/?key=" + searchkey,
-            8: "//" + cityen + ".centanet.com/ershoufang-xuexiao/?key=" + searchkey,
-            9: "//" + cityen + ".centanet.com/gongshangpu/chushou/?key=" + searchkey,
-            10: "//" + cityen + ".centanet.com/xiezilou/loupan/?key=" + searchkey
-        };
-        return obj[type];
-    }*/
 </script>
 <script src="${staticurl}/js/cent_lists.js?v=${ver}"></script>
+<script src="${staticurl}/js/listp2.js"></script>
+<%--统计代码--%>
+<%@include file="/WEB-INF/views/statistics_code.jsp" %>
 </body>
 </html>

@@ -61,15 +61,16 @@
             </c:forEach>
             <c:if test="${news == null || news.size()==0}">
 
-                <div class="node-dl-wrapper" style="margin-right: 200px;">
+                <div class="node-dl-wrapper" style="margin-right: 200px;height: 400px;width: 1000px;background-color: #fff;">
                     <dl class="none_dl clearfix">
                         <dt>
                             <img  src="${staticurl}/images/noplay.jpg" alt="">
                         </dt>
-                        <dd>
+
+                        <dd style="text-align: center;">
 
                             <h3 class="f000 f16">
-                                对不起，暂无“<span class="cRed">${key}</span>”相关的资讯内容</h3>
+                                对不起，暂无“<span class="cRed" style="color: red;">${key}</span>”相关的资讯内容</h3>
                         </dd>
                     </dl>
                 </div>
@@ -171,5 +172,7 @@
     })
 </script>
 <script src="${staticurl}/js/cent_lists.js"></script>
+<%--统计代码--%>
+<%@include file="/WEB-INF/views/statistics_code.jsp" %>
 </body>
 </html>

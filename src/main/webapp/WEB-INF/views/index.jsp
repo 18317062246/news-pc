@@ -148,9 +148,6 @@
                                                 <c:forEach items="${item.LabelList}" var="l">
                                                     <li><span class="tag_item">${l.title}</span></li>
                                                 </c:forEach>
-
-                                                    <%--  <li><span class="tag_item">标签二</span></li>
-                                                      <li><span class="tag_item">标签三</span></li>--%>
                                             </ul>
                                         </div>
                                     </dd>
@@ -233,27 +230,6 @@
                 <%-- //右侧上部文章--%>
                 <c:forEach items="${rightType}" var="t" varStatus="status">
                     <c:if test="${t.location=='right' && status.index!=0}">
-                        <c:choose>
-                            <c:when test="${cityen == 'tj'}">
-                                <c:if test="${t.columnsName != '新闻热点' && t.columnsName != '购房指南'}">
-                                    <div class="infor-side-box">
-                                        <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                                        </h2>
-                                        <ul class="infor-side-p">
-                                                <%--遍历文章--%>
-                                            <c:forEach items="${rightNews}" var="n" varStatus="status">
-                                                <c:if test="${t.id==n.TypeID}">
-                                                    <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,28)}</a>
-                                                    </li>
-                                                </c:if>
-                                            </c:forEach>
-                                        </ul>
-                                    </div>
-                                </c:if>
-                            </c:when>
-                            <c:otherwise>
                                 <div class="infor-side-box">
                                     <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
                                         <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
@@ -269,27 +245,20 @@
                                         </c:forEach>
                                     </ul>
                                 </div>
-                            </c:otherwise>
-                        </c:choose>
-
-
-
-
                     </c:if>
                 </c:forEach>
 
                 <%-- 右侧下部集团jt文章--%>
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
-                    <%--<c:choose>
+                    <c:choose>
                         <c:when test="${cityen == 'tj'}">
                             <c:if test="${t.columnsName == '品牌部'}">
                                 <div class="infor-side-box">
                                     <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
                                         <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                                            &lt;%&ndash; <a href="javascript:doPost('addStudent.action', {"name":"张三"})"  class="morelink">更多</a>&ndash;%&gt;
                                     </h2>
                                     <ul class="infor-side-p">
-                                            &lt;%&ndash;遍历文章&ndash;%&gt;
+                                        <%--遍历文章--%>
                                         <c:forEach items="${centaNews}" var="n" varStatus="status">
                                             <c:if test="${t.id==n.TypeID}">
                                                 <li>
@@ -308,7 +277,7 @@
                                 </div>
                             </c:if>
                         </c:when>
-                        <c:otherwise>--%>
+                        <c:otherwise>
                             <div class="infor-side-box">
                                 <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
                                     <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
@@ -332,15 +301,15 @@
                                     </c:forEach>
                                 </ul>
                             </div>
-                       <%-- </c:otherwise>
-                    </c:choose>--%>
+                        </c:otherwise>
+                    </c:choose>
 
 
                     <%--  </c:if>--%>
                 </c:forEach>
 
-                    <c:if test="${cityen == 'tj'}">
-                        <%--天津的新闻热点和购房指南--%>
+                  <%--  <c:if test="${cityen == 'tj'}">
+                        &lt;%&ndash;天津的新闻热点和购房指南&ndash;%&gt;
                         <c:forEach items="${rightType}" var="t" varStatus="status">
                             <c:if test="${t.location=='right'}">
                                 <c:if test="${t.columnsName == '新闻热点' || t.columnsName == '购房指南'}">
@@ -380,7 +349,7 @@
 
                             </c:if>
                         </c:forEach>
-                    </c:if>
+                    </c:if>--%>
 
             </div>
             <div class="clear"></div>
@@ -390,8 +359,7 @@
 </div>
 <!-- footer -->
 <%@include file="/WEB-INF/views/foot.jsp" %>
-<%--统计代码--%>
-<%@include file="/WEB-INF/views/statistics_code.jsp" %>
+
 
 <script>
 
@@ -477,5 +445,8 @@
 
 </script>
 <script src="${staticurl}/js/cent_lists.js?v=${ver}"></script>
+<script src="${staticurl}/js/listp2.js"></script>
+<%--统计代码--%>
+<%@include file="/WEB-INF/views/statistics_code.jsp" %>
 </body>
 </html>

@@ -9,7 +9,7 @@ spring:
     cache: false
     enabled: false
   profiles:
-    active: prod # 激活环境
+    active: dev # 激活环境
 #日志路径
 log:
   path: ./logs
@@ -17,6 +17,9 @@ log:
 #静态文件版本号
 static:
   version: 20200616
+  path: D:/100workspace/160code/news-html/pc/
+    #url: http://static.dev.com.cn:8118
+  url: https://static.centanet.com/news/2020061722/pc
 
 #测试路径
 web:

@@ -34,7 +34,7 @@
 					<div class="special-item">
 					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/" target="_blank">
 						<p class="photo fl">
-							<img src="${leftUp[0].LitPic}?x-oss-process=style/450x320" alt="${leftUp[0].Title}">
+							<img src="${leftUp[0].LitPic}" alt="${leftUp[0].Title}">
 						</p>
 						<p class="title fl">${leftUp[0].Title}</p>
 						<p class="txt fl">${leftUp[0].Description}</p></a>
@@ -53,16 +53,16 @@
 		<%--right--%>
 
 		<div class="inform-side fr">
-			<h5 class="caption">${types[2].columnsName}</h5>
+			<h5 class="caption">${types[1].columnsName}</h5>
 			<div class="expert">
 				<div class="expert-phone">
-					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank"><img src="${right[0].LitPic}" alt="${right[0].Title}"></a>
-					<p class="txt"><a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank">${right[0].Title}</a></p>
+					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank"><img src="${leftDown[0].LitPic}" alt="${leftDown[0].Title}" style="width: 400px;height: 266px;"></a>
+					<p class="txt"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank">${leftDown[0].Title}</a></p>
 					<p class="opacity_bg"></p>
 				</div>
 				<ul class="expert-comment">
-					<c:forEach items="${right}" var="item" begin="0" end="3">
-						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/" target="_blank" title="${item.Title}">${fn:substring(item.Title,0,20)}</a></li>
+					<c:forEach items="${leftDown}" var="item" begin="1" end="3">
+						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/" target="_blank" title="${item.Title}">${item.Title}</a></li>
 					</c:forEach>
 				</ul>
 			</div>

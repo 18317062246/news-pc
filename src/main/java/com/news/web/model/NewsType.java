@@ -14,6 +14,7 @@ import java.util.List;
  * @create: 2020-05-27 10:24
  **/
 @Data
+@SuppressWarnings("all")
 public class NewsType {
     private Integer Id;
     private String ColumnsName;

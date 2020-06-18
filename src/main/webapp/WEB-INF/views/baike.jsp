@@ -262,5 +262,8 @@
 <script src="sidebar/ieBetter.js"></script>
 <![endif]-->
 <script src="${staticurl}/js/cent_lists.js?v=${ver}"></script>
+<script src="${staticurl}/js/listp2.js"></script>
+<%--统计代码--%>
+<%@include file="/WEB-INF/views/statistics_code.jsp" %>
 </body>
 </html>

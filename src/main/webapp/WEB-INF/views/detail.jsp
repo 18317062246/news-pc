@@ -10,6 +10,7 @@
       目前IE最新的正常模式去浏览
    <meta http-equiv="x-ua-compatible" content="IE=edge">-->
     <meta http-equiv="Cache-Control" content="max-age=100"/>
+    <meta name="referrer" content="no-referrer" />
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
@@ -90,6 +91,93 @@
 
                     ${detailContent}
                 </div>
+                <div class="section-wrap section-houselists">
+                    <div class="section">
+                        <div class="newRoomlists">
+                            <c:forEach items="${xfHouseList}" varStatus="status" var="n">
+                                <div class="newRoom-item">
+                                    <div class="${status.index % 2 == 0 ? "item-left" : "item-right"}">
+                                        <div class="room-img">
+                                            <a href="//${cityen}.centanet.com/xinfang/lp-${n.oid}" target="_blank">
+                                                <img src="${n.defaultImage}" width="250" height="167" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="room-mid">
+                                            <h5>
+                                                <a href="//${cityen}.centanet.com/xinfang/lp-${n.oid}"  target="_blank" title="${n.adName}">${n.adName}</a>
+                                                <label for="" class="red_tag"><%--${n.estType}--%>
+                                                    <c:if test="${n.estType.contains('公寓')}">
+                                                        公寓
+                                                    </c:if>
+                                                    <c:if test="${n.estType.contains('住宅')}">
+                                                        住宅
+                                                    </c:if>
+                                                    <c:if test="${n.estType.contains('别墅')}">
+                                                        别墅
+                                                    </c:if>
+                                                </label><label for="" class="hot_tag"></label><i for="" class="gift_tag"></i>
+                                            </h5>
+                                            <p>
+                                                【${n.baseNewProp.district.GScopeCnName}-${n.baseNewProp.GScope.GScopeCnName}】
+                                            </p>
+                                            <p>
+                                                <span class="tipTriggerB" tip="${n.baseNewProp.address}">${n.baseNewProp.address}</span>
+                                            </p>
+                                            <p class="average-price">
+                                                <c:if test="${n.averagePrice != null &&n.averagePrice > 0}">
+                                                    <strong class="nub">${n.averagePrice}</strong><cite class="unit">元/平
+                                                 </c:if>
+                                            </cite>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </c:forEach>
+
+                            <c:forEach items="${esfHouseList}" varStatus="status" var="n">
+                                <div class="newRoom-item">
+                                    <div class="${ status.index % 2 == 0 ? "item-left" : "item-right"}">
+                                        <div class="room-img">
+                                            <a href="//${cityen}.centanet.com/ershoufang/${n.oid}.html" target="_blank">
+                                                <img src="${n.fullImagePath}" width="250" height="167" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="room-mid">
+                                            <h5>
+                                                <a href="//${cityen}.centanet.com/ershoufang/${n.oid}.html" target="_blank" title="${n.estateName}">${n.estateName}</a>
+                                                <label for="" class="red_tag"><%--${n.propertyType}--%>
+                                                    <c:if test="${n.propertyType.contains('公寓')}">
+                                                        公寓
+                                                    </c:if>
+                                                    <c:if test="${n.propertyType.contains('住宅')}">
+                                                        住宅
+                                                    </c:if>
+                                                    <c:if test="${n.propertyType.contains('别墅')}">
+                                                        别墅
+                                                    </c:if>
+                                                </label><label for="" class="hot_tag"></label><i for="" class="gift_tag"></i>
+                                            </h5>
+                                            <%--<p>
+                                                【${n.regionName}-${n.gscopeName}】
+                                            </p>--%>
+                                            <p>
+                                                <span class="tipTriggerB" tip="${n.address}">${n.address}</span>
+                                            </p>
+                                            <c:if test="${n.salePrice != null &&n.salePrice > 0}">
+                                                <p class="average-price"><strong class="nub">${fn;fn:substring(n.salePrice , 0 , 3)}</strong><cite class="unit">万</cite>
+                                             </c:if>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </c:forEach>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="infor-side fr">
@@ -130,9 +218,37 @@
 <!-- footer -->
 <%@include file="/WEB-INF/views/foot.jsp" %>
 <script type="text/javascript">
+    /**
+    * 以下代码是判断是人还是蜘蛛
+    */
+    //获取当前进入页面的地址
+    let r = document.referrer;
+    r = r.toLowerCase(); //转为小写
+    let aSites = new Array('google.','baidu.','soso.','so.','360.','yahoo.','youdao.','sogou.','gougou.');
+    let flag = false;
+    for (i in aSites){
+        if (r.indexOf(aSites[i]) > 0){
+            flag = true;
+            break;
+        }
+    }
+
+    //如果flag为false，证明是人，需要给页面加入访问量
+    if(!flag){
+    $.get(
+        "${newsDetailClickAddress}NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+r+"&platform=pc",
+            function (data) {
+                console.log(data);
+                if(parseInt(data.Result.Status) == 1){
+                console.log('成功发送点击量');
+            }
+        });
+    }
 
 </script>
+
 <script type="text/javascript">
+
     $(function () {
         var allPanelsSta = $('.infor-side-pB > dd').hide();
         var fistPanels = $('.infor-side-pB dd:first').show();
@@ -151,54 +267,9 @@
         $("img.lazy").lazyload({effect: "fadeIn"});
     });
 
-
-    //点击搜索
-/*    $(".icons-searchred-btn").click(function () {
-        console.log('search btn');
-        let keyword = $('.search-ipt').val();
-        let type = $("#J_searchtype").val() || 0;
-        location.href = getlink(type);
-    })
-    //search button text
-    let arr = [
-        "请输入楼盘名/地址",
-        "请输入楼盘名/地址",
-        "请输入经纪人姓名",
-        "请输入门店名",
-        "请输入资讯标题或内容",
-        "请请输入小区名称/学校/区域",
-        "请输入小区名称",
-        "请输入学校名称",
-        "请输入商铺名称",
-        "请输入写字楼名称"
-    ];
-    //切换文本框填充
-    function searchType(type) {
-        //如果是新房为1，小区为2，经纪人为3，门店为4，查成交为5，二手房为6，租房为7，学校为8，商铺为9，写字楼为10，默认为0
-        $("#J_searchtype").val(type);
-        $(".search-ipt").prop('placeholder', arr[type]);
-    }
-    //获取请求链接
-    function getlink(type) {
-        let searchkey = $('.search-ipt').val();
-        let cityen = '{cityen}';
-        let obj = {
-            0: "/"+ cityen +"/list/?key=" + searchkey,
-            1: "//" + cityen + ".centanet.com/xinfang/?key=" + searchkey,
-            2: "//" + cityen + ".centanet.com/xiaoqu/?key=" + searchkey,
-            3: "//" + cityen + ".centanet.com/jingjiren/?key=" + searchkey,
-            4: "//" + cityen + ".centanet.com/mendian/?key=" + searchkey,
-            5: "//" + cityen + ".centanet.com/chengjiao/contrast/?key=" + searchkey,
-            6: "//" + cityen + ".centanet.com/ershoufang/?key=" + searchkey,
-            7: "//" + cityen + ".centanet.com/zufang/?key=" + searchkey,
-            8: "//" + cityen + ".centanet.com/ershoufang-xuexiao/?key=" + searchkey,
-            9: "//" + cityen + ".centanet.com/gongshangpu/chushou/?key=" + searchkey,
-            10: "//" + cityen + ".centanet.com/xiezilou/loupan/?key=" + searchkey
-        };
-        return obj[type];
-    }*/
-
 </script>
 <script src="${staticurl}/js/cent_lists.js"></script>
+<%--统计代码--%>
+<%@include file="/WEB-INF/views/statistics_code.jsp" %>
 </body>
 </html>

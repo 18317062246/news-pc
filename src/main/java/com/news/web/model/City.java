@@ -1,6 +1,6 @@
 package com.news.web.model;/**
  * @ClassName: City
- * @Description: TODO
+ * @Description:
  * @Author: zouyuan1
  * @Date: 2020-06-02 14:24
  */

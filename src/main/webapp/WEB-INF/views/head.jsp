@@ -20,14 +20,14 @@
             <c:choose>
                 <c:when test="${cityen == 'bj'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">出售房源</a>
                             <a href="//<%=cityen%>.centanet.com/entrust/sale/" target="_blank">我要出售</a>
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -38,7 +38,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/zufang/" target="_blank">租房</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xiezilou/" target="_blank">写字楼<span>·</span>商铺</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xiaoqu/" target="_blank">小区</a></li>
-                    <li><a href="">房价成交</a>
+                    <li><a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">房价成交</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>
                             <a href="//<%=cityen%>.centanet.com/chengjiao/" target="_blank">成交历史</a>
@@ -61,7 +61,7 @@
                         </c:otherwise>
                     </c:choose>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -72,7 +72,7 @@
 
                 <c:when test="${cityen == 'tj'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">在售房源</a>
                             <a href="//<%=cityen%>.centanet.com/ershoufang/u7/?from=topnav" target="_blank">最新发布</a>
@@ -81,7 +81,7 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -91,7 +91,7 @@
                     </li>
                     <li><a href="//<%=cityen%>.centanet.com/zufang/" target="_blank">租房</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xiaoqu/" target="_blank">小区</a></li>
-                    <li><a href="">成交<span>·</span>走势</a>
+                    <li><a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">成交<span>·</span>走势</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">二手房走势</a>
                             <a href="//<%=cityen%>.centanet.com/chengjiao/" target="_blank">二手房成交</a>
@@ -99,7 +99,7 @@
                         </div>
                     </li>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -112,7 +112,7 @@
 
                 <c:when test="${cityen == 'gz'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">在售房源</a>
                             <a href="//<%=cityen%>.centanet.com/ershoufang-ditie/" target="_blank">地铁找房</a>
@@ -121,7 +121,7 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -135,7 +135,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -162,7 +162,7 @@
 
                 <c:when test="${cityen == 'sz'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">在售房源</a>
                             <a href="//<%=cityen%>.centanet.com/ershoufang-ditie/" target="_blank">地铁找房</a>
@@ -170,7 +170,7 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -180,7 +180,7 @@
                     </li>
                     <li><a href="//<%=cityen%>.centanet.com/zufang/" target="_blank">租房</a></li>
                     <li><a href="//http://world.<%=cityen%>.centanet.com/" target="_blank">海外</a></li>
-                    <li><a href="">中原大数据</a>
+                    <li><a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">中原大数据</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>
                             <a href="//<%=cityen%>.centanet.com/chengjiao/" target="_blank">成交历史</a>
@@ -205,7 +205,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -218,14 +218,14 @@
 
                 <c:when test="${cityen == 'cd'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">在售房源</a>
                             <a href="//<%=cityen%>.centanet.com/entrust/sale/" target="_blank">发布房源</a>
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -235,7 +235,7 @@
                     </li>
                     <li><a href="//<%=cityen%>.centanet.com/zufang/" target="_blank">租房</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xiaoqu/" target="_blank">小区</a></li>
-                    <li><a href="">成交走势</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/chengjiao/" target="_blank">新房走势</a>
                             <a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">二手房走势</a>
@@ -246,7 +246,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -259,14 +259,14 @@
 
                 <c:when test="${cityen == 'cq'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">在售房源</a>
                             <a href="//<%=cityen%>.centanet.com/entrust/sale/" target="_blank">发布房源</a>
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -278,7 +278,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xiaoqu/" target="_blank">小区</a></li>
-                    <li><a href="">成交走势</a>
+                    <li><a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>
                             <a href="//<%=cityen%>.centanet.com/chengjiao/" target="_blank">成交历史</a>
@@ -286,7 +286,7 @@
                         </div>
                     </li>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank" >经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -299,7 +299,7 @@
                 <c:when test="${cityen == 'nj'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
 
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -329,7 +329,7 @@
                 <c:when test="${cityen == 'wh'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
 
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -358,7 +358,7 @@
                 <c:when test="${cityen == 'cs'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
 
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -386,7 +386,7 @@
 
                 <c:when test="${cityen == 'hz'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">在售房源</a>
                             <a href="//<%=cityen%>.centanet.com/ershoufang/u7/?from=topnav" target="_blank">最新发布</a>
@@ -395,7 +395,7 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">轨道找新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/huodong/" target="_blank">最新活动</a>
@@ -422,7 +422,7 @@
                         </c:otherwise>
                     </c:choose>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -434,7 +434,7 @@
 
                 <c:when test="${cityen == 'dg'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li ><a href="">二手房</a>
+                    <li ><a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/ershoufang/" target="_blank">在售房源</a>
                             <a href="//<%=cityen%>.centanet.com/entrust/sale/" target="_blank">发布房源</a>
@@ -442,7 +442,7 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//act.centanet.com/actfile/<%=cityen%>/site/20190930/index-pc.html" target="_blank">特惠新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -455,7 +455,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/t5/" target="_blank">商铺</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/t4/" target="_blank">写字楼</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xiaoqu/" target="_blank">小区</a></li>
-                    <li><a href="">成交走势</a>
+                    <li><a href="//dg.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a>
                         <div class="subnav" >
                             <a href="//dg.centanet.com/xinfang/chengjiao/" target="_blank">新房走势</a>
                             <a href="//dg.centanet.com/chengjiao/contrast/" target="_blank">二手房走势</a>
@@ -478,7 +478,7 @@
                         </c:otherwise>
                     </c:choose>
 
-                    <li><a href="" >经纪人</a>
+                    <li><a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//<%=cityen%>.centanet.com/mendian/" target="_blank">门店</a>
@@ -490,7 +490,7 @@
 
                 <c:when test="${cityen == 'cc' || cityen == 'dl' || cityen == 'sy'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -519,7 +519,7 @@
 
                 <c:when test="${cityen == 'nn'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -535,7 +535,7 @@
 
                 <c:when test="${cityen == 'zj'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -564,7 +564,7 @@
 
                 <c:when test="${cityen == 'nc'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -579,7 +579,7 @@
                 </c:when>
                 <c:when test="${cityen == 'fs'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -610,7 +610,7 @@
 
                 <c:when test="${cityen == 'fz'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -639,7 +639,7 @@
 
                 <c:when test="${cityen == 'ganzhou'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -654,7 +654,7 @@
 
                 <c:when test="${cityen == 'hf' || cityen == 'jn' || cityen == 'km' || cityen == 'nb' || cityen == 'xy'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -670,7 +670,7 @@
 
                 <c:when test="${cityen == 'hrb'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -698,7 +698,7 @@
 
                 <c:when test="${cityen == 'wx' || cityen == 'zq'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -728,7 +728,7 @@
 
                 <c:when test="${ cityen == 'xa' || cityen == 'zz'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -745,7 +745,7 @@
 
                 <c:when test="${cityen == 'xm'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
@@ -773,7 +773,7 @@
 
                 </c:when>
                 <c:when test="${cityen == 'zh'}">
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
@@ -802,7 +802,7 @@
 
                 </c:when>
                 <c:when test="${cityen == 'zs'}">
-                    <li><a href="">新房</a>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
                             <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
                             <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
