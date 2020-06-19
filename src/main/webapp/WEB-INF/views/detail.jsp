@@ -47,6 +47,7 @@
 <%--head--%>
 <%@include file="/WEB-INF/views/head.jsp" %>
 <!-- S;centmain-wraper -->
+<c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
 <div class="centmain-wraper centmain-wraper-infor">
     <div class="centmain-inner">
         <div class="breadcrumbs clearfix">
@@ -104,63 +105,73 @@
                                         <div class="room-img">
                                             <c:if test="${n.xinfangResult != null}">
                                                 <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/" target="_blank">
-                                                    <img src="${n.xinfangResult.defaultImage}" width="250" height="167" alt="" />
+                                                    <img src="${n.xinfangResult.defaultImage}" width="250" height="167" alt="" onerror="this.src='${defaultpic}'" />
                                                 </a>
                                             </c:if>
                                             <c:if test="${n.esfResult != null}">
                                                 <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/" target="_blank">
-                                                    <img src="${n.esfResult.fullImagePath}" width="250" height="167" alt="" />
+                                                    <img src="${n.esfResult.fullImagePath}" width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
                                                 </a>
                                             </c:if>
                                             <c:if test="${n.xiaoQuResult != null}">
                                                 <a href="//${cityen}.centanet.com/xiaoqu/xq-${n.xiaoQuResult.oid}/" target="_blank">
-                                                    <img src="${n.xiaoQuResult.imagePath}" width="250" height="167" alt="" />
+                                                    <img src="${n.xiaoQuResult.imagePath}" width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
                                                 </a>
                                             </c:if>
 
                                         </div>
                                         <div class="room-mid">
                                             <h5>
+                                                <c:set var="apartmentStr" value="公寓"></c:set>
+                                                <c:set var="residenceStr" value="住宅"></c:set>
+                                                <c:set var="vilaResidenceStr" value="普通住宅"></c:set>
+                                                <c:set var="villaStr" value="别墅"></c:set>
                                                 <c:if test="${n.xinfangResult != null}">
 
                                                     <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/"  target="_blank" title="${n.xinfangResult.adName}">${n.xinfangResult.adName}</a>
-                                                    <label for="" class="red_tag"><%--${n.estType}--%>
-                                                        <c:if test="${n.xinfangResult.estType.contains('公寓')}">
-                                                            公寓
+                                                    <label for="" class="red_tag">
+                                                        <c:if test="${fn:contains(apartmentStr, n.xinfangResult.estType)}">
+                                                            ${apartmentStr}
                                                         </c:if>
-                                                        <c:if test="${n.xinfangResult.estType.contains('住宅')}">
-                                                            住宅
+                                                        <c:if test="${fn:contains(residenceStr, n.xinfangResult.estType)}">
+                                                            ${residenceStr}
                                                         </c:if>
-                                                        <c:if test="${n.xinfangResult.estType.contains('别墅')}">
-                                                            别墅
+                                                        <c:if test="${fn:contains(villaStr, n.xinfangResult.estType)}">
+                                                            ${villaStr}
                                                         </c:if>
                                                     </label>
                                                 </c:if>
                                                 <c:if test="${n.esfResult != null}">
                                                     <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/"  target="_blank" title="${n.esfResult.estateName}">${n.esfResult.estateName}</a>
-                                                    <label for="" class="red_tag"><%--${n.esfResult.estType}--%>
-                                                        <c:if test="${n.esfResult.propertyType.contains('公寓')}">
-                                                            公寓
+                                                    <label for="" class="red_tag">
+                                                        <c:if test="${fn:contains(apartmentStr, n.esfResult.propertyType)}">
+                                                            ${apartmentStr}
                                                         </c:if>
-                                                        <c:if test="${n.esfResult.propertyType.contains('住宅')}">
-                                                            住宅
+                                                        <c:if test="${fn:contains(residenceStr, n.esfResult.propertyType)}">
+                                                            ${residenceStr}
                                                         </c:if>
-                                                        <c:if test="${n.esfResult.propertyType.contains('别墅')}">
-                                                            别墅
+                                                        <c:if test="${fn:contains(villaStr, n.esfResult.propertyType)}">
+                                                            ${villaStr}
+                                                        </c:if>
+                                                        <c:if test="${fn:contains(vilaResidenceStr, n.esfResult.propertyType)}">
+                                                            ${residenceStr}
                                                         </c:if>
                                                     </label>
                                                 </c:if>
                                                 <c:if test="${n.xiaoQuResult != null}">
                                                     <a href="//${cityen}.centanet.com/xiaoqu/xq-${n.xiaoQuResult.oid}/"  target="_blank" title="${n.xiaoQuResult.estateName}">${n.xiaoQuResult.estateName}</a>
-                                                    <label for="" class="red_tag"><%--${n.esfResult.estType}--%>
-                                                        <c:if test="${n.xiaoQuResult.propertyType.contains('公寓')}">
-                                                            公寓
+                                                    <label for="" class="red_tag">
+                                                        <c:if test="${fn:contains(apartmentStr, n.xiaoQuResult.propertyType)}">
+                                                            ${apartmentStr}
                                                         </c:if>
-                                                        <c:if test="${n.xiaoQuResult.propertyType.contains('住宅')}">
-                                                            住宅
+                                                        <c:if test="${fn:contains(residenceStr, n.xiaoQuResult.propertyType)}">
+                                                            ${residenceStr}
                                                         </c:if>
-                                                        <c:if test="${n.xiaoQuResult.propertyType.contains('别墅')}">
-                                                            别墅
+                                                        <c:if test="${fn:contains(vilaResidenceStr, n.xiaoQuResult.propertyType)}">
+                                                            ${residenceStr}
+                                                        </c:if>
+                                                        <c:if test="${fn:contains(villaStr, n.xiaoQuResult.propertyType)}">
+                                                            ${villaStr}
                                                         </c:if>
                                                     </label>
                                                 </c:if>
@@ -216,6 +227,21 @@
                                     <c:if test="${status.count % 2 == 0}">
                                         </div>
                                     </c:if>
+                                    <c:if test="${(commonHouseResultSize == 1 && status.count == 1) || (commonHouseResultSize == 11 && status.count == 11)}">
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${(commonHouseResultSize == 3 && status.count == 3) || (commonHouseResultSize == 13 && status.count == 13)}">
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${(commonHouseResultSize == 5 && status.count == 5) || (commonHouseResultSize == 15 && status.count == 15)}">
+                                        </div>
+                                    </c:if>
+                                     <c:if test="${(commonHouseResultSize == 7 && status.count == 7) || (commonHouseResultSize == 17 && status.count == 17)}">
+                                        </div>
+                                    </c:if>
+                                     <c:if test="${(commonHouseResultSize == 9 && status.count == 9) || (commonHouseResultSize == 19 && status.count == 19)}">
+                                        </div>
+                                    </c:if>
                             </c:forEach>
                            <%-- </div>--%>
 
@@ -244,7 +270,7 @@
                             <c:forEach items="${infoNews}" var="info" varStatus="status">
                                 <dt class="${status.index==0?'curr':''}"><a class="f000" href="javacript:void(0);" title="${info.Title}">${fn:substring(info.Title, 0, 18)}</a></dt>
                                 <dd><a href="/${cityen}/detail/${info.ID}.html" target="_blank" class="f000" title="${info.Title}">
-                                    <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+
                                     <img class="lazy" src="${info.LitPic}?x-oss-process=style/300x210"
                                          data-original="${info.LitPic}?x-oss-process=style/300x210" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
                                 </a>
@@ -283,10 +309,6 @@
     $.get(
         "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+r+"&platform=pc",
             function (data) {
-                console.log(data);
-                if(parseInt(data.Result.Status) == 1){
-                console.log('成功发送点击量');
-            }
         });
     }
 

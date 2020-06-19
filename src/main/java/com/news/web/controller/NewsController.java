@@ -739,6 +739,8 @@ public class NewsController {
                 if(!CollectionUtils.isEmpty(commonHouseResult)){
 
                     model.addAttribute("commonHouseResult" , commonHouseResult);
+                    //用于判断绑定的房源数据是否只有一条
+                    model.addAttribute("commonHouseResultSize" , commonHouseResult.size());
                 }
             }
         }
