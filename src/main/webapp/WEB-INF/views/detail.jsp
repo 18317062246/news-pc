@@ -94,85 +94,130 @@
                 <div class="section-wrap section-houselists">
                     <div class="section">
                         <div class="newRoomlists">
-                            <c:forEach items="${xfHouseList}" varStatus="status" var="n">
-                                <div class="newRoom-item">
-                                    <div class="${status.index % 2 == 0 ? "item-left" : "item-right"}">
+                           <%-- <div class="newRoom-item">--%>
+                            <c:forEach items="${commonHouseResult}" varStatus="status" var="n">
+
+                                <c:if test="${status.index == 0 || (status.index + 1) % 2 == 1}">
+                                    <div class="newRoom-item">
+                                </c:if>
+                                    <div class="${status.count % 2 == 1 ? "item-left" : "item-right"}">
                                         <div class="room-img">
-                                            <a href="//${cityen}.centanet.com/xinfang/lp-${n.oid}" target="_blank">
-                                                <img src="${n.defaultImage}" width="250" height="167" alt="" />
-                                            </a>
+                                            <c:if test="${n.xinfangResult != null}">
+                                                <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/" target="_blank">
+                                                    <img src="${n.xinfangResult.defaultImage}" width="250" height="167" alt="" />
+                                                </a>
+                                            </c:if>
+                                            <c:if test="${n.esfResult != null}">
+                                                <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/" target="_blank">
+                                                    <img src="${n.esfResult.fullImagePath}" width="250" height="167" alt="" />
+                                                </a>
+                                            </c:if>
+                                            <c:if test="${n.xiaoQuResult != null}">
+                                                <a href="//${cityen}.centanet.com/xiaoqu/xq-${n.xiaoQuResult.oid}/" target="_blank">
+                                                    <img src="${n.xiaoQuResult.imagePath}" width="250" height="167" alt="" />
+                                                </a>
+                                            </c:if>
+
                                         </div>
                                         <div class="room-mid">
                                             <h5>
-                                                <a href="//${cityen}.centanet.com/xinfang/lp-${n.oid}"  target="_blank" title="${n.adName}">${n.adName}</a>
-                                                <label for="" class="red_tag"><%--${n.estType}--%>
-                                                    <c:if test="${n.estType.contains('公寓')}">
-                                                        公寓
-                                                    </c:if>
-                                                    <c:if test="${n.estType.contains('住宅')}">
-                                                        住宅
-                                                    </c:if>
-                                                    <c:if test="${n.estType.contains('别墅')}">
-                                                        别墅
-                                                    </c:if>
-                                                </label><label for="" class="hot_tag"></label><i for="" class="gift_tag"></i>
+                                                <c:if test="${n.xinfangResult != null}">
+
+                                                    <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/"  target="_blank" title="${n.xinfangResult.adName}">${n.xinfangResult.adName}</a>
+                                                    <label for="" class="red_tag"><%--${n.estType}--%>
+                                                        <c:if test="${n.xinfangResult.estType.contains('公寓')}">
+                                                            公寓
+                                                        </c:if>
+                                                        <c:if test="${n.xinfangResult.estType.contains('住宅')}">
+                                                            住宅
+                                                        </c:if>
+                                                        <c:if test="${n.xinfangResult.estType.contains('别墅')}">
+                                                            别墅
+                                                        </c:if>
+                                                    </label>
+                                                </c:if>
+                                                <c:if test="${n.esfResult != null}">
+                                                    <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/"  target="_blank" title="${n.esfResult.estateName}">${n.esfResult.estateName}</a>
+                                                    <label for="" class="red_tag"><%--${n.esfResult.estType}--%>
+                                                        <c:if test="${n.esfResult.propertyType.contains('公寓')}">
+                                                            公寓
+                                                        </c:if>
+                                                        <c:if test="${n.esfResult.propertyType.contains('住宅')}">
+                                                            住宅
+                                                        </c:if>
+                                                        <c:if test="${n.esfResult.propertyType.contains('别墅')}">
+                                                            别墅
+                                                        </c:if>
+                                                    </label>
+                                                </c:if>
+                                                <c:if test="${n.xiaoQuResult != null}">
+                                                    <a href="//${cityen}.centanet.com/xiaoqu/xq-${n.xiaoQuResult.oid}/"  target="_blank" title="${n.xiaoQuResult.estateName}">${n.xiaoQuResult.estateName}</a>
+                                                    <label for="" class="red_tag"><%--${n.esfResult.estType}--%>
+                                                        <c:if test="${n.xiaoQuResult.propertyType.contains('公寓')}">
+                                                            公寓
+                                                        </c:if>
+                                                        <c:if test="${n.xiaoQuResult.propertyType.contains('住宅')}">
+                                                            住宅
+                                                        </c:if>
+                                                        <c:if test="${n.xiaoQuResult.propertyType.contains('别墅')}">
+                                                            别墅
+                                                        </c:if>
+                                                    </label>
+                                                </c:if>
+                                                <i for="" class="gift_tag"></i>
                                             </h5>
                                             <p>
-                                                【${n.baseNewProp.district.GScopeCnName}-${n.baseNewProp.GScope.GScopeCnName}】
+                                                <c:if test="${n.xinfangResult != null}">
+                                                    【${n.xinfangResult.baseNewProp.district.GScopeCnName}-${n.xinfangResult.baseNewProp.GScope.GScopeCnName}】
+                                                </c:if>
+                                                <c:if test="${n.esfResult != null}">
+                                                    【${n.esfResult.estateName}】
+                                                </c:if>
+                                                <c:if test="${n.xiaoQuResult != null}">
+                                                    【${n.xiaoQuResult.estateName}】
+                                                </c:if>
+
                                             </p>
                                             <p>
-                                                <span class="tipTriggerB" tip="${n.baseNewProp.address}">${n.baseNewProp.address}</span>
+                                                <c:if test="${n.xinfangResult != null}">
+                                                    <span class="tipTriggerB" tip="${n.xinfangResult.baseNewProp.address}">${n.xinfangResult.baseNewProp.address}</span>
+                                                </c:if>
+                                                <c:if test="${n.esfResult != null}">
+                                                    <span class="tipTriggerB" tip="${n.esfResult.address}">${n.esfResult.address}</span>
+                                                </c:if>
+                                                <c:if test="${n.xiaoQuResult != null}">
+                                                    <span class="tipTriggerB" tip="${n.xiaoQuResult.address}">${n.xiaoQuResult.address}</span>
+                                                </c:if>
+
                                             </p>
-                                            <p class="average-price">
-                                                <c:if test="${n.averagePrice != null &&n.averagePrice > 0}">
-                                                    <strong class="nub">${n.averagePrice}</strong><cite class="unit">元/平
-                                                 </c:if>
-                                            </cite>
-                                            </p>
+
+                                                <c:if test="${n.xinfangResult != null}">
+                                                    <c:if test="${n.xinfangResult.averagePrice != null &&n.xinfangResult.averagePrice > 0}">
+                                                        <p class="average-price">
+                                                        <strong class="nub">${n.xinfangResult.averagePrice}</strong><cite class="unit">元/平 </cite>
+                                                        </p>
+                                                    </c:if>
+
+                                                </c:if>
+                                                <c:if test="${n.esfResult != null}">
+                                                    <c:if test="${n.esfResult.salePriceString != null }">
+                                                        <p class="average-price"><strong class="nub">${n.esfResult.salePriceString}</strong><cite class="unit">万</cite></p>
+                                                    </c:if>
+                                                </c:if>
+                                                <c:if test="${n.xiaoQuResult != null}">
+                                                        <c:if test="${n.xiaoQuResult.saleAvgPriceString != null }">
+                                                                <p class="average-price"><strong class="nub">${n.xiaoQuResult.saleAvgPriceString}</strong><cite class="unit">元/平</cite></p>
+                                                        </c:if>
+                                                </c:if>
+
                                         </div>
                                     </div>
 
-                                </div>
-                            </c:forEach>
-
-                            <c:forEach items="${esfHouseList}" varStatus="status" var="n">
-                                <div class="newRoom-item">
-                                    <div class="${ status.index % 2 == 0 ? "item-left" : "item-right"}">
-                                        <div class="room-img">
-                                            <a href="//${cityen}.centanet.com/ershoufang/${n.oid}.html" target="_blank">
-                                                <img src="${n.fullImagePath}" width="250" height="167" alt="" />
-                                            </a>
+                                    <c:if test="${status.count % 2 == 0}">
                                         </div>
-                                        <div class="room-mid">
-                                            <h5>
-                                                <a href="//${cityen}.centanet.com/ershoufang/${n.oid}.html" target="_blank" title="${n.estateName}">${n.estateName}</a>
-                                                <label for="" class="red_tag"><%--${n.propertyType}--%>
-                                                    <c:if test="${n.propertyType.contains('公寓')}">
-                                                        公寓
-                                                    </c:if>
-                                                    <c:if test="${n.propertyType.contains('住宅')}">
-                                                        住宅
-                                                    </c:if>
-                                                    <c:if test="${n.propertyType.contains('别墅')}">
-                                                        别墅
-                                                    </c:if>
-                                                </label><label for="" class="hot_tag"></label><i for="" class="gift_tag"></i>
-                                            </h5>
-                                            <%--<p>
-                                                【${n.regionName}-${n.gscopeName}】
-                                            </p>--%>
-                                            <p>
-                                                <span class="tipTriggerB" tip="${n.address}">${n.address}</span>
-                                            </p>
-                                            <c:if test="${n.salePrice != null &&n.salePrice > 0}">
-                                                <p class="average-price"><strong class="nub">${fn;fn:substring(n.salePrice , 0 , 3)}</strong><cite class="unit">万</cite>
-                                             </c:if>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                </div>
+                                    </c:if>
                             </c:forEach>
+                           <%-- </div>--%>
 
                         </div>
 
@@ -236,7 +281,7 @@
     //如果flag为false，证明是人，需要给页面加入访问量
     if(!flag){
     $.get(
-        "${newsDetailClickAddress}NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+r+"&platform=pc",
+        "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+r+"&platform=pc",
             function (data) {
                 console.log(data);
                 if(parseInt(data.Result.Status) == 1){

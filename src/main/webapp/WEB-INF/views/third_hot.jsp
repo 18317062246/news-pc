@@ -42,9 +42,10 @@
 			</div>
 			<div class="inform-main-bot">
 				<dl class="inform-quest ">
-					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank" title="${leftDown[0].Title}">${leftDown[0].Title}</a></dt>
+					<c:forEach items="${leftDown}" var="left" begin="0" end="3">
+						<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${left.ID}.html/" target="_blank" title="${left.Title}">${left.Title}</a></dt>
+					</c:forEach>
 					<dd>
-						<p>${leftDown[0].Description}</p>
 						<p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu">@${types[1].columnsName}</a></p>
 					</dd>
 				</dl>
@@ -54,7 +55,8 @@
 		<div class="inform-side fl">			
 			<div class="expert">
 				<div class="expert-phone">
-					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank" title="${right[0].Title}"><img src="${right[0].LitPic}" alt="${right[0].Title}"></a>
+					<c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank" title="${right[0].Title}"><img src="${right[0].LitPic}" alt="${right[0].Title}"onerror="this.src='${defaultpic}'"></a>
 				</div>
 					<ul class="expert-comment">
 					<c:forEach items="${right}" var="ri" begin="1" end="4">

@@ -207,7 +207,7 @@
                             </p>
                             <dl class="infor-side-pB">
                                     <%--遍历文章--%>
-                                <c:forEach items="${rightNews}" var="n" begin="1" end="5" varStatus="status">
+                                <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
                                     <c:if test="${t.id==n.TypeID}">
                                         <dt class="${status.count==1?'curr':''}"><i></i>
                                             <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,36)}</a>
@@ -230,6 +230,27 @@
                 <%-- //右侧上部文章--%>
                 <c:forEach items="${rightType}" var="t" varStatus="status">
                     <c:if test="${t.location=='right' && status.index!=0}">
+                        <c:choose>
+                            <c:when test="${cityen == 'sz'}">
+                                <c:if test="${t.columnsName != '测评报告'}">
+                                    <div class="infor-side-box">
+                                        <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                        </h2>
+                                        <ul class="infor-side-p">
+                                                <%--遍历文章--%>
+                                            <c:forEach items="${rightNews}" var="n" varStatus="status">
+                                                <c:if test="${t.id==n.TypeID}">
+                                                    <li><i></i><a class="f000"
+                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,28)}</a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </c:when>
+                            <c:otherwise>
                                 <div class="infor-side-box">
                                     <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
                                         <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
@@ -245,6 +266,9 @@
                                         </c:forEach>
                                     </ul>
                                 </div>
+                            </c:otherwise>
+                        </c:choose>
+
                     </c:if>
                 </c:forEach>
 
@@ -276,6 +300,10 @@
                                     </ul>
                                 </div>
                             </c:if>
+                        </c:when>
+                        <%--深圳隐藏品牌部、研究院、专家点评--%>
+                        <c:when test="${cityen == 'sz'}">
+
                         </c:when>
                         <c:otherwise>
                             <div class="infor-side-box">

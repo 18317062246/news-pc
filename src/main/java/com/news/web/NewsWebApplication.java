@@ -21,4 +21,6 @@ public class NewsWebApplication  extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(NewsWebApplication.class , args);
     }
+
+
 }

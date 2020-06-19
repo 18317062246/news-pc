@@ -28,7 +28,7 @@ public class ESFResult implements Serializable {
     @JsonProperty("KeyWords")
     private String keyWords;
 
-    /*@JsonProperty("RegionName")
+  /*  @JsonProperty("RegionName")
     private String regionName;
 
     @JsonProperty("GscopeName")
@@ -41,7 +41,7 @@ public class ESFResult implements Serializable {
     @JsonProperty("FullImagePath")
     private String fullImagePath;
 
-    @JsonProperty("SsalePrice")
+    @JsonProperty("SalePrice")
     private Double salePrice;
 
     @JsonProperty("Title")
@@ -49,4 +49,7 @@ public class ESFResult implements Serializable {
 
     @JsonProperty("Oid")
     private String oid;
+
+    @JsonProperty("SalePriceString")
+    private String salePriceString;
 }

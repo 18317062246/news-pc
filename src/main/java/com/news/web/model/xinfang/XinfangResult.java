@@ -21,7 +21,7 @@ public class XinfangResult implements Serializable {
     private String adName;//推广名
 
     @JsonProperty("AveragePrice")
-    private Double averagePrice;
+    private Long averagePrice;
 
     @JsonProperty("BuildingTypes")
     private String buildingTypes;//建筑类型
