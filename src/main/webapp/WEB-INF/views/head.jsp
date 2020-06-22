@@ -199,7 +199,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯</a>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="//<%=cityen%>.centanet.com/xiezilou/" target="_blank">写字楼</a></li>

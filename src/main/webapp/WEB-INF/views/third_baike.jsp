@@ -3,22 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1" />
-    <meta name="renderer" content="webkit">
-    <title>03-楼盘详情</title>
-   <%-- <link rel="stylesheet" href="${staticurl}/css/basev6.css">
-    <link rel="stylesheet" href="${staticurl}/css/xinfangdetailv6.css">--%>
-</head>
-
-<body >
     <!-- 资讯百科 -->
-    <div class="section-wrap section-encyclo s5" id="newlatest" style="margin:30px auto;" >
+    <div class="section-wrap section-encyclo" >
         <div class="section" >
             <div class="top_caption">
                 <h5 class="tit">资讯百科</h5>
@@ -38,6 +24,4 @@
                 </c:forEach>
             </ul>
         </div>                
-    </div>   
-</body>
-</html>
+    </div>

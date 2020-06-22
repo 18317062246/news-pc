@@ -227,19 +227,7 @@
                                     <c:if test="${status.count % 2 == 0}">
                                         </div>
                                     </c:if>
-                                    <c:if test="${(commonHouseResultSize == 1 && status.count == 1) || (commonHouseResultSize == 11 && status.count == 11)}">
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${(commonHouseResultSize == 3 && status.count == 3) || (commonHouseResultSize == 13 && status.count == 13)}">
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${(commonHouseResultSize == 5 && status.count == 5) || (commonHouseResultSize == 15 && status.count == 15)}">
-                                        </div>
-                                    </c:if>
-                                     <c:if test="${(commonHouseResultSize == 7 && status.count == 7) || (commonHouseResultSize == 17 && status.count == 17)}">
-                                        </div>
-                                    </c:if>
-                                     <c:if test="${(commonHouseResultSize == 9 && status.count == 9) || (commonHouseResultSize == 19 && status.count == 19)}">
+                                    <c:if test="${commonHouseResultSize == status.count}">
                                         </div>
                                     </c:if>
                             </c:forEach>

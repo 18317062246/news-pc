@@ -881,6 +881,13 @@ public class NewsController {
         setCommon(model, cityen);
         //栏目类型
         List<NewsType> types = typeList(cityen, null);
+        //如果type的id为464，那么取出东三省的默认第一个栏目
+        if(Objects.equals(types.get(1).getId() , 464)){
+            //取出子级栏目
+            List<NewsType> newsTypes = JSONArray.parseArray(JSON.toJSONString(types.get(1).getChildList()), NewsType.class);
+            //取出子级栏目的默认第一个栏目
+            types.set(1 , newsTypes.get(0));
+        }
         List<Map> leftUp = new ArrayList<>();
         List<Map> leftDown = new ArrayList<>();
         List<Map> right = new ArrayList<>();
@@ -888,6 +895,13 @@ public class NewsController {
         for (int i = 0; i < types.size(); i++) {
             //文章列表
             List<Integer> typeid = new ArrayList<>(Arrays.asList(types.get(i).getId()));
+            //若typeid为464，取出子级栏目id
+            if(Objects.equals(typeid.get(0) , 464)){
+                //取出子级栏目
+                List<NewsType> newsTypes = JSONArray.parseArray(JSON.toJSONString(types.get(i).getChildList()), NewsType.class);
+                //取出子级栏目的第一个id
+                typeid = Arrays.asList(newsTypes.get(0).getId());
+            }
             JSONObject result = newsList(cityen, typeid, 1, 10, null, null, null);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
                 List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);

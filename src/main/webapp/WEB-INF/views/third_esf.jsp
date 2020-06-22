@@ -3,18 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1" />
-	<meta name="renderer" content="webkit">
-	<title>官网首页资讯</title>
-	<%--<link rel="stylesheet" href="${staticurl}/css/homev6.css" >--%>
-</head>
-<body >
 <div class="section-wrap section-inform section-inform-national">
 	<div class="section ">
 		<div class="title-top">
@@ -23,19 +11,9 @@
 		 </div>
 			
 		<div class="inform-main fl">
-			<%--左上--%>
-			<div class="inform-main-top">
-				<dl class="inform-quest ">
-					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank" title="${leftDown[0].Title}">${leftDown[0].Title}</a></dt>
-					<dd>
-						<p class="mid">${leftDown[0].Description}</p>
 
-						<p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu">@${types[1].columnsName}</a></p>
-					</dd>
-				</dl>
-			</div>
-				<%--左下--%>
-			<div class="inform-main-bot">
+				<%--左上--%>
+			<div class="inform-main-top">
 				<dl class="inform-quest ">
 					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/" target="_blank" title="${leftUp[0].Title}">${leftUp[0].Title}</a></dt>
 					<dd>
@@ -43,7 +21,19 @@
 						<p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="tdu">@${types[0].columnsName}</a></p>
 					</dd>
 				</dl>
-			</div>		
+			</div>
+
+             <%--左下--%>
+            <div class="inform-main-bot">
+               <dl class="inform-quest ">
+                   <dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank" title="${leftDown[0].Title}">${leftDown[0].Title}</a></dt>
+                   <dd>
+                    <p class="mid">${leftDown[0].Description}</p>
+
+                     <p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu">@${types[1].columnsName}</a></p>
+                    </dd>
+               </dl>
+           </div>
 		</div>	
 		<div class="inform-side fl">			
 			<div class="expert">
@@ -67,5 +57,3 @@
 		 <p class="bot_link tc"><a href="//news.centanet.com/${cityen}/" class="white_btn">更多新鲜资讯</a></p>
 	</div>
 </div>
-</body>
-</html>
