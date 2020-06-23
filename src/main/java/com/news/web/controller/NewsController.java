@@ -58,8 +58,6 @@ public class NewsController {
 
     @Value("${static.url}")
     public String staticurl;
-    @Value("${static.version}")
-    public String ver;
     @Value("${deal.url}")
     public String dealurl;
     @Value("${deal.citys}")
@@ -238,7 +236,6 @@ public class NewsController {
     private void setCommon(Model model, String cityen) {
         model.addAttribute(CITYEN, cityen);
         model.addAttribute("staticurl", staticurl);
-        model.addAttribute("ver", ver);
         model.addAttribute("citycn", citymap(cityen));
         model.addAttribute("cityTelphone", cityTelphone(cityen));
 

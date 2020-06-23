@@ -16,14 +16,9 @@ log:
 
 #静态文件版本号
 static:
-  version: 20200616
-  path: D:/100workspace/160code/news-html/pc/
     #url: http://static.dev.com.cn:8118
   url: https://static.centanet.com/news/2020062325/pc
 
-#测试路径
-web:
-  driver: C:\Users\zouyuan1\AppData\Local\Google\Chrome\Application\chromedriver.exe
 
 #城市集合
 #city:

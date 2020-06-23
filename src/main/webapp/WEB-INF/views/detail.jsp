@@ -17,10 +17,10 @@
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
     <title> ${detail.Typename}－${citycn}中原地产</title>
-    <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css?v=${ver}">
-    <link rel="stylesheet" href="${staticurl}/css/icons.css?v=${ver}">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css?v=${ver}">
-    <link rel="stylesheet" href="${staticurl}/css/cent_information.css?v=${ver}">
+    <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
+    <link rel="stylesheet" href="${staticurl}/css/icons.css">
+    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>

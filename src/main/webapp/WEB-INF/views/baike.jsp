@@ -11,18 +11,18 @@
     <meta name="description" content=""/>
     <link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
     <title>${typeName}-中原地产资讯列表</title>
-    <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css?v=${ver}">
-    <link rel="stylesheet" href="${staticurl}/css/icons.css?v=${ver}">
-    <link rel="stylesheet" href="${staticurl}/css/cent_information.css?v=${ver}">
+    <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
+    <link rel="stylesheet" href="${staticurl}/css/icons.css">
+    <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
 
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css?v=${ver}">
-    <link rel="stylesheet" href="${staticurl}/css/encyclop2.css?v=${ver}">
+    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    <link rel="stylesheet" href="${staticurl}/css/encyclop2.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>
     <script src="${staticurl}/sidebar/quick_links.js"></script>
     <script src="${staticurl}/js/placeholder.js"></script>
-    <script src="${staticurl}/js/head.js?v=${ver}"></script>
+    <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/totalexchange.js"></script>
 
 
@@ -261,7 +261,7 @@
 <!--[if lte IE 8]>
 <script src="sidebar/ieBetter.js"></script>
 <![endif]-->
-<script src="${staticurl}/js/cent_lists.js?v=${ver}"></script>
+<script src="${staticurl}/js/cent_lists.js"></script>
 <script src="${staticurl}/js/listp2.js"></script>
 <%--统计代码--%>
 <%@include file="/WEB-INF/views/statistics_code.jsp" %>
