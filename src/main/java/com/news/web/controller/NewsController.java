@@ -88,6 +88,7 @@ public class NewsController {
     private static final String NEWS_RELATED = "NewsRelated";
     private static final String GOU_FANG_TEXT = "购房百科";
     private static final String ARTICLE_LIST_IS_NULL = "请求文章列表为空=>{}";
+    private static final String SEARCH_TEXT = "搜索列表";
 
 
     /**
@@ -370,7 +371,10 @@ public class NewsController {
             model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
         }
 
-
+        //判断是否为搜索页面
+        if(!StringUtils.isEmpty(key)){
+            model.addAttribute(COL_NAME, SEARCH_TEXT);
+        }
 
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
 

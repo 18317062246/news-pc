@@ -58,7 +58,13 @@
                 <span class="fsm">&gt;</span>
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a>
                 <span class="fsm">&gt;</span>
-                <a href="/${cityen}/list/c${type}/p${page}/" class="f123">${colName}</a>
+                <c:if test="${colName == '搜索列表'}">
+                    <a href="/${cityen}/list/p${page}/?key=${key}" class="f123">${colName}</a>
+                </c:if>
+                <c:if test="${colName != '搜索列表'}">
+                    <a href="/${cityen}/list/c${type}/p${page}/" class="f123">${colName}</a>
+                </c:if>
+
             </div>
         </div>
         <div class="infor-main fl"
