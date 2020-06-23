@@ -934,10 +934,13 @@ public class NewsController {
         model.addAttribute("leftDown", leftDown);
         model.addAttribute(RIGHT, right);
         model.addAttribute(TYPES, types);
+
         if ("index".equals(type)) {//二手房
             return "third_esf";
         } else if ("info".equals(type)) {//新房
             return "third_xf";
+        }else if ("sz_esf".equals(type)) {//深圳二手房
+            return "third_sz_esf";
         }
         return "third_hot";
     }

@@ -38,100 +38,7 @@
 <body>
 <%--head--%>
 <%@include file="/WEB-INF/views/head.jsp" %>
-<!-- S;centmain-wraper -->
-<%--<div class="centmain-wraper centmain-wraper-infor">
-    <div class="centmain-inner">
-        <div class="breadcrumbs clearfix">
-            <div class="fl breadcrumbs-area f000 ">
-                <a href="/${cityen}" class="f000">资讯</a>
-                <span class="fsm">&gt;</span>
-               &lt;%&ndash; <span>政策法规</span>&ndash;%&gt;
-            </div>
-        </div>
-        <div class="infor-side fr">
-            <div class="infor-lists">
-                <c:forEach items="${news}" var="item">
-                   &lt;%&ndash; <dl class="infor-news-item clearfix">
-                        <dt class="fl">
-                            <a href="/${cityen}/detail/${item.ID}.html" target="_blank"><img src="${item.LitPic}" alt=""></a>
-                        </dt>
-                        <dd class="fl">
-                            <h6 class="f18"><a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank">${item.Title}</a></h6>
-                            <p class="f14 f999">${item.Description}<a href="" class="cBlue ml_15"></a></p>
-                            <div class="tag clearfix">
-                                <p class="news_time">
-                                    <jsp:useBean id="myDate" class="java.util.Date"/>
-                                    <c:set target="${myDate}" property="time" value="${item.PublishDate}"/>
-                                    <fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${myDate}" type="both"/>
-                                </p>
-                                <ul>
-                                    <c:forEach items="${item.LabelList}" var="l">
-                                        <li><span class="tag_item">${l.title}</span></li>
-                                    </c:forEach>
-                                 &lt;%&ndash;
-                                    <li><span class="tag_item">标签二</span></li>
-                                    <li><span class="tag_item">标签三</span></li>&ndash;%&gt;
-                                </ul>
-                            </div>
-                        </dd>
-                    </dl>&ndash;%&gt;
-                    <dl class="infor-news-item clearfix">
-                        <dt class="fl">
-                            <a href=""><img src="${staticurl}/images/infor-news.jpg" alt=""></a>
-                        </dt>
-                        <dd class="fl">
-                            <h6 class="f18"><a href="" class="f000">一二线城市楼市库存渐稳 业内称市场迎转折点</a></h6>
-                            <p class="f14 f999"> 近日，中原地产研究中心发布最新统计数据显示，此前住宅价格一路上扬的北京、广州、合肥、南京、苏州等城市6月库存下调速度明显放缓。截至21日，13大一二线城市合计库存60.36万套<a href="" class="cBlue ml_15"></a></p>
-                            <div class="tag clearfix">
-                                <p class="news_time">2020-05-19 11:27</p>
-                                <ul>
-                                    <li><span class="tag_item">标签一</span></li>
-                                    <li><span class="tag_item">标签二</span></li>
-                                    <li><span class="tag_item">标签三</span></li>
-                                </ul>
-                            </div>
-                        </dd>
-                    </dl>
-                </c:forEach>
 
-                <c:if test="${p.pageCount>=1}">
-                    <div class="infor-pager">
-                    <div class="infor-pager-inner">
-                        <c:if test="${p.hasPrePage}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}"><span class="fsm">&lt;</span>上一页</a>
-                        </c:if>
-                        <c:if test="${p.currpageNum>2}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}">${p.currpageNum-2}</a>
-                        </c:if>
-                        <c:if test="${p.currpageNum>1}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}">${p.currpageNum-1}</a>
-                        </c:if>
-                        <span class="curr">${p.currpageNum}</span>
-                        <c:if test="${p.pageCount-p.currpageNum>=1}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}">${p.currpageNum+1}</a>
-                        </c:if>
-                        <c:if test="${p.pageCount-p.currpageNum>=2}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}">${p.currpageNum+2}</a>
-                        </c:if>
-                        <c:if test="${p.hasNextPage}">
-                            <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}">下一页<span class="fsm">&gt;</span></a>
-                        </c:if>
-                    </div>
-                </div>
-                </c:if>
-            </div>
-
-
-
-        </div>
-
-
-
-
-        <div class="infor-space"></div>
-    </div>
-    <!-- E;centmain-inner -->
-</div>--%>
 <div class="centmain-wraper centmain-wraper-infor">
     <div class="centmain-inner">
         <div class="breadcrumbs clearfix">
@@ -142,7 +49,12 @@
                 <span>${colName}</span>
             </div>--%>
             <div class="fl breadcrumbs-area f123 ">
-                <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                <c:if test="${cityen == 'jtdr'}">
+                    <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
+                </c:if>
+                <c:if test="${cityen != 'jtdr'}">
+                    <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                </c:if>
                 <span class="fsm">&gt;</span>
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a>
                 <span class="fsm">&gt;</span>
@@ -168,7 +80,11 @@
                         </dt>
                         <dd class="fl">
                             <h6 class="f18"><a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank">${item.Title}</a></h6>
-                            <p class="f14 f999">${item.Description}<span>...</span><a href="" class="cBlue ml_15"></a></p>
+                            <p class="f14 f999">${item.Description}
+                                <c:if test="${item.Description != null && item.Description.length() >= 64}">
+                                    <span>...</span>
+                                </c:if>
+                                <a href="" class="cBlue ml_15"></a></p>
                             <div class="tag clearfix">
                                 <p class="news_time">
                                     <jsp:useBean id="myDate" class="java.util.Date"/>

@@ -50,7 +50,13 @@
         <div class="breadcrumbs clearfix f123">
 
             <div class="fl breadcrumbs-area">
-                <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                <c:if test="${cityen == 'jtdr'}">
+                    <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
+                </c:if>
+                <c:if test="${cityen != 'jtdr'}">
+                    <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                </c:if>
+
                 <span class="fsm">&gt;</span>
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a>
                 <span class="fsm">&gt;</span>
@@ -135,7 +141,11 @@
                                             </a>
                                         </h6>
                                         <p class="f14 f999">
-                                                ${item.Description}<span>...</span>
+                                                ${item.Description}
+                                                    <c:if test="${item.Description != null && item.Description.length() >= 64}">
+                                                        <span>...</span>
+                                                    </c:if>
+
                                             <a href="" class="cBlue ml_15"></a>
                                         </p>
                                         <div class="tag clearfix">
