@@ -28,12 +28,6 @@ public class ESFResult implements Serializable {
     @JsonProperty("KeyWords")
     private String keyWords;
 
-  /*  @JsonProperty("RegionName")
-    private String regionName;
-
-    @JsonProperty("GscopeName")
-    private String gscopeName;*/
-
 
     @JsonProperty("NewsId")
     private Integer newsId;

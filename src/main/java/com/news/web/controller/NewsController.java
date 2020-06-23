@@ -89,6 +89,7 @@ public class NewsController {
      */
     private static final String NEWS_RELATED = "NewsRelated";
     private static final String GOU_FANG_TEXT = "购房百科";
+    private static final String ARTICLE_LIST_IS_NULL = "请求文章列表为空=>{}";
     private static final String SEARCH_TEXT = "搜索列表";
 
 
@@ -469,7 +470,7 @@ public class NewsController {
                 , JSONObject.class, map);
         JSONObject newsList = jSONObject.getJSONObject(RESULT);
         if (newsList.isEmpty()) {
-            log.error("请求文章列表为空=>{}", newsList);
+            log.error(ARTICLE_LIST_IS_NULL, newsList);
         }
         return newsList;
     }
@@ -505,7 +506,7 @@ public class NewsController {
                 , JSONObject.class, map);
         JSONObject newsList = jSONObject.getJSONObject(RESULT);
         if (newsList.isEmpty()) {
-            log.error("请求文章列表为空=>{}", newsList);
+            log.error(ARTICLE_LIST_IS_NULL, newsList);
         }
         return newsList;
     }
@@ -537,7 +538,7 @@ public class NewsController {
             JSONObject jSONObject = restTemplate.getForObject(serviceUrl + "?cityen={cityen}&EstExtId={EstExtId}&platform=pc", JSONObject.class, map);
             JSONObject newsList = jSONObject.getJSONObject(RESULT);
             if (CollectionUtils.isEmpty(newsList)) {
-                log.error("请求文章列表为空=>{}", newsList);
+                log.error(ARTICLE_LIST_IS_NULL, newsList);
             }
             if(!CollectionUtils.isEmpty(newsList)){
                 String data = JSON.toJSONString(jSONObject.get(RESULT));
@@ -561,6 +562,7 @@ public class NewsController {
      * @param cityen 城市简称
      * @return
      */
+    @SuppressWarnings("all")
     public List<CommonHouseResult> getErshouFangInfo(List<NewsRelated> ershoufangTypes , String cityen){
         //定义一个需要返回的集合对象
         List<CommonHouseResult> resultList = Lists.newArrayList();
@@ -582,7 +584,7 @@ public class NewsController {
             JSONObject jSONObject = restTemplate.getForObject(serviceUrl + "?cityen={cityen}&AdsNo={adsNo}&platform=pc", JSONObject.class, map);
             JSONObject newsList = jSONObject.getJSONObject(RESULT);
             if (CollectionUtils.isEmpty(newsList)) {
-                log.error("请求文章列表为空=>{}", newsList);
+                log.error(ARTICLE_LIST_IS_NULL, newsList);
             }
             if(!CollectionUtils.isEmpty(newsList)){
                 String data = JSON.toJSONString(jSONObject.get(RESULT));
@@ -637,7 +639,7 @@ public class NewsController {
             JSONObject jSONObject = restTemplate.getForObject(serviceUrl + "?cityen={cityen}&EstateCode={estateCode}&platform=pc&ImageWidth=375&ImageHeight=250", JSONObject.class, map);
             JSONObject newsList = jSONObject.getJSONObject(RESULT);
             if (CollectionUtils.isEmpty(newsList)) {
-                log.error("请求文章列表为空=>{}", newsList);
+                log.error(ARTICLE_LIST_IS_NULL, newsList);
             }
             if(!CollectionUtils.isEmpty(newsList)){
                 String data = JSON.toJSONString(jSONObject.get(RESULT));
@@ -670,6 +672,7 @@ public class NewsController {
      * @author: zouyuan1
      * @date: 2020-05-22
      */
+    @SuppressWarnings("all")
     @GetMapping("/{cityen}/detail/{id}.html")
     public String detail(Model model
             , @PathVariable("cityen") String cityen
