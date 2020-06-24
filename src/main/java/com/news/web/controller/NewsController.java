@@ -158,7 +158,7 @@ public class NewsController {
             rightTypeAdd.add(right);
         }
         rightTypeAdd.forEach(item -> {
-            JSONObject right = newsList(cityen, Arrays.asList(item.getId()), 1, 10, null, null, null);
+            JSONObject right = newsList(cityen, Arrays.asList(item.getId()), 1, 5, null, null, null);
             if (!ObjectUtils.isEmpty(right.get(NEWS_LIST))) {
                 rightNews.addAll(JSON.parseArray(JSON.toJSONString(right.get(NEWS_LIST)), Map.class));
             }
