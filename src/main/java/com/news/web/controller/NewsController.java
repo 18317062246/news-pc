@@ -940,6 +940,8 @@ public class NewsController {
             return "third_xf";
         }else if ("sz_esf".equals(type)) {//深圳二手房
             return "third_sz_esf";
+        }else if ("zs_buyer".equals(type)) {//中山买房帮手
+            return "third_zs_buyer";
         }
         return "third_hot";
     }

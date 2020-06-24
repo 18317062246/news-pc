@@ -813,6 +813,22 @@
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/huodong/" target="_blank">最新活动</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
+
+                    <c:choose>
+                        <c:when test="${baiketype}">
+                            <li class="curr"><a href="/<%=cityen%>/">资讯<span>·</span>百科</a>
+                                <div class="subnav" >
+                                    <a href="/<%=cityen%>/" target="_blank">资讯</a>
+                                    <a href="/<%=cityen%>/baike/" target="_blank">购房百科</a>
+                                    <i class="arrow"></i>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
+                        </c:otherwise>
+                    </c:choose>
+
                 </c:when>
             </c:choose>
         </ul>
