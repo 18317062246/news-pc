@@ -164,7 +164,7 @@
 <!-- footer -->
 <%@include file="/WEB-INF/views/foot.jsp" %>
 <!--[if lte IE 8]>
-	<script src="${staticurl}/sidebar/ieBetter.js"></script>
+	<script src="${staticurl}/sidebar/ie_better.js"></script>
 	<![endif]-->
 <script>
     $(function () {

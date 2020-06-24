@@ -259,7 +259,7 @@
 <%@include file="/WEB-INF/views/statistics_code.jsp" %>
 <!--右侧贴边导航quick_links.js控制-->
 <!--[if lte IE 8]>
-<script src="sidebar/ieBetter.js"></script>
+<script src="sidebar/ie_better.js"></script>
 <![endif]-->
 <script src="${staticurl}/js/cent_lists.js"></script>
 <script src="${staticurl}/js/listp2.js"></script>

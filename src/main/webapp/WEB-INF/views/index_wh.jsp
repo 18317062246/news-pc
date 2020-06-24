@@ -676,7 +676,7 @@
 
 <!--右侧贴边导航quick_links.js控制-->
 <!--[if lte IE 8]>
-<%--<script src="sidebar/ieBetter.js"></script>
+<%--<script src="sidebar/ie_better.js"></script>
 <![endif]-->
 <script type="text/javascript">
     $(function () {
