@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="mfn" uri="/WEB-INF/mfn.tld"%>
 <html>
 <head>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
@@ -79,9 +80,11 @@
                         <dt class="fl">
                             <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                             <a href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
-                                <%--<img src="${item.LitPic}" alt="" onerror="this.src='${defaultpic}'">--%>
-                                <img class="lazy" src="${item.LitPic}?x-oss-process=style/180x130"
-                                     data-original="${item.LitPic}?x-oss-process=style/180x130" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
+
+                                <img class="lazy"
+                                     src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                     data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                     alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
                             </a>
                         </dt>
                         <dd class="fl">

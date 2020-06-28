@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -68,6 +67,7 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'tj'}">
@@ -107,7 +107,22 @@
                         </div>
                     </li>
                     <li><a href="//<%=cityen%>.centanet.com/entrust/" target="_blank">发布房源</a></li>
+                        <c:choose>
+                            <c:when test="${baiketype}">
+                                <li class="curr"><a href="/<%=cityen%>/">房产资讯</a>
+                                    <div class="subnav" >
+                                        <a href="/<%=cityen%>/" target="_blank">资讯</a>
+                                        <a href="/<%=cityen%>/baike/" target="_blank">购房百科</a>
+                                        <i class="arrow"></i>
+                                    </div>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="curr"><a href="/<%=cityen%>/" target="_blank">房产资讯</a>
+                             </c:otherwise>
+                        </c:choose>
                     <li><a href="http://tjvplus.centaline.com.cn/" target="_blank">居划算</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'gz'}">
@@ -142,7 +157,6 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
-                    <li><a href="//<%=cityen%>.centanet.com/entrust/" target="_blank">发布房源</a></li>
                     <c:choose>
                         <c:when test="${baiketype}">
                             <li class="curr"><a href="/<%=cityen%>/">资讯<span>·</span>百科</a>
@@ -158,6 +172,7 @@
                         </c:otherwise>
                     </c:choose>
                     <li><a href="//<%=cityen%>.centanet.com/about/" target="_blank">关于中原</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'sz'}">
@@ -212,8 +227,7 @@
                             <i class="arrow"></i>
                         </div>
                     </li>
-
-                    <li><a href="//<%=cityen%>.centanet.com/entrust/" target="_blank">发布房源</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'cd'}">
@@ -255,6 +269,7 @@
                     </li>
 
                     <li><a href="//<%=cityen%>.centanet.com/entrust/" target="_blank">发布房源</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'cq'}">
@@ -294,6 +309,7 @@
                         </div>
                     </li>
                     <li><a href="//<%=cityen%>.centanet.com/entrust/" target="_blank">发布房源</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'nj'}">
@@ -323,7 +339,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'wh'}">
@@ -351,7 +367,7 @@
                         </c:otherwise>
                     </c:choose>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
 
                 </c:when>
 
@@ -382,6 +398,7 @@
                     </c:choose>
 
                     <li><a href="//<%=cityen%>.centanet.com/about/" target="_blank">关于湖南中原</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'hz'}">
@@ -430,6 +447,7 @@
                         </div>
                     </li>
                     <li><a href="//<%=cityen%>.centanet.com/entrust/" target="_blank">发布房源</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'dg'}">
@@ -486,6 +504,7 @@
                         </div>
                     </li>
                     <li><a href="//<%=cityen%>.centanet.com/entrust/" target="_blank">发布房源</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'cc' || cityen == 'dl' || cityen == 'sy'}">
@@ -514,7 +533,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'nn'}">
@@ -530,7 +549,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/huodong/" target="_blank">最新活动</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'zj'}">
@@ -559,6 +578,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
 
                 </c:when>
 
@@ -575,6 +595,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
 
                 </c:when>
                 <c:when test="${cityen == 'fs'}">
@@ -605,7 +626,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'fz'}">
@@ -634,6 +655,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
 
                 </c:when>
 
@@ -649,7 +671,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/huodong/" target="_blank">最新活动</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'hf' || cityen == 'jn' || cityen == 'km' || cityen == 'nb' || cityen == 'xy'}">
@@ -665,7 +687,21 @@
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
-
+                    <c:choose>
+                        <c:when test="${baiketype}">
+                            <li class="curr"><a href="/<%=cityen%>/">资讯<span>·</span>百科</a>
+                                <div class="subnav" >
+                                    <a href="/<%=cityen%>/" target="_blank">资讯</a>
+                                    <a href="/<%=cityen%>/baike/" target="_blank">购房百科</a>
+                                    <i class="arrow"></i>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
+                        </c:otherwise>
+                    </c:choose>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'hrb'}">
@@ -693,7 +729,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'wx' || cityen == 'zq'}">
@@ -723,7 +759,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${ cityen == 'xa' || cityen == 'zz'}">
@@ -740,7 +776,7 @@
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
                 <c:when test="${cityen == 'xm'}">
@@ -770,7 +806,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
                 <c:when test="${cityen == 'zh'}">
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
@@ -799,7 +835,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
                 <c:when test="${cityen == 'zs'}">
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
@@ -828,7 +864,7 @@
                             <li class="curr"><a href="/<%=cityen%>/" target="_blank">资讯<span>·</span>百科</a>
                         </c:otherwise>
                     </c:choose>
-
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
             </c:choose>
         </ul>
@@ -886,7 +922,6 @@
     }
     //点击搜索
     $(".icons-searchred-btn").click(function () {
-        console.log('search btn');
         let keyword = $('.search-ipt').val();
         let type = $("#J_searchtype").val() || 0;
         location.href = getlink(type);

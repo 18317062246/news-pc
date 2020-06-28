@@ -17,7 +17,7 @@ log:
 #静态文件版本号
 static:
     #url: http://static.dev.com.cn:8118
-  url: https://static.centanet.com/news/2020062426/pc
+  url: https://static.centanet.com/news/2020062830/pc
 
 
 #城市集合
@@ -30,5 +30,7 @@ deal:
   #citys: bj,dg,nj,fs,zq
   citys: dg,gz
   url: https://act.centanet.com/www/scripts/loader4app.php
-#城市中英文
+# 配置信息
+centanet:
+  research: http://ccdata.com.cn/
 

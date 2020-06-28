@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="mfn" uri="/WEB-INF/mfn.tld"%>
 <html>
 <head>
     <meta http-equiv="Cache-Control" content="max-age=1000"/>
@@ -36,7 +37,9 @@
         }
 
     </script>
+
 </head>
+
 <body>
 <%--head--%>
 <%@include file="/WEB-INF/views/head.jsp" %>
@@ -74,50 +77,14 @@
                             <input type="hidden" value="${tabtype}" id="tabtype">
                             <ul class="programa">
                                 <c:forEach items="${types}" var="type" varStatus="status">
-                                  <%--  <c:if test="${type.location != 'right' && type.location != 'baike'}">
-                                        <li ref="${type.id}">
-                                            <a ref="${type.id}" href="" title="${type.columnsName}"
-                                               class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</ a>
-                                        </li>
-                                    </c:if>--%>
+
                                     <c:if test="${type.location != 'right' && type.location != 'baike'}">
                                         <li ref="${type.id}">
                                             <a ref="${type.id}" href="javascript:void(0);" title="${type.columnsName}"
                                                class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
                                         </li>
                                     </c:if>
-                                   <%-- <c:choose>
-                                        <c:when test="${cityen == 'dg'}">
-                                            <c:if test="${type.columnsName !=    '东莞成交走势'}">
-                                                <li ref="${type.id}">
-                                                    <a ref="${type.id}" href=" " title="${type.columnsName}"
-                                                       class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</ a>
-                                                </li>
-                                            </c:if>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <li ref="${type.id}">
-                                                <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
-                                                   class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</ a>
-                                            </li>
-                                        </c:otherwise>
-                                    </c:choose>--%>
-                                   <%-- <c:choose>
-                                        <c:when test="${cityen == 'dg'}">
-                                            <c:if test="${type.columnsName != '东莞成交走势'}">
-                                                <li ref="${type.id}">
-                                                    <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
-                                                       class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</a>
-                                                </li>
-                                            </c:if>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <li ref="${type.id}">
-                                                <a ref="${type.id}" href="javacript:void(0);" title="${type.columnsName}"
-                                                   class="programa-title ${status.index==0?'active':''}" target="_blank">${fn:substring(type.columnsName,0,18)}</a>
-                                            </li>
-                                        </c:otherwise>
-                                    </c:choose>--%>
+
                                 </c:forEach>
                             </ul>
                             <c:if test="${types !=null && types.size()>0}">
@@ -130,8 +97,8 @@
                                     <dt class="fl">
                                         <a href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
                                             <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                            <img class="lazy" src="${item.LitPic}?x-oss-process=style/master"
-                                                 data-original="${item.LitPic}?x-oss-process=style/master" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
+                                            <img class="lazy" src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                                 data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
                                         </a>
                                     </dt>
                                     <dd class="fl">
@@ -171,7 +138,7 @@
                                 <c:forEach items="${dealinfo}" var="n">
                                     <div class="inforSlid">
                                         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                        <a href="${n.targetUrl}" title="" target="_blank"><img src="${n.imageUrl}" alt="" onerror="this.src='${defaultpic}'"></a>
+                                        <a href="${n.targetUrl}" title="" target="_blank"><img src="${n.imageUrl}?x-oss-process=style/master" alt="" onerror="this.src='${defaultpic}'"></a>
                                          <p></p>
                                      </div>
                                 </c:forEach>
@@ -230,8 +197,10 @@
                                             <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">
                                                 <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                            <%--     <img src="${n.LitPic}" alt="" onerror="this.src='${defaultpic}'">--%>
-                                                <img class="lazy" src="${n.LitPic}?x-oss-process=style/master"
-                                                     data-original="${n.LitPic}?x-oss-process=style/master" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
+                                                <img class="lazy"
+                                                     src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
+                                                     data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}" onerror="this.src='${defaultpic}'"
+                                                     />
                                             </a>
                                         </dd>
                                     </c:if>

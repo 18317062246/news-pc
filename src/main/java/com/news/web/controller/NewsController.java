@@ -62,6 +62,8 @@ public class NewsController {
     public String dealurl;
     @Value("${deal.citys}")
     public String dealCitys;
+    @Value("${centanet.research}")
+    public String researchUrl;
 
 
     private static final String GUANG_ZHOU = "gz";
@@ -238,6 +240,7 @@ public class NewsController {
         model.addAttribute("staticurl", staticurl);
         model.addAttribute("citycn", citymap(cityen));
         model.addAttribute("cityTelphone", cityTelphone(cityen));
+        model.addAttribute("researchUrl", researchUrl);
 
 
     }

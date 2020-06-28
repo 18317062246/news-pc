@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="mfn" uri="/WEB-INF/mfn.tld"%>
 <html>
 <head>
     <!-- <meta name="renderer" content="webkit">
@@ -54,8 +55,10 @@
             <c:forEach items="${news}" var="item">
                 <div class="special-item">
                     <a href="/${cityen}/detail/${item.ID}.html" class="link" title="${item.Title}">
-                        <img class="lazy" src="${item.LitPic}?x-oss-process=style/180x130"
-                             data-original="${item.LitPic}?x-oss-process=style/180x130" alt="${item.Title}" onerror="this.src='${defaultpic}'"/><span >${fn:substring(item.Title,0,16)}</span>
+                        <img class="lazy"
+                             src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                             data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                             alt="${item.Title}" onerror="this.src='${defaultpic}'"/><span >${fn:substring(item.Title,0,16)}</span>
                     </a>
                 </div>
             </c:forEach>

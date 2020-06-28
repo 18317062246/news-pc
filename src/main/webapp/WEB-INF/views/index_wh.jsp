@@ -25,17 +25,6 @@
     <script src="${staticurl}/js/placeholder.js"></script>
 
     <script src="${staticurl}/js/totalexchange.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var webp = !![].map && document.createElement('canvas').toDataURL('image/webp').indexOf(
-                'data:image/webp') == 0 ? "?f=webp" : "";
-            var imgs = document.getElementsByTagName("img");
-            for (var i = 0; i < imgs.length; i++) {
-                document.getElementsByTagName("img")[i].src = document.getElementsByTagName("img")[i].src +
-                    webp;
-            }
-        })
-    </script>
 </head>
 
 <body id="yyInfo">
@@ -540,9 +529,8 @@
             }
         });
         $('.content_nav_left > a').mouseenter(function () {
-            console.log('click tab');
+
             //this加上active
-            //console.log($(this).attr('ref'));
             $('.content_nav_left > a').removeClass("active");
             $(this).addClass("active");
             let type = $(this).attr('ref');
@@ -559,7 +547,6 @@
     })
     //点击搜索
     $(".icons-searchred-btn").click(function () {
-        console.log('search btn');
         let keyword = $('.search-ipt').val();
         let type = $("#J_searchtype").val() || 0;
         location.href = getlink(type);

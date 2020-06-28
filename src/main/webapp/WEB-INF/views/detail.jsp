@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<%@ taglib prefix="mfn" uri="/WEB-INF/mfn.tld"%>
 <head>
     <!-- <meta name="renderer" content="webkit">
       目前IE最新的正常模式去浏览
@@ -83,15 +84,6 @@
                         <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         来源:&nbsp;&nbsp;${detail.Sources}</p>
-                <%--    <p class="share clearfix">
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
-                    </p>--%>
-                   <%-- <p class="mt_15">
-                        <img src="${staticurl}/images/boss.jpg" alt=""/>
-                    </p>--%>
                 </div>
                 <div class="infor-detail-mid">
 
@@ -110,17 +102,26 @@
                                         <div class="room-img">
                                             <c:if test="${n.xinfangResult != null}">
                                                 <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/" target="_blank">
-                                                    <img src="${n.xinfangResult.defaultImage}" width="250" height="167" alt="" onerror="this.src='${defaultpic}'" />
+                                                    <img class="lazy"
+                                                         src="${fn:substring(n.xinfangResult.defaultImage, 0 , mfn:lastIndexOf(n.xinfangResult.defaultImage, "."))}_180x130_c${fn:substring(n.xinfangResult.defaultImage,mfn:lastIndexOf(n.xinfangResult.defaultImage, ".") , fn:length(n.xinfangResult.defaultImage))}"
+                                                         data-original="${fn:substring(n.xinfangResult.defaultImage, 0 , mfn:lastIndexOf(n.xinfangResult.defaultImage, "."))}_180x130_c${fn:substring(n.xinfangResult.defaultImage,mfn:lastIndexOf(n.xinfangResult.defaultImage, ".") , fn:length(n.xinfangResult.defaultImage))}"
+                                                         width="250" height="167" alt="" onerror="this.src='${defaultpic}'" />
                                                 </a>
                                             </c:if>
                                             <c:if test="${n.esfResult != null}">
                                                 <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/" target="_blank">
-                                                    <img src="${n.esfResult.fullImagePath}" width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
+                                                    <img  class="lazy"
+                                                         src="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
+                                                         data-original="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
+                                                         width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
                                                 </a>
                                             </c:if>
                                             <c:if test="${n.xiaoQuResult != null}">
                                                 <a href="//${cityen}.centanet.com/xiaoqu/xq-${n.xiaoQuResult.oid}/" target="_blank">
-                                                    <img src="${n.xiaoQuResult.imagePath}" width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
+                                                    <img  class="lazy"
+                                                         src="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
+                                                         data-original="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
+                                                         width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
                                                 </a>
                                             </c:if>
 
@@ -264,8 +265,10 @@
                                 <dt class="${status.index==0?'curr':''}"><a class="f000" href="javacript:void(0);" title="${info.Title}">${fn:substring(info.Title, 0, 18)}</a></dt>
                                 <dd><a href="/${cityen}/detail/${info.ID}.html" target="_blank" class="f000" title="${info.Title}">
 
-                                    <img class="lazy" src="${info.LitPic}?x-oss-process=style/300x210"
-                                         data-original="${info.LitPic}?x-oss-process=style/300x210" alt="${item.Title}" onerror="this.src='${defaultpic}'"/>
+                                    <img class="lazy"
+                                         src="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
+                                         data-original="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
+                                         alt="${info.Title}" onerror="this.src='${defaultpic}'"/>
                                 </a>
                                 </dd>
                             </c:forEach>
