@@ -16,7 +16,7 @@
 		<div class="inform-main fl">
 			<div class="inform-main-top">
 				<dl class="inform-quest ">
-					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/" target="_blank" title="${leftUp[0].Title}">${fn:substring(leftUp[0].Title,0,28)}</a></dt>
+					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank" title="${leftUp[0].Title}">${fn:substring(leftUp[0].Title,0,28)}</a></dt>
 					<dd>
 						<%--<c:forEach items="${leftUp}" var="l" begin="0" end="0">--%>
 							<p><a href="javascript:void(0);" target="_blank" title="${leftUp[0].Title}">${leftUp[0].Description}</a></p>
@@ -29,7 +29,7 @@
 			<div class="inform-main-bot">
 				<dl class="inform-quest ">
 					<c:forEach items="${leftDown}" var="left" begin="0" end="3">
-						<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${left.ID}.html/" target="_blank" title="${left.Title}">${left.Title}</a></dt>
+						<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${left.ID}.html" target="_blank" title="${left.Title}">${left.Title}</a></dt>
 					</c:forEach>
 					<dd>
 						<p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu">@${types[1].columnsName}</a></p>
@@ -42,11 +42,11 @@
 			<div class="expert">
 				<div class="expert-phone">
 					<c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank" title="${right[0].Title}"><img src="${right[0].LitPic}" alt="${right[0].Title}"onerror="this.src='${defaultpic}'"></a>
+					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html" target="_blank" title="${right[0].Title}"><img src="${right[0].LitPic}" alt="${right[0].Title}"onerror="this.src='${defaultpic}'"></a>
 				</div>
 					<ul class="expert-comment">
 					<c:forEach items="${right}" var="ri" begin="1" end="4">
-						<li><a href="//news.centanet.com/${cityen}/detail/${ri.ID}.html/" target="_blank">${fn:substring(ri.Title,0,28)}</a></li>
+						<li><a href="//news.centanet.com/${cityen}/detail/${ri.ID}.html" target="_blank">${fn:substring(ri.Title,0,28)}</a></li>
 					</c:forEach>
 				</ul>
 				<p class="bot "><a href="//news.centanet.com/${cityen}/list/c${types[2].id}/" class="tdu f666">@${types[2].columnsName}</a></p>

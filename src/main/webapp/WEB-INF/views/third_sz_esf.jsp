@@ -15,12 +15,12 @@
         <div class="expert">
             <div class="expert-phone">
                 <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${leftUp[0].Title}</span>
-                <a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/" >
+                <a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" >
                     <img src="${leftUp[0].LitPic}" alt="${leftUp[0].Title}" onerror="this.src='${defaultpic}'"></a>
             </div>
             <ul class="expert-comment">
                 <c:forEach items="${leftUp}" var="l" begin="1" end="4">
-                    <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${l.ID}.html/" title="${l.Title}">${l.Title}</a></li>
+                    <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
                 </c:forEach>
 
             </ul>
@@ -33,7 +33,7 @@
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${leftDown}" var="l" begin="0" end="4">
-                            <li><i></i><a  target="_blank" href="//news.centanet.com/${cityen}/detail/${l.ID}.html/" title="${l.Title}">${l.Title}</a></li>
+                            <li><i></i><a  target="_blank" href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
                         </c:forEach>
                     </ul>
                     <p class="bot"><a target="_blank" href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu f666">@${types[1].columnsName}</a></p>
@@ -45,7 +45,7 @@
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${right}" var="r" begin="0" end="3">
-                            <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${r.ID}.html/" title="${r.Title}">${r.Title}</a></li>
+                            <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${r.ID}.html" title="${r.Title}">${r.Title}</a></li>
                         </c:forEach>
                     </ul>
                     <p class="bot"><a target="_blank" href="//news.centanet.com/${cityen}/list/c${types[2].id}/" class="tdu f666">@${types[2].columnsName}</a></p>

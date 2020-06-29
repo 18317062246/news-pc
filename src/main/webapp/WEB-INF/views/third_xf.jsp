@@ -18,7 +18,7 @@
 			<div class="inform-special">
 				<h5 class="caption">${types[0].columnsName}</h5>
 					<div class="special-item">
-					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/" target="_blank">
+					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank">
 						<p class="photo fl">
 							<img src="${leftUp[0].LitPic}" onerror="this.src='${defaultpic}'" alt="${leftUp[0].Title}">
 						</p>
@@ -30,7 +30,7 @@
 				<dl class="inform-quest fl">				
 					<dd>
 						<c:forEach items="${leftUp}" var="l" begin="1" end="5">
-							<p><i></i><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html/" target="_blank">${l.Title}</a></p>
+							<p><i></i><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html" target="_blank">${l.Title}</a></p>
 						</c:forEach>
 					</dd>
 				</dl>

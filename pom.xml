@@ -18,6 +18,11 @@
         <version>2.0.4.RELEASE</version>
     </parent>
 
+    <properties>
+        <!--版本依赖集中管理-->
+        <springfox.swagger2.version>2.7.0</springfox.swagger2.version>
+    </properties>
+
     <dependencies>
         <!-- web start -->
         <dependency>
@@ -83,6 +88,21 @@
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
+
+        <!-- swagger start -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger2.version}</version>
+        </dependency>
+        <!-- swagger end -->
+
     </dependencies>
 
     <build>

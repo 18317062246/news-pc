@@ -103,24 +103,24 @@
                                             <c:if test="${n.xinfangResult != null}">
                                                 <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/" target="_blank">
                                                     <img class="lazy"
-                                                         src="${fn:substring(n.xinfangResult.defaultImage, 0 , mfn:lastIndexOf(n.xinfangResult.defaultImage, "."))}_180x130_c${fn:substring(n.xinfangResult.defaultImage,mfn:lastIndexOf(n.xinfangResult.defaultImage, ".") , fn:length(n.xinfangResult.defaultImage))}"
-                                                         data-original="${fn:substring(n.xinfangResult.defaultImage, 0 , mfn:lastIndexOf(n.xinfangResult.defaultImage, "."))}_180x130_c${fn:substring(n.xinfangResult.defaultImage,mfn:lastIndexOf(n.xinfangResult.defaultImage, ".") , fn:length(n.xinfangResult.defaultImage))}"
+                                                         src="${n.xinfangResult.defaultImage}"
+                                                         data-original="${n.xinfangResult.defaultImage}"
                                                          width="250" height="167" alt="" onerror="this.src='${defaultpic}'" />
                                                 </a>
                                             </c:if>
                                             <c:if test="${n.esfResult != null}">
                                                 <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/" target="_blank">
                                                     <img  class="lazy"
-                                                         src="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
-                                                         data-original="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
+                                                         src="${n.esfResult.fullImagePath}"
+                                                         data-original="${n.esfResult.fullImagePath}"
                                                          width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
                                                 </a>
                                             </c:if>
                                             <c:if test="${n.xiaoQuResult != null}">
                                                 <a href="//${cityen}.centanet.com/xiaoqu/xq-${n.xiaoQuResult.oid}/" target="_blank">
                                                     <img  class="lazy"
-                                                         src="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
-                                                         data-original="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
+                                                         src="${n.xiaoQuResult.imagePath}"
+                                                         data-original="${n.xiaoQuResult.imagePath}"
                                                          width="250" height="167" alt="" onerror="this.src='${defaultpic}'"/>
                                                 </a>
                                             </c:if>
@@ -263,13 +263,13 @@
                         <dl class="infor-side-pB">
                             <c:forEach items="${infoNews}" var="info" varStatus="status">
                                 <dt class="${status.index==0?'curr':''}"><a class="f000" href="javacript:void(0);" title="${info.Title}">${fn:substring(info.Title, 0, 18)}</a></dt>
-                                <dd><a href="/${cityen}/detail/${info.ID}.html" target="_blank" class="f000" title="${info.Title}">
-
+                                <dd>
+                                    <a href="/${cityen}/detail/${info.ID}.html" target="_blank" class="f000" title="${info.Title}">
                                     <img class="lazy"
                                          src="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
                                          data-original="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
                                          alt="${info.Title}" onerror="this.src='${defaultpic}'"/>
-                                </a>
+                                    </a>
                                 </dd>
                             </c:forEach>
                         </dl>

@@ -15,7 +15,7 @@
 				<%--左上--%>
 			<div class="inform-main-top">
 				<dl class="inform-quest ">
-					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html/" target="_blank" title="${leftUp[0].Title}">${leftUp[0].Title}</a></dt>
+					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank" title="${leftUp[0].Title}">${leftUp[0].Title}</a></dt>
 					<dd>
 						<p class="mid">${leftUp[0].Description}</p>
 						<p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="tdu">@${types[0].columnsName}</a></p>
@@ -26,7 +26,7 @@
              <%--左下--%>
             <div class="inform-main-bot">
                <dl class="inform-quest ">
-                   <dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank" title="${leftDown[0].Title}">${leftDown[0].Title}</a></dt>
+                   <dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank" title="${leftDown[0].Title}">${leftDown[0].Title}</a></dt>
                    <dd>
                     <p class="mid">${leftDown[0].Description}</p>
 
@@ -39,11 +39,11 @@
 			<div class="expert">
 				<c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
 				<%--右上图片--%>
-					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html/" target="_blank" title="${right[0].Title}"><img src="${right[0].LitPic}" alt="${right[0].Title}" onerror="this.src='${defaultpic}'"></a>
+					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html" target="_blank" title="${right[0].Title}"><img src="${right[0].LitPic}" alt="${right[0].Title}" onerror="this.src='${defaultpic}'"></a>
 					<%--右下--%>
 					<ul class="expert-comment">
 						<c:forEach items="${right}" var="r" begin="1" end="4">
-							<li><a href="//news.centanet.com/${cityen}/detail/${r.ID}.html/" target="_blank" title="${r.Title}">${r.Title}</a></li>
+							<li><a href="//news.centanet.com/${cityen}/detail/${r.ID}.html" target="_blank" title="${r.Title}">${r.Title}</a></li>
 						</c:forEach>
 					</ul>
 						<p class="bot "><a href="//news.centanet.com/${cityen}/list/c${types[2].id}/" class="tdu f666">@${types[2].columnsName}</a></p>

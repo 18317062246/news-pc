@@ -6,10 +6,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
+import com.news.web.model.common.AopResult;
 import com.news.web.model.common.CommonHouseResult;
 import com.news.web.model.esf.ESFResult;
 import com.news.web.model.xiaoqu.XiaoQuResult;
 import com.news.web.model.xinfang.XinfangResult;
+import com.news.web.util.HttpUtil;
 import com.news.web.util.PageUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,6 +44,9 @@ public class NewsController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private HttpUtil httpUtil;
     @Value("${api.domain}")
     public String apiurl;
     @Value("${api.xinfang.other.city}")
@@ -401,7 +407,7 @@ public class NewsController {
         List<NewsType> baiketype = typeList(cityen, BAIKE);
         model.addAttribute(BAIKE_TYPE, !baiketype.isEmpty());
         //toplist
-        JSONObject top = newsList(cityen, null, 1, 10, 1, null, null);
+        JSONObject top = newsList(cityen, 1 , 10 ,0);
         List<Map> topList = JSON.parseArray(JSON.toJSONString(top.get(NEWS_LIST)), Map.class);
         Integer pageCount = result.getInteger("PageTotal");
         model.addAttribute("news", news);
@@ -472,6 +478,31 @@ public class NewsController {
             log.error(ARTICLE_LIST_IS_NULL, newsList);
         }
         return newsList;
+    }
+
+    /**
+     * @param: cityen 城市
+     * @param desc 降序还是正序
+     *
+     * @return: 返回最新的数据列表
+     * @author: Steven.yu
+     * @date: 2020-06-29
+     */
+    private JSONObject newsList(String cityen, Integer page, Integer pagesize, Integer desc) {
+        String serviceUrl = String.format(apiurl + "GetNewsList?cityen=%s&platform=pc&page=%s&pagesize=%s&isDesc=%s" , cityen , page , pagesize  , desc);
+        //发出http请求
+        try {
+            String json = httpUtil.get(serviceUrl);
+            if(org.apache.commons.lang3.StringUtils.isNoneBlank(json)){
+                AopResult<JSONObject> jsonObjectResult = JSON.parseObject(json , AopResult.class);
+                JSONObject jSONObject = jsonObjectResult.getResult();
+                return jSONObject;
+            }else {
+                return null;
+            }
+        } catch (IOException e) {
+            return null;
+        }
     }
 
     /**
@@ -689,7 +720,7 @@ public class NewsController {
 
         setCommon(model, cityen);
         //热点排行
-        JSONObject newsList = newsList(cityen, null, 1, 10, 1, null, null);
+        JSONObject newsList = newsList(cityen, 1, 10, 0);
         List<Map> news = JSON.parseArray(JSON.toJSONString(newsList.get(NEWS_LIST)), Map.class);
         //详情信息
         JSONObject result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + id + "&cityen="+cityen+"&platform=pc", JSONObject.class);

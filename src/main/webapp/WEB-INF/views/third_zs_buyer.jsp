@@ -14,7 +14,7 @@
                 <c:forEach items="${leftDown}" var="item" begin="0" end="1">
                     <li>
                         <i></i>
-                        <a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/" class="f3" target="_blank" title="${item.Title}">${fn:substring(item.Title,0,20)}</a>
+                        <a href="//news.centanet.com/${cityen}/detail/${item.ID}.html" class="f3" target="_blank" title="${item.Title}">${fn:substring(item.Title,0,20)}</a>
                         <span class="date f9">
                                 <jsp:useBean id="myDate" class="java.util.Date"/>
                                 <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>
