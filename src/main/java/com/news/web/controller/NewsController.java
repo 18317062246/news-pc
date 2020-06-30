@@ -142,6 +142,8 @@ public class NewsController {
         List<NewsType> rightType = types.stream().filter(t -> RIGHT.equals(t.getLocation())).collect(Collectors.toList());
 
         List<Map> leftNews = new ArrayList<>();
+        //定义戴删除栏目对象
+        List<NewsType> typeDelList = new ArrayList<>();
         for (NewsType t : types) {
             if (!RIGHT.equals(t.getLocation())) {
                 //栏目id获取左侧文章列表
@@ -149,8 +151,15 @@ public class NewsController {
                 if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
                     List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
                     leftNews.addAll(news);
+                }else {//如果该栏目下没有文章，存储到删除栏目对象集合
+                    typeDelList.add(t);
                 }
             }
+        }
+
+        //若删除栏目集合对象不为空，将栏目进行批量删除
+        if(!CollectionUtils.isEmpty(typeDelList)){
+            types.removeAll(typeDelList);
         }
 
         //右侧上部文章
@@ -165,12 +174,24 @@ public class NewsController {
             }
             rightTypeAdd.add(right);
         }
+
+        //定义一个对象，用于判断删除栏目
+        List<NewsType> rightTypeDel = new ArrayList<>();
         rightTypeAdd.forEach(item -> {
             JSONObject right = newsList(cityen, Arrays.asList(item.getId()), 1, 5, null, null, null);
             if (!ObjectUtils.isEmpty(right.get(NEWS_LIST))) {
                 rightNews.addAll(JSON.parseArray(JSON.toJSONString(right.get(NEWS_LIST)), Map.class));
+            }else {//若加载的数据为空，则添加对象到rightTypeDel对象中
+                //将对象添加到rightTypeDel集合中
+                rightTypeDel.add(item);
             }
         });
+
+        //判断rightTypeDel对象是否不为空，不为空就将包含的对象删除
+        if(!CollectionUtils.isEmpty(rightTypeDel)){
+            rightTypeAdd.removeAll(rightTypeDel);
+        }
+
         //右侧下部集团jt文章
         List<Map> centaNews = new ArrayList<>();
         if (null != jtTypes && !jtTypes.isEmpty()) {
@@ -920,6 +941,32 @@ public class NewsController {
             List<NewsType> newsTypes = JSONArray.parseArray(JSON.toJSONString(types.get(1).getChildList()), NewsType.class);
             //取出子级栏目的默认第一个栏目
             types.set(1 , newsTypes.get(0));
+        }
+
+        //循环types
+        //判断types是否为空，不为空就进行判断，栏目是否不存在列表
+        if(!CollectionUtils.isEmpty(types)) {
+            //创建一个List对象，将没有文章的栏目进行存储
+            List<NewsType> newsTypesRemove = new ArrayList<>();
+            //循环types,将没有文章的栏目进行删除
+            for (NewsType newsType : types) {
+                //41为中原资讯，如果是41，则进行跳过
+                if(Objects.equals(newsType.getId() , 41)){
+                    continue;
+                }
+                //获取集团资讯栏目下的文章
+                JSONObject jtResult = newsList(cityen, Arrays.asList(newsType.getId()), 1, 10, null, null ,null);
+                //若该栏目下的文章为空，将该文章对象添加到集合中
+                if (ObjectUtils.isEmpty(jtResult.get(NEWS_LIST))) {
+                    newsTypesRemove.add(newsType);
+                }
+            }
+
+            //若newsTypesRemove对象不为空，就删除栏目
+            if(!CollectionUtils.isEmpty(newsTypesRemove)) {
+                //删除所有栏目
+                types.removeAll(newsTypesRemove);
+            }
         }
         List<Map> leftUp = new ArrayList<>();
         List<Map> leftDown = new ArrayList<>();

@@ -95,43 +95,43 @@
 
         <%-- 武汉城市百度和piwik统计代码 --%>
         <c:when test="${cityen == 'wh'}">
+            <script type="text/javascript">
+                var _hmt = _hmt || [];
+                var pkBaseURL = "//statistics.centanet.com/stat/";
+                (function(){
+                    /* 百度统计代码 */
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?4e7fa5ad81abe58a299a64870b79c27d";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
 
-            <div class="none">
-                <script>
-                    var _hmt = _hmt || [];
-                    (function() {
-                        var hm = document.createElement("script");
-                        hm.src = "//hm.baidu.com/hm.js?4e7fa5ad81abe58a299a64870b79c27d";
-                        var s = document.getElementsByTagName("script")[0];
-                        s.parentNode.insertBefore(hm, s);
-                    })();
-                </script>
-                <script>
-                    (function() {
-                        var bp = document.createElement('script');
+                    var bp = document.createElement('script');
+                    var curProtocol = window.location.protocol.split(':')[0];
+                    if (curProtocol === 'https') {
+                        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                    }
+                    else {
                         bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-                        var s = document.getElementsByTagName("script")[0];
-                        s.parentNode.insertBefore(bp, s);
-                    })();
-                </script>
-                <!-- Piwik -->
-                <script type="text/javascript">
-                    var pkBaseURL = (("https:" == document.location.protocol) ? "https://statistics.centanet.com/stat/" : "//statistics.centanet.com/stat/");
-                    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-                </script>
-                <script src="//statistics.centanet.com/stat/piwik.js" type="text/javascript"></script>
-                <script type="text/javascript">
-                    try {
-                        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 23);
-                        piwikTracker.trackPageView();
-                        piwikTracker.enableLinkTracking();
-                    } catch (err) {}
-                </script>
-                <noscript>
-                    <p><img src="//statistics.centanet.com/stat/piwik.php?idsite=23" style="border:0" alt="" /></p>
-                </noscript>
-                <!-- End Piwik Tracking Code -->
-            </div>
+                    }
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(bp, s);
+                    /*piwik*/
+                    var piwikScript = window["document"]["createElement"]("script");
+                    piwikScript["type"] = "text/javascript";
+                    piwikScript["charset"] = "utf-8";
+                    piwikScript["defer"] = "defer";
+                    piwikScript["onload"] = function(){
+                        try {
+                            var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 23);
+                            piwikTracker.trackPageView();piwikTracker.enableLinkTracking();
+                        } catch( err ) {}
+                    };
+                    piwikScript["src"] = pkBaseURL + "piwik.js";
+                    var head = document.head || document.getElementsByTagName('head')[0];
+                    head.appendChild(piwikScript);
+                })();
+            </script>
+            <noscript><p><img src="//statistics.centanet.com/stat/piwik.php?idsite=23" style="border:0" alt="" /></p></noscript>
         </c:when>
 
         <%-- 南京城市百度和piwik统计代码 --%>
@@ -483,42 +483,32 @@
 
         <%-- 长沙城市百度和piwik统计代码 --%>
         <c:when test="${cityen == 'cs'}">
-            <div class="none">
-                <script>
-                    var _hmt = _hmt || [];
-                    (function() {
-                        var hm = document.createElement("script");
-                        hm.src = "//hm.baidu.com/hm.js?d1253c256287c312b64e372be0f329e9";
-                        var s = document.getElementsByTagName("script")[0];
-                        s.parentNode.insertBefore(hm, s);
-                    })();
-                </script>
-                <script>
-                    (function() {
-                        var bp = document.createElement('script');
-                        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-                        var s = document.getElementsByTagName("script")[0];
-                        s.parentNode.insertBefore(bp, s);
-                    })();
-                </script>
-                <!-- Piwik -->
-                <script type="text/javascript">
-                    var pkBaseURL = (("https:" == document.location.protocol) ? "https://statistics.centanet.com/stat/" : "//statistics.centanet.com/stat/");
-                    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-                </script>
-                <script src="//statistics.centanet.com/stat/piwik.js" type="text/javascript"></script>
-                <script type="text/javascript">
-                    try {
-                        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 23);
-                        piwikTracker.trackPageView();
-                        piwikTracker.enableLinkTracking();
-                    } catch (err) {}
-                </script>
-                <noscript>
-                    <p><img src="//statistics.centanet.com/stat/piwik.php?idsite=23" style="border:0" alt="" /></p>
-                </noscript>
-                <!-- End Piwik Tracking Code -->
-            </div>
+            <script type="text/javascript">
+                var _hmt = _hmt || [];
+                var pkBaseURL = "//statistics.centanet.com/stat/";
+                (function(){
+                    /* 百度统计代码 */
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?d1253c256287c312b64e372be0f329e9";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                    /*piwik*/
+                    var piwikScript = window["document"]["createElement"]("script");
+                    piwikScript["type"] = "text/javascript";
+                    piwikScript["charset"] = "utf-8";
+                    piwikScript["defer"] = "defer";
+                    piwikScript["onload"] = function(){
+                        try {
+                            var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 26);
+                            piwikTracker.trackPageView();piwikTracker.enableLinkTracking();
+                        } catch( err ) {}
+                    };
+                    piwikScript["src"] = pkBaseURL + "piwik.js";
+                    var head = document.head || document.getElementsByTagName('head')[0];
+                    head.appendChild(piwikScript);
+                })();
+            </script>
+            <noscript><p><img src="//statistics.centanet.com/stat/piwik.php?idsite=26" style="border:0" alt="" /></p></noscript>
         </c:when>
 
         <%-- 长春城市百度和piwik统计代码 --%>

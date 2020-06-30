@@ -42,13 +42,13 @@
 			<h5 class="caption">${types[1].columnsName}</h5>
 			<div class="expert">
 				<div class="expert-phone">
-					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank"><img src="${leftDown[0].LitPic}" onerror="this.src='${defaultpic}'" alt="${leftDown[0].Title}" style="width: 400px;height: 266px;"></a>
-					<p class="txt"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html/" target="_blank">${leftDown[0].Title}</a></p>
+					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank"><img src="${leftDown[0].LitPic}" onerror="this.src='${defaultpic}'" alt="${leftDown[0].Title}" style="width: 400px;height: 266px;"></a>
+					<p class="txt"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank">${leftDown[0].Title}</a></p>
 					<p class="opacity_bg"></p>
 				</div>
 				<ul class="expert-comment">
 					<c:forEach items="${leftDown}" var="item" begin="1" end="4">
-						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html/" target="_blank" title="${item.Title}">${item.Title}</a></li>
+						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">${item.Title}</a></li>
 					</c:forEach>
 				</ul>
 			</div>
