@@ -816,6 +816,48 @@ public class NewsController {
             }
         });
 
+        //根据栏目id判断是列表页过来的还是百科列表页过来的
+        if(!CollectionUtils.isEmpty(baiketype)) {
+            //定义栏目id集合
+            List<Integer> typeIdList = Lists.newArrayList();
+            //循环栏目，取出每一个百科id
+            baiketype.get(0).getChildList().stream().forEach(l -> {
+                //取出栏目id
+                typeIdList.add(l.getId());
+                //如果是子级对象，取出子级
+                List<NewsType> newsTypes = JSONArray.parseArray(JSON.toJSONString(l.getChildList()), NewsType.class);
+                //循环遍历子级，查询是否相等
+                newsTypes.stream().forEach(k -> {
+                    //取出子级栏目id
+                    typeIdList.add(k.getId());
+                    //如果是子级对象，取出子级
+                    List<NewsType> newsTypesTemp = JSONArray.parseArray(JSON.toJSONString(k.getChildList()), NewsType.class);
+                    if (!CollectionUtils.isEmpty(newsTypesTemp)) {
+                        //循环遍历子级，查询是否相等
+                        newsTypesTemp.stream().forEach(m -> {
+                            //取出子级栏目id
+                            typeIdList.add(m.getId());
+                        });
+                    }
+                });
+            });
+            //获取详情的栏目id
+            Integer typeId = (Integer) detail.get("Typeid");
+            //判断是否为百科id
+            if (!CollectionUtils.isEmpty(typeIdList) && typeIdList.contains(typeId)) {
+                //存储一个字段，是百科id，方便前端跳转
+                model.addAttribute("baikeFlag", true);
+            } else {
+                //存储一个字段，不是百科id，方便前端跳转
+                model.addAttribute("baikeFlag", false);
+            }
+        }else {
+            //存储一个字段，不是百科id，方便前端跳转
+            model.addAttribute("baikeFlag", false);
+        }
+
+
+
         //将文章内容进行格式化
         String content = (String) detail.get("Content");
         if (!StringUtils.isEmpty(content)) {

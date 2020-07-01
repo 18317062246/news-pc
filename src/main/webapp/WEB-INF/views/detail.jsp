@@ -69,7 +69,12 @@
                <span class="fsm">&gt;</span>
                <a href="/${cityen}/" class="f123">${citycn}资讯</a>
                <span class="fsm">&gt;</span>
-               <a href="/${cityen}/list/c${detail.Typeid}/" class="f123">${detail.Typename}</a><span class="fsm">&gt;</span>
+               <c:if test="${baikeFlag}">
+                   <a href="/${cityen}/baike/c${detail.Typeid}/p1/" class="f123">${detail.Typename}</a><span class="fsm">&gt;</span>
+               </c:if>
+               <c:if test="${!baikeFlag}">
+                   <a href="/${cityen}/list/c${detail.Typeid}/" class="f123">${detail.Typename}</a><span class="fsm">&gt;</span>
+               </c:if>
                <span>正文</span>
            </div>
         </div>
