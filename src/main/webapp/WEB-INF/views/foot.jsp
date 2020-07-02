@@ -106,8 +106,8 @@
             </c:if>
         </dl>
         <p class="app " style="right:100px;top:-20px;">
-            <img src="${staticurl}/images/app.jpg" alt="">
-            <span>下载找房APP</span>
+            <img src="//static.centanet.com/v7p20415/20200629/images/download_app3.jpg?v202005111" alt="">
+            <span style="text-align: center;">下载找房APP</span>
         </p>
         </c:if>
     </div>
