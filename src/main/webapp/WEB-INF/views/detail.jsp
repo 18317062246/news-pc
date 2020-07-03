@@ -307,9 +307,11 @@
 
     //如果flag为false，证明是人，需要给页面加入访问量
     if(!flag){
-    $.get(
-        "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+r+"&platform=pc",
-            function (data) {
+        let locationAddress = window.location;
+        $.get(
+            "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+locationAddress+"&platform=pc",
+                function (data) {
+
         });
     }
 

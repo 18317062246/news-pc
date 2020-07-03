@@ -160,16 +160,25 @@
             <%--right--%>
             <div class="infor-index-side fr">
                 <%--右边第一个保留广告位  成交走势--%>
-                <c:set var="str" value="dg"></c:set>
+                <c:set var="str" value="dg,hz"></c:set>
                 <c:if test="${fn:contains(str, cityen)}">
                     <div class="infor-side-box">
                             <%-- <h2 class="title-top"><span class="f18 f333 fb">成交走势</span></h2>--%>
                         <div class="infor-chart">
-                            <a target="_blank" href="${dealinfo[0].targetUrl}" title="">
-                                <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
-                                     data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt="" onerror="this.src='${defaultpic}'"/>
-                            </a>
+                            <c:if test="${dealinfo[0].targetUrl != null && dealinfo[0].targetUrl.length() >= 10}">
+                                <a target="_blank" href="${dealinfo[0].targetUrl}" title="">
+                                    <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+                                    <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
+                                         data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt="" onerror="this.src='${defaultpic}'"/>
+                                </a>
+                            </c:if>
+                            <c:if test="${dealinfo[0].targetUrl == null || dealinfo[0].targetUrl.length() < 10}">
+                                <a  href="javascript:void(0);" title="">
+                                    <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+                                    <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
+                                         data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt="" onerror="this.src='${defaultpic}'"/>
+                                </a>
+                            </c:if>
                         </div>
                         <%--<p class="tr mt_15 f999">数据来源于中原成交系统</p>--%>
                     </div>

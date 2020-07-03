@@ -17,7 +17,7 @@ log:
 #静态文件版本号
 static:
     #url: http://static.dev.com.cn:8118
-  url: https://static.centanet.com/news/2020062931/pc
+  url: https://static.centanet.com/news/2020070332/pc
 
 
 #城市集合
@@ -28,7 +28,7 @@ static:
 #成交走势信息
 deal:
   #citys: bj,dg,nj,fs,zq
-  citys: dg,gz
+  citys: dg,gz,hz
   url: https://act.centanet.com/www/scripts/loader4app.php
 # 配置信息
 centanet:

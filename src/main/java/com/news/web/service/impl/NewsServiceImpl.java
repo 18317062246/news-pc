@@ -107,6 +107,7 @@ public class NewsServiceImpl implements NewsService {
         map.put("fs", 421);
         map.put("zq", 422);
         map.put("gz", 426);
+        map.put("hz", 437);
         if (StringUtils.isEmpty(cityen)) {
             return null;
         }
