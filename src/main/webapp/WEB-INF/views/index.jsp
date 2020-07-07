@@ -186,36 +186,75 @@
                 <%--right右边广告位下的第一个模块 热门专题--%>
                 <c:forEach items="${rightType}" var="t" varStatus="status">
                     <c:if test="${t.location=='right' && status.index==0}">
-                        <div class="infor-side-box">
-                            <p class="title-top">
-                                <span class="f18 f333 fb">${t.columnsName}</span>
-                                <a href="/${cityen}/list/c${t.id}/" class="morelink f000" style="top:5px;">更多</a>
-                            </p>
-                            <dl class="infor-side-pB">
-                                    <%--遍历文章--%>
-                                <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
-                                    <c:if test="${t.id==n.TypeID}">
-                                        <dt class="${status.count==1?'curr':''}"><i></i>
-                                            <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                <c:if test="${n.Title.length() >= 26}">
-                                                    <span>...</span>
+                        <c:choose>
+                            <c:when test="${cityen == 'hz'}">
+                                <c:if test="${t.columnsName != 'Ben钟话市'}">
+                                    <div class="infor-side-box">
+                                        <p class="title-top">
+                                            <span class="f18 f333 fb">${t.columnsName}</span>
+                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000" style="top:5px;">更多</a>
+                                        </p>
+                                        <dl class="infor-side-pB">
+                                                <%--遍历文章--%>
+                                            <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
+                                                <c:if test="${t.id==n.TypeID}">
+                                                    <dt class="${status.count==1?'curr':''}"><i></i>
+                                                        <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,26)}
+                                                            <c:if test="${n.Title.length() >= 26}">
+                                                                <span>...</span>
+                                                            </c:if>
+                                                        </a>
+                                                    </dt>
+                                                    <dd style="display: block;">
+                                                        <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">
+                                                            <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+                                                                <%--     <img src="${n.LitPic}" alt="" onerror="this.src='${defaultpic}'">--%>
+                                                            <img class="lazy"
+                                                                 src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
+                                                                 data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}" onerror="this.src='${defaultpic}'"
+                                                            />
+                                                        </a>
+                                                    </dd>
                                                 </c:if>
-                                            </a>
-                                        </dt>
-                                        <dd style="display: block;">
-                                            <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">
-                                                <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                           <%--     <img src="${n.LitPic}" alt="" onerror="this.src='${defaultpic}'">--%>
-                                                <img class="lazy"
-                                                     src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
-                                                     data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}" onerror="this.src='${defaultpic}'"
-                                                     />
-                                            </a>
-                                        </dd>
-                                    </c:if>
-                                </c:forEach>
-                            </dl>
-                        </div>
+                                            </c:forEach>
+                                        </dl>
+                                    </div>
+                                </c:if>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="infor-side-box">
+                                    <p class="title-top">
+                                        <span class="f18 f333 fb">${t.columnsName}</span>
+                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000" style="top:5px;">更多</a>
+                                    </p>
+                                    <dl class="infor-side-pB">
+                                            <%--遍历文章--%>
+                                        <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
+                                            <c:if test="${t.id==n.TypeID}">
+                                                <dt class="${status.count==1?'curr':''}"><i></i>
+                                                    <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,26)}
+                                                        <c:if test="${n.Title.length() >= 26}">
+                                                            <span>...</span>
+                                                        </c:if>
+                                                    </a>
+                                                </dt>
+                                                <dd style="display: block;">
+                                                    <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">
+                                                        <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
+                                                            <%--     <img src="${n.LitPic}" alt="" onerror="this.src='${defaultpic}'">--%>
+                                                        <img class="lazy"
+                                                             src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
+                                                             data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}" onerror="this.src='${defaultpic}'"
+                                                        />
+                                                    </a>
+                                                </dd>
+                                            </c:if>
+                                        </c:forEach>
+                                    </dl>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
                     </c:if>
                 </c:forEach>
 
@@ -269,6 +308,7 @@
                                     </div>
                                 </c:if>
                             </c:when>
+
                             <c:otherwise>
                                 <div class="infor-side-box">
                                     <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
@@ -298,7 +338,7 @@
                 <%-- 右侧下部集团jt文章--%>
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
                     <c:choose>
-                        <c:when test="${cityen == 'tj' || cityen == 'gz'}">
+                        <c:when test="${cityen == 'tj' || cityen == 'gz' || cityen == 'hz'}">
                             <c:if test="${t.columnsName == '品牌部'}">
                                 <div class="infor-side-box">
                                     <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
@@ -387,6 +427,57 @@
                                                     </a>
                                                     </li>
                                                 </c:if>
+
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </c:if>
+
+                        <c:if test="${cityen == 'hz'}">
+                            <c:if test="${t.columnsName == 'Ben钟话市'}">
+                                <div class="infor-side-box">
+                                    <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                    </h2>
+                                    <ul class="infor-side-p">
+                                            <%--遍历文章--%>
+                                        <c:forEach items="${rightNews}" var="n" varStatus="status" >
+                                            <c:if test="${t.id==n.TypeID}">
+                                                <li><i></i><a class="f000"
+                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
+                                                    <c:if test="${n.Title.length() >= 26}">
+                                                        <span>...</span>
+                                                    </c:if>
+                                                </a>
+                                                </li>
+                                            </c:if>
+
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </c:if>
+                    </c:if>
+                    <c:if test="${t.location=='right' && status.index==0}">
+                        <c:if test="${cityen == 'hz'}">
+                            <c:if test="${t.columnsName == 'Ben钟话市'}">
+                                <div class="infor-side-box">
+                                    <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                    </h2>
+                                    <ul class="infor-side-p">
+                                            <%--遍历文章--%>
+                                        <c:forEach items="${rightNews}" var="n" varStatus="status" >
+                                            <c:if test="${t.id==n.TypeID}">
+                                                <li><i></i><a class="f000"
+                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
+                                                    <c:if test="${n.Title.length() >= 26}">
+                                                        <span>...</span>
+                                                    </c:if>
+                                                </a>
+                                                </li>
+                                            </c:if>
 
                                         </c:forEach>
                                     </ul>

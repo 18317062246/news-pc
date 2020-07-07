@@ -13,10 +13,6 @@
         <dl class="all-hlink">
             <dt>其它城市：</dt>
             <dd>
-                <c:set var="other1" value="bj,tj,gz,sz,cd,cq,nj,wh,hz,dg,cc,dl,sy,nn,fs,hrb,wx,,xm,xy,zh,"></c:set>
-                <c:set var="other2" value="cs,zj,nc,fz,ganzhou,hf,jn,km,nb,xa,zs,zq,zz,jtdr"></c:set>
-                <c:set var="other3" value="${other1}${other2}"></c:set>
-                <c:if test="${fn:contains(other3, cityen)}">
                     <a target="_blank" href="https://tj.centanet.com/" title="天津中原">天津中原</a>
                     <a target="_blank" href="https://bj.centanet.com/" title="北京中原">北京中原</a>
                     <a target="_blank" href="http://sh.centanet.com/" title="上海中原">上海中原</a>
@@ -49,12 +45,9 @@
                     <a target="_blank" href="https://hrb.centanet.com/" title="哈尔滨中原">哈尔滨中原</a>
                     <a target="_blank" href="https://nb.centanet.com/" title="宁波中原">宁波中原</a>
                     <a target="_blank" href="https://zq.centanet.com/" title="肇庆中原">肇庆中原</a>
-                </c:if>
-                <c:if test="${fn:contains(other2, cityen)}">
                     <a target="_blank" href="https://xy.centanet.com/" title="襄阳中原">襄阳中原</a>
                     <a target="_blank" href="https://jn.centanet.com/" title="济南中原">济南中原</a>
                     <a target="_blank" href="https://zz.centanet.com/" title="郑州中原">郑州中原</a>
-                </c:if>
             </dd>
         </dl>
         <c:if test="${cityen!='jtdr'}">
