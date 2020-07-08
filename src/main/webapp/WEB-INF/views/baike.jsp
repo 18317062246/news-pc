@@ -164,10 +164,10 @@
             </c:when>
             <c:otherwise>
                 <div class="centmain-wraper centmain-wraper-infor"  style="width: 30%;float: right; margin-right: 530px;">
-                    <div class="centmain-inner">
-                        <div class="infor-wrapper" style="width: 800px;">
-                            <div class="node-dl-wrapper"  style="width: 800px;">
-                                <dl class="none_dl clearfix">
+                    <div class="centmain-inner" style="width: 800px;padding-top: 0px;margin-top: 0px;height: 370px;">
+                        <div class="infor-wrapper" style="width: 800px;padding-top: 0px;margin-top: 0px;height: 370px;">
+                            <div class="node-dl-wrapper"  style="width: 800px;padding-top: 0px;margin-top: 0px;height: 370px;text-align: center;">
+                                <dl class="none_dl clearfix" style="margin-top: 60px;">
                                     <dt>
                                         <img  src="${staticurl}/images/noplay.jpg" alt="">
                                     </dt>
