@@ -791,7 +791,38 @@
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
-                <c:when test="${ cityen == 'xa' || cityen == 'zz'}">
+                <c:when test="${ cityen == 'xa'}">
+                    <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
+                        <div class="subnav" >
+                            <a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">全部新房</a>
+                            <a href="//<%=cityen%>.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
+                            <a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
+                    <li><a href="//<%=cityen%>.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
+                <c:choose>
+                    <c:when test="${baiketype}">
+                        <li class="curr"><a href="/<%=cityen%>/">房产资讯</a>
+                            <div class="subnav" >
+                                <a href="/<%=cityen%>/" target="_blank">房产资讯</a>
+                                <a href="/<%=cityen%>/baike/" target="_blank">购房百科</a>
+                                <i class="arrow"></i>
+                            </div>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                            <li class="curr"><a href="/<%=cityen%>/" target="_blank">房产资讯</a>
+                    </c:otherwise>
+                </c:choose>
+                    <li><a href="//<%=cityen%>.centanet.com/job/" target="_blank">招聘专区</a>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
+                </c:when>
+
+                <c:when test="${cityen == 'zz'}">
                     <li><a href="//<%=cityen%>.centanet.com/" target="_blank">首页</a></li>
                     <li><a href="//<%=cityen%>.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
