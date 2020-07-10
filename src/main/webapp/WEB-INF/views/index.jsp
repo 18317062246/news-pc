@@ -285,6 +285,30 @@
                                     </div>
                                 </c:if>
                             </c:when>
+
+                            <c:when test="${cityen == 'hz'}">
+                                <c:if test="${t.columnsName != 'Ben钟话市'}">
+                                    <div class="infor-side-box">
+                                        <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                        </h2>
+                                        <ul class="infor-side-p">
+                                                <%--遍历文章--%>
+                                            <c:forEach items="${rightNews}"  var="n" varStatus="status">
+                                                <c:if test="${t.id==n.TypeID}">
+                                                    <li><i></i><a class="f000"
+                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
+                                                        <c:if test="${n.Title.length() >= 26}">
+                                                            <span>...</span>
+                                                        </c:if>
+                                                    </a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </c:when>
                             <c:when test="${cityen == 'gz'}">
                                 <c:if test="${t.columnsName != '热门专题'}">
                                     <div class="infor-side-box">
