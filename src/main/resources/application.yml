@@ -9,7 +9,7 @@ spring:
     cache: false
     enabled: false
   profiles:
-    active: dev # 激活环境
+    active: test # 激活环境
 #日志路径
 log:
   path: ./logs
