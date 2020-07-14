@@ -152,6 +152,17 @@ public class NewsController {
             }
         }
 
+        //如果是东莞，删除东莞成交走势栏目
+        if(Objects.equals(cityen , "dg")){
+            //筛选出东莞成交走势栏目对象，栏目id为89
+            List<NewsType> chengjiaoDelList = types.stream().filter(l -> Objects.equals(89, l.getId())).collect(Collectors.toList());
+            //如果东莞成交走势栏目集合不为空，就删除这些栏目
+            if(!CollectionUtils.isEmpty(chengjiaoDelList)){
+                //删除东莞成交走势相关的所有栏目
+                types.removeAll(chengjiaoDelList);
+            }
+        }
+
         //右侧上部文章
         List<NewsType> rightTypeAdd = new ArrayList<>();
         List<Map> rightNews = new ArrayList<>();
@@ -638,6 +649,17 @@ public class NewsController {
                 if(!CollectionUtils.isEmpty(xzlDelList)){
                     //删除写字楼相关的所有栏目
                     types.removeAll(xzlDelList);
+                }
+            }
+
+            //如果是东莞，删除东莞成交走势栏目
+            if(Objects.equals(cityen , "dg")){
+                //筛选出东莞成交走势栏目对象，栏目id为89
+                List<NewsType> chengjiaoDelList = types.stream().filter(l -> Objects.equals(89, l.getId())).collect(Collectors.toList());
+                //如果东莞成交走势栏目集合不为空，就删除这些栏目
+                if(!CollectionUtils.isEmpty(chengjiaoDelList)){
+                    //删除东莞成交走势相关的所有栏目
+                    types.removeAll(chengjiaoDelList);
                 }
             }
         }
