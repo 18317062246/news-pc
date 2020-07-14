@@ -141,6 +141,17 @@ public class NewsController {
             types.removeAll(typeDelList);
         }
 
+        //如果是北京，删除北京写字楼资讯栏目
+        if(Objects.equals(cityen , "bj")){
+            //筛选出北京写字楼栏目对象，栏目id为659
+            List<NewsType> xzlDelList = types.stream().filter(l -> Objects.equals(659, l.getId())).collect(Collectors.toList());
+            //如果北京写字楼资讯栏目集合不为空，就删除这些栏目
+            if(!CollectionUtils.isEmpty(xzlDelList)){
+                //删除写字楼相关的所有栏目
+                types.removeAll(xzlDelList);
+            }
+        }
+
         //右侧上部文章
         List<NewsType> rightTypeAdd = new ArrayList<>();
         List<Map> rightNews = new ArrayList<>();
