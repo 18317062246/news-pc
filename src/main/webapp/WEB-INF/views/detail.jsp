@@ -108,8 +108,8 @@
                                             <c:if test="${n.xinfangResult != null}">
                                                 <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/" target="_blank">
                                                     <img class="lazy"
-                                                         src="${fn:substring(n.xinfangResult.defaultImage, 0 , mfn:lastIndexOf(n.xinfangResult.defaultImage, "."))}_180x130_c${fn:substring(n.xinfangResult.defaultImage,mfn:lastIndexOf(n.xinfangResult.defaultImage, ".") , fn:length(n.xinfangResult.defaultImage))}"
-                                                         data-original="${fn:substring(n.xinfangResult.defaultImage, 0 , mfn:lastIndexOf(n.xinfangResult.defaultImage, "."))}_180x130_c${fn:substring(n.xinfangResult.defaultImage,mfn:lastIndexOf(n.xinfangResult.defaultImage, ".") , fn:length(n.xinfangResult.defaultImage))}"
+                                                         src="${n.xinfangResult.defaultImage}"
+                                                         data-original="${n.xinfangResult.defaultImage}"
                                                          width="250" height="167" alt="" onerror="this.src='${defaultpic}'" />
                                                 </a>
                                             </c:if>
