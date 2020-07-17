@@ -307,7 +307,13 @@ public class NewsController {
         List<Integer> typeid = new ArrayList<>(Arrays.asList(type));
 
         //判断是否为热门专题
-        Integer hotTypeId = types.stream().filter(l -> l.getColumnsName().equals("热门专题")).mapToInt(NewsType::getId).sum();
+        Integer hotTypeId = 0;
+        //非武汉是热门专题字样
+        if(!Objects.equals("wh" , cityen)) {
+           hotTypeId =  types.stream().filter(l -> l.getColumnsName().equals("热门专题")).mapToInt(NewsType::getId).sum();
+        }else {//武汉为武汉热门专题字样
+            hotTypeId =  types.stream().filter(l -> l.getColumnsName().equals("武汉热门专题")).mapToInt(NewsType::getId).sum();
+        }
         //如果是热门专题，默认取8条数据
         if (hotTypeId != null && hotTypeId > 0 && hotTypeId.equals(type)) {
             pagesize = 8;
