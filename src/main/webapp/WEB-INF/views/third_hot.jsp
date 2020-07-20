@@ -42,7 +42,16 @@
 			<div class="expert">
 				<div class="expert-phone">
 					<c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html" target="_blank" title="${right[0].Title}"><img src="${right[0].LitPic}" alt="${right[0].Title}"onerror="this.src='${defaultpic}'"></a>
+					<a href="//news.centanet.com/${cityen}/detail/${right[0].ID}.html" target="_blank" title="${right[0].Title}">
+						<c:choose>
+							<c:when test="${right[0].LitPic != null && right[0].LitPic.length() >= 10}">
+								<img src="${right[0].LitPic}" alt="${right[0].Title}">
+							</c:when>
+							<c:otherwise>
+								<img src="${defaultpic}" alt="${right[0].Title}">
+							</c:otherwise>
+						</c:choose>
+					</a>
 				</div>
 					<ul class="expert-comment">
 					<c:forEach items="${right}" var="ri" begin="1" end="4">

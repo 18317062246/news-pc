@@ -55,10 +55,22 @@
             <c:forEach items="${news}" var="item">
                 <div class="special-item">
                     <a href="/${cityen}/detail/${item.ID}.html" class="link" title="${item.Title}" target="_blank">
-                        <img class="lazy"
-                             src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
-                             data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
-                             alt="${item.Title}" onerror="this.src='${defaultpic}'"/><span >${fn:substring(item.Title,0,16)}</span>
+                        <c:choose>
+                            <c:when test="${item.LitPic != null && item.LitPic.length() > 10}">
+                                <img class="lazy"
+                                     src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                     data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                     alt="${item.Title}"/>
+                            </c:when>
+                            <c:otherwise>
+                                <img class="lazy"
+                                     src="${defaultpic}"
+                                     data-original="${defaultpic}"
+                                     alt="${item.Title}"/>
+                            </c:otherwise>
+                        </c:choose>
+
+                        <span >${fn:substring(item.Title,0,16)}</span>
                     </a>
                 </div>
             </c:forEach>

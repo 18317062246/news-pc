@@ -20,7 +20,15 @@
 					<div class="special-item">
 					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank">
 						<p class="photo fl">
-							<img src="${leftUp[0].LitPic}" onerror="this.src='${defaultpic}'" alt="${leftUp[0].Title}">
+							<c:choose>
+								<c:when test="${leftUp[0].LitPic != null && leftUp[0].LitPic.length() >= 10}">
+									<img src="${leftUp[0].LitPic}"  alt="${leftUp[0].Title}">
+								</c:when>
+								<c:otherwise>
+									<img src="${defaultpic}" alt="${leftUp[0].Title}">
+								</c:otherwise>
+							</c:choose>
+
 						</p>
 						<p class="title fl">${leftUp[0].Title}</p>
 						<p class="txt fl">${leftUp[0].Description}</p></a>
@@ -42,7 +50,17 @@
 			<h5 class="caption">${types[1].columnsName}</h5>
 			<div class="expert">
 				<div class="expert-phone">
-					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank"><img src="${leftDown[0].LitPic}" onerror="this.src='${defaultpic}'" alt="${leftDown[0].Title}" style="width: 400px;height: 266px;"></a>
+					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank">
+						<c:choose>
+							<c:when test="${leftDown[0].LitPic != null && leftDown[0].LitPic.length() >= 10}">
+								<img src="${leftDown[0].LitPic}"  alt="${leftDown[0].Title}" style="width: 400px;height: 266px;">
+							</c:when>
+							<c:otherwise>
+								<img src="${defaultpic}" alt="${leftDown[0].Title}" style="width: 400px;height: 266px;">
+							</c:otherwise>
+						</c:choose>
+
+					</a>
 					<p class="txt"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank">${leftDown[0].Title}</a></p>
 					<p class="opacity_bg"></p>
 				</div>
