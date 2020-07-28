@@ -43,6 +43,18 @@ public interface NewsService extends Serializable {
 
     /**
      * @param cityen 城市简称
+     * @param typeIds 栏目id
+     * @param page 当前页
+     * @param pagesize 行数据
+     * @param order 排序
+     * @param key 关键字
+     * @param location 位置信息
+     * @return 获取指定栏目的资讯新闻列表的总条数
+     */
+    Integer getNewListByTypeTotal(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location);
+
+    /**
+     * @param cityen 城市简称
      * @param page 当前页
      * @param pagesize 行数据
      * @param desc 排序方式

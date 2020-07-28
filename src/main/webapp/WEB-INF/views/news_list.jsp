@@ -50,11 +50,18 @@
                 <span>${colName}</span>
             </div>--%>
             <div class="fl breadcrumbs-area f123 ">
-                <c:if test="${cityen == 'jtdr'}">
-                    <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
-                </c:if>
-                <c:if test="${cityen != 'jtdr'}">
-                    <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                <c:choose>
+                    <c:when test="${cityen == 'jtdr'}">
+                        <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                    </c:otherwise>
+                </c:choose>
+
+                <c:if test="${cityen == 'szworld'}">
+                    <span class="fsm">&gt;</span>
+                    <a href="//${cityen}.centanet.com/xinfang/" class="f123">${citycn}新房</a>
                 </c:if>
                 <span class="fsm">&gt;</span>
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a>

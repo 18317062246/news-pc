@@ -62,6 +62,7 @@ public class NewsServiceImpl implements NewsService {
 
 
     private static final String RESULT = "Result";
+    private static final String TOTAL = "Total";
 
     private static final String CITYEN = "cityen";
     private static final String LOCATION = "location";
@@ -132,6 +133,44 @@ public class NewsServiceImpl implements NewsService {
      */
     @Override
     public JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
+        //获取指定栏目的资讯新闻列表信息
+        JSONObject jSONObject = getNewListByType(cityen, typeIds, page,pagesize, order, key, location);
+        JSONObject newsList = jSONObject.getJSONObject(RESULT);
+        if (newsList.isEmpty()) {
+            log.error(ARTICLE_LIST_IS_NULL, newsList);
+        }
+        return newsList;
+    }
+
+    /**
+     * @param cityen 城市简称
+     * @param typeIds 栏目id
+     * @param page 当前页
+     * @param pagesize 行数据
+     * @param order 排序
+     * @param key 关键字
+     * @param location 位置信息
+     * @return  获取指定栏目的资讯新闻的总条数
+     */
+    @Override
+    public Integer getNewListByTypeTotal(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
+        //获取指定栏目的资讯新闻列表信息
+        JSONObject jSONObject = getNewListByType(cityen, typeIds, page,pagesize, order, key, location);
+        Integer total = (Integer) jSONObject.get(TOTAL);
+        return total;
+    }
+
+    /**
+     * @param cityen 城市简称
+     * @param typeIds 栏目id
+     * @param page 当前页
+     * @param pagesize 行数据
+     * @param order 排序
+     * @param key 关键字
+     * @param location 位置信息
+     * @return  获取指定栏目的资讯新闻列表信息
+     */
+    private JSONObject getNewListByType(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
         Map<String, Object> map = new HashMap<>();
         map.put(CITYEN, cityen);
         List<Integer> empty = new ArrayList<>();
@@ -149,12 +188,9 @@ public class NewsServiceImpl implements NewsService {
         JSONObject jSONObject = restTemplate.getForObject(apiurl +
                         "GetNewsList?cityen={cityen}&platform=pc&typeid={typeid}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&location={location}"
                 , JSONObject.class, map);
-        JSONObject newsList = jSONObject.getJSONObject(RESULT);
-        if (newsList.isEmpty()) {
-            log.error(ARTICLE_LIST_IS_NULL, newsList);
-        }
-        return newsList;
+        return jSONObject;
     }
+
 
     /**
      * @param cityen 城市简称

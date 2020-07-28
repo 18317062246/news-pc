@@ -55,6 +55,7 @@ public class NewsController {
 
     private static final String GUANG_ZHOU = "gz";
     private static final String NEWS_LIST = "NewsList";
+    private static final String BAIKE_NEWS_LIST = "baikeNewsList";
     private static final String RESULT = "Result";
     private static final String PUBLIC_COL = "东三省共用频道";
     private static final String LOOP_AD = "轮播广告位";
@@ -166,6 +167,7 @@ public class NewsController {
         //右侧上部文章
         List<NewsType> rightTypeAdd = new ArrayList<>();
         List<Map> rightNews = new ArrayList<>();
+        List<Map> newListByTypeTotals = new ArrayList<>();
         for (NewsType right : rightType) {
             if (PUBLIC_COL.equals(right.getColumnsName())) {
                 for (NewsType ri : right.getChildList()) {
@@ -176,12 +178,24 @@ public class NewsController {
             rightTypeAdd.add(right);
         }
 
+        //判断是否为szworld.如果是szworld,默认取10条数据，否则取5条数据
+        Integer rightNewsPageSize;
+        if(Objects.equals("szworld",cityen)){
+            rightNewsPageSize = 10;
+        }else {
+            rightNewsPageSize = 5;
+        }
         //定义一个对象，用于判断删除栏目
         List<NewsType> rightTypeDel = new ArrayList<>();
         rightTypeAdd.forEach(item -> {
-            JSONObject right = newsService.newsList(cityen, Arrays.asList(item.getId()), 1, 5, null, null, null);
+            JSONObject right = newsService.newsList(cityen, Arrays.asList(item.getId()), 1, rightNewsPageSize, null, null, null);
             if (!ObjectUtils.isEmpty(right.get(NEWS_LIST))) {
                 rightNews.addAll(JSON.parseArray(JSON.toJSONString(right.get(NEWS_LIST)), Map.class));
+                Map o = ((List<Map>)right.get(NEWS_LIST)).get(0);
+                //获取栏目的总数据条数map
+                Map<String, Integer> newListByTypeTotalMap = getNewListByTypeTotalMap(((List<Map>) right.get(NEWS_LIST)).get(0), cityen, item, rightNewsPageSize);
+                //将数据添加到存储栏目总数据的集合中
+                newListByTypeTotals.add(newListByTypeTotalMap);
             }else {//若加载的数据为空，则添加对象到rightTypeDel对象中
                 //将对象添加到rightTypeDel集合中
                 rightTypeDel.add(item);
@@ -206,6 +220,7 @@ public class NewsController {
         }
 
         model.addAttribute("rightNews", rightNews);
+        model.addAttribute("rightNewAllCounts", newListByTypeTotals);
         model.addAttribute("centaNews", centaNews);
         //成交走势信息
         if (dealCitys.contains(cityen)) {
@@ -227,6 +242,17 @@ public class NewsController {
             return "index_gz";
         }*/
         return "index";
+    }
+
+    /**
+     * 组装Map集合，用于判断城市首页栏目总数据
+     */
+    private Map<String , Integer> getNewListByTypeTotalMap(Map newListByFirst , String cityen , NewsType item , Integer rightNewsPageSize){
+        Integer rightTotal = newsService.getNewListByTypeTotal(cityen, Arrays.asList(item.getId()), 1, rightNewsPageSize, null, null, null);
+        Map<String , Integer> map = new HashMap<>();
+        map.put("typeId" , (Integer) newListByFirst.get("TypeID"));
+        map.put("total" , rightTotal);
+        return map;
     }
 
     /**
@@ -711,6 +737,17 @@ public class NewsController {
             }
             return "third_baike";
         }
+
+        //获取购房百科数据
+        JSONObject baikeNewList = newsService.newsListByBaike(cityen, null , BAIKE, 1, 6, null, null);
+        //如果新闻列表有数据，存在对应的栏目id
+        List<Map> baikeNewListMap = JSON.parseArray(JSON.toJSONString(baikeNewList.get(NEWS_LIST)), Map.class);
+        //若baikeNewListMap不为空,将百科信息传送到页面上
+        if(!CollectionUtils.isEmpty(baikeNewList)){
+            model.addAttribute(BAIKE_NEWS_LIST, baikeNewListMap);
+        }
+
+
         model.addAttribute("leftUp", leftUp);
         model.addAttribute("leftDown", leftDown);
         model.addAttribute(RIGHT, right);
@@ -724,6 +761,12 @@ public class NewsController {
             return "third_sz_esf";
         }else if ("zs_buyer".equals(type)) {//中山买房帮手
             return "third_zs_buyer";
+        }else if ("szworld_xf".equals(type)) {//海外新房
+            return "third_szworld_xf";
+        }else if ("jjr_baike_info".equals(type)) {//北京、惠州经纪人页面百科信息
+            return "jingjiren_baike";
+        }else if ("gz_jjr_baike_info".equals(type)) {//广州经纪人页面百科信息
+            return "jingjiren_baike_gz";
         }
         return "third_hot";
     }

@@ -53,11 +53,18 @@
         <div class="breadcrumbs clearfix f123">
 
             <div class="fl breadcrumbs-area">
-                <c:if test="${cityen == 'jtdr'}">
-                    <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
-                </c:if>
-                <c:if test="${cityen != 'jtdr'}">
-                    <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                <c:choose>
+                    <c:when test="${cityen == 'jtdr'}">
+                        <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
+                    </c:otherwise>
+                </c:choose>
+
+                <c:if test="${cityen == 'szworld'}">
+                    <span class="fsm">&gt;</span>
+                    <a href="//${cityen}.centanet.com/xinfang/" class="f123">${citycn}新房</a>
                 </c:if>
 
                 <span class="fsm">&gt;</span>
@@ -258,6 +265,7 @@
                                     </div>
                                 </c:if>
                             </c:when>
+                            <c:when test="${cityen == 'szworld'}"></c:when>
                             <c:otherwise>
                                 <div class="infor-side-box">
                                     <p class="title-top">
@@ -332,6 +340,7 @@
                                     </div>
                                 </c:if>
                             </c:when>
+                            <c:when test="${cityen == 'szworld'}"></c:when>
 
                             <c:when test="${cityen == 'hz'}">
                                 <c:if test="${t.columnsName != 'Ben钟话市'}">
@@ -404,7 +413,8 @@
                         </c:choose>
 
                     </c:if>
-                </c:forEach>
+                    </c:forEach>
+
 
                 <%-- 右侧下部集团jt文章--%>
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
@@ -439,8 +449,8 @@
                                 </div>
                             </c:if>
                         </c:when>
-                        <%--深圳隐藏品牌部、研究院、专家点评--%>
-                        <c:when test="${cityen == 'sz'}">
+                        <%--深圳、海外隐藏品牌部、研究院、专家点评--%>
+                        <c:when test="${cityen == 'sz' || cityen == 'szworld'}">
 
                         </c:when>
                         <c:otherwise>
@@ -477,7 +487,7 @@
                     <%--  </c:if>--%>
                 </c:forEach>
 
-                <%--广州热门专题--%>
+                <%--广州热门专题栏目、惠州Ben钟话市栏目、深圳海外右上部栏目文章--%>
                 <c:forEach items="${rightType}" var="t" varStatus="status">
                     <c:if test="${t.location=='right' && status.index!=0}">
                         <c:if test="${cityen == 'gz'}">
@@ -555,6 +565,35 @@
                                 </div>
                             </c:if>
                         </c:if>
+                    </c:if>
+                    <c:if test="${cityen == 'szworld'}">
+                        <c:forEach items="${rightType}" var="t" varStatus="status">
+                            <div class="infor-side-box">
+                                <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
+                                    <c:forEach items="${rightNewAllCounts}" var="n">
+                                        <c:if test="${t.id==n.typeId}">
+                                            <c:if test="${n.total > 10}">
+                                                <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                            </c:if>
+                                        </c:if>
+                                    </c:forEach>
+                                </h2>
+                                <ul class="infor-side-p">
+                                        <%--遍历文章--%>
+                                    <c:forEach items="${rightNews}"  var="n" varStatus="status">
+                                        <c:if test="${t.id==n.TypeID}">
+                                            <li><i></i><a class="f000"
+                                                          href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
+                                                <c:if test="${n.Title.length() >= 26}">
+                                                    <span>...</span>
+                                                </c:if>
+                                            </a>
+                                            </li>
+                                        </c:if>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </c:forEach>
                     </c:if>
                 </c:forEach>
 

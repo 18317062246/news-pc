@@ -15,16 +15,15 @@
         <div class="expert">
             <div class="expert-phone">
                 <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${leftUp[0].Title}</span>
-                <a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" >
+                <a  target="_blank"  href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" >
                     <c:choose>
-                        <c:when test="${leftUp[0].Title != null && leftUp[0].Title.length() >= 10}">
+                        <c:when test="${leftUp[0].LitPic != null && leftUp[0].LitPic.length() >= 10}">
                             <img src="${leftUp[0].LitPic}" alt="${leftUp[0].Title}">
                         </c:when>
                         <c:otherwise>
                             <img src="${defaultpic}" alt="${leftUp[0].Title}">
                         </c:otherwise>
                     </c:choose>
-
                 </a>
             </div>
             <ul class="expert-comment">
