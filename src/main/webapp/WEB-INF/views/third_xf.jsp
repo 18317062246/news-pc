@@ -66,7 +66,12 @@
 				</div>
 				<ul class="expert-comment">
 					<c:forEach items="${leftDown}" var="item" begin="1" end="4">
-						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">${item.Title}</a></li>
+						<li><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
+								${fn:substring(item.Title,0,30)}
+								<c:if test="${item.Title.length() > 30}">
+									...
+								</c:if>
+						</a></li>
 					</c:forEach>
 				</ul>
 			</div>
