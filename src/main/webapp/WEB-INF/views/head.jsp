@@ -231,7 +231,7 @@
                 </c:when>
 
                 <c:when test="${cityen == 'szworld'}">
-                    <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
+                    <li><a href="//sz.centanet.com/" target="_blank">首页</a></li>
                     <li ><a href="//sz.centanet.com/ershoufang/" target="_blank">二手房</a>
                         <div class="subnav" >
                             <a href="//sz.centanet.com/ershoufang/" target="_blank">在售房源</a>
