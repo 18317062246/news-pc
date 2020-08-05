@@ -566,6 +566,7 @@
                             </c:if>
                         </c:if>
                     </c:if>
+                </c:forEach>
                     <c:if test="${cityen == 'szworld'}">
                         <c:forEach items="${rightType}" var="t" varStatus="status">
                             <div class="infor-side-box">
@@ -595,7 +596,7 @@
                             </div>
                         </c:forEach>
                     </c:if>
-                </c:forEach>
+
 
 
             </div>

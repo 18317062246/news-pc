@@ -55,6 +55,7 @@ public class NewsController {
 
     private static final String GUANG_ZHOU = "gz";
     private static final String NEWS_LIST = "NewsList";
+    private static final String CITY_NEWS_LIST = "cityNewsList";
     private static final String BAIKE_NEWS_LIST = "baikeNewsList";
     private static final String RESULT = "Result";
     private static final String PUBLIC_COL = "东三省共用频道";
@@ -745,6 +746,15 @@ public class NewsController {
         //若baikeNewListMap不为空,将百科信息传送到页面上
         if(!CollectionUtils.isEmpty(baikeNewList)){
             model.addAttribute(BAIKE_NEWS_LIST, baikeNewListMap);
+        }
+
+        //获取最新的数据
+        JSONObject newsList = newsService.newsList(cityen,  1, 10, 0);
+        //将城市最新列表数据转换成List<Map>集合
+        List<Map> newsListMap = JSON.parseArray(JSON.toJSONString(newsList.get(NEWS_LIST)), Map.class);
+        //若newsListMap不为空,将城市最新信息传送到页面上
+        if(!CollectionUtils.isEmpty(newsListMap)){
+            model.addAttribute(CITY_NEWS_LIST, newsListMap);
         }
 
 
