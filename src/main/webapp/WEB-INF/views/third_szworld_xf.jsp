@@ -55,7 +55,7 @@
                         </li>
                     </c:forEach>
                 </ul>
-                <p class="base tr"><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="cBlue">@房产要闻</a></p>
+                <p class="base tr"><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="cBlue" target="_blank">@房产要闻</a></p>
             </div>
         </div>
 
