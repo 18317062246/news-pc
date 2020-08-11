@@ -56,7 +56,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
 
@@ -118,7 +118,7 @@
                                 </li>
                             </c:when>
                             <c:otherwise>
-                                <li class="curr"><a href="/${cityen}/" target="_blank">房产资讯</a>
+                                <li class="curr"><a href="/${cityen}/" target="_blank">房产资讯</a></li>
                              </c:otherwise>
                         </c:choose>
                     <li><a href="http://tjvplus.centaline.com.cn/" target="_blank">居划算</a></li>
@@ -168,7 +168,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="//${cityen}.centanet.com/about/" target="_blank">关于中原</a></li>
@@ -214,7 +214,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="//${cityen}.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
@@ -260,7 +260,7 @@
                     <li><a href="//sz.centanet.com/xiaoqu/" target="_blank">小区</a></li>
                     <c:choose>
                         <c:when test="${baiketype}">
-                            <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
+                            <li><a href="/${cityen}/">资讯<span>·</span>百科</a>
                                 <div class="subnav" >
                                     <a href="/${cityen}/" target="_blank">资讯</a>
                                     <a href="/${cityen}/baike/" target="_blank">购房百科</a>
@@ -269,7 +269,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                             <li class="curr"><a href="/${cityen}/" target="_blank">资讯</a>
+                            <li><a href="/${cityen}/" target="_blank">资讯</a></li>
                         </c:otherwise>
                      </c:choose>
                     <li><a href="//sz.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
@@ -390,7 +390,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -447,7 +447,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
 
@@ -489,7 +489,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
 
@@ -546,7 +546,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
 
@@ -584,7 +584,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -629,7 +629,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -677,7 +677,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -706,7 +706,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -752,7 +752,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -781,7 +781,7 @@
                         </li>
                     </c:when>
                     <c:otherwise>
-                    <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                    <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                         </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -809,7 +809,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -839,7 +839,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -917,7 +917,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
@@ -946,11 +946,12 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
+
                 <c:when test="${cityen == 'zs'}">
                     <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
@@ -975,7 +976,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
