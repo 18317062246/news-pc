@@ -57,6 +57,7 @@ public class NewsController {
     private static final String NEWS_LIST = "NewsList";
     private static final String CITY_NEWS_LIST = "cityNewsList";
     private static final String BAIKE_NEWS_LIST = "baikeNewsList";
+    private static final String BAIKE_NEWS_LIST_BY_KNOWLEDGE_QA = "baikeNewsListByKnowledgeQA";
     private static final String RESULT = "Result";
     private static final String PUBLIC_COL = "东三省共用频道";
     private static final String LOOP_AD = "轮播广告位";
@@ -739,14 +740,31 @@ public class NewsController {
             return "third_baike";
         }
 
-        //获取购房百科数据
-        JSONObject baikeNewList = newsService.newsListByBaike(cityen, null , BAIKE, 1, 6, null, null);
-        //如果新闻列表有数据，存在对应的栏目id
-        List<Map> baikeNewListMap = JSON.parseArray(JSON.toJSONString(baikeNewList.get(NEWS_LIST)), Map.class);
-        //若baikeNewListMap不为空,将百科信息传送到页面上
-        if(!CollectionUtils.isEmpty(baikeNewList)){
-            model.addAttribute(BAIKE_NEWS_LIST, baikeNewListMap);
+        //如果是惠州，就取全部的百科数据
+        if(Objects.equals(cityen , "hz")) {
+            //获取购房百科数据
+            JSONObject baikeNewList = newsService.newsListByBaike(cityen, null, BAIKE, 1, 6, null, null);
+            //如果新闻列表有数据，存在对应的栏目id
+            List<Map> baikeNewListMap = JSON.parseArray(JSON.toJSONString(baikeNewList.get(NEWS_LIST)), Map.class);
+            //若baikeNewListMap不为空,将百科信息传送到页面上
+            if (!CollectionUtils.isEmpty(baikeNewList)) {
+                model.addAttribute(BAIKE_NEWS_LIST, baikeNewListMap);
+            }
+            //如果是北京，就取百科-知识问答内容
+        }else if(Objects.equals("bj" , cityen)){
+            //获取购房百科-知识问答数据
+            JSONObject baikeNewByKnowledgeQAList = newsService.newsListByBaike(cityen, 1048, BAIKE, 1, 6, null, null);
+            //如果新闻列表有数据，存在对应的栏目id
+            List<Map> baikeNewListByKnowledgeQAMap = JSON.parseArray(JSON.toJSONString(baikeNewByKnowledgeQAList.get(NEWS_LIST)), Map.class);
+            //若baikeNewByKnowledgeQAList不为空,将购房百科-知识问答内容传送到页面上
+            if (!CollectionUtils.isEmpty(baikeNewByKnowledgeQAList)) {
+                model.addAttribute(BAIKE_NEWS_LIST_BY_KNOWLEDGE_QA, baikeNewListByKnowledgeQAMap);
+            }
         }
+
+
+
+
 
         //获取最新的数据
         JSONObject newsList = newsService.newsList(cityen,  1, 10, 0);
@@ -777,6 +795,8 @@ public class NewsController {
             return "jingjiren_baike";
         }else if ("gz_jjr_baike_info".equals(type)) {//广州经纪人页面百科信息
             return "jingjiren_baike_gz";
+        }else if ("bj_jjr_baike_info".equals(type)) {//北京经纪人页面百科信息
+            return "jingjiren_baike_bj";
         }
         return "third_hot";
     }
