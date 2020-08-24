@@ -988,7 +988,7 @@
 
         <div class="login-iframe fr" >
                 <%--<iframe frameborder="0"  scrolling="no"  id="iframeA" src="//passport.centanet.com/page/top.aspx?from=" allowTransparency="true" ></iframe>--%>
-            <iframe src="https://passport.centanet.com/page/top.aspx?from=" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/page/top.aspx?from=" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
+            <iframe src="https://passport.centanet.com/top/" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/top/" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
 
         </div>
         <p class="hot-phone fr" style="width: 300px;">热线：${cityTelphone}</p>
