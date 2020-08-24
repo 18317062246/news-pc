@@ -991,7 +991,7 @@
             <iframe src="https://passport.centanet.com/page/top.aspx?from=" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/page/top.aspx?from=" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
 
         </div>
-        <p class="hot-phone fr">热线：${cityTelphone}</p>
+        <p class="hot-phone fr" style="width: 300px;">热线：${cityTelphone}</p>
     </div>
 </div>
 </c:if>

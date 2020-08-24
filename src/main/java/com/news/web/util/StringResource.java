@@ -70,7 +70,7 @@ public class StringResource implements Serializable {
         map.put("bj", "400-812-5166");
         map.put("tj", "4008-985-666");
         map.put("gz", "4008-103-313");
-        map.put("sz", "4008-192-186");
+        map.put("sz", "4006622712转8888");
         map.put("cd", "400-028-8484");
         map.put("cq", "4008-110-117");
         map.put("nj", "400-876-6988");
