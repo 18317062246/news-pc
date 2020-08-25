@@ -241,7 +241,7 @@ public class NewsServiceImpl implements NewsService {
             map.put("typeid", typeId);
         }
 
-        StringBuffer sql = new StringBuffer("GetNewsList?cityen={cityen}&platform=wap&location={location}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}");
+        StringBuffer sql = new StringBuffer("GetNewsList?cityen={cityen}&platform=pc&location={location}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}");
         if(!ObjectUtils.isEmpty(typeId)){
             sql.append("&typeid={typeid}");
         }
