@@ -48,6 +48,7 @@
                     <a target="_blank" href="https://xy.centanet.com/" title="襄阳中原">襄阳中原</a>
                     <a target="_blank" href="https://jn.centanet.com/" title="济南中原">济南中原</a>
                     <a target="_blank" href="https://zz.centanet.com/" title="郑州中原">郑州中原</a>
+                    <a target="_blank" href="https://hq.centanet.com/" title="横琴中原">横琴中原</a>
             </dd>
         </dl>
         <c:if test="${cityen!='jtdr'}">
