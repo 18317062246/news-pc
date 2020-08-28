@@ -59,12 +59,10 @@
                     <a href="/${cityen}/detail/${item.ID}.html" class="link" title="${item.Title}" target="_blank">
                         <c:choose>
                             <c:when test="${item.LitPic != null && item.LitPic.length() > 10}">
-                                <div class="img-box">
                                     <img class="lazy news-img"
                                          src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
                                          data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
                                          alt="${item.Title}"/>
-                                </div>
                             </c:when>
                             <c:otherwise>
                                 <img class="lazy"
