@@ -25,6 +25,8 @@
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/jquery.lazyload.min.js"></script>
+    <%--图片放大效果--%>
+    <link rel="stylesheet" href="${staticurl}/css/news_list_photo_enlarge.css">
     <script>
         function getIframe(id) {
             return document.getElementById(id).contentWindow.document;
@@ -90,10 +92,12 @@
 
                                 <c:choose>
                                     <c:when test="${item.LitPic != null && item.LitPic.length() >= 10}">
-                                        <img class="lazy"
-                                             src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
-                                             data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_300x210_c${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
-                                             alt="${item.Title}" />
+                                        <div class="img-box">
+                                            <img class="lazy news-img"
+                                                 src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                                 data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                                 alt="${item.Title}" />
+                                        </div>
                                     </c:when>
                                     <c:otherwise>
                                         <img class="lazy"
