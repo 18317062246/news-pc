@@ -781,23 +781,23 @@ public class NewsController {
         model.addAttribute(RIGHT, right);
         model.addAttribute(TYPES, types);
 
-        if ("index".equals(type)) {//二手房
-            return "third_esf";
-        } else if ("info".equals(type)) {//新房
-            return "third_xf";
-        }else if ("sz_esf".equals(type)) {//深圳二手房
-            return "third_sz_esf";
-        }else if ("zs_buyer".equals(type)) {//中山买房帮手
-            return "third_zs_buyer";
-        }else if ("szworld_xf".equals(type)) {//海外新房
-            return "third_szworld_xf";
-        }else if ("jjr_baike_info".equals(type)) {//北京、惠州经纪人页面百科信息
-            return "jingjiren_baike";
-        }else if ("gz_jjr_baike_info".equals(type)) {//广州经纪人页面百科信息
-            return "jingjiren_baike_gz";
-        }else if ("bj_jjr_baike_info".equals(type)) {//北京经纪人页面百科信息
-            return "jingjiren_baike_bj";
+        if (StringResource.INDEX.equals(type)) {//二手房
+            return StringResource.THIRD_ESF;
+        } else if (StringResource.INFO.equals(type)) {//新房
+            return StringResource.THIRD_XF;
+        }else if (StringResource.SZ_ESF.equals(type)) {//深圳二手房
+            return StringResource.THIRD_SZ_ESF;
+        }else if (StringResource.ZS_BUYER.equals(type)) {//中山买房帮手
+            return StringResource.THIRD_ZS_BUYER;
+        }else if (StringResource.SZWORLD_XF.equals(type)) {//海外新房
+            return StringResource.THIRD_SZWORLD_XF;
+        }else if (StringResource.JJR_BAIKE_INFO.equals(type)) {//北京、惠州经纪人页面百科信息
+            return StringResource.JINGJIREN_BAIKE;
+        }else if (StringResource.GZ_JJR_BAIKE_INFO.equals(type)) {//广州经纪人页面百科信息
+            return StringResource.JINGJIREN_BAIKE_GZ;
+        }else if (StringResource.BJ_JJR_BAIKE_INFO.equals(type)) {//北京经纪人页面百科信息
+            return StringResource.JINGJIREN_BAIKE_BJ;
         }
-        return "third_hot";
+        return StringResource.THIRD_HOT;
     }
 }

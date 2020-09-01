@@ -12,6 +12,32 @@ import java.util.Map;
 
 public class StringResource implements Serializable {
 
+    /**
+     * 静态常量文本
+     */
+    public static final String INDEX = "index";
+    public static final String THIRD_ESF = "third_esf";
+    public static final String INFO = "info";
+    public static final String THIRD_XF = "third_xf";
+    public static final String SZ_ESF = "sz_esf";
+    public static final String THIRD_SZ_ESF = "third_sz_esf";
+    public static final String ZS_BUYER = "zs_buyer";
+    public static final String THIRD_ZS_BUYER = "third_zs_buyer";
+    public static final String SZWORLD_XF = "szworld_xf";
+    public static final String THIRD_SZWORLD_XF = "third_szworld_xf";
+    public static final String JJR_BAIKE_INFO = "jjr_baike_info";
+    public static final String JINGJIREN_BAIKE = "jingjiren_baike";
+    public static final String GZ_JJR_BAIKE_INFO = "gz_jjr_baike_info";
+    public static final String JINGJIREN_BAIKE_GZ = "jingjiren_baike_gz";
+    public static final String BJ_JJR_BAIKE_INFO = "bj_jjr_baike_info";
+    public static final String JINGJIREN_BAIKE_BJ = "jingjiren_baike_bj";
+    public static final String THIRD_HOT = "third_hot";
+
+    /**
+     * @param input 原始图片路径
+     * @param substring 分隔符
+     * @return 返回文件的扩展名
+     */
     public static int lastIndexOf(String input, String substring) {
         if (input == null) input = "";
         if (substring == null) substring = "";
