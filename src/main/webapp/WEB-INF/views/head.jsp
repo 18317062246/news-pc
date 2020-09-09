@@ -36,6 +36,7 @@
                     </li>
                     <li><a href="//${cityen}.centanet.com/zufang/" target="_blank">租房</a></li>
                     <li><a href="//${cityen}.centanet.com/xiezilou/" target="_blank">写字楼<span>·</span>商铺</a></li>
+                    <li><a href="//www.bj-centaimmigration.com" target="_blank">海外</a></li>
                     <li><a href="//${cityen}.centanet.com/xiaoqu/" target="_blank">小区</a></li>
                     <li><a href="//${cityen}.centanet.com/chengjiao/contrast/" target="_blank">房价成交</a>
                         <div class="subnav" >
