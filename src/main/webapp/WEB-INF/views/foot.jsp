@@ -194,7 +194,7 @@
         </c:if>
             <p class="copyright">
                 本站所载各种成交信息和数据仅供参考，不构成任何投资建议；公司不对成交数据的准确性作出承诺，也不对任何错误负任何法律责任。所有合同均以最终签约为准。<br>
-                Copyright ©2020 Centanet.com&nbsp;版权所有&nbsp;&nbsp;<a target="_blank" style="color: #939393;" rel="nofollow" href="http://www.beian.miit.gov.cn">粤ICP备16080050号</a> &nbsp;
+                Copyright ©2020 Centanet.com&nbsp;版权所有&nbsp;&nbsp;<a target="_blank" style="color: #939393;" rel="nofollow" href="http://beian.miit.gov.cn">粤ICP备16080050号</a> &nbsp;
             </p>
             <p style="margin-top: 7px;">
                 <a target="_blank" style="color: #939393;" rel="nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502004627"><img style="margin-right:5px;" src="https://static.centanet.com/v7p20415/images/police.png?v202005111">粤公网安备
