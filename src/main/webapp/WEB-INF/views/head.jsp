@@ -992,7 +992,7 @@
             <iframe src="https://passport.centanet.com/top/" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/top/" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
 
         </div>
-        <p class="hot-phone fr" style="width: 300px;">热线：${cityTelphone}</p>
+        <p class="hot-phone fr" style="width: 200px;">热线：${cityTelphone}</p>
     </div>
 </div>
 </c:if>
