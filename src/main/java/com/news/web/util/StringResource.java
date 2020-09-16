@@ -32,6 +32,9 @@ public class StringResource implements Serializable {
     public static final String BJ_JJR_BAIKE_INFO = "bj_jjr_baike_info";
     public static final String JINGJIREN_BAIKE_BJ = "jingjiren_baike_bj";
     public static final String THIRD_HOT = "third_hot";
+    public static final String THIRD_BAIKE = "third_baike";
+    public static final String LEFT_UP = "leftUp";
+    public static final String LEFT_DOWN = "leftDown";
 
     /**
      * @param input 原始图片路径
