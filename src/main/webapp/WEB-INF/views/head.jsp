@@ -63,6 +63,7 @@
 
                     <li><a href="//${cityen}.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                         <div class="subnav" >
+                            <a href="//${cityen}.centanet.com/jingjiren/index/" target="_blank">专家经纪人</a>
                             <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
                             <a href="//${cityen}.centanet.com/mendian/" target="_blank">门店</a>
                             <i class="arrow"></i>
