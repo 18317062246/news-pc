@@ -131,7 +131,7 @@
                                                 </a>
                                             </c:if>
                                             <c:if test="${n.esfResult != null}">
-                                                <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/" target="_blank">
+                                                <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html" target="_blank">
                                                     <c:choose>
                                                         <c:when test="${n.esfResult.fullImagePath != null && n.esfResult.fullImagePath.length() >= 10}">
                                                             <img  class="lazy"
@@ -192,7 +192,7 @@
                                                     </label>
                                                 </c:if>
                                                 <c:if test="${n.esfResult != null}">
-                                                    <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html/"  target="_blank" title="${n.esfResult.estateName}">${n.esfResult.estateName}</a>
+                                                    <a href="//${cityen}.centanet.com/ershoufang/${n.esfResult.oid}.html"  target="_blank" title="${n.esfResult.estateName}">${n.esfResult.estateName}</a>
                                                     <label for="" class="red_tag">
                                                         <c:if test="${fn:contains(apartmentStr, n.esfResult.propertyType)}">
                                                             ${apartmentStr}
