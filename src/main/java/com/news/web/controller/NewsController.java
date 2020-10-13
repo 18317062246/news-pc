@@ -145,24 +145,24 @@ public class NewsController {
             types.removeAll(typeDelList);
         }
 
-        //如果是北京，删除北京写字楼资讯栏目
+        //如果是北京，隐藏北京写字楼资讯栏目
         if(Objects.equals(cityen , AttributeKeyHelper.BJ_CITY_EN)){
             //筛选出北京写字楼栏目对象，栏目id为659
             List<NewsType> xzlDelList = types.stream().filter(l -> Objects.equals(659, l.getId())).collect(Collectors.toList());
-            //如果北京写字楼资讯栏目集合不为空，就删除这些栏目
+            //如果北京写字楼资讯栏目集合不为空，就隐藏这些栏目
             if(!CollectionUtils.isEmpty(xzlDelList)){
-                //删除写字楼相关的所有栏目
+                //隐藏写字楼相关的所有栏目
                 types.removeAll(xzlDelList);
             }
         }
 
-        //如果是东莞，删除东莞成交走势栏目
+        //如果是东莞，隐藏东莞成交走势栏目和政策法规栏目
         if(Objects.equals(cityen , AttributeKeyHelper.DG_CITY_EN)){
             //筛选出东莞成交走势栏目对象，栏目id为89
             List<NewsType> chengjiaoDelList = types.stream().filter(l -> Objects.equals(89, l.getId())).collect(Collectors.toList());
-            //如果东莞成交走势栏目集合不为空，就删除这些栏目
+            //如果东莞成交走势栏目集合不为空，就隐藏这些栏目
             if(!CollectionUtils.isEmpty(chengjiaoDelList)){
-                //删除东莞成交走势相关的所有栏目
+                //隐藏东莞成交走势相关的所有栏目
                 types.removeAll(chengjiaoDelList);
             }
         }
@@ -208,6 +208,16 @@ public class NewsController {
         //判断rightTypeDel对象是否不为空，不为空就将包含的对象删除
         if(!CollectionUtils.isEmpty(rightTypeDel)){
             rightTypeAdd.removeAll(rightTypeDel);
+        }
+
+        //判断是否为东莞城市，如果是东莞城市，隐藏政策法规栏目
+        if(Objects.equals(cityen , AttributeKeyHelper.DG_CITY_EN)){
+            //筛选出东莞政策法规栏目对象，栏目id为87
+            List<NewsType> zhengceDelList = types.stream().filter(l -> Objects.equals(87, l.getId())).collect(Collectors.toList());
+            //判断zhengceDelList对象是否不为空，不为空就将包含的对象删除
+            if(!CollectionUtils.isEmpty(zhengceDelList)){
+                rightTypeAdd.removeAll(zhengceDelList);
+            }
         }
 
         //右侧下部集团jt文章
@@ -669,7 +679,7 @@ public class NewsController {
                 types.removeAll(newsTypesRemove);
             }
 
-            //如果是北京，删除北京写字楼资讯栏目
+            //如果是北京，隐藏北京写字楼资讯栏目
             if(Objects.equals(cityen , AttributeKeyHelper.BJ_CITY_EN)){
                 //筛选出北京写字楼栏目对象，栏目id为659
                 List<NewsType> xzlDelList = types.stream().filter(l -> Objects.equals(659, l.getId())).collect(Collectors.toList());
@@ -680,14 +690,22 @@ public class NewsController {
                 }
             }
 
-            //如果是东莞，删除东莞成交走势栏目
+            //如果是东莞，隐藏东莞成交走势栏目
             if(Objects.equals(cityen , AttributeKeyHelper.DG_CITY_EN)){
                 //筛选出东莞成交走势栏目对象，栏目id为89
                 List<NewsType> chengjiaoDelList = types.stream().filter(l -> Objects.equals(89, l.getId())).collect(Collectors.toList());
-                //如果东莞成交走势栏目集合不为空，就删除这些栏目
+                //如果东莞成交走势栏目集合不为空，就隐藏这些栏目
                 if(!CollectionUtils.isEmpty(chengjiaoDelList)){
-                    //删除东莞成交走势相关的所有栏目
+                    //隐藏东莞成交走势相关的所有栏目
                     types.removeAll(chengjiaoDelList);
+                }
+
+                //筛选出东莞政策法规栏目对象，栏目id为87
+                List<NewsType> zhengceDelList = types.stream().filter(l -> Objects.equals(87, l.getId())).collect(Collectors.toList());
+                //如果东莞政策法规栏目集合不为空，就隐藏这些栏目
+                if(!CollectionUtils.isEmpty(zhengceDelList)){
+                    //隐藏东莞政策法规相关的所有栏目
+                    types.removeAll(zhengceDelList);
                 }
             }
         }
