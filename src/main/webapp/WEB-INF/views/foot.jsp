@@ -20,7 +20,6 @@
                     <a target="_blank" href="https://sz.centanet.com/" title="深圳中原">深圳中原</a>
                     <a target="_blank" href="http://www.centaline-macau.com/" class="f666" title="澳门中原">澳门中原</a>
                     <a target="_blank" href="https://cq.centanet.com/" title="重庆中原">重庆中原</a>
-                    <a target="_blank" href="http://hk.centanet.com/" title="香港中原">香港中原</a>
                     <a target="_blank" href="https://cd.centanet.com/" title="成都中原">成都中原</a>
                     <a target="_blank" href="https://nj.centanet.com/" title="南京中原">南京中原</a>
                     <a target="_blank" href="https://wh.centanet.com/" title="武汉中原">武汉中原</a>
