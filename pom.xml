@@ -4,9 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.news.web</groupId>
-    <artifactId>news_web</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>com.news.website</groupId>
+    <artifactId>news.pc</artifactId>
+    <version>1.0.0</version>
+    <name>com.news.website.pc</name>
 
     <!--将打包方式改为war-->
     <packaging>war</packaging>
@@ -16,6 +17,11 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.4.RELEASE</version>
     </parent>
+
+    <properties>
+        <!--版本依赖集中管理-->
+        <springfox.swagger2.version>2.7.0</springfox.swagger2.version>
+    </properties>
 
     <dependencies>
         <!-- web start -->
@@ -32,6 +38,13 @@
             <scope>test</scope>
         </dependency>
         <!-- test end -->
+
+        <!--common-lang3 start -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!--common-lang3 end-->
 
         <!--jsp页面使用jstl标签 start -->
         <dependency>
@@ -67,9 +80,29 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.58</version>
+            <version>1.2.68</version>
         </dependency>
         <!-- fastjson end -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+        <!-- swagger start -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger2.version}</version>
+        </dependency>
+        <!-- swagger end -->
+
     </dependencies>
 
     <build>
