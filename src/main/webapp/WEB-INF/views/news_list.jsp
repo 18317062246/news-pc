@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
+    <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/js/jquery.slides.min.js"></script>
@@ -233,9 +234,15 @@
                     <div class="ranking-list">
                         <c:set var="arr" value="${fn:split('hightlight,hightlightB,hightlightC',',')}"></c:set>
                         <c:forEach items="${topList}" var="t" varStatus="status">
-                            <p>
+                            <p style="margin: 0 auto;">
                                 <i class="${arr[status.index]}">${status.count}</i>
                                 <a href="/${cityen}/detail/${t.ID}.html" target="_blank" class="f000" title="${t.Title}">${fn:substring(t.Title,0,18)}</a>
+                                <br/>
+
+                            </p>
+                            <p  class="toplist_time" style="margin: 0 auto;">
+                                <c:set target="${myDate}" property="time" value="${t.PublishDate*1000}"/>
+                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
                             </p>
                         </c:forEach>
                     </div>

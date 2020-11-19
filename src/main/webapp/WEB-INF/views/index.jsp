@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
+    <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/js/jquery.slides.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>
@@ -239,10 +240,14 @@
                                             <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <dt class="${status.count==1?'curr':''}"><i></i>
-                                                        <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                            <c:if test="${n.Title.length() >= 26}">
+                                                        <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                            <c:if test="${n.Title.length() >= 24}">
                                                                 <span>...</span>
                                                             </c:if>
+                                                            <span class="index_time">
+                                                                <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                        </span>
                                                         </a>
                                                     </dt>
                                                     <dd style="display: block;">
@@ -283,10 +288,14 @@
                                         <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
                                             <c:if test="${t.id==n.TypeID}">
                                                 <dt class="${status.count==1?'curr':''}"><i></i>
-                                                    <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                        <c:if test="${n.Title.length() >= 26}">
+                                                    <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                        <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
+                                                        <span class="index_time">
+                                                            <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                        </span>
                                                     </a>
                                                 </dt>
                                                 <dd style="display: block;">
@@ -334,10 +343,14 @@
                                             <c:forEach items="${rightNews}" var="n" varStatus="status" >
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                        <c:if test="${n.Title.length() >= 26}">
+                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                        <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
+                                                        <span class="index_time">
+                                                                 <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                        </span>
                                                     </a>
                                                     </li>
                                                 </c:if>
@@ -359,10 +372,14 @@
                                             <c:forEach items="${rightNews}"  var="n" varStatus="status">
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                        <c:if test="${n.Title.length() >= 26}">
+                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                        <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
+                                                        <span class="index_time">
+                                                                 <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                        </span>
                                                     </a>
                                                     </li>
                                                 </c:if>
@@ -382,10 +399,14 @@
                                             <c:forEach items="${rightNews}"  var="n" varStatus="status">
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                        <c:if test="${n.Title.length() >= 26}">
+                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                        <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
+                                                        <span class="index_time">
+                                                                 <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                        </span>
                                                     </a>
                                                     </li>
                                                 </c:if>
@@ -405,10 +426,14 @@
                                         <c:forEach items="${rightNews}" var="n" varStatus="status">
                                             <c:if test="${t.id==n.TypeID}">
                                                 <li><i></i><a class="f000"
-                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                    <c:if test="${n.Title.length() >= 26}">
+                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                    <c:if test="${n.Title.length() >= 24}">
                                                         <span>...</span>
                                                     </c:if>
+                                                    <span class="index_time">
+                                                        <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                    </span>
                                                 </a>
                                                 </li>
                                             </c:if>
@@ -443,10 +468,14 @@
                                                         <i></i>
                                                     </c:if>
                                                     <a class="f000" title="${n.Title}"
-                                                       href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,26)}
-                                                        <c:if test="${n.Title.length() >= 26}">
+                                                       href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,23)}
+                                                        <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
+                                                        <span class="index_time">
+                                                            <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                        </span>
                                                     </a>
                                                 </li>
                                             </c:if>
@@ -476,10 +505,14 @@
                                                     <i></i>
                                                 </c:if>
                                                 <a class="f000" title="${n.Title}"
-                                                   href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,26)}
-                                                    <c:if test="${n.Title.length() >= 26}">
+                                                   href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,23)}
+                                                    <c:if test="${n.Title.length() >= 24}">
                                                         <span>...</span>
                                                     </c:if>
+                                                    <span class="index_time">
+                                                            <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                    </span>
                                                 </a>
                                             </li>
                                         </c:if>
@@ -507,10 +540,14 @@
                                         <c:forEach items="${rightNews}" var="n" varStatus="status" >
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                        <c:if test="${n.Title.length() >= 26}">
+                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                        <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
+                                                        <span class="index_time">
+                                                            <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                        </span>
                                                     </a>
                                                     </li>
                                                 </c:if>
@@ -532,10 +569,14 @@
                                         <c:forEach items="${rightNews}" var="n" varStatus="status" >
                                             <c:if test="${t.id==n.TypeID}">
                                                 <li><i></i><a class="f000"
-                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                    <c:if test="${n.Title.length() >= 26}">
+                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                    <c:if test="${n.Title.length() >= 24}">
                                                         <span>...</span>
                                                     </c:if>
+                                                    <span class="index_time">
+                                                        <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                    </span>
                                                 </a>
                                                 </li>
                                             </c:if>
@@ -558,10 +599,14 @@
                                         <c:forEach items="${rightNews}" var="n" varStatus="status" >
                                             <c:if test="${t.id==n.TypeID}">
                                                 <li><i></i><a class="f000"
-                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                    <c:if test="${n.Title.length() >= 26}">
+                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                    <c:if test="${n.Title.length() >= 24}">
                                                         <span>...</span>
                                                     </c:if>
+                                                    <span class="index_time">
+                                                        <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                    </span>
                                                 </a>
                                                 </li>
                                             </c:if>
@@ -590,10 +635,14 @@
                                     <c:forEach items="${rightNews}"  var="n" varStatus="status">
                                         <c:if test="${t.id==n.TypeID}">
                                             <li><i></i><a class="f000"
-                                                          href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,26)}
-                                                <c:if test="${n.Title.length() >= 26}">
+                                                          href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                <c:if test="${n.Title.length() >= 24}">
                                                     <span>...</span>
                                                 </c:if>
+                                                <span class="index_time">
+                                                    <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                                                </span>
                                             </a>
                                             </li>
                                         </c:if>
