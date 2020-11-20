@@ -124,7 +124,7 @@ public class StringResource implements Serializable {
         map.put("km", "0871-63193010");
         map.put("nb", "0574-87289000");
         map.put("xa", "029-81773952");
-        map.put("zs", "88231922-880");
+        map.put("zs", "400-819-2680");
         map.put("zq", "400-819-8990");
         map.put("zz", "0371-66375760");
         map.put("nc", "0791-86296696");
