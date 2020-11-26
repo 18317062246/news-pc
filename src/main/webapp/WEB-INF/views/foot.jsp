@@ -99,7 +99,7 @@
             </c:if>
         </dl>
         <p class="app " style="right:100px;top:-20px;">
-            <img src="${staticurl}/sidebar/img/weixi.jpg" alt="">
+            <img src="//static.centanet.com/pcweb/v7.4.4/images/download_app3.jpg?v7.4.4" alt="">
             <span style="text-align: center;">下载找房APP</span>
         </p>
         </c:if>

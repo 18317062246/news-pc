@@ -450,40 +450,6 @@
                 <%-- 右侧下部集团jt文章--%>
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
                     <c:choose>
-                        <c:when test="${cityen == 'tj' || cityen == 'gz' || cityen == 'hz'}">
-                            <c:if test="${t.columnsName == '品牌部'}">
-                                <div class="infor-side-box">
-                                    <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                                    </h2>
-                                    <ul class="infor-side-p">
-                                        <%--遍历文章--%>
-                                        <c:forEach items="${centaNews}" var="n" varStatus="status" >
-                                            <c:if test="${t.id==n.TypeID}">
-                                                <li>
-                                                    <c:if test="${status.index==0}">
-                                                        <img src="${staticurl}/images/hot.png" alt="${n.Title}" style="vertical-align:-11px;margin-right:3px;width: auto;">
-                                                    </c:if>
-                                                    <c:if test="${status.index!=0}">
-                                                        <i></i>
-                                                    </c:if>
-                                                    <a class="f000" title="${n.Title}"
-                                                       href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,23)}
-                                                        <c:if test="${n.Title.length() >= 24}">
-                                                            <span>...</span>
-                                                        </c:if>
-                                                        <span class="index_time">
-                                                            <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
-                                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            </c:if>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </c:if>
-                        </c:when>
                         <%--深圳、海外隐藏品牌部、研究院、专家点评--%>
                         <c:when test="${cityen == 'sz' || cityen == 'szworld'}">
 
@@ -558,36 +524,6 @@
                             </c:if>
                         </c:if>
 
-                        <c:if test="${cityen == 'hz'}">
-                            <c:if test="${t.columnsName == 'Ben钟话市'}">
-                                <div class="infor-side-box">
-                                    <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                                    </h2>
-                                    <ul class="infor-side-p">
-                                            <%--遍历文章--%>
-                                        <c:forEach items="${rightNews}" var="n" varStatus="status" >
-                                            <c:if test="${t.id==n.TypeID}">
-                                                <li><i></i><a class="f000"
-                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
-                                                    <c:if test="${n.Title.length() >= 24}">
-                                                        <span>...</span>
-                                                    </c:if>
-                                                    <span class="index_time">
-                                                        <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
-                                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
-                                                    </span>
-                                                </a>
-                                                </li>
-                                            </c:if>
-
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </c:if>
-                        </c:if>
-                    </c:if>
-                    <c:if test="${t.location=='right' && status.index==0}">
                         <c:if test="${cityen == 'hz'}">
                             <c:if test="${t.columnsName == 'Ben钟话市'}">
                                 <div class="infor-side-box">
