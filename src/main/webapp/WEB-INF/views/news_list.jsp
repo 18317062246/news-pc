@@ -14,6 +14,7 @@
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
     <title>${colName}_${citycn}资讯列表－${citycn}中原地产</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
+    <link rel="stylesheet" href="${staticurl}/css/pager_inner.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
@@ -153,75 +154,77 @@
                 </div>
             </div>
             <c:if test="${p.pageCount>1}">
-                <div class="infor-pager">
-                    <div class="infor-pager-inner">
-                        <c:if test="${p.hasPrePage}">
-                            <c:choose>
-                                <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}"><span class="fsm">&lt;</span>上一页</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/"><span class="fsm">&lt;</span>上一页</a>
-                                </c:otherwise>
-                            </c:choose>
+                <div class="section-wrap section-pager">
+                    <div class="pager-box">
+                        <div class="pager-inner">
+                            <c:if test="${p.hasPrePage}">
+                                <c:choose>
+                                    <c:when test="${key != null}">
+                                        <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}" class="fsm fb">&lt;</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/" class="fsm fb">&lt;</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:if>
 
-                        </c:if>
-                        <c:if test="${p.currpageNum>2}">
-                            <c:choose>
-                                <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum-2}/?key=${key}">${p.currpageNum-2}</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/">${p.currpageNum-2}</a>
-                                </c:otherwise>
-                            </c:choose>
+                            <c:if test="${p.currpageNum>2}">
+                                <c:choose>
+                                    <c:when test="${key != null}">
+                                        <a href="/${cityen}/list/p${p.currpageNum-2}/?key=${key}">${p.currpageNum-2}</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/">${p.currpageNum-2}</a>
+                                    </c:otherwise>
+                                </c:choose>
 
-                        </c:if>
-                        <c:if test="${p.currpageNum>1}">
-                            <c:choose>
-                                <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}">${p.currpageNum-1}</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/">${p.currpageNum-1}</a>
-                                </c:otherwise>
-                            </c:choose>
+                            </c:if>
+                            <c:if test="${p.currpageNum>1}">
+                                <c:choose>
+                                    <c:when test="${key != null}">
+                                        <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}">${p.currpageNum-1}</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/">${p.currpageNum-1}</a>
+                                    </c:otherwise>
+                                </c:choose>
 
-                        </c:if>
-                        <span class="curr">${p.currpageNum}</span>
-                        <c:if test="${p.pageCount-p.currpageNum>=1}">
-                            <c:choose>
-                                <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}">${p.currpageNum+1}</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">${p.currpageNum+1}</a>
-                                </c:otherwise>
-                            </c:choose>
+                            </c:if>
+                            <span class="curr">${p.currpageNum}</span>
+                            <c:if test="${p.pageCount-p.currpageNum>=1}">
+                                <c:choose>
+                                    <c:when test="${key != null}">
+                                        <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}">${p.currpageNum+1}</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">${p.currpageNum+1}</a>
+                                    </c:otherwise>
+                                </c:choose>
 
-                        </c:if>
-                        <c:if test="${p.pageCount-p.currpageNum>=2}">
-                            <c:choose>
-                                <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum+2}/?key=${key}">${p.currpageNum+2}</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/">${p.currpageNum+2}</a>
-                                </c:otherwise>
-                            </c:choose>
+                            </c:if>
+                            <c:if test="${p.pageCount-p.currpageNum>=2}">
+                                <c:choose>
+                                    <c:when test="${key != null}">
+                                        <a href="/${cityen}/list/p${p.currpageNum+2}/?key=${key}">${p.currpageNum+2}</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/">${p.currpageNum+2}</a>
+                                    </c:otherwise>
+                                </c:choose>
 
-                        </c:if>
-                        <c:if test="${p.hasNextPage}">
-                            <c:choose>
-                                <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}">下一页<span class="fsm">&gt;</span></a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">下一页<span class="fsm">&gt;</span></a>
-                                </c:otherwise>
-                            </c:choose>
+                            </c:if>
+                            <c:if test="${p.hasNextPage}">
+                                <c:choose>
+                                    <c:when test="${key != null}">
+                                        <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}" class="fsm fb">&gt;</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/" class="fsm fb">&gt;</a>
+                                    </c:otherwise>
+                                </c:choose>
 
-                        </c:if>
+                            </c:if>
+                        </div>
                     </div>
                 </div>
             </c:if>

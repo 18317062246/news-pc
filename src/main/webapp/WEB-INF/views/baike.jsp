@@ -85,42 +85,40 @@
                             <div class="section-wrap section-pager">
                                 <div class="pager-box">
                                     <div class="pager-inner">
-                                        <c:if test="${p.currpageNum<=1}">
-                                            <a href="javacript:void(0);" class="fsm fb">&lt;&nbsp;首页</a>
-                                        </c:if>
-                                        <c:if test="${p.currpageNum>1}">
+
+                                        <c:if test="${p.hasPrePage}">
                                             <c:choose>
                                                 <c:when test="${typeid == 0}">
-                                                    <a href="/${cityen}/baike/p${p.currpageNum-1}" class="fsm fb">&lt;&nbsp;上一页</a>
+                                                    <a href="/${cityen}/baike/p${p.currpageNum-1}" class="fsm fb">&lt;</a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}" class="fsm fb">&lt;&nbsp;上一页</a>
+                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}" class="fsm fb">&lt;</a>
                                                 </c:otherwise>
                                             </c:choose>
-
                                         </c:if>
-                                        <c:if test="${p.currpageNum>3}">
+
+                                        <c:if test="${p.currpageNum>2}">
                                             <c:choose>
                                                 <c:when test="${typeid == 0}">
                                                     <a href="/${cityen}/baike/p${p.currpageNum-2}">${p.currpageNum-2}</a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-2}">${p.currpageNum-2}</a>
+                                                   <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-2}">${p.currpageNum-2}</a>
                                                 </c:otherwise>
-                                            </c:choose>
-
+                                             </c:choose>
                                         </c:if>
-                                        <c:if test="${p.currpageNum>2}">
+
+                                        <c:if test="${p.currpageNum>1}">
                                             <c:choose>
                                                 <c:when test="${typeid == 0}">
-                                                    <a href="/${cityen}/baike/p${p.currpageNum-1}">${p.currpageNum-1}</a>
+                                                     <a href="/${cityen}/baike/p${p.currpageNum-1}">${p.currpageNum-1}</a>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum-1}">${p.currpageNum-1}</a>
                                                 </c:otherwise>
-                                            </c:choose>
+                                             </c:choose>
+                                         </c:if>
 
-                                        </c:if>
                                         <span class="curr">${p.currpageNum}</span>
                                         <c:if test="${p.pageCount-p.currpageNum>=1}">
                                             <c:choose>
@@ -148,10 +146,10 @@
                                         <c:if test="${p.hasNextPage}">
                                             <c:choose>
                                                 <c:when test="${typeid == 0}">
-                                                    <a href="/${cityen}/baike/p${p.currpageNum+1}" class="fsm fb">下一页&nbsp;&gt;</a>
+                                                    <a href="/${cityen}/baike/p${p.currpageNum+1}" class="fsm fb">&gt;</a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}" class="fsm fb">&nbsp;下一页&gt;</a>
+                                                    <a href="/${cityen}/baike/c${typeid}/p${p.currpageNum+1}" class="fsm fb">&gt;</a>
                                                 </c:otherwise>
                                             </c:choose>
 
