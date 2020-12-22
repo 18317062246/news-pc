@@ -24,7 +24,12 @@
                     </a>
                 </div>
                 <p class="infor">
-                    <a href="//news.centanet.com/${cityen}/detail/${cityNewsList[0].ID}.html" class="title" target="_blank">${cityNewsList[0].Title}</a>
+                    <a href="//news.centanet.com/${cityen}/detail/${cityNewsList[0].ID}.html" class="title" target="_blank">
+                        ${fn:substring(cityNewsList[0].Title,0,24)}
+                        <c:if test="${cityNewsList[0].Title != null && cityNewsList[0].Title.length() >= 25}">
+                            ...
+                        </c:if>
+                    </a>
                     <span class="date">
                          <jsp:useBean id="myDate" class="java.util.Date"/>
                          <c:set target="${myDate}" property="time" value="${cityNewsList[0].PublishDate*1000}"/>
