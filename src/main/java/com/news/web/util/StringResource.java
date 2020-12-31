@@ -6,6 +6,8 @@
 package com.news.web.util;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +37,10 @@ public class StringResource implements Serializable {
     public static final String THIRD_BAIKE = "third_baike";
     public static final String LEFT_UP = "leftUp";
     public static final String LEFT_DOWN = "leftDown";
+    /**
+     * 定义获取当前年的格式
+     */
+    private static final String CURRENT_YEAR_FORMAT = "yyyy";
 
     /**
      * @param input 原始图片路径
@@ -131,6 +137,18 @@ public class StringResource implements Serializable {
         map.put("fz", "400-819-8852");
         map.put("szworld", "13528771779");
         return (String) map.get(cityen);
+    }
+
+    /**
+     * 获取当前的年
+     */
+    public static String getCurrentYear(){
+        //获取当前日期
+        Date date = new Date();
+        //定义格式化时间的对象
+        SimpleDateFormat sdf = new SimpleDateFormat(CURRENT_YEAR_FORMAT);
+        //将date类型格式化成string并返回
+        return sdf.format(date);
     }
 
 }
