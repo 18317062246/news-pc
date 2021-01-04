@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
+    <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>
     <script src="${staticurl}/sidebar/quick_links.js"></script>
@@ -295,8 +296,14 @@
                 <div class="ranking-list">
                     <c:set var="classArray" value="${fn:split('hightlight,hightlightB,hightlightC', ',')}" />
                     <c:forEach items="${news}" var="n" varStatus="status">
-                        <p><i class="${classArray[status.index]}">${status.count}</i>
-                            <a title="${n.Title}" class="f000" href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title, 0, 18)}</a></p>
+                        <p style="margin: 0 auto;">
+                            <i class="${classArray[status.index]}">${status.count}</i>
+                            <a title="${n.Title}" class="f000" href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title, 0, 18)}</a>
+                        </p>
+                        <p  class="toplist_time" style="margin: 0 auto;">
+                            <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
+                            <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                        </p>
                     </c:forEach>
                 </div>
             </div>

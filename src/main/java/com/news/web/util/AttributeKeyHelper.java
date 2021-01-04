@@ -145,6 +145,11 @@ public interface AttributeKeyHelper extends Serializable {
     String RESEARCH_URL = "researchUrl";
 
     /**
+     * 当前年
+     */
+    String CURRENT_YEAR = "currentYear";
+
+    /**
      * 热门专题
      */
     String HOT_TOPIC = "热门专题";

@@ -196,7 +196,7 @@
                         </div>
                     </li>
                     <li><a href="//${cityen}.centanet.com/zufang/" target="_blank">租房</a></li>
-                    <li><a href="//sz.centanet.com/" target="_blank">海外</a></li>
+                    <li><a href="//szworld.centanet.com/" target="_blank">海外</a></li>
                     <li><a href="//${cityen}.centanet.com/chengjiao/contrast/" target="_blank">中原大数据</a>
                         <div class="subnav" >
                             <a href="//${cityen}.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>
@@ -251,7 +251,7 @@
                         </div>
                     </li>
                     <li><a href="//sz.centanet.com/zufang/" target="_blank">租房</a></li>
-                    <li><a href="//sz.centanet.com/" target="_blank">海外</a></li>
+                    <li><a href="//szworld.centanet.com/" target="_blank">海外</a></li>
                     <li><a href="//sz.centanet.com/chengjiao/contrast/" target="_blank">中原大数据</a>
                         <div class="subnav" >
                             <a href="//sz.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>

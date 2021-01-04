@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
-    <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
+    <link rel="stylesheet" href="${staticurl}/css/topic_list_cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>
@@ -101,14 +101,14 @@
                         <c:if test="${p.hasPrePage}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}"><span class="fsm">&lt;</span>上一页</a>
+                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}"><span class="pager-fsm">&lt;</span></a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/"><span class="fsm">&lt;</span>上一页</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/"><span class="pager-fsm">&lt;</span></a>
                                 </c:otherwise>
                             </c:choose>
-
                         </c:if>
+
                         <c:if test="${p.currpageNum>2}">
                             <c:choose>
                                 <c:when test="${key != null}">
@@ -157,10 +157,10 @@
                         <c:if test="${p.hasNextPage}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}">下一页<span class="fsm">&gt;</span></a>
+                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}"><span class="pager-fsm">&gt;</span></a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">下一页<span class="fsm">&gt;</span></a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/"><span class="pager-fsm">&gt;</span></a>
                                 </c:otherwise>
                             </c:choose>
 
