@@ -117,7 +117,7 @@
                                                     <c:choose>
                                                         <c:when test="${n.xinfangResult.defaultImage != null && n.xinfangResult.defaultImage.length() >= 10}">
                                                             <img class="lazy"
-                                                                 src="${n.xinfangResult.defaultImage}"
+                                                                 src="${defaultpic}"
                                                                  data-original="${n.xinfangResult.defaultImage}"
                                                                  width="250" height="167" alt="" />
                                                         </c:when>
@@ -136,7 +136,7 @@
                                                     <c:choose>
                                                         <c:when test="${n.esfResult.fullImagePath != null && n.esfResult.fullImagePath.length() >= 10}">
                                                             <img  class="lazy"
-                                                                  src="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
+                                                                  src="${defaultpic}"
                                                                   data-original="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
                                                                   width="250" height="167" alt="" />
                                                         </c:when>
@@ -155,7 +155,7 @@
                                                     <c:choose>
                                                         <c:when test="${n.xiaoQuResult.imagePath != null && n.xiaoQuResult.imagePath.length() >= 10}">
                                                             <img  class="lazy"
-                                                                  src="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
+                                                                  src="${defaultpic}"
                                                                   data-original="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
                                                                   width="250" height="167" alt="" />
                                                         </c:when>
@@ -319,7 +319,7 @@
                                     <c:choose>
                                         <c:when test="${info.LitPic != null && info.LitPic.length() >= 10}">
                                             <img class="lazy"
-                                                 src="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
+                                                 src="${defaultpic}"
                                                  data-original="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
                                                  alt="${info.Title}"/>
                                         </c:when>

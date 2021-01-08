@@ -110,7 +110,7 @@
                                                 <c:choose>
                                                   <c:when test="${item.LitPic != null && item.LitPic.length() >= 10}">
                                                          <div class="img-box">
-                                                           <img class="lazy news-img" src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                                           <img class="lazy news-img" src="${defaultpic}"
                                                                 data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}" alt="${item.Title}"/>
                                                          </div>
                                                     </c:when>
@@ -161,7 +161,10 @@
                                 <c:forEach items="${dealinfo}" var="n">
                                     <div class="inforSlid">
                                         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                        <a href="${n.targetUrl}" title="" target="_blank"><img src="${n.imageUrl}?x-oss-process=style/master" alt="" onerror="this.src='${defaultpic}'"></a>
+                                        <a href="${n.targetUrl}" title="" target="_blank">
+                                            <img class="lazy news-img" src="${defaultpic}"
+                                                 data-original="${n.imageUrl}?x-oss-process=style/master"
+                                                 alt="" onerror="this.src='${defaultpic}'"></a>
                                          <p></p>
                                      </div>
                                 </c:forEach>
@@ -193,12 +196,11 @@
                                     <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                     <c:choose>
                                         <c:when test="${dealinfo[0].imageUrl != null && dealinfo[0].imageUrl.length() >= 10}">
-                                            <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
+                                            <img  src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
                                                  data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt=""/>
                                         </c:when>
                                         <c:otherwise>
-                                            <img class="lazy" src="${defaultpic}"
-                                                 data-original="${defaultpic}" alt=""/>
+                                            <img  src="${defaultpic}" alt=""/>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -210,12 +212,10 @@
                                     <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                     <c:choose>
                                         <c:when test="${dealinfo[0].imageUrl != null && dealinfo[0].imageUrl.length() >= 10}">
-                                            <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
-                                                 data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt=""/>
+                                            <img  src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt=""/>
                                         </c:when>
                                         <c:otherwise>
-                                            <img class="lazy" src="${defaultpic}"
-                                                 data-original="${defaultpic}" alt=""/>
+                                            <img  src="${defaultpic}" data-original="${defaultpic}" alt=""/>
                                         </c:otherwise>
                                     </c:choose>
                                 </a>
@@ -255,15 +255,11 @@
                                                             <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                                             <c:choose>
                                                                 <c:when test="${n.LitPic != null && n.LitPic.length() >= 10}">
-                                                                    <img class="lazy"
-                                                                         src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
-                                                                         data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}"
-                                                                    />
+                                                                    <img src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
+                                                                          alt="${n.Title}"/>
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    <img class="lazy"
-                                                                         src="${defaultpic}"
-                                                                         data-original="${defaultpic}" alt="${n.Title}"
+                                                                    <img src="${defaultpic}" alt="${n.Title}"
                                                                     />
                                                                 </c:otherwise>
                                                             </c:choose>
@@ -303,15 +299,11 @@
                                                         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                                         <c:choose>
                                                             <c:when test="${n.LitPic != null && n.LitPic.length() >= 10}">
-                                                                <img class="lazy"
-                                                                     src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
-                                                                     data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}"
-                                                                />
+                                                                <img src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
+                                                                     alt="${n.Title}"/>
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img class="lazy"
-                                                                     src="${defaultpic}"
-                                                                     data-original="${defaultpic}" alt="${n.Title}"
+                                                                <img src="${defaultpic}" data-original="${defaultpic}" alt="${n.Title}"
                                                                 />
                                                             </c:otherwise>
                                                         </c:choose>
