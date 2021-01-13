@@ -220,6 +220,14 @@ public class NewsController {
             }
         }
 
+        //如果是惠州，隐藏Ben钟话市栏目
+        if(Objects.equals(cityen , AttributeKeyHelper.HZ_CITY_EN)){
+            //筛选出Ben钟话市栏目对象，栏目id为107
+            List<NewsType> benDelList = types.stream().filter(l -> Objects.equals(107, l.getId())).collect(Collectors.toList());
+            //隐藏Ben钟话市相关的栏目
+            rightTypeAdd.removeAll(benDelList);
+        }
+
         //右侧下部集团jt文章
         List<Map> centaNews = new ArrayList<>();
         if (null != jtTypes && !jtTypes.isEmpty()) {
@@ -708,6 +716,14 @@ public class NewsController {
                     //隐藏东莞政策法规相关的所有栏目
                     types.removeAll(zhengceDelList);
                 }
+            }
+
+            //如果是惠州，隐藏Ben钟话市栏目
+            if(Objects.equals(cityen , AttributeKeyHelper.HZ_CITY_EN)){
+                //筛选出Ben钟话市栏目对象，栏目id为107
+                List<NewsType> benDelList = types.stream().filter(l -> Objects.equals(107, l.getId())).collect(Collectors.toList());
+                //隐藏Ben钟话市相关的栏目
+                types.removeAll(benDelList);
             }
         }
         List<Map> leftUp = new ArrayList<>();
