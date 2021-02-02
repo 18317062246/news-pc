@@ -411,7 +411,8 @@ public class NewsController {
         log.info("detail id=>{}", id);
 
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
-
+        //获取引用
+        String referer = request.getHeader(AttributeKeyHelper.REFERER);
         if(osName.indexOf(AttributeKeyHelper.ANDROID) != -1 || osName.indexOf(AttributeKeyHelper.IPHONE) != -1 || osName.indexOf(AttributeKeyHelper.IPAD) != -1 ){
             return String.format(AttributeKeyHelper.REDIRECT_M_DETAIL_PAGE , cityen , id);
         }
@@ -548,6 +549,7 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.NEWS, news);
         model.addAttribute(AttributeKeyHelper.DETAIL, detail);
         model.addAttribute(AttributeKeyHelper.NEWS_ID, id);
+        model.addAttribute(AttributeKeyHelper.REFERER, referer);
         return AttributeKeyHelper.DETAIL_PAGE;
     }
 

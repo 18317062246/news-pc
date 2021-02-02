@@ -15,6 +15,11 @@ public interface AttributeKeyHelper extends Serializable {
     String USER_AGENT = "user-agent";
 
     /**
+     * referer
+     */
+    String REFERER = "referer";
+
+    /**
      * 来自于Android
      */
     String ANDROID = "Android";
