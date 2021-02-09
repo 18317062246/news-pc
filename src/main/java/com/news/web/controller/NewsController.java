@@ -428,10 +428,16 @@ public class NewsController {
         JSONObject result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + id + "&cityen="+cityen+"&platform=pc", JSONObject.class);
         //判断是否存在房源
         if(result.get(RESULT) != null){
-            JSONObject xfResult = result.getJSONObject(RESULT);
-            if(xfResult.get(NEWS_RELATED) != null) {
+            JSONObject resultJSONObject = result.getJSONObject(RESULT);
+            //获取是否上架的标识
+            Integer upper = (Integer)resultJSONObject.get(AttributeKeyHelper.UPPER);
+            //如果upper为0代表是下架,返回到资讯下架提示页面
+            if(Objects.equals(0 , upper)){
+                return AttributeKeyHelper.OFF_SHELF_NEWS;
+            }
+            if(resultJSONObject.get(NEWS_RELATED) != null) {
                 //将房源对象进行转换
-                String newsRelatedData = JSON.toJSONString(xfResult.get(NEWS_RELATED));
+                String newsRelatedData = JSON.toJSONString(resultJSONObject.get(NEWS_RELATED));
                 List<NewsRelated> types = JSON.parseArray(newsRelatedData, NewsRelated.class);
                 //将新房、二手房、小区进行过滤
                 List<NewsRelated> xinfangTypes = types.stream().filter(l -> l.getOtype().equals(AttributeKeyHelper.XINFANG_KEY)).collect(Collectors.toList());
