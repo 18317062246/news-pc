@@ -28,6 +28,7 @@ public class StringResource implements Serializable {
     public static final String SZWORLD_XF = "szworld_xf";
     public static final String BJWORLD_XF = "bjworld_xf";
     public static final String THIRD_SZWORLD_XF = "third_szworld_xf";
+    public static final String THIRD_BJWORLD_XF = "third_bjworld_xf";
     public static final String JJR_BAIKE_INFO = "jjr_baike_info";
     public static final String JINGJIREN_BAIKE = "jingjiren_baike";
     public static final String GZ_JJR_BAIKE_INFO = "gz_jjr_baike_info";
