@@ -72,6 +72,48 @@
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
+                <c:when test="${cityen == 'bjworld'}">
+                    <li><a href="//bj.centanet.com/" target="_blank">首页</a></li>
+                    <li ><a href="//bj.centanet.com/ershoufang/">二手房</a>
+                        <div class="subnav" >
+                            <a href="//bj.centanet.com/ershoufang/" target="_blank">出售房源</a>
+                            <a href="//bj.centanet.com/entrust/sale/" target="_blank">我要出售</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                    <li><a href="//bj.centanet.com/xinfang/" target="_blank">新房</a>
+                        <div class="subnav" >
+                            <a href="//bj.centanet.com/xinfang/" target="_blank">全部新房</a>
+                            <a href="//bj.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
+                            <a href="//bj.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                    <li><a href="//bj.centanet.com/zufang/" target="_blank">租房</a></li>
+                    <li><a href="//bj.centanet.com/xiezilou/" target="_blank">写字楼<span>·</span>商铺</a></li>
+                    <li><a href="//bj.centanet.com" target="_blank">海外</a></li>
+                    <li><a href="//bj.centanet.com/xiaoqu/" target="_blank">小区</a></li>
+                    <li><a href="//bj.centanet.com/chengjiao/contrast/" target="_blank">房价成交</a>
+                        <div class="subnav" >
+                            <a href="//bj.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>
+                            <a href="//bj.centanet.com/chengjiao/" target="_blank">成交历史</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+
+                    <li class="curr"><a href="/${cityen}/" target="_blank">资讯</a></li>
+
+                    <li><a href="//bj.centanet.com/jingjiren/"  target="_blank">经纪人</a>
+                        <div class="subnav" >
+                            <a href="//bj.centanet.com/jingjiren/index/" target="_blank">专家经纪人</a>
+                            <a href="//bj.centanet.com/jingjiren/" target="_blank">经纪人</a>
+                            <a href="//bj.centanet.com/mendian/" target="_blank">门店</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>`
+                </c:when>
+
                 <c:when test="${cityen == 'tj'}">
                     <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
                     <li ><a href="//${cityen}.centanet.com/ershoufang/" target="_blank">二手房</a>

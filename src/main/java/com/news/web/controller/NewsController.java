@@ -826,7 +826,7 @@ public class NewsController {
             return StringResource.THIRD_SZ_ESF;
         }else if (StringResource.ZS_BUYER.equals(type)) {//中山买房帮手
             return StringResource.THIRD_ZS_BUYER;
-        }else if (StringResource.SZWORLD_XF.equals(type)) {//海外新房
+        }else if (StringResource.SZWORLD_XF.equals(type) || StringResource.BJWORLD_XF.equals(type)) {//海外新房
             return StringResource.THIRD_SZWORLD_XF;
         }else if (StringResource.JJR_BAIKE_INFO.equals(type)) {//北京、惠州经纪人页面百科信息
             return StringResource.JINGJIREN_BAIKE;

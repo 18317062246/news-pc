@@ -26,6 +26,7 @@ public class StringResource implements Serializable {
     public static final String ZS_BUYER = "zs_buyer";
     public static final String THIRD_ZS_BUYER = "third_zs_buyer";
     public static final String SZWORLD_XF = "szworld_xf";
+    public static final String BJWORLD_XF = "bjworld_xf";
     public static final String THIRD_SZWORLD_XF = "third_szworld_xf";
     public static final String JJR_BAIKE_INFO = "jjr_baike_info";
     public static final String JINGJIREN_BAIKE = "jingjiren_baike";
@@ -136,6 +137,7 @@ public class StringResource implements Serializable {
         map.put("nc", "0791-86296696");
         map.put("fz", "400-819-8852");
         map.put("szworld", "13528771779");
+        map.put("bjworld", "400-033-0733");
         return (String) map.get(cityen);
     }
 
