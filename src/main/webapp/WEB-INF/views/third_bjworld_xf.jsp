@@ -26,6 +26,7 @@
                         </c:otherwise>
                     </c:choose>
                 </a>
+                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;display:block;" title="${leftUp[0].Title}">${leftUp[0].Title}</span>
             </div>
             <ul class="expert-comment">
                 <c:forEach items="${leftUp}" var="l" begin="1" end="4">

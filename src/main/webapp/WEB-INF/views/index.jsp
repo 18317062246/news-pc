@@ -127,7 +127,10 @@
                                     <dd class="fl">
                                         <h6 class="f18">
                                             <a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank" title="${item.Title}">
-                                                 ${item.Title}
+                                                 ${fn:substring(item.Title , 0 , 27)}
+                                                    <%-- <c:if test="${item.Title != null && item.Title.length() >= 28}">
+                                                         <span>...</span>
+                                                     </c:if>--%>
                                             </a>
                                         </h6>
                                         <p class="f14 f999">

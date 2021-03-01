@@ -138,7 +138,7 @@ public class StringResource implements Serializable {
         map.put("nc", "0791-86296696");
         map.put("fz", "400-819-8852");
         map.put("szworld", "13528771779");
-        map.put("bjworld", "400-033-0733");
+        map.put("bjworld", "400-070-9022");
         return (String) map.get(cityen);
     }
 
