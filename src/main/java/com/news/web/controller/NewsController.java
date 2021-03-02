@@ -834,7 +834,7 @@ public class NewsController {
             return StringResource.JINGJIREN_BAIKE_GZ;
         }else if (StringResource.BJ_JJR_BAIKE_INFO.equals(type)) {//北京经纪人页面百科信息
             return StringResource.JINGJIREN_BAIKE_BJ;
-        }else if (StringResource.BJWORLD_XF.equals(type)) {//深圳海外新房
+        }else if (StringResource.BJWORLD_XF.equals(type)) {//北京海外新房
             return StringResource.THIRD_BJWORLD_XF;
         }
         return StringResource.THIRD_HOT;

@@ -128,9 +128,9 @@
                                         <h6 class="f18">
                                             <a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank" title="${item.Title}">
                                                  ${fn:substring(item.Title , 0 , 27)}
-                                                    <%-- <c:if test="${item.Title != null && item.Title.length() >= 28}">
+                                                     <c:if test="${item.Title != null && item.Title.length() >= 28}">
                                                          <span>...</span>
-                                                     </c:if>--%>
+                                                     </c:if>
                                             </a>
                                         </h6>
                                         <p class="f14 f999">
@@ -375,7 +375,7 @@
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
                     <c:choose>
                         <%--深圳、海外隐藏品牌部、研究院、专家点评--%>
-                        <c:when test="${cityen == 'sz' || cityen == 'szworld'}">
+                        <c:when test="${cityen == 'sz' || cityen == 'szworld' || cityen == 'bjworld'}">
 
                         </c:when>
                         <c:otherwise>

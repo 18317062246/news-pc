@@ -5,45 +5,48 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
-<div class="section section-informSZ section-informBj">
+<div class="section section-informSZ  section-informBj">
     <div class="title-top">
-        <h5 >市场热点资讯</h5>
+        <h5 style="width: 100%;">市场热点资讯</h5>
         <p class="txt">海外房产新闻</p>
-        <a href="//news.centanet.com/${cityen}/" class="more_link">更多资讯&nbsp;<span class="fSimSun">&gt;</span></a>
+        <a href="//news.centanet.com/${cityen}/" class="more_link" style="font-size: 13px;" target="_blank">更多资讯&nbsp;<span class="fSimSun" style="font-size: 13px;">&gt;</span></a>
     </div>
 
-    <div class="inform-side fl">
+    <div class="inform-side fl ">
         <div class="expert">
             <div class="expert-phone">
-                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${leftUp[0].Title}</span>
-                <a  target="_blank"  href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" >
-                    <c:choose>
-                        <c:when test="${leftUp[0].LitPic != null && leftUp[0].LitPic.length() >= 10}">
-                            <img src="${leftUp[0].LitPic}" alt="${leftUp[0].Title}">
-                        </c:when>
-                        <c:otherwise>
-                            <img src="${defaultpic}" alt="${leftUp[0].Title}">
-                        </c:otherwise>
-                    </c:choose>
-                </a>
+                <a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank"><img src="${leftUp[0].LitPic}" alt="${leftUp[0].Title}"></a>
                 <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;display:block;" title="${leftUp[0].Title}">${leftUp[0].Title}</span>
             </div>
             <ul class="expert-comment">
                 <c:forEach items="${leftUp}" var="l" begin="1" end="4">
-                    <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
+                    <li><i></i>
+                        <a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">
+                            ${fn:substring(l.Title , 0 , 29)}
+                             <c:if test="${l.Title != null && l.Title.length() >= 30}">
+                                 <span>...</span>
+                             </c:if>
+                        </a>
+                    </li>
                 </c:forEach>
-
             </ul>
             <p class="bot "><a target="_blank" href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="tdu f666">@${types[0].columnsName}</a></p>
         </div>
     </div>
-    <div class="inform-main fl">
+    <div class="inform-main fl ">
         <div class="inform-main-top">
             <dl class="inform-quest ">
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${leftDown}" var="l" begin="0" end="4">
-                            <li><i></i><a  target="_blank" href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
+                            <li><i></i>
+                                <a  target="_blank" href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">
+                                    ${fn:substring(l.Title , 0 , 29)}
+                                    <c:if test="${l.Title != null && l.Title.length() >= 30}">
+                                        <span>...</span>
+                                    </c:if>
+                                </a>
+                            </li>
                         </c:forEach>
                     </ul>
                     <p class="bot"><a target="_blank" href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu f666">@${types[1].columnsName}</a></p>
@@ -55,7 +58,14 @@
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${right}" var="r" begin="0" end="3">
-                            <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${r.ID}.html" title="${r.Title}">${r.Title}</a></li>
+                            <li><i></i>
+                                <a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${r.ID}.html" title="${r.Title}">
+                                    ${fn:substring(r.Title , 0 , 29)}
+                                    <c:if test="${r.Title != null && r.Title.length() >= 30}">
+                                        <span>...</span>
+                                    </c:if>
+                                </a>
+                            </li>
                         </c:forEach>
                     </ul>
                     <p class="bot"><a target="_blank" href="//news.centanet.com/${cityen}/list/c${types[2].id}/" class="tdu f666">@${types[2].columnsName}</a></p>
@@ -64,5 +74,4 @@
         </div>
     </div>
     <div class="clear"></div>
-    <p class="bot_link tc"><a target="_blank" href="//news.centanet.com/${cityen}/" class="white_btn">更多新鲜资讯</a></p>
 </div>
