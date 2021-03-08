@@ -55,7 +55,7 @@
         </div>
         <div class="inform-main-bot">
             <dl class="inform-quest ">
-                <dd>
+                <dd style="background:#fff;">
                     <ul class="expert-comment">
                         <c:forEach items="${right}" var="r" begin="0" end="3">
                             <li><i></i>
