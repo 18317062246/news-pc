@@ -16,8 +16,8 @@
 				<dl class="inform-quest ">
 					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank" title="${leftUp[0].Title}">${leftUp[0].Title}</a></dt>
 					<dd>
-						<p>${leftUp[0].Description}</p>
-						<p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="tdu">@${types[0].columnsName}</a></p>
+						<p>&nbsp; &nbsp; &nbsp; ${leftUp[0].Description}</p>
+						<p style="margin-left:0px;margin-top:25px;"><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="tdu">@${types[0].columnsName}</a></p>
 					</dd>
 				</dl>
 			</div>
@@ -26,9 +26,9 @@
 				<dl class="inform-quest ">
 					<dt class="caption"><a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank" title="${leftDown[0].Title}">${leftDown[0].Title}</a></dt>
 					<dd>
-						<p>${leftDown[0].Description}</p>
+						<p>&nbsp; &nbsp; &nbsp; ${leftDown[0].Description}</p>
 
-						<p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu">@${types[1].columnsName}</a></p>
+						<p style="margin-left:0px;margin-top:25px;"><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu">@${types[1].columnsName}</a></p>
 					</dd>
 				</dl>
 			</div>
