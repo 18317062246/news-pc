@@ -375,7 +375,7 @@
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
                     <c:choose>
                         <%--深圳、海外隐藏品牌部、研究院、专家点评--%>
-                        <c:when test="${cityen == 'sz' || cityen == 'szworld' || cityen == 'bjworld'}">
+                        <c:when test="${cityen == 'sz' || cityen == 'szworld' || cityen == 'bjworld' || cityen == 'cs'}">
 
                         </c:when>
                         <c:otherwise>
