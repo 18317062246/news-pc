@@ -20,7 +20,7 @@
     <title> ${detail.Typename}－${citycn}中原地产</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    <link rel="stylesheet" href="${staticurl}/css/headp2_1.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
