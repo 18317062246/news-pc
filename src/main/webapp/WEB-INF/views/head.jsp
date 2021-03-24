@@ -203,7 +203,7 @@
                     </li>
                     <c:choose>
                         <c:when test="${baiketype}">
-                            <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/">房产资讯</a>
                                 <div class="subnav" >
                                     <a href="/${cityen}/" target="_blank">资讯</a>
                                     <a href="/${cityen}/baike/" target="_blank">购房百科</a>
@@ -212,7 +212,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">房产资讯</a></li>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="//${cityen}.centanet.com/about/" target="_blank">关于中原</a></li>
@@ -452,7 +452,7 @@
                     </li>
                     <c:choose>
                         <c:when test="${baiketype}">
-                            <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/">中原观点</a>
                                 <div class="subnav" >
                                     <a href="/${cityen}/" target="_blank">资讯</a>
                                     <a href="/${cityen}/baike/" target="_blank">购房百科</a>
@@ -461,7 +461,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">中原观点</a>
                         </c:otherwise>
                     </c:choose>
                     <li><a href="//${cityen}.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
@@ -697,20 +697,7 @@
                     <li><a href="//${cityen}.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
-                    <c:choose>
-                        <c:when test="${baiketype}">
-                            <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
-                                <div class="subnav" >
-                                    <a href="/${cityen}/" target="_blank">资讯</a>
-                                    <a href="/${cityen}/baike/" target="_blank">购房百科</a>
-                                    <i class="arrow"></i>
-                                </div>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
-                        </c:otherwise>
-                    </c:choose>
+                    <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
@@ -937,20 +924,13 @@
                     <li><a href="//${cityen}.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
-                    <c:choose>
-                        <c:when test="${baiketype}">
-                            <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
-                                <div class="subnav" >
-                                    <a href="/${cityen}/" target="_blank">资讯</a>
-                                    <a href="/${cityen}/baike/" target="_blank">购房百科</a>
-                                    <i class="arrow"></i>
-                                </div>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
-                        </c:otherwise>
-                    </c:choose>
+                    <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
+                        <div class="subnav" >
+                            <a href="/${cityen}/" target="_blank">资讯</a>
+                            <a href="/${cityen}/baike/" target="_blank">购房百科</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
                 <c:when test="${cityen == 'zh'}">
@@ -966,20 +946,7 @@
                     <li><a href="//${cityen}.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
-                    <c:choose>
-                        <c:when test="${baiketype}">
-                            <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
-                                <div class="subnav" >
-                                    <a href="/${cityen}/" target="_blank">资讯</a>
-                                    <a href="/${cityen}/baike/" target="_blank">购房百科</a>
-                                    <i class="arrow"></i>
-                                </div>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
-                        </c:otherwise>
-                    </c:choose>
+                    <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
