@@ -838,6 +838,12 @@ public class NewsController {
             return StringResource.THIRD_BJWORLD_XF;
         }else if (StringResource.CS_ESF.equals(type)) {//北京海外新房
             return StringResource.THIRD_CS_ESF;
+        }else if (StringResource.INFO_NEW.equals(type)) {//新info页面
+            return StringResource.THIRD_INFO_NEW;
+        }else if (StringResource.ESF_NEW.equals(type)) {//二手房新页面
+            return StringResource.THIRD_ESF_NEW;
+        }else if (StringResource.ESF_SZ_NEW.equals(type)) {//深圳二手房新页面
+            return StringResource.THIRD_ESF_SZ_NEW;
         }
         return StringResource.THIRD_HOT;
     }
