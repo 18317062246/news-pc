@@ -822,7 +822,7 @@ public class NewsController {
             return StringResource.THIRD_ESF;
         } else if (StringResource.INFO.equals(type)) {//新房
             return StringResource.THIRD_XF;
-        }else if (StringResource.SZ_ESF.equals(type)) {//深圳二手房
+        }else if (StringResource.SZ_ESF.equals(type) || StringResource.ESF_SZ_NEW.equals(type)) {//深圳二手房老页面及新页面
             return StringResource.THIRD_SZ_ESF;
         }else if (StringResource.ZS_BUYER.equals(type)) {//中山买房帮手
             return StringResource.THIRD_ZS_BUYER;
@@ -842,8 +842,6 @@ public class NewsController {
             return StringResource.THIRD_INFO_NEW;
         }else if (StringResource.ESF_NEW.equals(type)) {//二手房新页面
             return StringResource.THIRD_ESF_NEW;
-        }else if (StringResource.ESF_SZ_NEW.equals(type)) {//深圳二手房新页面
-            return StringResource.THIRD_ESF_SZ_NEW;
         }
         return StringResource.THIRD_HOT;
     }
