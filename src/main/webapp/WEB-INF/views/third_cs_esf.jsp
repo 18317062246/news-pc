@@ -8,6 +8,7 @@
 		<div class="title-box clearfix">
 			<h5 class="title">热门专题</h5>
 			<p class="description">楼市动态&nbsp;&nbsp;一应俱全 </p>
+			<p class="r-more fr"><a href="//news.centanet.com/${cityen}/" class="f999">更多热门资讯 <span class="fSimSun">></span></a></p>
 		</div>
 
 		<div class="inform-main fl">
@@ -58,6 +59,5 @@
 			</div>
 		</div>
 		<div class="clear"></div>
-		<p class="bot_link tc"><a href="//news.centanet.com/${cityen}/" class="white_btn">更多新鲜资讯</a></p>
 	</div>
 </div>

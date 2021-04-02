@@ -9,6 +9,7 @@
 		<div class="title-box clearfix">
 			<h5 class="title">${citycn}热点资讯</h5>
 			<p class="description">提供房产新闻</p>
+			<p class="r-more fr"><a href="//news.centanet.com/${cityen}/" class="f999">更多热门资讯&nbsp;<span class="fSimSun">&gt;</span></a></p>
 		</div>
 		<c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
 		<div class="inform-side fl">
