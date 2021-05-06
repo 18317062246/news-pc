@@ -92,7 +92,7 @@
                    <%-- <p class="f666 ">来源:${detail.Sources}</p>--%>
                     <p class="f666 ">
                         <jsp:useBean id="myDate" class="java.util.Date"/>
-                        <c:set target="${myDate}" property="time" value="${detail.PublishDate*1000}"/>
+                        <c:set target="${myDate}" property="time" value="${detail.SenddateTime*1000}"/>
                         <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         来源:&nbsp;&nbsp;${detail.Sources}</p>
