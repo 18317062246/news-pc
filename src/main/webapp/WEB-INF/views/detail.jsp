@@ -30,6 +30,7 @@
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="${staticurl}/js/sale_house_cookie.js" language="javascript"></script>
     <script>
         function getIframe(id) {
             return document.getElementById(id).contentWindow.document;

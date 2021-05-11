@@ -24,6 +24,7 @@
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/totalexchange.js"></script>
+    <script type="text/javascript" src="${staticurl}/js/sale_house_cookie.js" language="javascript"></script>
 
 
     <script>

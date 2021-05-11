@@ -25,6 +25,7 @@
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="${staticurl}/js/sale_house_cookie.js" language="javascript"></script>
     <%--图片放大效果--%>
     <link rel="stylesheet" href="${staticurl}/css/news_list_photo_enlarge.css">
     <script>
