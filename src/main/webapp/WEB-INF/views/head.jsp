@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="${staticurl}/js/xss.js"></script>
 </head>
 <body>
 <%--head--%>
@@ -1050,8 +1051,8 @@
         let searchkey = $('.search-ipt').val();
         let cityen = '${cityen}';
         let obj = {
-            0: "/"+ cityen +"/list/?key=" + searchkey,
-            1: "//"+ cityen +".centanet.com/xinfang/?key=" + searchkey
+            0: "/"+ cityen +"/list/?key=" + filterXSS(searchkey),
+            1: "//"+ cityen +".centanet.com/xinfang/?key=" + filterXSS(searchkey)
         };
         return obj[type];
     }

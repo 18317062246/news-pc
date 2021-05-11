@@ -31,6 +31,7 @@ public class StringResource implements Serializable {
     public static final String THIRD_SZ_ESF = "third_sz_esf";
     public static final String CS_ESF = "cs_esf";
     public static final String THIRD_CS_ESF = "third_cs_esf";
+    public static final String THIRD_XF_NEW = "third_xf_new";
     public static final String ZS_BUYER = "zs_buyer";
     public static final String THIRD_ZS_BUYER = "third_zs_buyer";
     public static final String SZWORLD_XF = "szworld_xf";

@@ -31,7 +31,7 @@
 				</div>
 				<ul class="expert-comment">
 					<c:forEach items="${leftUp}" var="l" begin="1" end="4">
-						<li><label for=""></label><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html" target="_blank">${fn:substring(l.Title,0,28)}</a></li>
+						<li><%--<label for=""></label>--%><a href="//news.centanet.com/${cityen}/detail/${l.ID}.html" target="_blank">${fn:substring(l.Title,0,28)}</a></li>
 					</c:forEach>
 				</ul>
 			</div>

@@ -836,8 +836,8 @@ public class NewsController {
             return StringResource.JINGJIREN_BAIKE_BJ;
         }else if (StringResource.BJWORLD_XF.equals(type)) {//北京海外新房
             return StringResource.THIRD_BJWORLD_XF;
-        }else if (StringResource.CS_ESF.equals(type)) {//北京海外新房
-            return StringResource.THIRD_CS_ESF;
+        }else if (StringResource.CS_ESF.equals(type)) {//长沙新房
+            return StringResource.THIRD_XF_NEW;
         }else if (StringResource.INFO_NEW.equals(type)) {//新info页面
             return StringResource.THIRD_INFO_NEW;
         }else if (StringResource.ESF_NEW.equals(type)) {//二手房新页面
