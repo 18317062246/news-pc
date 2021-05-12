@@ -10,6 +10,7 @@ import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
 import com.news.web.model.common.CommonHouseResult;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -94,4 +95,9 @@ public interface NewsService extends Serializable {
      * @return 通过小区房源集合获取小区房源信息
      */
     List<CommonHouseResult> getXiaoQuInfo(List<NewsRelated> xiaoquTypes , String cityen);
+
+    /**
+     * 记录日志
+     */
+    void insertLog(HttpServletRequest request , String cityShort , Integer newsId);
 }

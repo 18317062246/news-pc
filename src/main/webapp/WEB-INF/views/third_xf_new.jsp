@@ -6,7 +6,7 @@
 <div class="section section-informSZ  section-informBj">
 	<div class="title-top">
 		<h5 style="width: 100%;">市场热点资讯</h5>
-		<p class="txt">海外房产新闻</p>
+		<p class="txt">楼市动态&nbsp;一应俱全</p>
 		<a href="//news.centanet.com/${cityen}/" class="more_link" style="font-size: 13px;" target="_blank">更多资讯&nbsp;
 			<span class="fSimSun" style="font-size: 13px;">&gt;</span>
 		</a>

@@ -46,7 +46,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="loadNewsViewHistory();">
 <%--head--%>
 <%@include file="/WEB-INF/views/head.jsp" %>
 <!-- S;centmain-wraper -->
@@ -395,6 +395,14 @@
         $("img.lazy").lazyload({effect: "fadeIn"});
     });
 
+    //页面加载完之后进行加载
+    function loadNewsViewHistory() {
+        $.get(
+            "/${cityen}/detail/loadNewsViewHistory?newsId=${newsId}",
+            function (resp) {
+            }
+        );
+    }
 </script>
 <script src="${staticurl}/js/cent_lists.js"></script>
 <%--统计代码--%>

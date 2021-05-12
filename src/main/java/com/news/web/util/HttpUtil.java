@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.news.web.model.exeception.ReflectException;
+import lombok.SneakyThrows;
 import okhttp3.*;
 import okhttp3.Request.Builder;
 
@@ -169,10 +170,26 @@ public class HttpUtil implements Serializable {
         }
     }
 
+    @SneakyThrows
+    public String postForm(String url, RequestBody body, Map<String, String> header) throws IOException {
+        Builder requestBuilder = (new Builder()).url(url);
+        if (header != null && header.size() > 0) {
+            for (Entry<String, String> headMap : header.entrySet()) {
+                requestBuilder.addHeader(headMap.getKey(), headMap.getValue());
+            }
+        }
+        FormBody.Builder formBody = new FormBody.Builder();
+        if (body != null) {
+            requestBuilder.post(body);
+        }
+        return exec(requestBuilder);
+    }
+
     static {
         mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
+
 
     public static class Timeouts implements Serializable {
         private long connectTimeout = 5000L;

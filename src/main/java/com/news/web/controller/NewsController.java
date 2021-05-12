@@ -4,11 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
-import com.news.web.util.AttributeKeyHelper;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
 import com.news.web.model.common.CommonHouseResult;
 import com.news.web.service.NewsService;
+import com.news.web.util.AttributeKeyHelper;
 import com.news.web.util.PageUtil;
 import com.news.web.util.StringResource;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +22,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -416,6 +417,7 @@ public class NewsController {
         if(osName.indexOf(AttributeKeyHelper.ANDROID) != -1 || osName.indexOf(AttributeKeyHelper.IPHONE) != -1 || osName.indexOf(AttributeKeyHelper.IPAD) != -1 ){
             return String.format(AttributeKeyHelper.REDIRECT_M_DETAIL_PAGE , cityen , id);
         }
+
         //获取百科
         List<NewsType> baiketype =  newsService.typeList(cityen, BAIKE);
         model.addAttribute(BAIKE_TYPE, !baiketype.isEmpty());
@@ -552,11 +554,23 @@ public class NewsController {
         if (Objects.equals(detail.get(AttributeKeyHelper.FLAG) , AttributeKeyHelper.URL)) {//若flag的值为url,将文章跳转到此url指向的地址
             return String.format(AttributeKeyHelper.REDIRECT_LINK , detail.get(AttributeKeyHelper.DETAIL_BY_URL_ATTR));
         }
+
         model.addAttribute(AttributeKeyHelper.NEWS, news);
         model.addAttribute(AttributeKeyHelper.DETAIL, detail);
         model.addAttribute(AttributeKeyHelper.NEWS_ID, id);
         model.addAttribute(AttributeKeyHelper.REFERER, referer);
         return AttributeKeyHelper.DETAIL_PAGE;
+    }
+
+    /**
+     * 记录日志
+     */
+    @ResponseBody
+    @GetMapping("/{cityen}/detail/loadNewsViewHistory")
+    public void insertLog(HttpServletRequest request , @PathVariable(name = "cityen") String cityen
+    ,@RequestParam(name = "newsId") Integer newsId){
+        //记录log
+        newsService.insertLog(request , cityen , newsId);
     }
 
     /**
