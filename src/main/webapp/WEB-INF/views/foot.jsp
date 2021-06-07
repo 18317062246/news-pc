@@ -98,10 +98,21 @@
                 </dd>
             </c:if>
         </dl>
-        <p class="app " style="right:100px;top:-20px;">
+        <%--<p class="app " style="right:100px;top:-20px;">
             <img src="//static.centanet.com/pcweb/v7.4.4/images/download_app3.jpg?v7.4.4" alt="">
             <span style="text-align: center;">下载找房APP</span>
-        </p>
+        </p>--%>
+            <dl class="appbot clearfix" >
+                <dt class="fl"><img src="//static.centanet.com/pcweb/v7.4.4/images/download_app3.jpg?v7.4.4" alt="">
+                    <span>下载找房APP</span></dt>
+                <dd class="last">
+                    <p>开发者：中原（中国）房地产代理有限公司</p>
+                    <p>版本：7.2.91</p>
+                    <p>更新时间 ：2021年05月31日</p>
+                    <p><a href="//static.centanet.com/agreement/privacy.html" class="tdu cRed" target="_blank">隐私政策</a><i class="double_words"></i>
+                        <a href="javascript:void(0);" class="tdu cRed permissions_btn">权限详情</a></p>
+                </dd>
+            </dl>
         </c:if>
     </div>
     <div class="section-wrap section-footer-secondary">
@@ -199,8 +210,278 @@
                 <a target="_blank" style="color: #939393;" rel="nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502004627"><img style="margin-right:5px;" src="https://static.centanet.com/v7p20415/images/police.png?v202005111">粤公网安备
                     44030502004627号</a>
             </p>
+            <p>
         </div>
     </div>
 </div>
+<div class="permisPop">
+    <div class="permisPop_layer">
+        <p class="caption">权限详情</p>
+        <dl class="permis-cont">
+            <dt>读写系统报告</dt>
+            <dd>允许读写系统设置项</dd>
+            <dt>拍照权限</dt>
+            <dd>允许访问摄像头进行拍照</dd>
+            <dt>使用蓝牙</dt>
+            <dd>允许程序连接配对过的蓝牙设备</dd>
+            <dt>蓝牙管理</dt>
+            <dd>允许程序进行发现和配对新的蓝牙设备</dd>
+            <dt>修改声音设置</dt>
+            <dd>修改声音设置信息</dd>
+        </dl>
+        <i role="button" tabindex="0" class="van-icon van-icon-cross van-popup__close-icon van-popup__close-icon--top-right"><!----></i>
+    </div>
+
+</div>
+<div class="popupbg"></div>
 </body>
+<style>
+    .appbot{
+        width: 350px;
+        height: 100px;
+        position: absolute;
+        right: 0;
+        top: 0 !important;
+    }
+    .appbot dt{
+        width: 100px;
+        height: 100px;
+        float:left;
+        text-align: center;
+    }
+    .appbot dt img{
+        width: 100px;
+        height: 100px;
+    }
+    .appbot dd{
+        width: 230px;
+        height: 100px;
+        float:left;
+        margin-left: 10px;
+    }
+    .appbot dd p{
+        margin-bottom: 6px;
+        line-height: 1.6;
+        color: #7d7b7b;
+        font-size:12px;
+    }
+    .section-footer dl.all-hlink{
+        width: 80%;
+    }
+    .section-footer dl.all-hlink dd{
+        width: 74%;
+    }
+    .permisPop {
+        border-radius: 8px;
+        width: 500px;
+        height: auto;
+        background: #fff;
+        display: none;
+        padding-bottom: 10px;
+        display:none;
+    }
+    .permisPop .close {
+        display: block;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        background:  no-repeat -126px -116px;
+    }
+    .permisPop .permisPop_layer {
+        padding: 20px;
+    }
+    .permisPop .caption {
+        color: #333;
+        font-size: 18px;
+        padding: 15px 0 0 10px;
+        text-align: center;
+        font-weight: 700;
+    }
+    .permisPop .permis-cont {
+        width: 460px;
+        height: auto;
+        margin: 20px 0 0 15px;
+        font-size: 14px;
+    }
+    .permis-cont dt{
+        font-size:16px;
+        color:#333;
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+    .permis-cont dd{
+        font-size:14px;
+        color:#666;
+        margin-bottom: 25px;
+    }
+
+    .popupbg {
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        position: absolute;
+        z-index: 999;
+        background: rgba(102, 102, 102, 0.7);
+        filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#b2666666', EndColorStr='#b2666666');
+        -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorstr='#b2666666', EndColorstr='#b2666666')";
+        zoom: 1;
+    }
+
+    .van-icon-cross {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        margin-right: 2rem;
+    }
+
+    .van-icon-cross::before,
+    .van-icon-cross::after
+    {
+        position: absolute;
+        content: ' ';
+        background-color: #c8c9cc;
+        left: 20px;
+        width: 1px;
+        height: 20px;
+    }
+    .van-icon-cross::before {
+        transform: rotate(45deg);
+    }
+
+    .van-icon-cross::after {
+        transform: rotate(-45deg);
+    }
+    .van-icon::before {
+        display: inline-block;
+    }
+
+
+    .van-popup__close-icon--top-right {
+        top: 16px;
+        right: 16px;
+    }
+
+    .van-popup__close-icon {
+        position: absolute;
+        z-index: 1;
+        color: #c8c9cc;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .van-icon::before {
+        display: inline-block;
+    }
+
+    .van-popup__close-icon {
+        position: absolute;
+        z-index: 1;
+        color: #c8c9cc;
+        font-size: 22px;
+        cursor: pointer;
+    }
+    .van-popup__close-icon--top-right {
+        top: 16px;
+        right: 16px;
+    }
+
+    .van-icon {
+        position: relative;
+        display: inline-block;
+        font: normal normal normal 14px/1 vant-icon;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .van-popup__close-icon {
+        position: absolute;
+        z-index: 1;
+        color: #c8c9cc;
+        font-size: 22px;
+        cursor: pointer;
+    }
+</style>
+<script>
+    $(function () {
+        $(".permissions_btn").click(function () {
+            showThis();
+
+        });
+
+        $(".van-icon-cross").click(function () {
+            //alert('11111111111111111');
+            hidePromise();
+        });
+
+    });
+
+    function hidePromise() {
+        $(".permisPop").css('display','none');
+        $(".permisPop_layer").css('display','none');
+        // $(".popupbg").css('background','#fff');
+        $(".popupbg").css('width','0px');
+    }
+
+    function showThis() {
+        var bgclass = $(".popupbg");
+        var closeclass = $(".popupcon").find($(""));
+        var windowWidth = document.documentElement.clientWidth;
+        var windowHeight = document.documentElement.clientHeight;
+        var popupHeight = 438;
+        var popupWidth = $(".permisPop_layer").width();
+        $(".popupcon").css({
+            "top": (windowHeight - popupHeight) / 2 - $(document).scrollTop() * 2,
+            "left": (windowWidth - popupWidth) / 2,
+            "position": "absolute",
+            "z-index": "9999"
+        });
+        $(".popupbg").css('width','100%');
+        $(".permisPop_layer").css('display','block');
+        $(bgclass).css({
+            "height": $(document).height()
+        });
+
+        $(".permisPop").css({
+            top: $(document).scrollTop(),
+            left:  700,
+            position: "absolute",
+            "z-index": 9999 ,
+            display: "block"
+
+        });
+        $(".permisPop").show();
+
+        $("").show();
+        if ("" != "") {
+            $(".popupcon").append("<span class='js_nclose " + popupclose + "'></span>");
+        }
+        else {
+            $(".popupcon").append("<span class='js_close'></span>");
+        }
+        $(bgclass).show();
+        if ($(closeclass).length > 0) {
+            $(closeclass).click(function() {
+                closeWindow();
+            });
+        }
+        $(".js_close").click(function() {
+            closeWindow();
+        });
+        $(".js_nclose").click(function() {
+            closeWindow();
+        });
+
+        function closeWindow() {
+            $(".popupcon").hide();
+            if ($(".popupcon").find("iframe").length > 0) {
+                $(".popupcon").find("iframe").attr("src", "");
+            }
+            $(bgclass).hide();
+        }
+    }
+</script>
 </html>
