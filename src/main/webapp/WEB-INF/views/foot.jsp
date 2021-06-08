@@ -110,7 +110,7 @@
                     <p>版本：7.2.91</p>
                     <p>更新时间 ：2021年05月31日</p>
                     <p><a href="//static.centanet.com/agreement/privacy.html" class="tdu cRed" target="_blank">隐私政策</a><i class="double_words"></i>
-                        <a href="javascript:void(0);" class="tdu cRed permissions_btn">权限详情</a></p>
+                        <a href="//static.centanet.com/agreement/authority.html" class="tdu cRed permissions_btn" target="_blank">权限详情</a></p>
                 </dd>
             </dl>
         </c:if>
@@ -405,83 +405,4 @@
         cursor: pointer;
     }
 </style>
-<script>
-    $(function () {
-        $(".permissions_btn").click(function () {
-            showThis();
-
-        });
-
-        $(".van-icon-cross").click(function () {
-            //alert('11111111111111111');
-            hidePromise();
-        });
-
-    });
-
-    function hidePromise() {
-        $(".permisPop").css('display','none');
-        $(".permisPop_layer").css('display','none');
-        // $(".popupbg").css('background','#fff');
-        $(".popupbg").css('width','0px');
-    }
-
-    function showThis() {
-        var bgclass = $(".popupbg");
-        var closeclass = $(".popupcon").find($(""));
-        var windowWidth = document.documentElement.clientWidth;
-        var windowHeight = document.documentElement.clientHeight;
-        var popupHeight = 438;
-        var popupWidth = $(".permisPop_layer").width();
-        $(".popupcon").css({
-            "top": (windowHeight - popupHeight) / 2 - $(document).scrollTop() * 2,
-            "left": (windowWidth - popupWidth) / 2,
-            "position": "absolute",
-            "z-index": "9999"
-        });
-        $(".popupbg").css('width','100%');
-        $(".permisPop_layer").css('display','block');
-        $(bgclass).css({
-            "height": $(document).height()
-        });
-
-        $(".permisPop").css({
-            top: $(document).scrollTop(),
-            left:  700,
-            position: "absolute",
-            "z-index": 9999 ,
-            display: "block"
-
-        });
-        $(".permisPop").show();
-
-        $("").show();
-        if ("" != "") {
-            $(".popupcon").append("<span class='js_nclose " + popupclose + "'></span>");
-        }
-        else {
-            $(".popupcon").append("<span class='js_close'></span>");
-        }
-        $(bgclass).show();
-        if ($(closeclass).length > 0) {
-            $(closeclass).click(function() {
-                closeWindow();
-            });
-        }
-        $(".js_close").click(function() {
-            closeWindow();
-        });
-        $(".js_nclose").click(function() {
-            closeWindow();
-        });
-
-        function closeWindow() {
-            $(".popupcon").hide();
-            if ($(".popupcon").find("iframe").length > 0) {
-                $(".popupcon").find("iframe").attr("src", "");
-            }
-            $(bgclass).hide();
-        }
-    }
-</script>
 </html>
