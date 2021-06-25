@@ -63,9 +63,19 @@
                     <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">${citycn}经纪人</a>
                 </dd>
             </c:if>
+            <c:set var="joinInfo2" value="hq,"></c:set>
+            <c:if test="${fn:contains(joinInfo2, cityen)}">
+                <dt>相关信息：</dt>
+                <dd>
+                    <a href="//${cityen}.centanet.com/ershoufang/" target="_blank">${citycn}二手房</a>
+                    <a href="//${cityen}.centanet.com/zufang/" target="_blank">${citycn}租房</a>
+                    <a href="//${cityen}.centanet.com/xiaoqu/" target="_blank">${citycn}小区</a>
+                    <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">${citycn}经纪人</a>
+                </dd>
+            </c:if>
         </dl>
         <dl class="all-hlink">
-            <c:set var="xiaoqu" value="bj,tj,gz,sz,cd,cq,hz,dg,"></c:set>
+            <c:set var="xiaoqu" value="bj,tj,gz,sz,cd,cq,hz,dg,hq,"></c:set>
             <c:if test="${fn:contains(xiaoqu, cityen)}">
             <dt>小区检索：</dt>
                 <dd>

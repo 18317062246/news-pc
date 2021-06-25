@@ -329,6 +329,51 @@
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
 
+                <c:when test="${cityen == 'hq'}">
+                    <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
+                    <li ><a href="//${cityen}.centanet.com/ershoufang/" target="_blank">二手房</a>
+                        <div class="subnav" >
+                            <a href="//${cityen}.centanet.com/ershoufang/" target="_blank">在售房源</a>
+                            <a href="//${cityen}.centanet.com/ershoufang/u7/?from=topnav" target="_blank">最新发布</a>
+                            <a href="//${cityen}.centanet.com/ershoufang/?tag=5&from=topnav" target="_blank">随时可看</a>
+                            <a href="//${cityen}.centanet.com/entrust/sale/" target="_blank">发布房源</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                    <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
+                        <div class="subnav" >
+                            <a href="//${cityen}.centanet.com/xinfang/" target="_blank">全部新房</a>
+                            <a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
+                            <a href="//esf.centanet.com/zhuanti/dawanqu/?${cityen}" target="_blank">粤港澳大湾区</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                    <li><a href="//${cityen}.centanet.com/zufang/" target="_blank">租房</a></li>
+                    <li><a href="//${cityen}.centanet.com/xiaoqu/" target="_blank">小区</a></li>
+                    <c:choose>
+                        <c:when test="${baiketype}">
+                            <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
+                                <div class="subnav" >
+                                    <a href="/${cityen}/" target="_blank">资讯</a>
+                                    <a href="/${cityen}/baike/" target="_blank">购房百科</a>
+                                    <i class="arrow"></i>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="curr"><a href="/${cityen}/" target="_blank">资讯</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                    <li><a href="//${cityen}.centanet.com/jingjiren/"  target="_blank">经纪人</a>
+                        <div class="subnav" >
+                            <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
+                            <a href="//${cityen}.centanet.com/mendian/" target="_blank">门店</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                    <li><a href="${researchUrl}" target="_blank">中原研究院</a>
+                </c:when>
+
                 <c:when test="${cityen == 'cd'}">
                     <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
                     <li ><a href="//${cityen}.centanet.com/ershoufang/" target="_blank">二手房</a>

@@ -121,6 +121,7 @@ public class StringResource implements Serializable {
         map.put("zs", "中山");
         map.put("zq", "肇庆");
         map.put("zz", "郑州");
+        map.put("hq", "横琴");
         map.put("szworld", "海外");
         return (String) map.get(cityen);
     }
@@ -167,6 +168,7 @@ public class StringResource implements Serializable {
         map.put("fz", "400-819-8852");
         map.put("szworld", "13528771779");
         map.put("bjworld", "400-070-9022");
+        map.put("hq", "0756-8575598");
         return (String) map.get(cityen);
     }
 
