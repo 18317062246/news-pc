@@ -18,6 +18,7 @@ import com.news.web.model.param.InsertLogParam;
 import com.news.web.model.xiaoqu.XiaoQuResult;
 import com.news.web.model.xinfang.XinfangResult;
 import com.news.web.service.NewsService;
+import com.news.web.util.CommonUtil;
 import com.news.web.util.HttpUtil;
 import com.news.web.util.StringResource;
 import com.news.web.util.parser.NewsParser;
@@ -188,6 +189,7 @@ public class NewsServiceImpl implements NewsService {
         map.put("page", page);
         map.put("pagesize", pagesize);
         map.put("order", order);
+        map.put("pubdate", CommonUtil.getCurrentMills());
         if (StringUtils.hasText(key)) {
             map.put(TYPE_ID, null);
         }
@@ -195,7 +197,7 @@ public class NewsServiceImpl implements NewsService {
         map.put("description", key);
         map.put(LOCATION, location);
         JSONObject jSONObject = restTemplate.getForObject(apiurl +
-                        "GetNewsList?cityen={cityen}&platform=pc&typeid={typeid}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&location={location}"
+                        "GetNewsList?cityen={cityen}&platform=pc&typeid={typeid}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&location={location}&pubdate={pubdate}"
                 , JSONObject.class, map);
         return jSONObject;
     }
@@ -209,7 +211,7 @@ public class NewsServiceImpl implements NewsService {
      * @return 取最新的资讯列表信息
      */
     public  JSONObject newsList(String cityen, Integer page, Integer pagesize, Integer desc) {
-        String serviceUrl = String.format(apiurl + "GetNewsList?cityen=%s&platform=pc&page=%s&pagesize=%s&isDesc=%s" , cityen , page , pagesize  , desc);
+        String serviceUrl = String.format(apiurl + "GetNewsList?cityen=%s&platform=pc&page=%s&pagesize=%s&isDesc=%s&pubdate=%s" , cityen , page , pagesize  , desc , CommonUtil.getCurrentMills());
         //发出http请求
         try {
             String json = httpUtil.get(serviceUrl);
@@ -245,12 +247,13 @@ public class NewsServiceImpl implements NewsService {
         map.put("order", order);
         map.put("title", key);
         map.put("description", key);
+        map.put("pubdate", CommonUtil.getCurrentMills());
 
         if(!ObjectUtils.isEmpty(typeId)){
             map.put("typeid", typeId);
         }
 
-        StringBuffer sql = new StringBuffer("GetNewsList?cityen={cityen}&platform=pc&location={location}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}");
+        StringBuffer sql = new StringBuffer("GetNewsList?cityen={cityen}&platform=pc&location={location}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&pubdate={pubdate}");
         if(!ObjectUtils.isEmpty(typeId)){
             sql.append("&typeid={typeid}");
         }
