@@ -117,8 +117,8 @@
                     <span>下载找房APP</span></dt>
                 <dd class="last">
                     <p>开发者：中原（中国）房地产代理有限公司</p>
-                    <p>版本：7.2.91</p>
-                    <p>更新时间 ：2021年05月31日</p>
+                    <p>版本：7.2.95</p>
+                    <p>更新时间 ：2021年06月30日</p>
                     <p><a href="//static.centanet.com/agreement/privacy.html" class="tdu cRed" target="_blank">隐私政策</a><i class="double_words"></i>
                         <a href="//static.centanet.com/agreement/authority.html" class="tdu cRed permissions_btn" target="_blank">权限详情</a></p>
                 </dd>
