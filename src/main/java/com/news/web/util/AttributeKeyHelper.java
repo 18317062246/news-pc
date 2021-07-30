@@ -15,6 +15,16 @@ public interface AttributeKeyHelper extends Serializable {
     String USER_AGENT = "user-agent";
 
     /**
+     * referer
+     */
+    String REFERER = "referer";
+
+    /**
+     * Upper是否上架标识
+     */
+    String UPPER = "Upper";
+
+    /**
      * 来自于Android
      */
     String ANDROID = "Android";
@@ -293,6 +303,11 @@ public interface AttributeKeyHelper extends Serializable {
      * 详情页面
      */
     String DETAIL_PAGE = "detail";
+
+    /**
+     * 资讯下架页面
+     */
+    String OFF_SHELF_NEWS = "off_shelf_news";
 
     /**
      * 栏目名称

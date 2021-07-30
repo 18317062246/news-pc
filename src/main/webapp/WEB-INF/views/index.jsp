@@ -28,6 +28,7 @@
     <script src="${staticurl}/js/head.js"></script>
 <%--    <script src="/js/jquery.lazyload.min.js"></script>--%>
     <script src="${staticurl}/js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="${staticurl}/js/sale_house_cookie.js" language="javascript"></script>
     <%--图片放大效果--%>
     <link rel="stylesheet" href="${staticurl}/css/news_list_photo_enlarge.css">
     <script>
@@ -110,7 +111,7 @@
                                                 <c:choose>
                                                   <c:when test="${item.LitPic != null && item.LitPic.length() >= 10}">
                                                          <div class="img-box">
-                                                           <img class="lazy news-img" src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                                           <img class="lazy news-img" src="${defaultpic}"
                                                                 data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}" alt="${item.Title}"/>
                                                          </div>
                                                     </c:when>
@@ -127,7 +128,10 @@
                                     <dd class="fl">
                                         <h6 class="f18">
                                             <a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank" title="${item.Title}">
-                                                 ${item.Title}
+                                                 ${fn:substring(item.Title , 0 , 27)}
+                                                     <c:if test="${item.Title != null && item.Title.length() >= 28}">
+                                                         <span>...</span>
+                                                     </c:if>
                                             </a>
                                         </h6>
                                         <p class="f14 f999">
@@ -161,7 +165,10 @@
                                 <c:forEach items="${dealinfo}" var="n">
                                     <div class="inforSlid">
                                         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                        <a href="${n.targetUrl}" title="" target="_blank"><img src="${n.imageUrl}?x-oss-process=style/master" alt="" onerror="this.src='${defaultpic}'"></a>
+                                        <a href="${n.targetUrl}" title="" target="_blank">
+                                            <img class="lazy news-img" src="${defaultpic}"
+                                                 data-original="${n.imageUrl}?x-oss-process=style/master"
+                                                 alt="" onerror="this.src='${defaultpic}'"></a>
                                          <p></p>
                                      </div>
                                 </c:forEach>
@@ -193,12 +200,11 @@
                                     <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                     <c:choose>
                                         <c:when test="${dealinfo[0].imageUrl != null && dealinfo[0].imageUrl.length() >= 10}">
-                                            <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
+                                            <img  src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
                                                  data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt=""/>
                                         </c:when>
                                         <c:otherwise>
-                                            <img class="lazy" src="${defaultpic}"
-                                                 data-original="${defaultpic}" alt=""/>
+                                            <img  src="${defaultpic}" alt=""/>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -210,12 +216,10 @@
                                     <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                     <c:choose>
                                         <c:when test="${dealinfo[0].imageUrl != null && dealinfo[0].imageUrl.length() >= 10}">
-                                            <img class="lazy" src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130"
-                                                 data-original="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt=""/>
+                                            <img  src="${dealinfo[0].imageUrl}?x-oss-process=style/180x130" alt=""/>
                                         </c:when>
                                         <c:otherwise>
-                                            <img class="lazy" src="${defaultpic}"
-                                                 data-original="${defaultpic}" alt=""/>
+                                            <img  src="${defaultpic}" data-original="${defaultpic}" alt=""/>
                                         </c:otherwise>
                                     </c:choose>
                                 </a>
@@ -228,54 +232,6 @@
                 <c:forEach items="${rightType}" var="t" varStatus="status">
                     <c:if test="${t.location=='right' && status.index==0}">
                         <c:choose>
-                            <c:when test="${cityen == 'hz'}">
-                                <c:if test="${t.columnsName != 'Ben钟话市'}">
-                                    <div class="infor-side-box">
-                                        <p class="title-top">
-                                            <span class="f18 f333 fb">${t.columnsName}</span>
-                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000" style="top:5px;">更多</a>
-                                        </p>
-                                        <dl class="infor-side-pB">
-                                                <%--遍历文章--%>
-                                            <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
-                                                <c:if test="${t.id==n.TypeID}">
-                                                    <dt class="${status.count==1?'curr':''}"><i></i>
-                                                        <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,23)}
-                                                            <c:if test="${n.Title.length() >= 24}">
-                                                                <span>...</span>
-                                                            </c:if>
-                                                            <span class="index_time">
-                                                                <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
-                                                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
-                                                        </span>
-                                                        </a>
-                                                    </dt>
-                                                    <dd style="display: block;">
-                                                        <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">
-                                                            <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                                                            <c:choose>
-                                                                <c:when test="${n.LitPic != null && n.LitPic.length() >= 10}">
-                                                                    <img class="lazy"
-                                                                         src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
-                                                                         data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}"
-                                                                    />
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <img class="lazy"
-                                                                         src="${defaultpic}"
-                                                                         data-original="${defaultpic}" alt="${n.Title}"
-                                                                    />
-                                                                </c:otherwise>
-                                                            </c:choose>
-
-                                                        </a>
-                                                    </dd>
-                                                </c:if>
-                                            </c:forEach>
-                                        </dl>
-                                    </div>
-                                </c:if>
-                            </c:when>
                             <c:when test="${cityen == 'szworld'}"></c:when>
                             <c:otherwise>
                                 <div class="infor-side-box">
@@ -303,15 +259,11 @@
                                                         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                                         <c:choose>
                                                             <c:when test="${n.LitPic != null && n.LitPic.length() >= 10}">
-                                                                <img class="lazy"
-                                                                     src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
-                                                                     data-original="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}" alt="${n.Title}"
-                                                                />
+                                                                <img src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
+                                                                     alt="${n.Title}"/>
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img class="lazy"
-                                                                     src="${defaultpic}"
-                                                                     data-original="${defaultpic}" alt="${n.Title}"
+                                                                <img src="${defaultpic}" data-original="${defaultpic}" alt="${n.Title}"
                                                                 />
                                                             </c:otherwise>
                                                         </c:choose>
@@ -361,33 +313,6 @@
                             </c:when>
                             <c:when test="${cityen == 'szworld'}"></c:when>
 
-                            <c:when test="${cityen == 'hz'}">
-                                <c:if test="${t.columnsName != 'Ben钟话市'}">
-                                    <div class="infor-side-box">
-                                        <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                                        </h2>
-                                        <ul class="infor-side-p">
-                                                <%--遍历文章--%>
-                                            <c:forEach items="${rightNews}"  var="n" varStatus="status">
-                                                <c:if test="${t.id==n.TypeID}">
-                                                    <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
-                                                        <c:if test="${n.Title.length() >= 24}">
-                                                            <span>...</span>
-                                                        </c:if>
-                                                        <span class="index_time">
-                                                                 <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
-                                                                <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
-                                                        </span>
-                                                    </a>
-                                                    </li>
-                                                </c:if>
-                                            </c:forEach>
-                                        </ul>
-                                    </div>
-                                </c:if>
-                            </c:when>
                             <c:when test="${cityen == 'gz'}">
                                 <c:if test="${t.columnsName != '热门专题'}">
                                     <div class="infor-side-box">
@@ -451,7 +376,7 @@
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
                     <c:choose>
                         <%--深圳、海外隐藏品牌部、研究院、专家点评--%>
-                        <c:when test="${cityen == 'sz' || cityen == 'szworld'}">
+                        <c:when test="${cityen == 'sz' || cityen == 'szworld' || cityen == 'bjworld' || cityen == 'cs' || cityen == 'hz'}">
 
                         </c:when>
                         <c:otherwise>
@@ -517,35 +442,6 @@
                                                     </a>
                                                     </li>
                                                 </c:if>
-
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </c:if>
-                        </c:if>
-
-                        <c:if test="${cityen == 'hz'}">
-                            <c:if test="${t.columnsName == 'Ben钟话市'}">
-                                <div class="infor-side-box">
-                                    <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
-                                    </h2>
-                                    <ul class="infor-side-p">
-                                            <%--遍历文章--%>
-                                        <c:forEach items="${rightNews}" var="n" varStatus="status" >
-                                            <c:if test="${t.id==n.TypeID}">
-                                                <li><i></i><a class="f000"
-                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
-                                                    <c:if test="${n.Title.length() >= 24}">
-                                                        <span>...</span>
-                                                    </c:if>
-                                                    <span class="index_time">
-                                                        <c:set target="${myDate}" property="time" value="${n.PublishDate*1000}"/>
-                                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
-                                                    </span>
-                                                </a>
-                                                </li>
-                                            </c:if>
 
                                         </c:forEach>
                                     </ul>

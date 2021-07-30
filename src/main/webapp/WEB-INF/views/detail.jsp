@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
-    <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
+    <link rel="stylesheet" href="${staticurl}/sidebar/sidebar_1.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>
@@ -30,6 +30,7 @@
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="${staticurl}/js/sale_house_cookie.js" language="javascript"></script>
     <script>
         function getIframe(id) {
             return document.getElementById(id).contentWindow.document;
@@ -45,7 +46,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="loadNewsViewHistory();">
 <%--head--%>
 <%@include file="/WEB-INF/views/head.jsp" %>
 <!-- S;centmain-wraper -->
@@ -92,7 +93,7 @@
                    <%-- <p class="f666 ">来源:${detail.Sources}</p>--%>
                     <p class="f666 ">
                         <jsp:useBean id="myDate" class="java.util.Date"/>
-                        <c:set target="${myDate}" property="time" value="${detail.PublishDate*1000}"/>
+                        <c:set target="${myDate}" property="time" value="${detail.SenddateTime*1000}"/>
                         <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         来源:&nbsp;&nbsp;${detail.Sources}</p>
@@ -117,7 +118,7 @@
                                                     <c:choose>
                                                         <c:when test="${n.xinfangResult.defaultImage != null && n.xinfangResult.defaultImage.length() >= 10}">
                                                             <img class="lazy"
-                                                                 src="${n.xinfangResult.defaultImage}"
+                                                                 src="${defaultpic}"
                                                                  data-original="${n.xinfangResult.defaultImage}"
                                                                  width="250" height="167" alt="" />
                                                         </c:when>
@@ -136,7 +137,7 @@
                                                     <c:choose>
                                                         <c:when test="${n.esfResult.fullImagePath != null && n.esfResult.fullImagePath.length() >= 10}">
                                                             <img  class="lazy"
-                                                                  src="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
+                                                                  src="${defaultpic}"
                                                                   data-original="${fn:substring(n.esfResult.fullImagePath, 0 , mfn:lastIndexOf(n.esfResult.fullImagePath, "."))}_180x130_c${fn:substring(n.esfResult.fullImagePath,mfn:lastIndexOf(n.esfResult.fullImagePath, ".") , fn:length(n.esfResult.fullImagePath))}"
                                                                   width="250" height="167" alt="" />
                                                         </c:when>
@@ -155,7 +156,7 @@
                                                     <c:choose>
                                                         <c:when test="${n.xiaoQuResult.imagePath != null && n.xiaoQuResult.imagePath.length() >= 10}">
                                                             <img  class="lazy"
-                                                                  src="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
+                                                                  src="${defaultpic}"
                                                                   data-original="${fn:substring(n.xiaoQuResult.imagePath, 0 , mfn:lastIndexOf(n.xiaoQuResult.imagePath, "."))}_180x130_c${fn:substring(n.xiaoQuResult.imagePath,mfn:lastIndexOf(n.xiaoQuResult.imagePath, ".") , fn:length(n.xiaoQuResult.imagePath))}"
                                                                   width="250" height="167" alt="" />
                                                         </c:when>
@@ -319,7 +320,7 @@
                                     <c:choose>
                                         <c:when test="${info.LitPic != null && info.LitPic.length() >= 10}">
                                             <img class="lazy"
-                                                 src="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
+                                                 src="${defaultpic}"
                                                  data-original="${fn:substring(info.LitPic, 0 , mfn:lastIndexOf(info.LitPic, "."))}_300x210_c${fn:substring(info.LitPic,mfn:lastIndexOf(info.LitPic, ".") , fn:length(info.LitPic))}"
                                                  alt="${info.Title}"/>
                                         </c:when>
@@ -366,7 +367,7 @@
     if(!flag){
         let locationAddress = window.location;
         $.get(
-            "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+locationAddress+"&platform=pc",
+            "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+locationAddress+"&platform=pc&Referer=${referer}",
                 function (data) {
 
         });
@@ -394,6 +395,14 @@
         $("img.lazy").lazyload({effect: "fadeIn"});
     });
 
+    //页面加载完之后进行加载
+    function loadNewsViewHistory() {
+        $.get(
+            "/${cityen}/detail/loadNewsViewHistory?newsId=${newsId}",
+            function (resp) {
+            }
+        );
+    }
 </script>
 <script src="${staticurl}/js/cent_lists.js"></script>
 <%--统计代码--%>

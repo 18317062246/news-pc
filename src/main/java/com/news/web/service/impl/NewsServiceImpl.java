@@ -8,15 +8,20 @@ package com.news.web.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
+import com.news.web.config.ApiConfig;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
 import com.news.web.model.common.AopResult;
 import com.news.web.model.common.CommonHouseResult;
 import com.news.web.model.esf.ESFResult;
+import com.news.web.model.param.InsertLogParam;
 import com.news.web.model.xiaoqu.XiaoQuResult;
 import com.news.web.model.xinfang.XinfangResult;
 import com.news.web.service.NewsService;
+import com.news.web.util.CommonUtil;
 import com.news.web.util.HttpUtil;
+import com.news.web.util.StringResource;
+import com.news.web.util.parser.NewsParser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +31,8 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
@@ -38,6 +45,9 @@ public class NewsServiceImpl implements NewsService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private ApiConfig apiConfig;
 
     @Autowired
     private HttpUtil httpUtil;
@@ -179,6 +189,7 @@ public class NewsServiceImpl implements NewsService {
         map.put("page", page);
         map.put("pagesize", pagesize);
         map.put("order", order);
+        map.put("pubdate", CommonUtil.getCurrentMills());
         if (StringUtils.hasText(key)) {
             map.put(TYPE_ID, null);
         }
@@ -186,7 +197,7 @@ public class NewsServiceImpl implements NewsService {
         map.put("description", key);
         map.put(LOCATION, location);
         JSONObject jSONObject = restTemplate.getForObject(apiurl +
-                        "GetNewsList?cityen={cityen}&platform=pc&typeid={typeid}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&location={location}"
+                        "GetNewsList?cityen={cityen}&platform=pc&typeid={typeid}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&location={location}&pubdate={pubdate}"
                 , JSONObject.class, map);
         return jSONObject;
     }
@@ -200,7 +211,7 @@ public class NewsServiceImpl implements NewsService {
      * @return 取最新的资讯列表信息
      */
     public  JSONObject newsList(String cityen, Integer page, Integer pagesize, Integer desc) {
-        String serviceUrl = String.format(apiurl + "GetNewsList?cityen=%s&platform=pc&page=%s&pagesize=%s&isDesc=%s" , cityen , page , pagesize  , desc);
+        String serviceUrl = String.format(apiurl + "GetNewsList?cityen=%s&platform=pc&page=%s&pagesize=%s&isDesc=%s&pubdate=%s" , cityen , page , pagesize  , desc , CommonUtil.getCurrentMills());
         //发出http请求
         try {
             String json = httpUtil.get(serviceUrl);
@@ -236,12 +247,13 @@ public class NewsServiceImpl implements NewsService {
         map.put("order", order);
         map.put("title", key);
         map.put("description", key);
+        map.put("pubdate", CommonUtil.getCurrentMills());
 
         if(!ObjectUtils.isEmpty(typeId)){
             map.put("typeid", typeId);
         }
 
-        StringBuffer sql = new StringBuffer("GetNewsList?cityen={cityen}&platform=pc&location={location}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}");
+        StringBuffer sql = new StringBuffer("GetNewsList?cityen={cityen}&platform=pc&location={location}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&pubdate={pubdate}");
         if(!ObjectUtils.isEmpty(typeId)){
             sql.append("&typeid={typeid}");
         }
@@ -407,5 +419,63 @@ public class NewsServiceImpl implements NewsService {
         //将结果集进行过滤
         List<CommonHouseResult> results = resultList.stream().filter(Objects::nonNull).collect(Collectors.toList());
         return CollectionUtils.isEmpty(results) ? Collections.emptyList() : results;
+    }
+
+    @Override
+    public void insertLog(HttpServletRequest request , String cityShort, Integer newsId) {
+        //获取请求头
+        String ua = request.getHeader(StringResource.USER_AGENT);
+        String cityCode = "";
+        String appName = "";
+        String userId = "";
+        String jPushId = "";
+        String postId = "";
+        String sourceChild = " ";
+        String trackId = "";
+        Integer begin = 0;
+        Integer end = 0;
+        String oringUri = request.getRequestURI();
+        cityCode = StringResource.getCityCode(cityShort);
+        //获取用户ip
+        String ClientIP = request.getRemoteAddr();
+        //那cookie中的信息
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie c : cookies
+            ) {
+                //获取UserID
+                if (c.getName().equals(StringResource.CK_USER) || c.getName().equals(StringResource.CK_USER_WAP)) {
+                    String value = c.getValue();
+                    begin = value.indexOf(StringResource.BIG_U);
+                    end = value.indexOf(StringResource.AND);
+                    userId = value.substring(begin, end);
+                }
+                //获取trackID
+                if (c.getName().equals(StringResource.COOKIE_NAME)) {
+                    trackId = c.getValue();
+                }
+            }
+        }
+        //获取AppName
+        if (ua.contains(StringResource.WINDOWS) || ua.contains(StringResource.INTEL_MAC_OS)) {
+            appName = StringResource.PC;
+        } else if (ua.contains(StringResource.LIKE_MAC_OS) || ua.contains(StringResource.ANDROID)) {
+            if (ua.contains(StringResource.SALE_HOUSE) && ua.contains(StringResource.LIKE_MAC_OS)) {
+                appName =StringResource.APP_IOS;
+            } else if (ua.contains(StringResource.SALE_HOUSE) && ua.contains(StringResource.ANDROID)) {
+                appName = StringResource.APP_ANDROID;
+            } else if (ua.contains(StringResource.MICRO_MESSENGER)) {
+                appName = StringResource.WE_CHAT;
+            } else {
+                appName = StringResource.WAP;
+            }
+        }
+        //封装对象
+        InsertLogParam param = NewsParser.build(appName , cityCode , ClientIP , jPushId , String.valueOf(newsId) , postId , sourceChild , trackId , userId);
+        try{
+            String abc=httpUtil.post(String.format(StringResource.INSERT_VIEW_HISTORY_REQUEST_BY_RABBIT , apiConfig.getUrl()) , param);
+        } catch (IOException e) {
+
+        }
     }
 }

@@ -24,6 +24,7 @@
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/totalexchange.js"></script>
+    <script type="text/javascript" src="${staticurl}/js/sale_house_cookie.js" language="javascript"></script>
 
 
     <script>
@@ -261,7 +262,5 @@
 <![endif]-->
 <script src="${staticurl}/js/cent_lists.js"></script>
 <script src="${staticurl}/js/listp2.js"></script>
-<%--统计代码--%>
-<%@include file="/WEB-INF/views/statistics_code.jsp" %>
 </body>
 </html>

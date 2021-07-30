@@ -20,13 +20,24 @@ public class StringResource implements Serializable {
     public static final String INDEX = "index";
     public static final String THIRD_ESF = "third_esf";
     public static final String INFO = "info";
+    public static final String INFO_NEW = "info_new";
+    public static final String THIRD_INFO_NEW = "third_info_new";
+    public static final String ESF_NEW = "esf_new";
+    public static final String THIRD_ESF_NEW = "third_esf_new";
+    public static final String ESF_SZ_NEW = "esf_sz_new";
+    public static final String THIRD_ESF_SZ_NEW = "third_esf_sz_new";
     public static final String THIRD_XF = "third_xf";
     public static final String SZ_ESF = "sz_esf";
     public static final String THIRD_SZ_ESF = "third_sz_esf";
+    public static final String CS_ESF = "cs_esf";
+    public static final String THIRD_CS_ESF = "third_cs_esf";
+    public static final String THIRD_XF_NEW = "third_xf_new";
     public static final String ZS_BUYER = "zs_buyer";
     public static final String THIRD_ZS_BUYER = "third_zs_buyer";
     public static final String SZWORLD_XF = "szworld_xf";
+    public static final String BJWORLD_XF = "bjworld_xf";
     public static final String THIRD_SZWORLD_XF = "third_szworld_xf";
+    public static final String THIRD_BJWORLD_XF = "third_bjworld_xf";
     public static final String JJR_BAIKE_INFO = "jjr_baike_info";
     public static final String JINGJIREN_BAIKE = "jingjiren_baike";
     public static final String GZ_JJR_BAIKE_INFO = "gz_jjr_baike_info";
@@ -42,6 +53,25 @@ public class StringResource implements Serializable {
      */
     private static final String CURRENT_YEAR_FORMAT = "yyyy";
 
+    public static final String NEWS = "news";
+    public static final String CK_USER = "ck_user";
+    public static final String CK_USER_WAP = "ck_user_wap";
+    public static final String BIG_U = "U";
+    public static final String AND = "&";
+    public static final String COOKIE_NAME = "Y190cmFja2lk";
+    public static final String WINDOWS = "Windows";
+    public static final String INTEL_MAC_OS = "Intel Mac OS";
+    public static final String PC = "pc";
+    public static final String LIKE_MAC_OS = "like Mac OS";
+    public static final String ANDROID = "Android";
+    public static final String SALE_HOUSE = "salehouse";
+    public static final String APP_IOS = "APP_IOS";
+    public static final String APP_ANDROID = "APP_ANDROID";
+    public static final String MICRO_MESSENGER = "MicroMessenger";
+    public static final String WE_CHAT = "WeChat";
+    public static final String WAP = "WAP";
+    public static final String USER_AGENT = "user-agent";
+    public static final String INSERT_VIEW_HISTORY_REQUEST_BY_RABBIT = "%sInsertViewHistoryRequestByRabbit";
     /**
      * @param input 原始图片路径
      * @param substring 分隔符
@@ -91,6 +121,7 @@ public class StringResource implements Serializable {
         map.put("zs", "中山");
         map.put("zq", "肇庆");
         map.put("zz", "郑州");
+        map.put("hq", "横琴");
         map.put("szworld", "海外");
         return (String) map.get(cityen);
     }
@@ -136,6 +167,8 @@ public class StringResource implements Serializable {
         map.put("nc", "0791-86296696");
         map.put("fz", "400-819-8852");
         map.put("szworld", "13528771779");
+        map.put("bjworld", "400-070-9022");
+        map.put("hq", "0756-8575598");
         return (String) map.get(cityen);
     }
 
@@ -149,6 +182,47 @@ public class StringResource implements Serializable {
         SimpleDateFormat sdf = new SimpleDateFormat(CURRENT_YEAR_FORMAT);
         //将date类型格式化成string并返回
         return sdf.format(date);
+    }
+
+    /**
+     * 根据城市缩写获取城市代码
+     * @param ：城市拼音缩写
+     * return:城市代码
+     * */
+    public static String getCityCode(String cityShort) {
+        Map<String, String> map = new HashMap<>();
+        map.put("bj", "010");
+        map.put("tj", "022");
+        map.put("gz", "020");
+        map.put("sz", "0755");
+        map.put("cd", "028");
+        map.put("cq", "023");
+        map.put("nj", "025");
+        map.put("wh", "027");
+        map.put("hz", "0752");
+        map.put("cc", "0431");
+        map.put("dl", "0411");
+        map.put("sy", "024");
+        map.put("dg", "0769");
+        map.put("nn", "0771");
+        map.put("fs", "0757");
+        map.put("hrb", "0451");
+        map.put("xm", "0592");
+        map.put("wx", "0510");
+        map.put("xy", "0710");
+        map.put("zh", "0756");
+        map.put("cs", "0731");
+        map.put("zj", "0571");
+        map.put("ganzhou", "0797");
+        map.put("hf", "0551");
+        map.put("jn", "0531");
+        map.put("km", "0871");
+        map.put("nb", "0574");
+        map.put("xa", "029");
+        map.put("zs", "0760");
+        map.put("zq", "0758");
+        map.put("zz", "0371");
+        return map.get(cityShort);
     }
 
 }

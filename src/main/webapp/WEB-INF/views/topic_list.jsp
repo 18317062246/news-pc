@@ -25,6 +25,7 @@
     <script src="${staticurl}/js/placeholder.js"></script>
     <script src="${staticurl}/js/head.js"></script>
     <script src="${staticurl}/js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="${staticurl}/js/sale_house_cookie.js" language="javascript"></script>
     <%--图片放大效果--%>
     <link rel="stylesheet" href="${staticurl}/css/news_list_photo_enlarge.css">
     <script>
@@ -60,7 +61,7 @@
                         <c:choose>
                             <c:when test="${item.LitPic != null && item.LitPic.length() > 10}">
                                     <img class="lazy news-img"
-                                         src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
+                                         src="${defaultpic}"
                                          data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}"
                                          alt="${item.Title}"/>
                             </c:when>

@@ -10,13 +10,14 @@
 	<div class="section">
 		<div class="title-box clearfix">
 		<h5 class="title">${citycn}热点资讯</h5>
-		<p class="description">提供房产新闻</p>		
+		<p class="description">提供房产新闻</p>
+		<p class="r-more fr"><a href="//news.centanet.com/${cityen}/" class="f999">更多热门资讯 <span class="fSimSun">></span></a></p>
 	</div>
 		<%--left--%>
 		<c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
 		<div class="inform-main fl">
 			<div class="inform-special">
-				<h5 class="caption">${types[0].columnsName}</h5>
+				<h5 class="caption" style="background: #f4f4f4;">${types[0].columnsName}</h5>
 					<div class="special-item">
 					<a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank">
 						<p class="photo fl">
@@ -47,7 +48,7 @@
 		<%--right--%>
 
 		<div class="inform-side fr">
-			<h5 class="caption">${types[1].columnsName}</h5>
+			<h5 class="caption" style="background: #f4f4f4;">${types[1].columnsName}</h5>
 			<div class="expert">
 				<div class="expert-phone">
 					<a href="//news.centanet.com/${cityen}/detail/${leftDown[0].ID}.html" target="_blank">
@@ -80,5 +81,5 @@
 
 	</div>
 </div>
- <p class="bot_link tc"><a href="//news.centanet.com/${cityen}" class="white_btn">更多新鲜资讯</a></p>
+
 

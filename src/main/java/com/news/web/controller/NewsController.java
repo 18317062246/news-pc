@@ -4,11 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
-import com.news.web.util.AttributeKeyHelper;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
 import com.news.web.model.common.CommonHouseResult;
 import com.news.web.service.NewsService;
+import com.news.web.util.AttributeKeyHelper;
 import com.news.web.util.PageUtil;
 import com.news.web.util.StringResource;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +22,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -220,6 +221,14 @@ public class NewsController {
             }
         }
 
+        //如果是惠州，隐藏Ben钟话市栏目
+        if(Objects.equals(cityen , AttributeKeyHelper.HZ_CITY_EN)){
+            //筛选出Ben钟话市栏目对象，栏目id为107
+            List<NewsType> benDelList = types.stream().filter(l -> Objects.equals(107, l.getId())).collect(Collectors.toList());
+            //隐藏Ben钟话市相关的栏目
+            rightTypeAdd.removeAll(benDelList);
+        }
+
         //右侧下部集团jt文章
         List<Map> centaNews = new ArrayList<>();
         if (null != jtTypes && !jtTypes.isEmpty()) {
@@ -403,10 +412,12 @@ public class NewsController {
         log.info("detail id=>{}", id);
 
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
-
+        //获取引用
+        String referer = request.getHeader(AttributeKeyHelper.REFERER);
         if(osName.indexOf(AttributeKeyHelper.ANDROID) != -1 || osName.indexOf(AttributeKeyHelper.IPHONE) != -1 || osName.indexOf(AttributeKeyHelper.IPAD) != -1 ){
             return String.format(AttributeKeyHelper.REDIRECT_M_DETAIL_PAGE , cityen , id);
         }
+
         //获取百科
         List<NewsType> baiketype =  newsService.typeList(cityen, BAIKE);
         model.addAttribute(BAIKE_TYPE, !baiketype.isEmpty());
@@ -419,10 +430,16 @@ public class NewsController {
         JSONObject result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + id + "&cityen="+cityen+"&platform=pc", JSONObject.class);
         //判断是否存在房源
         if(result.get(RESULT) != null){
-            JSONObject xfResult = result.getJSONObject(RESULT);
-            if(xfResult.get(NEWS_RELATED) != null) {
+            JSONObject resultJSONObject = result.getJSONObject(RESULT);
+            //获取是否上架的标识
+            Integer upper = (Integer)resultJSONObject.get(AttributeKeyHelper.UPPER);
+            //如果upper为0代表是下架,返回到资讯下架提示页面
+            if(Objects.equals(0 , upper)){
+                return AttributeKeyHelper.OFF_SHELF_NEWS;
+            }
+            if(resultJSONObject.get(NEWS_RELATED) != null) {
                 //将房源对象进行转换
-                String newsRelatedData = JSON.toJSONString(xfResult.get(NEWS_RELATED));
+                String newsRelatedData = JSON.toJSONString(resultJSONObject.get(NEWS_RELATED));
                 List<NewsRelated> types = JSON.parseArray(newsRelatedData, NewsRelated.class);
                 //将新房、二手房、小区进行过滤
                 List<NewsRelated> xinfangTypes = types.stream().filter(l -> l.getOtype().equals(AttributeKeyHelper.XINFANG_KEY)).collect(Collectors.toList());
@@ -537,10 +554,23 @@ public class NewsController {
         if (Objects.equals(detail.get(AttributeKeyHelper.FLAG) , AttributeKeyHelper.URL)) {//若flag的值为url,将文章跳转到此url指向的地址
             return String.format(AttributeKeyHelper.REDIRECT_LINK , detail.get(AttributeKeyHelper.DETAIL_BY_URL_ATTR));
         }
+
         model.addAttribute(AttributeKeyHelper.NEWS, news);
         model.addAttribute(AttributeKeyHelper.DETAIL, detail);
         model.addAttribute(AttributeKeyHelper.NEWS_ID, id);
+        model.addAttribute(AttributeKeyHelper.REFERER, referer);
         return AttributeKeyHelper.DETAIL_PAGE;
+    }
+
+    /**
+     * 记录日志
+     */
+    @ResponseBody
+    @GetMapping("/{cityen}/detail/loadNewsViewHistory")
+    public void insertLog(HttpServletRequest request , @PathVariable(name = "cityen") String cityen
+    ,@RequestParam(name = "newsId") Integer newsId){
+        //记录log
+        newsService.insertLog(request , cityen , newsId);
     }
 
     /**
@@ -709,6 +739,14 @@ public class NewsController {
                     types.removeAll(zhengceDelList);
                 }
             }
+
+            //如果是惠州，隐藏Ben钟话市栏目
+            if(Objects.equals(cityen , AttributeKeyHelper.HZ_CITY_EN)){
+                //筛选出Ben钟话市栏目对象，栏目id为107
+                List<NewsType> benDelList = types.stream().filter(l -> Objects.equals(107, l.getId())).collect(Collectors.toList());
+                //隐藏Ben钟话市相关的栏目
+                types.removeAll(benDelList);
+            }
         }
         List<Map> leftUp = new ArrayList<>();
         List<Map> leftDown = new ArrayList<>();
@@ -798,11 +836,11 @@ public class NewsController {
             return StringResource.THIRD_ESF;
         } else if (StringResource.INFO.equals(type)) {//新房
             return StringResource.THIRD_XF;
-        }else if (StringResource.SZ_ESF.equals(type)) {//深圳二手房
+        }else if (StringResource.SZ_ESF.equals(type) || StringResource.ESF_SZ_NEW.equals(type)) {//深圳二手房老页面及新页面
             return StringResource.THIRD_SZ_ESF;
         }else if (StringResource.ZS_BUYER.equals(type)) {//中山买房帮手
             return StringResource.THIRD_ZS_BUYER;
-        }else if (StringResource.SZWORLD_XF.equals(type)) {//海外新房
+        }else if (StringResource.SZWORLD_XF.equals(type)) {//深圳海外新房
             return StringResource.THIRD_SZWORLD_XF;
         }else if (StringResource.JJR_BAIKE_INFO.equals(type)) {//北京、惠州经纪人页面百科信息
             return StringResource.JINGJIREN_BAIKE;
@@ -810,6 +848,14 @@ public class NewsController {
             return StringResource.JINGJIREN_BAIKE_GZ;
         }else if (StringResource.BJ_JJR_BAIKE_INFO.equals(type)) {//北京经纪人页面百科信息
             return StringResource.JINGJIREN_BAIKE_BJ;
+        }else if (StringResource.BJWORLD_XF.equals(type)) {//北京海外新房
+            return StringResource.THIRD_BJWORLD_XF;
+        }else if (StringResource.CS_ESF.equals(type)) {//长沙新房
+            return StringResource.THIRD_XF_NEW;
+        }else if (StringResource.INFO_NEW.equals(type)) {//新info页面
+            return StringResource.THIRD_INFO_NEW;
+        }else if (StringResource.ESF_NEW.equals(type)) {//二手房新页面
+            return StringResource.THIRD_ESF_NEW;
         }
         return StringResource.THIRD_HOT;
     }
