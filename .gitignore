@@ -25,3 +25,5 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/src/main/resource/static
+/static

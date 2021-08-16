@@ -145,7 +145,7 @@ public class StringResource implements Serializable {
         map.put("cc", "400-819-0218");
         map.put("dl", "400-810-0596");
         map.put("sy", "400-810-8620");
-        map.put("dg", "400-815-1699");
+        map.put("dg", "4006622730转8888");
         map.put("nn", "400-819-3688");
         map.put("fs", "400-819-8990");
         map.put("hrb", "400-819-7123");
