@@ -17,6 +17,10 @@
 *.iml
 *.ipr
 *.log
+*.css
+*.js
+*.png
+*.jpg
 
 ### NetBeans ###
 /nbproject/private/
