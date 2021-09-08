@@ -677,6 +677,10 @@ public class NewsController {
         setCommon(model, cityen);
         //栏目类型
         List<NewsType> types =  newsService.typeList(cityen, null);
+        //若类型为空，返回空页面
+        if(CollectionUtils.isEmpty(types)){
+            return StringResource.EMPTY;
+        }
         //如果type的id为464，那么取出东三省的默认第一个栏目
         if(Objects.equals(types.get(1).getId() , 464)){
             //取出子级栏目
@@ -821,6 +825,11 @@ public class NewsController {
         JSONObject newsList = newsService.newsList(cityen,  1, 10, 0);
         //将城市最新列表数据转换成List<Map>集合
         List<Map> newsListMap = JSON.parseArray(JSON.toJSONString(newsList.get(NEWS_LIST)), Map.class);
+        //若内容为空，返回空页面
+        if(CollectionUtils.isEmpty(newsListMap)){
+            return StringResource.EMPTY;
+        }
+
         //若newsListMap不为空,将城市最新信息传送到页面上
         if(!CollectionUtils.isEmpty(newsListMap)){
             model.addAttribute(CITY_NEWS_LIST, newsListMap);

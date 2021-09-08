@@ -24,6 +24,7 @@ public class StringResource implements Serializable {
     public static final String THIRD_INFO_NEW = "third_info_new";
     public static final String ESF_NEW = "esf_new";
     public static final String THIRD_ESF_NEW = "third_esf_new";
+    public static final String EMPTY = "empty";
     public static final String ESF_SZ_NEW = "esf_sz_new";
     public static final String THIRD_ESF_SZ_NEW = "third_esf_sz_new";
     public static final String THIRD_XF = "third_xf";
