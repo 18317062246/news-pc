@@ -319,5 +319,10 @@ public interface AttributeKeyHelper extends Serializable {
      */
     String TYPES_SIZE = "typesSize";
 
+    /**
+     * 底部信息
+     */
+    String FOOT_INFO = "footInfo";
+
 
 }

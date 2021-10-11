@@ -28,3 +28,5 @@ api:
       city: http://10.6.252.37:8081/deer/json/reply/GetEstateRequest
 logapi:
   url: http://api-testpassport.centaline.com.cn/json/reply/
+bizcom:
+  foot-url: http://api-testweb.centaline.com.cn/bizcom/json/reply/AppVersionRequest?cityen=%s&platform=pc
