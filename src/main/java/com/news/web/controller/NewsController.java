@@ -6,13 +6,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
+import com.news.web.model.common.CommonFootInfo;
 import com.news.web.model.common.CommonHouseResult;
 import com.news.web.service.NewsService;
 import com.news.web.util.AttributeKeyHelper;
 import com.news.web.util.PageUtil;
 import com.news.web.util.StringResource;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,14 +36,11 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class NewsController {
 
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
-    private NewsService newsService;
+    private final RestTemplate restTemplate;
+    private final NewsService newsService;
 
     @Value("${api.domain}")
     public String apiurl;
@@ -281,7 +279,10 @@ public class NewsController {
      * @date: 2020-05-27
      */
     private void setCommon(Model model, String cityen) {
+        //获取公共底部的日期和时间
+        CommonFootInfo footInfo = newsService.getFootInfo(cityen);
         model.addAttribute(CITYEN, cityen);
+        model.addAttribute(AttributeKeyHelper.FOOT_INFO, footInfo);
         model.addAttribute(AttributeKeyHelper.STATIC_URL, staticurl);
         model.addAttribute(AttributeKeyHelper.CITY_CN, StringResource.citymap(cityen));
         model.addAttribute(AttributeKeyHelper.CITY_TELPHONE, StringResource.cityTelphone(cityen));
@@ -677,6 +678,10 @@ public class NewsController {
         setCommon(model, cityen);
         //栏目类型
         List<NewsType> types =  newsService.typeList(cityen, null);
+        //若类型为空，返回空页面
+        if(CollectionUtils.isEmpty(types)){
+            return StringResource.EMPTY;
+        }
         //如果type的id为464，那么取出东三省的默认第一个栏目
         if(Objects.equals(types.get(1).getId() , 464)){
             //取出子级栏目
@@ -821,6 +826,11 @@ public class NewsController {
         JSONObject newsList = newsService.newsList(cityen,  1, 10, 0);
         //将城市最新列表数据转换成List<Map>集合
         List<Map> newsListMap = JSON.parseArray(JSON.toJSONString(newsList.get(NEWS_LIST)), Map.class);
+        //若内容为空，返回空页面
+        if(CollectionUtils.isEmpty(newsListMap)){
+            return StringResource.EMPTY;
+        }
+
         //若newsListMap不为空,将城市最新信息传送到页面上
         if(!CollectionUtils.isEmpty(newsListMap)){
             model.addAttribute(CITY_NEWS_LIST, newsListMap);

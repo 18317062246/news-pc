@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
-    <link rel="stylesheet" href="${staticurl}/sidebar/sidebar_1.css">
+    <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>

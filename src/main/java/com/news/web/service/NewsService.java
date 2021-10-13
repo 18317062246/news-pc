@@ -8,6 +8,7 @@ package com.news.web.service;
 import com.alibaba.fastjson.JSONObject;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
+import com.news.web.model.common.CommonFootInfo;
 import com.news.web.model.common.CommonHouseResult;
 
 import javax.servlet.http.HttpServletRequest;
@@ -100,4 +101,10 @@ public interface NewsService extends Serializable {
      * 记录日志
      */
     void insertLog(HttpServletRequest request , String cityShort , Integer newsId);
+
+    /**
+     * 获取工信部审核的最新日期和时间
+     */
+    CommonFootInfo getFootInfo(String cityen);
+
 }

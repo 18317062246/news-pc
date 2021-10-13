@@ -117,8 +117,8 @@
                     <span>下载找房APP</span></dt>
                 <dd class="last">
                     <p>开发者：中原（中国）房地产代理有限公司</p>
-                    <p>版本：7.2.96</p>
-                    <p>更新时间 ：2021年07月20日</p>
+                    <p>版本：${footInfo.version}</p>
+                    <p>更新时间 ：${footInfo.currentDate}</p>
                     <p><a href="//static.centanet.com/agreement/privacy.html" class="tdu cRed" target="_blank">隐私政策</a><i class="double_words"></i>
                         <a href="//static.centanet.com/agreement/authority.html" class="tdu cRed permissions_btn" target="_blank">权限详情</a></p>
                 </dd>
@@ -164,11 +164,10 @@
                 <c:if test="${cityen == 'cd'}">
                     <a href="//${cityen}.centanet.com/ershoufang/u7/" target="_blank">最新房源</a>
                     <a href="//${cityen}.centanet.com/sitemap/" target="_blank">网站地图</a>
+                    <a href="//${cityen}.centanet.com/about/" target="_blank">关于我们</a>
                     <a href="//${cityen}.centanet.com/job/" target="_blank">招聘专区</a>
                     <a href="//act.centanet.com/actfile/cd/site/20181016zhaomu/index.html" target="_blank">招募合作方</a>
                     <a href="//${cityen}.centanet.com/contact/" target="_blank">联系我们</a>
-                    <a href="//${cityen}.centanet.com/links/" target="_blank">友情链接</a>
-
                     <a href="//www.centaline.com.cn/" target="_blank">其它城市</a>
                 </c:if>
 

@@ -24,6 +24,7 @@ public class StringResource implements Serializable {
     public static final String THIRD_INFO_NEW = "third_info_new";
     public static final String ESF_NEW = "esf_new";
     public static final String THIRD_ESF_NEW = "third_esf_new";
+    public static final String EMPTY = "empty";
     public static final String ESF_SZ_NEW = "esf_sz_new";
     public static final String THIRD_ESF_SZ_NEW = "third_esf_sz_new";
     public static final String THIRD_XF = "third_xf";
@@ -145,7 +146,7 @@ public class StringResource implements Serializable {
         map.put("cc", "400-819-0218");
         map.put("dl", "400-810-0596");
         map.put("sy", "400-810-8620");
-        map.put("dg", "400-815-1699");
+        map.put("dg", "4006622730转8888");
         map.put("nn", "400-819-3688");
         map.put("fs", "400-819-8990");
         map.put("hrb", "400-819-7123");
