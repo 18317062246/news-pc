@@ -150,6 +150,11 @@ public interface AttributeKeyHelper extends Serializable {
     String CITY_TELPHONE = "cityTelphone";
 
     /**
+     * 城市投诉电话
+     */
+    String CITY_COMPLAINT_TELPHONE = "cityComplaintTelphone";
+
+    /**
      * 研究院地址
      */
     String RESEARCH_URL = "researchUrl";

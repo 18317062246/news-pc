@@ -286,6 +286,7 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.STATIC_URL, staticurl);
         model.addAttribute(AttributeKeyHelper.CITY_CN, StringResource.citymap(cityen));
         model.addAttribute(AttributeKeyHelper.CITY_TELPHONE, StringResource.cityTelphone(cityen));
+        model.addAttribute(AttributeKeyHelper.CITY_COMPLAINT_TELPHONE, StringResource.cityComplaintTelephone(cityen));
         model.addAttribute(AttributeKeyHelper.RESEARCH_URL, researchUrl);
         model.addAttribute(AttributeKeyHelper.CURRENT_YEAR, StringResource.getCurrentYear());
     }
