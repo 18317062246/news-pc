@@ -1035,11 +1035,12 @@
             <iframe src="https://passport.centanet.com/top/" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/top/" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
 
         </div>
-        <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 175px;font-size:10px;' :'width: 200px;'}">热线：${cityTelphone}</p>
-
         <c:if test="${cityen == 'sz'}">
-            <p class="hot-phone fr complaint-phone" style="width: 175px;font-size:10px;">投诉电话：${cityComplaintTelphone}</p>
+            <p class="hot-phone fr" style="width: 175px;font-size:10px;">投诉电话：${cityComplaintTelphone}</p>
         </c:if>
+        <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 186px;font-size:10px;' :'width: 200px;'}">${cityen == 'sz' ? '&nbsp;&nbsp;咨询' : ''}热线：${cityTelphone}</p>
+
+
     </div>
 </div>
 </c:if>

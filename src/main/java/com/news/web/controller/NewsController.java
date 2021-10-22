@@ -51,6 +51,8 @@ public class NewsController {
     public String dealCitys;
     @Value("${centanet.research}")
     public String researchUrl;
+    @Value("${dw.citys}")
+    public String dwCitys;
 
 
     private static final String GUANG_ZHOU = "gz";
@@ -93,7 +95,8 @@ public class NewsController {
     @GetMapping(value = {"/{cityen}/", "/{cityen}/c{type}/"})
     public String index(Model model,
                         @PathVariable(name = "cityen") String cityen,
-                        @PathVariable(name = "type", required = false) Integer type, HttpServletRequest request) {
+                        @PathVariable(name = "type", required = false) Integer type,
+                        @RequestParam(value = "entry", required = false) String entry,HttpServletRequest request) {
 
         //判断是否为Android/ios/ipad，如果是，就重定向到其他页面
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -257,6 +260,12 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.RIGHT_TYPE, rightTypeAdd);
         model.addAttribute(AttributeKeyHelper.TAB_TYPE, types.get(0).getId());
         model.addAttribute(AttributeKeyHelper.NEWS, leftNews);
+
+        //大湾区埋点 神策数据
+        /*if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
+            DwMaiDianUtiil.setModel(model,entry,cityen,request);
+            return DwMaiDianUtiil.INDEX_CENTIO_DW_PAGE;
+        }*/
         return AttributeKeyHelper.INDEX_PAGE;
     }
 
@@ -285,6 +294,7 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.FOOT_INFO, footInfo);
         model.addAttribute(AttributeKeyHelper.STATIC_URL, staticurl);
         model.addAttribute(AttributeKeyHelper.CITY_CN, StringResource.citymap(cityen));
+        model.addAttribute(AttributeKeyHelper.CITY_CODE, StringResource.getCityCode(cityen));
         model.addAttribute(AttributeKeyHelper.CITY_TELPHONE, StringResource.cityTelphone(cityen));
         model.addAttribute(AttributeKeyHelper.CITY_COMPLAINT_TELPHONE, StringResource.cityComplaintTelephone(cityen));
         model.addAttribute(AttributeKeyHelper.RESEARCH_URL, researchUrl);
@@ -306,7 +316,8 @@ public class NewsController {
             , @PathVariable(name = "type", required = false) Integer type
             , @PathVariable(name = "page", required = false) Integer page
             , @RequestParam(value = "key", required = false) String key
-            , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize , HttpServletRequest request) {
+            , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize ,
+                        @RequestParam(value = "entry", required = false) String entry, HttpServletRequest request) {
 
         //判断是否为Android/ios/ipad，如果是，就重定向到其他页面
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -390,11 +401,17 @@ public class NewsController {
         PageUtil p = new PageUtil(pageCount, page, pagesize);
         model.addAttribute(AttributeKeyHelper.PAGE_UTIL_BY_P, p);
 
+        //大湾区埋点 神策数据
+       /* if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
+            DwMaiDianUtiil.setModel(model,entry,cityen,request);
+        }*/
 
         //如果是热门专题，跳往热门专题列表
         if (hotTypeId != null && hotTypeId > 0 && hotTypeId.equals(type)) {
+//            if(dwCitys.contains(cityen)) return DwMaiDianUtiil.TOPIC_LIST_CENTIO_DW_PAGE;
             return AttributeKeyHelper.TOPIC_LIST_PAGE;
         }
+//        if(dwCitys.contains(cityen)) return DwMaiDianUtiil.NEW_LIST_CENTIO_DW_PAGE;
         return AttributeKeyHelper.NEWS_LIST_PAGE;
     }
 
@@ -561,6 +578,10 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.DETAIL, detail);
         model.addAttribute(AttributeKeyHelper.NEWS_ID, id);
         model.addAttribute(AttributeKeyHelper.REFERER, referer);
+        //大湾区埋点 神策数据
+        /*if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
+            return DwMaiDianUtiil.DETAIL_CENTIO_DW_PAGE;
+        }*/
         return AttributeKeyHelper.DETAIL_PAGE;
     }
 

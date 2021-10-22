@@ -145,6 +145,11 @@ public interface AttributeKeyHelper extends Serializable {
     String CITY_CN = "citycn";
 
     /**
+     * 城市编号
+     */
+    String CITY_CODE = "citycode";
+
+    /**
      * 城市400联系电话
      */
     String CITY_TELPHONE = "cityTelphone";
@@ -308,6 +313,16 @@ public interface AttributeKeyHelper extends Serializable {
      * 详情页面
      */
     String DETAIL_PAGE = "detail";
+
+    /**
+     * 详情埋点页面
+     */
+    String DETAIL_CENTIO_DW_PAGE = "detail_centio_dw";
+
+    /**
+     * 主页埋点页面
+     */
+    String INDEX_CENTIO_DW_PAGE = "index_centio_dw";
 
     /**
      * 资讯下架页面

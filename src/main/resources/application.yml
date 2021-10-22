@@ -33,4 +33,6 @@ deal:
 # 配置信息
 centanet:
   research: http://ccdata.com.cn/
+dw:
+  citys: sz,dg,zs,zh
 

@@ -111,13 +111,13 @@
                                                 <c:choose>
                                                   <c:when test="${item.LitPic != null && item.LitPic.length() >= 10}">
                                                          <div class="img-box">
-                                                           <img class="lazy news-img" src="${defaultpic}"
+                                                           <img class=" news-img" src="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}" alt="${item.Title}"
                                                                 data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}" alt="${item.Title}"/>
                                                          </div>
                                                     </c:when>
 
                                                     <c:otherwise>
-                                                        <img class="lazy" src="${defaultpic}"
+                                                        <img  src="${defaultpic}"
                                                              data-original="${defaultpic}" alt="${item.Title}" />
                                                     </c:otherwise>
                                                 </c:choose>
