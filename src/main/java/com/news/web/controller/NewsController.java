@@ -10,6 +10,7 @@ import com.news.web.model.common.CommonFootInfo;
 import com.news.web.model.common.CommonHouseResult;
 import com.news.web.service.NewsService;
 import com.news.web.util.AttributeKeyHelper;
+import com.news.web.util.DwMaiDianUtiil;
 import com.news.web.util.PageUtil;
 import com.news.web.util.StringResource;
 import lombok.RequiredArgsConstructor;
@@ -262,10 +263,10 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.NEWS, leftNews);
 
         //大湾区埋点 神策数据
-        /*if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
+        if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
             DwMaiDianUtiil.setModel(model,entry,cityen,request);
             return DwMaiDianUtiil.INDEX_CENTIO_DW_PAGE;
-        }*/
+        }
         return AttributeKeyHelper.INDEX_PAGE;
     }
 
@@ -402,9 +403,9 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.PAGE_UTIL_BY_P, p);
 
         //大湾区埋点 神策数据
-       /* if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
+        if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
             DwMaiDianUtiil.setModel(model,entry,cityen,request);
-        }*/
+        }
 
         //如果是热门专题，跳往热门专题列表
         if (hotTypeId != null && hotTypeId > 0 && hotTypeId.equals(type)) {
@@ -579,9 +580,9 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.NEWS_ID, id);
         model.addAttribute(AttributeKeyHelper.REFERER, referer);
         //大湾区埋点 神策数据
-        /*if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
+        if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
             return DwMaiDianUtiil.DETAIL_CENTIO_DW_PAGE;
-        }*/
+        }
         return AttributeKeyHelper.DETAIL_PAGE;
     }
 

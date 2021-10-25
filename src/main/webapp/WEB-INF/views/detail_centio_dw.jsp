@@ -89,6 +89,7 @@
            </div>
         </div>
         <input id="dwTypeName" type="hidden" value="${detail.Typename}"/>
+        <input id="citycn" type="hidden" value="${citycn}"/>
         <input id="dwNewSource" type="hidden" value="${detail.Sources}"/>
         <div class="infor-main fl">
             <div class="infor-detail-cont">
@@ -327,18 +328,22 @@
             //初始化埋点对象
             var sensors = window['sensorsDataAnalytic201505'];
             sensors.init({
-                server_url: 'http://data.zhongyuanzhaofang.com/sa',
+                server_url: 'https://data.zhongyuanzhaofang.com/sa',
                 heatmap: {scroll_notice_map: 'not_collect'},
                 is_track_single_page: true,
                 use_client_time: true,
                 send_type: 'beacon',
                 show_log:true
             });
-            sensors.use('SiteLinker',
+          /*  sensors.use('SiteLinker',
                 {linker: [
                         {part_url: sendUrl, after_hash: false}
                     ]}
-            );
+            );*/
+            sensors.track('sc_information_read',{
+                sc_platform_type : "pc",
+                sc_city: $("#citycn").val()
+            });
             sensors.registerPage(sendObj);
             sensors.quick('autoTrack');
         });
