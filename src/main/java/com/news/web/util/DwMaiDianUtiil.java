@@ -11,6 +11,7 @@ public class DwMaiDianUtiil {
     public  static  final String INDEX_CENTIO_DW_PAGE = "index_centio_dw";
     public  static  final String TOPIC_LIST_CENTIO_DW_PAGE = "topic_list_centio_dw";
     public  static  final String NEW_LIST_CENTIO_DW_PAGE = "news_list_centio_dw";
+    public static final String BAIKE_CENTIO_DW_PAGE = "baike_centio_dw";
 
     public static void setModel(Model model, String entry, String cityen, HttpServletRequest request) {
         if(!isNullOrEmpty(entry)){

@@ -409,10 +409,10 @@ public class NewsController {
 
         //如果是热门专题，跳往热门专题列表
         if (hotTypeId != null && hotTypeId > 0 && hotTypeId.equals(type)) {
-//            if(dwCitys.contains(cityen)) return DwMaiDianUtiil.TOPIC_LIST_CENTIO_DW_PAGE;
+            if(dwCitys.contains(cityen)) return DwMaiDianUtiil.TOPIC_LIST_CENTIO_DW_PAGE;
             return AttributeKeyHelper.TOPIC_LIST_PAGE;
         }
-//        if(dwCitys.contains(cityen)) return DwMaiDianUtiil.NEW_LIST_CENTIO_DW_PAGE;
+        if(dwCitys.contains(cityen)) return DwMaiDianUtiil.NEW_LIST_CENTIO_DW_PAGE;
         return AttributeKeyHelper.NEWS_LIST_PAGE;
     }
 
@@ -609,7 +609,8 @@ public class NewsController {
     public String baike(Model model, @PathVariable("cityen") String cityen,
                         @PathVariable(value = "type", required = false) Integer type,
                         @PathVariable(value = "page", required = false) Integer page,
-                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize) {
+                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize,
+                        @RequestParam(value = "entry", required = false) String entry,HttpServletRequest request) {
 
         page = ObjectUtils.isEmpty(page) ? 1 : page;
         //栏目类型
@@ -677,6 +678,12 @@ public class NewsController {
         model.addAttribute(TYPES, baikeTypes);
         //存储百科左侧栏目大小
         model.addAttribute(AttributeKeyHelper.TYPES_SIZE, baikeTypes.size());
+
+        //大湾区埋点 神策数据
+        if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
+            DwMaiDianUtiil.setModel(model,entry,cityen,request);
+            return DwMaiDianUtiil.BAIKE_CENTIO_DW_PAGE;
+        }
 
         model.addAttribute(AttributeKeyHelper.NEWS, news);
         Integer pageCount = result.getInteger(AttributeKeyHelper.PAGE_TOTAL);

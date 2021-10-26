@@ -182,7 +182,7 @@ public class StringResource implements Serializable {
      */
     public static String cityComplaintTelephone(String cityen) {
         Map map = new HashMap();
-        map.put(Cityen.SHENZHEN, "0755-82211880");
+        map.put(Cityen.SHENZHEN, "0755-3398 0900");
         return (String) map.get(cityen);
     }
 
