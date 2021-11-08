@@ -54,6 +54,8 @@ public class NewsController {
     public String researchUrl;
     @Value("${dw.citys}")
     public String dwCitys;
+    @Value("${website.suffix}")
+    public String websiteSuffix;
 
 
     private static final String GUANG_ZHOU = "gz";
@@ -300,6 +302,7 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.CITY_COMPLAINT_TELPHONE, StringResource.cityComplaintTelephone(cityen));
         model.addAttribute(AttributeKeyHelper.RESEARCH_URL, researchUrl);
         model.addAttribute(AttributeKeyHelper.CURRENT_YEAR, StringResource.getCurrentYear());
+        model.addAttribute(AttributeKeyHelper.WEBSITE_SUFFIX, websiteSuffix);
     }
 
 

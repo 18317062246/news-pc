@@ -101,7 +101,7 @@
                                 </c:forEach>
                             </ul>
                             <c:if test="${types !=null && types.size()>0}">
-                                <a href="/${cityen}/list/c${tabtype}/" class="morelink f000">更多</a>
+                                <a href="/${cityen}/list/c${tabtype}/?entry=资讯tag" class="morelink f000">更多</a>
                             </c:if>
                             <script>
                                 //神策埋点，获取当前tab页的名称
@@ -191,7 +191,7 @@
                     <div class="page_ul f1">
                         <div class="page_ul_div" style="display: none">
                             ——————<span></span>
-                            <a href="/${cityen}/list/c${tabtype}/" name="a_moreinfo" target="_blank" class="f000">查看更多</a>
+                            <a href="/${cityen}/list/c${tabtype}/?entry=资讯tag" name="a_moreinfo" target="_blank" class="f000">查看更多</a>
                             <span></span>——————
                         </div>
                     </div>
@@ -248,7 +248,7 @@
                                 <div class="infor-side-box">
                                     <p class="title-top">
                                         <span class="f18 f333 fb">${t.columnsName}</span>
-                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000" style="top:5px;">更多</a>
+                                        <a href="/${cityen}/list/c${t.id}/?entry=资讯tag" class="morelink f000" style="top:5px;">更多</a>
                                     </p>
                                     <dl class="infor-side-pB">
                                             <%--遍历文章--%>
@@ -299,7 +299,7 @@
                                 <c:if test="${t.columnsName != '测评报告'}">
                                     <div class="infor-side-box">
                                         <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                            <a href="/${cityen}/list/c${t.id}/?entry=资讯tag" class="morelink f000">更多</a>
                                         </h2>
                                         <ul class="infor-side-p">
                                                 <%--遍历文章--%>
@@ -355,7 +355,7 @@
                             <c:otherwise>
                                 <div class="infor-side-box">
                                     <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                        <a href="/${cityen}/list/c${t.id}/?entry=资讯tag" class="morelink f000">更多</a>
                                     </h2>
                                     <ul class="infor-side-p">
                                             <%--遍历文章--%>
@@ -393,7 +393,7 @@
                         <c:otherwise>
                             <div class="infor-side-box">
                                 <h2 class="title-top"><span class="f18 f333 fb">${t.columnsName}</span>
-                                    <a href="/${cityen}/list/c${t.id}/" class="morelink f000">更多</a>
+                                    <a href="/${cityen}/list/c${t.id}/?entry=资讯tag" class="morelink f000">更多</a>
                                 </h2>
                                 <ul class="infor-side-p">
                                         <%--遍历文章--%>

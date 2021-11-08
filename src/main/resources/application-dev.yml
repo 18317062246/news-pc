@@ -29,3 +29,5 @@ logapi:
   url: http://api-testpassport.centaline.com.cn/json/reply/
 bizcom:
   foot-url: http://api-testweb.centaline.com.cn/bizcom/json/reply/AppVersionRequest?cityen=%s&platform=pc
+website:
+  suffix: testnews.centanet.com

@@ -113,10 +113,10 @@
                         <c:if test="${p.hasPrePage}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}"><span class="pager-fsm">&lt;</span></a>
+                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}&entry=资讯tag"><span class="pager-fsm">&lt;</span></a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/"><span class="pager-fsm">&lt;</span></a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/?entry=资讯tag"><span class="pager-fsm">&lt;</span></a>
                                 </c:otherwise>
                             </c:choose>
                         </c:if>
@@ -124,10 +124,10 @@
                         <c:if test="${p.currpageNum>2}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum-2}/?key=${key}">${p.currpageNum-2}</a>
+                                    <a href="/${cityen}/list/p${p.currpageNum-2}/?key=${key}&entry=资讯tag">${p.currpageNum-2}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/">${p.currpageNum-2}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/?entry=资讯tag">${p.currpageNum-2}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -135,10 +135,10 @@
                         <c:if test="${p.currpageNum>1}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}">${p.currpageNum-1}</a>
+                                    <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}&entry=资讯tag">${p.currpageNum-1}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/">${p.currpageNum-1}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/?entry=资讯tag">${p.currpageNum-1}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -147,10 +147,10 @@
                         <c:if test="${p.pageCount-p.currpageNum>=1}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}">${p.currpageNum+1}</a>
+                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}&entry=资讯tag">${p.currpageNum+1}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/">${p.currpageNum+1}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/?entry=资讯tag">${p.currpageNum+1}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -158,10 +158,10 @@
                         <c:if test="${p.pageCount-p.currpageNum>=2}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum+2}/?key=${key}">${p.currpageNum+2}</a>
+                                    <a href="/${cityen}/list/p${p.currpageNum+2}/?key=${key}&entry=资讯tag">${p.currpageNum+2}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/">${p.currpageNum+2}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/?entry=资讯tag">${p.currpageNum+2}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -169,10 +169,10 @@
                         <c:if test="${p.hasNextPage}">
                             <c:choose>
                                 <c:when test="${key != null}">
-                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}"><span class="pager-fsm">&gt;</span></a>
+                                    <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}&entry=资讯tag"><span class="pager-fsm">&gt;</span></a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/"><span class="pager-fsm">&gt;</span></a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/?entry=资讯tag"><span class="pager-fsm">&gt;</span></a>
                                 </c:otherwise>
                             </c:choose>
 

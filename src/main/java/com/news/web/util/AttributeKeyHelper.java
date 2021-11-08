@@ -344,5 +344,10 @@ public interface AttributeKeyHelper extends Serializable {
      */
     String FOOT_INFO = "footInfo";
 
+    /**
+     * 网站访问前缀
+     */
+    String WEBSITE_SUFFIX = "websiteSuffix";
+
 
 }
