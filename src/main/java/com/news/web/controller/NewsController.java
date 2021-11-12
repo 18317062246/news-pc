@@ -900,6 +900,9 @@ public class NewsController {
         }else if (StringResource.ESF_NEW.equals(type)) {//二手房新页面
             return StringResource.THIRD_ESF_NEW;
         }
+        else if (StringResource.XZL.equals(type)) {//二手房新页面
+            return StringResource.THIRD_XZL;
+        }
         return StringResource.THIRD_HOT;
     }
 }

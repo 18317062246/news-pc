@@ -28,6 +28,7 @@ public class StringResource implements Serializable {
     public static final String THIRD_ESF_NEW = "third_esf_new";
     public static final String EMPTY = "empty";
     public static final String ESF_SZ_NEW = "esf_sz_new";
+    public static final String XZL = "xzl";
     public static final String THIRD_ESF_SZ_NEW = "third_esf_sz_new";
     public static final String THIRD_XF = "third_xf";
     public static final String SZ_ESF = "sz_esf";
@@ -35,6 +36,7 @@ public class StringResource implements Serializable {
     public static final String CS_ESF = "cs_esf";
     public static final String THIRD_CS_ESF = "third_cs_esf";
     public static final String THIRD_XF_NEW = "third_xf_new";
+    public static final String THIRD_XZL = "third_xzl";
     public static final String ZS_BUYER = "zs_buyer";
     public static final String THIRD_ZS_BUYER = "third_zs_buyer";
     public static final String SZWORLD_XF = "szworld_xf";
