@@ -315,7 +315,7 @@
             sendObj.sc_post_time=sc_post_time;
 
             if(entry !=null && entry!='' ){
-                sendObj.sc_information_entry=entry;
+                sendObj.sc_click_entry=entry;
             }
             if($('#dwNewSource').val()!=null && $('#dwNewSource').val()!=''){
                 var sc_information_author=$('#dwNewSource').val().replace( /^\s+/, "" ).replace("\n","").replace( /\s+$/, "");;
@@ -325,6 +325,7 @@
             if(crrentTab !=null && crrentTab !=''){
                 sendObj.sc_information_type=crrentTab;
             }
+            if(crrentTab!=null && crrentTab!='' ){
             //初始化埋点对象
             var sensors = window['sensorsDataAnalytic201505'];
             sensors.init({
@@ -346,6 +347,7 @@
             });
             sensors.registerPage(sendObj);
             sensors.quick('autoTrack');
+            }
         });
     </script>
         <div class="infor-side fr">
