@@ -99,7 +99,7 @@
                     <p class="f666 " id="dw-time">
                         <jsp:useBean id="myDate" class="java.util.Date"/>
                         <c:set target="${myDate}" property="time" value="${detail.SenddateTime*1000}"/>
-                        <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/>
+                        <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${myDate}" type="both"/>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         来源:&nbsp;&nbsp;${detail.Sources}</p>
                 </div>
