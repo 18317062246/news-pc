@@ -9,12 +9,10 @@ import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
 import com.news.web.model.common.CommonFootInfo;
 import com.news.web.model.common.CommonHouseResult;
+import com.news.web.model.request.NewsDetailRequest;
 import com.news.web.model.response.NewsDetailResponse;
 import com.news.web.service.NewsService;
-import com.news.web.util.AttributeKeyHelper;
-import com.news.web.util.DwMaiDianUtiil;
-import com.news.web.util.PageUtil;
-import com.news.web.util.StringResource;
+import com.news.web.util.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -436,7 +434,7 @@ public class NewsController {
     public String detail(Model model
             , @PathVariable("cityen") String cityen
             , @PathVariable("id") String id
-            , @RequestParam(name = "dowmloadChannel" , required = false) String dowmloadChannel ,HttpServletRequest request) {
+            , HttpServletRequest request) {
         log.info("detail id=>{}", id);
 
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -589,7 +587,10 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.REFERER, referer);
         //大湾区埋点 神策数据
         if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
-            model.addAttribute(AttributeKeyHelper.DOWNLOAD_CHANNEL, dowmloadChannel);
+            //获取参数
+            String json = CommonUtil.getQuerysParam(request);
+            NewsDetailRequest detailRequest = JSON.parseObject(json , NewsDetailRequest.class);
+            model.addAttribute(AttributeKeyHelper.DOWNLOAD_CHANNEL, detailRequest.getDownloadChannel());
             return DwMaiDianUtiil.DETAIL_CENTIO_DW_PAGE;
         }
         return AttributeKeyHelper.DETAIL_PAGE;
