@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
+import com.news.web.model.ApiResult;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
 import com.news.web.model.common.CommonFootInfo;
 import com.news.web.model.common.CommonHouseResult;
+import com.news.web.model.response.NewsDetailResponse;
 import com.news.web.service.NewsService;
 import com.news.web.util.AttributeKeyHelper;
 import com.news.web.util.DwMaiDianUtiil;
@@ -99,7 +101,8 @@ public class NewsController {
     public String index(Model model,
                         @PathVariable(name = "cityen") String cityen,
                         @PathVariable(name = "type", required = false) Integer type,
-                        @RequestParam(value = "entry", required = false) String entry,HttpServletRequest request) {
+                        @RequestParam(value = "entry", required = false) String entry,
+                        @RequestParam(value = "downloadChannel", required = false) String downloadChannel,HttpServletRequest request) {
 
         //判断是否为Android/ios/ipad，如果是，就重定向到其他页面
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -266,7 +269,7 @@ public class NewsController {
 
         //大湾区埋点 神策数据
         if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
-            DwMaiDianUtiil.setModel(model,entry,cityen,request);
+            DwMaiDianUtiil.setModel(model,entry,cityen,downloadChannel,request);
             return DwMaiDianUtiil.INDEX_CENTIO_DW_PAGE;
         }
         return AttributeKeyHelper.INDEX_PAGE;
@@ -321,7 +324,8 @@ public class NewsController {
             , @PathVariable(name = "page", required = false) Integer page
             , @RequestParam(value = "key", required = false) String key
             , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize ,
-                        @RequestParam(value = "entry", required = false) String entry, HttpServletRequest request) {
+                        @RequestParam(value = "entry", required = false) String entry,
+                        @RequestParam(value = "downloadChannel", required = false) String downloadChannel,HttpServletRequest request) {
 
         //判断是否为Android/ios/ipad，如果是，就重定向到其他页面
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -407,7 +411,7 @@ public class NewsController {
 
         //大湾区埋点 神策数据
         if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
-            DwMaiDianUtiil.setModel(model,entry,cityen,request);
+            DwMaiDianUtiil.setModel(model,entry,cityen,downloadChannel , request);
         }
 
         //如果是热门专题，跳往热门专题列表
@@ -431,7 +435,8 @@ public class NewsController {
     @GetMapping("/{cityen}/detail/{id}.html")
     public String detail(Model model
             , @PathVariable("cityen") String cityen
-            , @PathVariable("id") String id , HttpServletRequest request) {
+            , @PathVariable("id") String id
+            , @RequestParam(name = "dowmloadChannel" , required = false) String dowmloadChannel ,HttpServletRequest request) {
         log.info("detail id=>{}", id);
 
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -584,6 +589,7 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.REFERER, referer);
         //大湾区埋点 神策数据
         if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
+            model.addAttribute(AttributeKeyHelper.DOWNLOAD_CHANNEL, dowmloadChannel);
             return DwMaiDianUtiil.DETAIL_CENTIO_DW_PAGE;
         }
         return AttributeKeyHelper.DETAIL_PAGE;
@@ -595,9 +601,12 @@ public class NewsController {
     @ResponseBody
     @GetMapping("/{cityen}/detail/loadNewsViewHistory")
     public void insertLog(HttpServletRequest request , @PathVariable(name = "cityen") String cityen
-    ,@RequestParam(name = "newsId") Integer newsId){
+    ,@RequestParam(name = "newsId") Integer newsId, @RequestParam(name = "downloadChannel" , required = false) String downloadChannel){
+        //详情信息
+        ApiResult<NewsDetailResponse> result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + newsId + "&cityen="+cityen+"&platform=pc", ApiResult.class);
+        NewsDetailResponse response = JSON.parseObject(JSON.toJSONString(result.getResult()) , NewsDetailResponse.class);
         //记录log
-        newsService.insertLog(request , cityen , newsId);
+        newsService.insertLog(request , cityen , newsId , response.getTitle() , downloadChannel);
     }
 
     /**
@@ -613,7 +622,9 @@ public class NewsController {
                         @PathVariable(value = "type", required = false) Integer type,
                         @PathVariable(value = "page", required = false) Integer page,
                         @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize,
-                        @RequestParam(value = "entry", required = false) String entry,HttpServletRequest request) {
+                        @RequestParam(value = "entry", required = false) String entry,
+                        @RequestParam(value = "downloadChannel", required = false) String downloadChannel,
+                        HttpServletRequest request) {
 
         page = ObjectUtils.isEmpty(page) ? 1 : page;
         //栏目类型
@@ -684,7 +695,7 @@ public class NewsController {
 
         //大湾区埋点 神策数据
         if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
-            DwMaiDianUtiil.setModel(model,entry,cityen,request);
+            DwMaiDianUtiil.setModel(model,entry,cityen,downloadChannel , request);
             return DwMaiDianUtiil.BAIKE_CENTIO_DW_PAGE;
         }
 

@@ -308,6 +308,7 @@
             var sc_post_time = new Date(sdate[0], sdate[1]-1, sdate[2]);
 
             var entry=localStorage.getItem("entry");
+            var downloadChannel=localStorage.getItem("downloadChannel");
             var sendUrl=localStorage.getItem("sendUrl");
             //封装发送的对象
             var sendObj=new Object();
@@ -316,6 +317,9 @@
 
             if(entry !=null && entry!='' ){
                 sendObj.sc_click_entry=entry;
+            }
+            if(downloadChannel !=null && downloadChannel!='' ){
+                sendObj.sc_downloadchannel=downloadChannel;
             }
             if($('#dwNewSource').val()!=null && $('#dwNewSource').val()!=''){
                 var sc_information_author=$('#dwNewSource').val().replace( /^\s+/, "" ).replace("\n","").replace( /\s+$/, "");;
@@ -457,7 +461,7 @@
     //页面加载完之后进行加载
     function loadNewsViewHistory() {
         $.get(
-            "/${cityen}/detail/loadNewsViewHistory?newsId=${newsId}",
+            "/${cityen}/detail/loadNewsViewHistory?newsId=${newsId}&downloadChannel=${downloadChannel}",
             function (resp) {
             }
         );

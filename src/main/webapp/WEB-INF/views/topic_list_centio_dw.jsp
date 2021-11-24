@@ -54,12 +54,13 @@
         </div>
         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
         <input type="hidden" id="entry" value="${entry}"/>
+        <input type="hidden" id="downloadChannel" value="${downloadChannel}"/>
         <input type="hidden" id="sendUrl" value="${sendUrl}"/>
         <div class="speciallayer">
 
             <c:forEach items="${news}" var="item">
                 <div class="special-item">
-                    <a href="/${cityen}/detail/${item.ID}.html" class="link" title="${item.Title}" target="_blank">
+                    <a href="/${cityen}/detail/${item.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" class="link" title="${item.Title}" target="_blank">
                         <c:choose>
                             <c:when test="${item.LitPic != null && item.LitPic.length() > 10}">
                                     <img class="lazy news-img"
@@ -102,7 +103,9 @@
                 $(document).ready(function(){
                     var entry=$('#entry').val();
                     var sendUrl=$('#sendUrl').val();
+                    var downloadChannel=$('#downloadChannel').val();
                     localStorage.setItem("entry",entry);
+                    localStorage.setItem("downloadChannel",downloadChannel);
                     localStorage.setItem("sendUrl",sendUrl);
                 })
             </script>
@@ -116,7 +119,7 @@
                                     <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}&entry=资讯tag"><span class="pager-fsm">&lt;</span></a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/?entry=资讯tag"><span class="pager-fsm">&lt;</span></a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/?entry=资讯tag&downloadChannel=${downloadChannel}"><span class="pager-fsm">&lt;</span></a>
                                 </c:otherwise>
                             </c:choose>
                         </c:if>
@@ -127,7 +130,7 @@
                                     <a href="/${cityen}/list/p${p.currpageNum-2}/?key=${key}&entry=资讯tag">${p.currpageNum-2}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/?entry=资讯tag">${p.currpageNum-2}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-2}/?entry=资讯tag&downloadChannel=${downloadChannel}">${p.currpageNum-2}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -138,7 +141,7 @@
                                     <a href="/${cityen}/list/p${p.currpageNum-1}/?key=${key}&entry=资讯tag">${p.currpageNum-1}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/?entry=资讯tag">${p.currpageNum-1}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum-1}/?entry=资讯tag&downloadChannel=${downloadChannel}">${p.currpageNum-1}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -150,7 +153,7 @@
                                     <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}&entry=资讯tag">${p.currpageNum+1}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/?entry=资讯tag">${p.currpageNum+1}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/?entry=资讯tag&downloadChannel=${downloadChannel}">${p.currpageNum+1}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -161,7 +164,7 @@
                                     <a href="/${cityen}/list/p${p.currpageNum+2}/?key=${key}&entry=资讯tag">${p.currpageNum+2}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/?entry=资讯tag">${p.currpageNum+2}</a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+2}/?entry=资讯tag&downloadChannel=${downloadChannel}">${p.currpageNum+2}</a>
                                 </c:otherwise>
                             </c:choose>
 
@@ -172,7 +175,7 @@
                                     <a href="/${cityen}/list/p${p.currpageNum+1}/?key=${key}&entry=资讯tag"><span class="pager-fsm">&gt;</span></a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/?entry=资讯tag"><span class="pager-fsm">&gt;</span></a>
+                                    <a href="/${cityen}/list/c${type}/p${p.currpageNum+1}/?entry=资讯tag&downloadChannel=${downloadChannel}"><span class="pager-fsm">&gt;</span></a>
                                 </c:otherwise>
                             </c:choose>
 

@@ -100,7 +100,7 @@ public interface NewsService extends Serializable {
     /**
      * 记录日志
      */
-    void insertLog(HttpServletRequest request , String cityShort , Integer newsId);
+    void insertLog(HttpServletRequest request , String cityShort , Integer newsId , String title , String downloadChannel);
 
     /**
      * 获取工信部审核的最新日期和时间

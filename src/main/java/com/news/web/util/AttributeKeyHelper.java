@@ -349,5 +349,10 @@ public interface AttributeKeyHelper extends Serializable {
      */
     String WEBSITE_SUFFIX = "websiteSuffix";
 
+    /**
+     * 下载渠道
+     */
+    String DOWNLOAD_CHANNEL = "downloadChannel";
+
 
 }

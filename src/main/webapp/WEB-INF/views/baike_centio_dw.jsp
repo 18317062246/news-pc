@@ -41,6 +41,7 @@
 <%--head--%>
 <%@include file="/WEB-INF/views/head.jsp" %>
 <input type="hidden" id="entry" value="${entry}"/>
+<input type="hidden" id="downloadChannel" value="${downloadChannel}"/>
 <input type="hidden" id="sendUrl" value="${sendUrl}"/>
 <!-- S;centmain-wraper -->
 <div class="centmain-wraper centmain-wraper-infor">
@@ -63,8 +64,10 @@
             //神策埋点，获取当前tab页的名称
             $(document).ready(function(){
                 var entry=$('#entry').val();
+                var downloadChannel=$('#downloadChannel').val();
                 var sendUrl=$('#sendUrl').val();
                 localStorage.setItem("entry",entry);
+                localStorage.setItem("downloadChannel",downloadChannel);
                 localStorage.setItem("sendUrl",sendUrl);
             })
         </script>
