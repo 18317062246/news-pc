@@ -333,7 +333,8 @@
             //初始化埋点对象
             var sensors = window['sensorsDataAnalytic201505'];
             sensors.init({
-                server_url: 'https://data.zhongyuanzhaofang.com/sa',
+                // server_url: 'https://data.zhongyuanzhaofang.com/sa',//test环境
+                server_url: 'https://data.zhongyuanzhaofang.com/sa?project=production',//prod环境
                 heatmap: {scroll_notice_map: 'not_collect'},
                 is_track_single_page: true,
                 use_client_time: true,
