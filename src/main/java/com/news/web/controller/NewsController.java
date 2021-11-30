@@ -589,8 +589,12 @@ public class NewsController {
         if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
             //获取参数
             String json = CommonUtil.getQuerysParam(request);
-            NewsDetailRequest detailRequest = JSON.parseObject(json , NewsDetailRequest.class);
-            model.addAttribute(AttributeKeyHelper.DOWNLOAD_CHANNEL, detailRequest.getDownloadChannel());
+            NewsDetailRequest detailRequest = null;
+            if(!StringUtils.isEmpty(json)){
+                detailRequest = JSON.parseObject(json , NewsDetailRequest.class);
+            }
+            model.addAttribute(AttributeKeyHelper.DOWNLOAD_CHANNEL, Objects.nonNull(detailRequest) ? detailRequest.getDownloadChannel() : StringResource.EMPTY_STR);
+
             return DwMaiDianUtiil.DETAIL_CENTIO_DW_PAGE;
         }
         return AttributeKeyHelper.DETAIL_PAGE;

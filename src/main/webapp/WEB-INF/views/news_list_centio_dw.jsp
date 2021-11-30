@@ -114,7 +114,7 @@
                             </a>
                         </dt>
                         <dd class="fl">
-                            <h6 class="f18"><a href="/${cityen}/detail/${item.ID}.html" class="f000" target="_blank">${item.Title}</a></h6>
+                            <h6 class="f18"><a href="/${cityen}/detail/${item.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" class="f000" target="_blank">${item.Title}</a></h6>
                             <p class="f14 f999">${item.Description}
                                 <c:if test="${item.Description != null && item.Description.length() >= 64}">
                                     <span>...</span>
@@ -254,7 +254,7 @@
                         <c:forEach items="${topList}" var="t" varStatus="status">
                             <p style="margin: 0 auto;">
                                 <i class="${arr[status.index]}">${status.count}</i>
-                                <a href="/${cityen}/detail/${t.ID}.html" target="_blank" class="f000" title="${t.Title}">${fn:substring(t.Title,0,18)}</a>
+                                <a href="/${cityen}/detail/${t.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank" class="f000" title="${t.Title}">${fn:substring(t.Title,0,18)}</a>
                                 <br/>
 
                             </p>

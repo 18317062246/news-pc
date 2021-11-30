@@ -2,6 +2,7 @@ package com.news.web.util;
 
 import cn.hutool.core.net.URLDecoder;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.Charset;
@@ -30,6 +31,7 @@ public class CommonUtil {
         Map<String , Object> map = new LinkedHashMap();
 
         String query = request.getQueryString();
+        if(StringUtils.isEmpty(query)) return null;
 
         String[] pairs = query.split("&");
 
