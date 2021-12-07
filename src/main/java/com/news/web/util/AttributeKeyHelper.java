@@ -64,6 +64,8 @@ public interface AttributeKeyHelper extends Serializable {
      */
     String HZ_CITY_EN = "hz";
 
+    String GZ_CITY_EN = "gz";
+
     /**
      * 武汉，城市简称
      */

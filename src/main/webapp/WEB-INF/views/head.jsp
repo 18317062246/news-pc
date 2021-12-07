@@ -169,6 +169,41 @@
                     <li><a href="http://tjvplus.centaline.com.cn/" target="_blank">居划算</a></li>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
+<%--            gz--%>
+                        <c:when test="${cityen == 'gz'}">
+            <li><a href="//${cityen}.centanet.com/ershoufang/" target="_blank">二手房</a>
+                <div class="subnav">
+                    <a href="//${cityen}.centanet.com/ershoufang/" target="_blank">在售房源</a>
+                    <a href="//${cityen}.centanet.com/ershoufang-ditie/" target="_blank">地铁找房</a>
+                    <a href="//${cityen}.centanet.com/ershoufang/ershoufang-xuexiao/" target="_blank">学区找房</a>
+                    <a href="//${cityen}.centanet.com/entrust/sale/" target="_blank">发布房源</a>
+                </div>
+        </li>
+            <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
+                                    <div class="subnav" >
+                                        <a href="//${cityen}.centanet.com/xinfang/" target="_blank">全部新房</a>
+                                        <a href="//${cityen}.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
+                                        <a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
+                                        <a href="//esf.centanet.com/zhuanti/dawanqu/?${cityen}" target="_blank">粤港澳大湾区</a>
+                                        <a href="//${cityen}.centanet.com/xinfang/xinjiapo/" target="_blank">新加坡</a>
+                                    </div>
+            </li>
+            <li><a href="//${cityen}.centanet.com/zufang/" target="_blank">租房</a></li>
+            <li><a href="//${cityen}.centanet.com/xiaoqu/" target="_blank">小区</a></li>
+            <li><a href="//${cityen}.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
+            <li><a href="//${cityen}.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
+            <li><a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
+            <div class="subnav">
+                                        <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
+                                        <a href="//${cityen}.centanet.com/mendian/" target="_blank">门店</a>
+            </div>
+            </li>
+            <li><a href="//${cityen}.centanet.com/entrust/" target="_blank">发布房源</a></li>
+            <li><a href="//news.centanet.com/${cityen}/" target="_blank">房产资讯</a></li>
+            <li><a href="//${cityen}.centanet.com/about/" target="_blank">关于中原</a></li>
+            <li><a href=" //ccdata.com.cn/" target="_blank">中原研究院</a></li>
+
+                </c:when>
 
                 <c:when test="${cityen == 'gz'}">
                     <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
