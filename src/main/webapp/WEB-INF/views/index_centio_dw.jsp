@@ -269,7 +269,7 @@
                                                     </a>
                                                 </dt>
                                                 <dd style="display: block;">
-                                                    <a href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">
+                                                    <a href="/${cityen}/detail/${n.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank" title="${n.Title}">
                                                         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                                         <c:choose>
                                                             <c:when test="${n.LitPic != null && n.LitPic.length() >= 10}">
@@ -309,7 +309,7 @@
                                             <c:forEach items="${rightNews}" var="n" varStatus="status" >
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                                  href="/${cityen}/detail/${n.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
                                                         <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
@@ -338,7 +338,7 @@
                                             <c:forEach items="${rightNews}"  var="n" varStatus="status">
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                                  href="/${cityen}/detail/${n.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
                                                         <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
@@ -365,7 +365,7 @@
                                         <c:forEach items="${rightNews}" var="n" varStatus="status">
                                             <c:if test="${t.id==n.TypeID}">
                                                 <li><i></i><a class="f000"
-                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                              href="/${cityen}/detail/${n.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
                                                     <c:if test="${n.Title.length() >= 24}">
                                                         <span>...</span>
                                                     </c:if>
@@ -410,7 +410,7 @@
                                                     <i></i>
                                                 </c:if>
                                                 <a class="f000" title="${n.Title}"
-                                                   href="/${cityen}/detail/${n.ID}.html" target="_blank">${fn:substring(n.Title,0,23)}
+                                                   href="/${cityen}/detail/${n.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank">${fn:substring(n.Title,0,23)}
                                                     <c:if test="${n.Title.length() >= 24}">
                                                         <span>...</span>
                                                     </c:if>
@@ -445,7 +445,7 @@
                                         <c:forEach items="${rightNews}" var="n" varStatus="status" >
                                                 <c:if test="${t.id==n.TypeID}">
                                                     <li><i></i><a class="f000"
-                                                                  href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                                  href="/${cityen}/detail/${n.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
                                                         <c:if test="${n.Title.length() >= 24}">
                                                             <span>...</span>
                                                         </c:if>
@@ -481,7 +481,7 @@
                                     <c:forEach items="${rightNews}"  var="n" varStatus="status">
                                         <c:if test="${t.id==n.TypeID}">
                                             <li><i></i><a class="f000"
-                                                          href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
+                                                          href="/${cityen}/detail/${n.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
                                                 <c:if test="${n.Title.length() >= 24}">
                                                     <span>...</span>
                                                 </c:if>
