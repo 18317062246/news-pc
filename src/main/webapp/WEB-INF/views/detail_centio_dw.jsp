@@ -314,6 +314,7 @@
             var sendObj=new Object();
             sendObj.sc_information_title=sc_information_title;
             sendObj.sc_post_time=sc_post_time;
+            sendObj.sc_platform_type="pc";
 
             if(entry !=null && entry!='' ){
                 sendObj.sc_click_entry=entry;
