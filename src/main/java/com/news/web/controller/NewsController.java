@@ -608,10 +608,12 @@ public class NewsController {
     public void insertLog(HttpServletRequest request , @PathVariable(name = "cityen") String cityen
     ,@RequestParam(name = "newsId") Integer newsId, @RequestParam(name = "downloadChannel" , required = false) String downloadChannel){
         //详情信息
-        ApiResult<NewsDetailResponse> result = restTemplate.getForObject(apiurl + "GetNewsContent?newsid=" + newsId + "&cityen="+cityen+"&platform=pc", ApiResult.class);
-        NewsDetailResponse response = JSON.parseObject(JSON.toJSONString(result.getResult()) , NewsDetailResponse.class);
-        //记录log
-        newsService.insertLog(request , cityen , newsId , response.getTitle() , downloadChannel);
+        ApiResult<NewsDetailResponse> result = restTemplate.getForObject(String.format(StringResource.GET_NEWS_CONTENT_FORMAT , apiurl , newsId , cityen), ApiResult.class);
+        if (result != null) {
+            NewsDetailResponse response = JSON.parseObject(JSON.toJSONString(result.getResult()), NewsDetailResponse.class);
+            //记录log
+            newsService.insertLog(request, cityen, newsId, response.getTitle(), downloadChannel);
+        }
     }
 
     /**

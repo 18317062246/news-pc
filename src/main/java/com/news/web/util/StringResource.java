@@ -78,6 +78,7 @@ public class StringResource implements Serializable {
     public static final String WAP = "WAP";
     public static final String USER_AGENT = "user-agent";
     public static final String INSERT_VIEW_HISTORY_REQUEST_BY_RABBIT = "%sInsertViewHistoryRequestByRabbit";
+    public static final String GET_NEWS_CONTENT_FORMAT = "%sGetNewsContent?newsid=%s&cityen=%s&platform=pc";
     /**
      * @param input 原始图片路径
      * @param substring 分隔符
