@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -725,8 +726,9 @@ public class NewsController {
     @GetMapping("/{cityen}/detail/third_{type}.html")
     public String thirdInfo(Model model,
                             @PathVariable("cityen") String cityen,
-                            @PathVariable(value = "type", required = false) String type) {
+                            @PathVariable(value = "type", required = false) String type , HttpServletRequest request) {
         setCommon(model, cityen);
+        ServletContext context = request.getServletContext();
         //栏目类型
         List<NewsType> types =  newsService.typeList(cityen, null);
         //若类型为空，返回空页面
@@ -754,6 +756,7 @@ public class NewsController {
                 }
                 //获取集团资讯栏目下的文章
                 JSONObject jtResult = newsService.newsList(cityen, Arrays.asList(newsType.getId()), 1, 10, null, null ,null);
+
                 //若该栏目下的文章为空，将该文章对象添加到集合中
                 if (ObjectUtils.isEmpty(jtResult.get(NEWS_LIST))) {
                     newsTypesRemove.add(newsType);
@@ -818,7 +821,17 @@ public class NewsController {
                 //取出子级栏目的第一个id
                 typeid = Arrays.asList(newsTypes.get(0).getId());
             }
-            JSONObject result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
+            JSONObject result = null;
+
+           Object test = context.getAttribute("result" + i + cityen);
+           if(Objects.nonNull(test)){
+               System.err.println("缓存取出...");
+               result = (JSONObject) test;
+           }else {
+               result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
+               context.setAttribute("result" + i + cityen , result);
+               System.err.println("调用api取出...");
+           }
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
                 List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
                 switch (i) {
