@@ -615,7 +615,7 @@
                     </li>
                     <li><a href="//${cityen}.centanet.com/zufang/" target="_blank">租房</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/t5/" target="_blank">商铺</a></li>
-                    <li><a href="//${cityen}.centanet.com/xinfang/t4/" target="_blank">写字楼</a></li>
+<%--                    <li><a href="//${cityen}.centanet.com/xinfang/t4/" target="_blank">写字楼</a></li>--%>
                     <li><a href="//${cityen}.centanet.com/xiaoqu/" target="_blank">小区</a></li>
                     <li><a href="//dg.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a>
                         <div class="subnav" >
