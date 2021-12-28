@@ -47,7 +47,11 @@
 				</div>
 				<ul class="expert-comment">
 					<c:forEach items="${right}" var="r" begin="1" end="4">
-						<li><a href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" target="_blank">${fn:substring(r.Title,0,39)}</a></li>
+						<li><a href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" target="_blank">${fn:substring(r.Title,0,40)}
+							<c:if test="${r.Title != null && r.Title.length() > 40}">
+								<span>...</span>
+							</c:if>
+						</a></li>
 					</c:forEach>
 				</ul>
 				<p class="bot "><a href="//${websiteSuffix}/${cityen}/list/c${types[2].id}/?entry=资讯tag" class="tdu f666" >@${types[2].columnsName}</a></p>
