@@ -930,6 +930,8 @@ public class NewsController {
             return StringResource.THIRD_INFO_NEW;
         }else if (StringResource.ESF_NEW.equals(type)) {//二手房新页面
             return StringResource.THIRD_ESF_NEW;
+        }else if (StringResource.THIRD_XA_NEW.equals(type)){//西安新布局
+            return StringResource.XA_NEW;
         }
         return StringResource.THIRD_HOT;
     }
