@@ -932,6 +932,8 @@ public class NewsController {
             return StringResource.THIRD_ESF_NEW;
         }else if (StringResource.THIRD_XA_NEW.equals(type)){//西安新布局
             return StringResource.XA_NEW;
+        }else if (StringResource.XZL.equals(type)){
+            return StringResource.THIRD_XZL;
         }
         return StringResource.THIRD_HOT;
     }
