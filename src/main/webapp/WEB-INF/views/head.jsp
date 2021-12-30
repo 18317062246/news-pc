@@ -637,8 +637,46 @@
                     <li><a href="//${cityen}.centanet.com/entrust/" target="_blank">发布房源</a></li>
                     <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                 </c:when>
+<%--                        沈阳--%>
+                        <c:when test="${cityen == 'sy'}">
+            <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
+            <li><a href="//${cityen}.centanet.com/ershoufang/" target="_blank">二手房</a>
+                <div class="subnav" >
+                <a href="//${cityen}.centanet.com/ershoufang/" target="_blank">在售房源</a>
+                <a href="//${cityen}.centanet.com/ershoufang/u7/?from=topnav/" target="_blank">最新发布</a>
+                <a href="//${cityen}.centanet.com/ershoufang/?tag=5&from=topnav/" target="_blank">随时可看</a>
+                <a href="//${cityen}.centanet.com/entrust/sale/" target="_blank">发布房源</a>
+                <i class="arrow"></i>
+                 </div>
+            </li>
+            <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
+                <div class="subnav" >
+                    <a href="//${cityen}.centanet.com/xinfang/" target="_blank">全部新房</a>
+                    <a href="//${cityen}.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
+                    <a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
+                    <i class="arrow"></i>
+                </div>
+            </li>
+            <li><a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
+            <li><a href="//${cityen}.centanet.com/xinfang/chengjiao/" target="_blank">成交走势</a></li>
+            <c:choose>
+                <c:when test="${baiketype}">
+                    <li class="curr"><a href="/${cityen}/">资讯<span>·</span>百科</a>
+                        <div class="subnav" >
+                            <a href="/${cityen}/" target="_blank">资讯</a>
+                            <a href="/${cityen}/baike/" target="_blank">购房百科</a>
+                            <i class="arrow"></i>
+                        </div>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
+                </c:otherwise>
+            </c:choose>
+            <li><a href="${researchUrl}" target="_blank">中原研究院</a>
+                </c:when>
 
-                <c:when test="${cityen == 'cc' || cityen == 'dl' || cityen == 'sy'}">
+                <c:when test="${cityen == 'cc' || cityen == 'dl'}">
                     <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
                     <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
                         <div class="subnav" >
