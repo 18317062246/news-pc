@@ -5,27 +5,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="inform_block">
 	<div class="top">
-		<span class="tit">热门资讯</span><a href="//${websiteSuffix}/${cityen}/" class="more">更多 <span class="fSimSun">&gt;</span> </a>
-</div>
-<ul class="mid">
-	<c:forEach items="${cityNewsList}" var="l" begin="0" end="4">
-		<li>
-			<p class="tit">
-				<span class="caption">
-					${fn:substring(l.Title,0,10)}
-					<c:if test="${l.Title != null && l.Title.length() > 10}">
-						<span>...</span>
-					</c:if>
-				</span>
-				<span class="arr-down"></span></p >
-			<p class="txt">
-					${fn:substring(l.Description,0,37)}
-				<c:if test="${l.Description != null && l.Description.length() > 29}">
-					<span>...</span>
-				</c:if>
-			</p >
-		</li>
-	</c:forEach>
-</ul>
+		<span class="tit">热门资讯</span> <a target="_blank" href="//${websiteSuffix}/${cityen}" class="more">更多 <span class="fSimSun">&gt;</span> </a>
+	</div>
+	<ul class="mid">
+		<c:forEach items="${cityNewsList}" var="k" begin="0" end="4">
+			<li>
+				<a  target="_blank" href="//${websiteSuffix}/${cityen}/detail/${k.ID}.html" title="${k.Title}">
+					<p class="tit">
+					<span class="caption">${fn:substring(k.Title, 0, 10)}
+			<c:if test="${k.Title != null && k.Title.length()>10}">
+				<span>...</span>
+			</c:if>
+			       </span>
+					</p >
+				</a>
+			</li>
+		</c:forEach>
+
+	</ul>
 </div>
 
