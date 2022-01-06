@@ -219,9 +219,10 @@
                                                         <c:if test="${fn:contains(residenceStr, n.xiaoQuResult.propertyType)}">
                                                             ${residenceStr}
                                                         </c:if>
-                                                        <c:if test="${fn:contains(vilaResidenceStr, n.xiaoQuResult.propertyType)}">
-                                                            ${residenceStr}
-                                                        </c:if>
+<%--                                                        由于页面重叠问题隐藏--%>
+<%--                                                        <c:if test="${fn:contains(vilaResidenceStr, n.xiaoQuResult.propertyType)}">--%>
+<%--                                                            ${residenceStr}--%>
+<%--                                                        </c:if>--%>
                                                         <c:if test="${fn:contains(villaStr, n.xiaoQuResult.propertyType)}">
                                                             ${villaStr}
                                                         </c:if>
@@ -236,11 +237,12 @@
                                                 <c:if test="${n.esfResult != null}">
                                                     【${n.esfResult.estateName}】
                                                 </c:if>
-                                                <c:if test="${n.xiaoQuResult != null}">
-                                                    【${n.xiaoQuResult.estateName}】
-                                                </c:if>
-
+                                                    <%--                                                        由于页面重叠问题隐藏--%>
+                                            <%--                                                <c:if test="${n.xiaoQuResult != null}">--%>
+<%--                                                    【${n.xiaoQuResult.estateName}】--%>
+<%--                                                </c:if>--%>
                                             </p>
+
                                             <p>
                                                 <c:if test="${n.xinfangResult != null}">
                                                     <span class="tipTriggerB" tip="${n.xinfangResult.baseNewProp.address}">${n.xinfangResult.baseNewProp.address}</span>
@@ -367,7 +369,7 @@
     if(!flag){
         let locationAddress = window.location;
         $.get(
-            "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+locationAddress+"&platform=pc&Referer=${referer}",
+            "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&amp;cityen=${cityen}&url="+locationAddress+"&platform=pc&Referer=${referer}",
                 function (data) {
 
         });
