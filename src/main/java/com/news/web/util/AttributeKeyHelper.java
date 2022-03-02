@@ -356,5 +356,6 @@ public interface AttributeKeyHelper extends Serializable {
      */
     String DOWNLOAD_CHANNEL = "downloadChannel";
 
+    String INDEX_DATA = "indexData";
 
 }

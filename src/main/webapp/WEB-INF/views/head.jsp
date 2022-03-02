@@ -263,7 +263,7 @@
                     </c:otherwise>
                 </c:choose>
                 <li><a href="//${cityen}.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
-                <li><a href="//${cityen}.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
+<%--                <li><a href="//${cityen}.centanet.com/gongshangpu/" target="_blank">商铺</a></li>--%>
 
                 <li><a href="//${cityen}.centanet.com/jingjiren/"  target="_blank">经纪人</a>
                     <div class="subnav" >
@@ -272,7 +272,7 @@
                         <i class="arrow"></i>
                     </div>
                 </li>
-                <li><a href="${researchUrl}" target="_blank">中原研究院</a>
+                <li><a href="//${researchUrl}" target="_blank">中原研究院</a></li>
                     </c:when>
 
                     <c:when test="${cityen == 'szworld'}">

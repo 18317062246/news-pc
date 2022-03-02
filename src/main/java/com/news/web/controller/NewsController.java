@@ -29,6 +29,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -435,7 +436,10 @@ public class NewsController {
     public String detail(Model model
             , @PathVariable("cityen") String cityen
             , @PathVariable("id") String id
-            , HttpServletRequest request) {
+            , @RequestParam(value = "index",required = false) Integer index
+            , HttpServletRequest request
+            , HttpServletResponse res
+                         ) {
         log.info("detail id=>{}", id);
 
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -736,7 +740,7 @@ public class NewsController {
             return StringResource.EMPTY;
         }
         //如果type的id为464，那么取出东三省的默认第一个栏目
-        if(Objects.equals(types.get(1).getId() , 464)){
+        if(Objects.equals(types.get(0).getId() , 464)){
             //取出子级栏目
             List<NewsType> newsTypes = JSONArray.parseArray(JSON.toJSONString(types.get(1).getChildList()), NewsType.class);
             //取出子级栏目的默认第一个栏目
@@ -810,6 +814,7 @@ public class NewsController {
         List<Map> leftUp = new ArrayList<>();
         List<Map> leftDown = new ArrayList<>();
         List<Map> right = new ArrayList<>();
+        List<Map> shleft = new ArrayList<>();
 
         for (int i = 0; i < types.size(); i++) {
             //文章列表
@@ -828,12 +833,36 @@ public class NewsController {
                System.err.println("缓存取出...");
                result = (JSONObject) test;
            }else {
+               //先取出每条的资讯id
                result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
                context.setAttribute("result" + i + cityen , result);
                System.err.println("调用api取出...");
            }
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
+                if (cityen.equals("sh")){
+                    JSONArray jsonArray = result.getJSONArray(NEWS_LIST);
+                    //资讯id集合
+                    ArrayList<Integer> ids = new ArrayList<>();
+                    for (int x = 0; x<jsonArray.size();x++){
+                        JSONObject obj = jsonArray.getJSONObject(x);
+                        Object id = obj.get("ID");
+                        ids.add((Integer) id);
+                    }
+                    ArrayList<Object> urls = new ArrayList<>();
+                    for (Integer id : ids) {
+                        //跳转url集合
+                        JSONObject url = restTemplate.getForObject(apiurl + "getnewsforshurl?newsid=" + id + "&cityen="+cityen+"&platform=pc", JSONObject.class);
+                        JSONObject jsonObject = url.getJSONObject(RESULT);
+                        urls.add(jsonObject);
+
+                    }
+                    //处理url集合字段存入map集合
+                    List<Map> url = JSON.parseArray(JSON.toJSONString(urls), Map.class);
+                    //新增一个shleft模块用来单独存放上海的资讯数据
+                    shleft.addAll(url);
+                }
                 List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
+
                 switch (i) {
                     case 0:
                         //左上
@@ -902,10 +931,10 @@ public class NewsController {
 
 
         model.addAttribute(StringResource.LEFT_UP, leftUp);
+        model.addAttribute(StringResource.SH_LEFT, shleft);
         model.addAttribute(StringResource.LEFT_DOWN, leftDown);
         model.addAttribute(RIGHT, right);
         model.addAttribute(TYPES, types);
-
         if (StringResource.INDEX.equals(type)) {//二手房
             return StringResource.THIRD_ESF;
         } else if (StringResource.INFO.equals(type)) {//新房
@@ -934,6 +963,8 @@ public class NewsController {
             return StringResource.XA_NEW;
         } else if (StringResource.XZL.equals(type)) {//二手房新页面,写字楼
             return StringResource.THIRD_XZL;
+        }else if (StringResource.SH.equals(type)){//上海资讯新页面
+            return StringResource.THIRD_SH;
         }
         return StringResource.THIRD_HOT;
     }
