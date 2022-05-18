@@ -9,7 +9,8 @@
 <c:if test="${cityen != 'jtdr'}">
     <div class="section-wrap section-header">
         <div class="section">
-            <ul class="nav-header fl" style="${cityen == 'sz' ? 'width:53%;' : 'width:60%;'}">
+<%--            <ul class="nav-header fl" style="${cityen == 'sz' ? 'width:53%;' : 'width:60%;'}">--%>
+            <ul class="nav-header fl">
                 <%
                     //获取城市名称
                     String cityName = (String) request.getAttribute("cityName");
@@ -240,13 +241,6 @@
                 </li>
                 <li><a href="//${cityen}.centanet.com/zufang/" target="_blank">租房</a></li>
                 <li><a href="//szworld.centanet.com/" target="_blank">海外</a></li>
-                <li><a href="//${cityen}.centanet.com/chengjiao/contrast/" target="_blank">中原大数据</a>
-                    <div class="subnav" >
-                        <a href="//${cityen}.centanet.com/chengjiao/contrast/" target="_blank">成交走势</a>
-                        <a href="//${cityen}.centanet.com/chengjiao/" target="_blank">成交历史</a>
-                        <i class="arrow"></i>
-                    </div>
-                </li>
                 <li><a href="//${cityen}.centanet.com/xiaoqu/" target="_blank">小区</a></li>
                 <c:choose>
                     <c:when test="${baiketype}">
@@ -263,17 +257,10 @@
                     </c:otherwise>
                 </c:choose>
                 <li><a href="//${cityen}.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
-<%--                <li><a href="//${cityen}.centanet.com/gongshangpu/" target="_blank">商铺</a></li>--%>
-
-                <li><a href="//${cityen}.centanet.com/jingjiren/"  target="_blank">经纪人</a>
-                    <div class="subnav" >
-                        <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
-                        <a href="//${cityen}.centanet.com/mendian/" target="_blank">门店</a>
-                        <i class="arrow"></i>
-                    </div>
-                </li>
+                <li><a href="//${cityen}.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
+                <li><a href="//${cityen}.centanet.com/entrust/" target="_blank">发布房源</a></li>
                 <li><a href="//${researchUrl}" target="_blank">中原研究院</a></li>
-                    </c:when>
+                </c:when>
 
                     <c:when test="${cityen == 'szworld'}">
                 <li><a href="//sz.centanet.com/" target="_blank">首页</a></li>
@@ -1080,16 +1067,37 @@
                     </c:when>
                     </c:choose>
             </ul>
-
-
-
+<%--            深圳登录页面--%>
+<%--            <div class="login-iframe_sz fl">--%>
+<%--                <div class="login-info" id="loginInfo">--%>
+<%--                    <a class="first" href>--%>
+<%--                        <i class="user-ico"></i>--%>
+<%--                    </a>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+    <c:if test="${cityen != 'sz'}">
             <div class="login-iframe fr" >
-                    <%--<iframe frameborder="0"  scrolling="no"  id="iframeA" src="//passport.centanet.com/page/top.aspx?from=" allowTransparency="true" ></iframe>--%>
+<%--                我的中原--%>
                 <iframe src="https://passport.centanet.com/top/" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/top/" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
 
-        </div>
+             </div>
+    </c:if>
+
+    <c:if test="${cityen == 'sz'}">
+            <div class="appdown">
+                <i class="phone-icon"></i>
+                APP下载
+                    <div class="subnav">
+                        <p class="js_gio_code" date-type="topdownload">
+                            <img alt="" src="https://static.centanet.com/pcweb/v8.6.6/images/download_app1.jpg?v8.6.6">
+                        </p>
+                        <i class="arrow"></i>
+                    </div>
+            </div>
+    </c:if>
+
         <c:if test="${cityen == 'sz'}">
-            <p class="hot-phone fr" style="width: 175px;font-size:10px;">投诉电话：${cityComplaintTelphone}</p>
+            <p class="hot-phone fr" style="width: 175px;font-size:10px;">监督管理电话：${cityComplaintTelphone}</p>
         </c:if>
         <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 186px;font-size:10px;' :'width: 200px;'}">${cityen == 'sz' ? '&nbsp;&nbsp;咨询' : ''}热线：${cityTelphone}</p>
 
@@ -1134,6 +1142,34 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    $(function() {
+        $('.login-info ').mouseenter(function(){
+            $(this).find('.login_tip').show();
+        });
+        $('.login-info ').mouseleave(function(){
+            $(this).find('.login_tip').hide();
+        });
+
+        $(".nav-header li").mouseover(function() {
+            if ($(this).children().hasClass('subnav')) {
+
+                $(this).addClass('on').siblings().removeClass('on');
+            } else {
+                $(this).addClass('on').siblings().removeClass('on');
+            }
+        });
+        $(".nav-header li").mouseout(function() {
+            //$(".subnav").hide();
+            $(this).removeClass('on');
+        });
+        $(".section-header .appdown").mouseenter(function() {
+            $(this).addClass('on');
+        });
+        $(".section-header .appdown").mouseleave(function() {
+            $(this).removeClass('on');
+        });
+    })
 
     //判断是否为ie浏览器
     if(window.ActiveXObject || "ActiveXObject" in window){

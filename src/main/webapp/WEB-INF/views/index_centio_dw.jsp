@@ -16,10 +16,16 @@
     <title>${citycn}房地产资讯_${citycn}最新房产新闻－${citycn}中原地产</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
+    <c:if test="${cityen != 'sz'}">
+        <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    </c:if>
+    <%--    因为深圳创建了一个独立的head头部需求所以此处做了一个判断--%>
+    <c:if test="${cityen == 'sz'}">
+        <link rel="stylesheet" href="${staticurl}/css/headp2_sz.css">
+    </c:if>
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/js/jquery.slides.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>
@@ -46,15 +52,106 @@
 
 <body>
 <%--head--%>
-<%@include file="/WEB-INF/views/head.jsp" %>
+<c:if test="${cityen != 'sz'}">
+    <%@include file="/WEB-INF/views/head.jsp" %>
+</c:if>
+<c:if test="${cityen == 'sz'}">
+    <%@include file="/WEB-INF/views/head_sz.jsp" %>
+</c:if>
+<%--    <%@include file="/WEB-INF/views/head_sz.jsp" %>--%>
 
 <!-- S;centmain-wraper -->
 <!-- S;centmain-wraper -->
 
-<div class="centmain-wraper ">
-    <div class="centmain-inner">
-        <%-- 面包屑--%>
-        <div class="breadcrumbs clearfix f123">
+<script charset='UTF-8' src="https://cdn.jsdelivr.net/npm/sa-sdk-javascript@1.19.3/sensorsdata.min.js"></script>
+<%--<script type="text/javascript">--%>
+<%--    $(function () {--%>
+<%--        $("a").click(function () {--%>
+<%--            var id = $(this).attr("id");--%>
+<%--        })--%>
+<%--    })--%>
+<%--</script>--%>
+<script>
+    $(function () {
+        $("a").click(function () {
+            var idi = $(this).attr("id");
+        })
+    })
+     function keio(){
+     // $(document).ready(function () {
+        var sendObj=new Object();
+         // var typeName=$('#type.id').text()
+         var typeName=$('#idi').text()
+         var div = $('#divvv').text()
+        var sensors = window['sensorsDataAnalytic201505'];
+        sensors.init({
+            server_url: 'https://data.zhongyuanzhaofang.com/sa',
+            is_track_single_page: true, // 单页面配置，默认开启，若页面中有锚点设计，需要将该配置删除，否则触发锚点会多触发 $pageview 事件
+            use_client_time: true,
+            send_type: 'beacon',
+            show_log: true,
+            heatmap: {
+                //是否开启点击图，default 表示开启，自动采集 $WebClick 事件，可以设置 'not_collect' 表示关闭。
+                clickmap: 'default',
+                //是否开启触达图，not_collect 表示关闭，不会自动采集 $WebStay 事件，可以设置 'default' 表示开启。
+                scroll_notice_map: 'default'
+            }
+        });
+        sensors.track('sc_house_list_click',{
+            //业务类型
+            sc_business_type:"information" ,
+            sc_platform_type : "pc",
+            sc_current_page:typeName,
+            //房源名称
+            // sc_house_name:sc_house_name,
+            //房源id
+            // sc_house_id:$("#dwid").val(),
+            //当前页面
+            // sc_current_page:"首页_资讯首页_"+crrentTab,
+            //点击房源排序
+            // sc_house_sort :sendObj.sc_house_sort,
+
+            //消息标识
+            sc_message_index:"",
+            //小区
+            sc_housing_estate:"",
+            //小区编号
+            sc_housing_estate_code:"",
+            //区域
+            sc_area:"",
+            //板块
+            sc_subarea:"",
+            //单价
+            sc_unit_price:0,
+            //总价
+            sc_total_price:0,
+            //小区政府参考单价
+            sc_house_reference_unit_price:0,
+            //小区政府参考总价
+            sc_house_reference_price:0,
+            //面积
+            sc_build_area:"",
+            //房源类型
+            sc_house_type:"",
+            // 房源列表来源
+            sc_house_list_source:"",
+            //消息标识
+            sc_message_index:null,
+
+        });
+        sensors.registerPage(sendObj);
+        sensors.quick('autoTrack');
+      };
+
+</script>
+
+
+
+
+            <div class="centmain-wraper ">
+                <div class="centmain-inner">
+                    <%-- 面包屑--%>
+                    <div class="breadcrumbs clearfix f123">
 
             <div class="fl breadcrumbs-area">
                 <c:choose>
@@ -89,14 +186,14 @@
                             <input type="hidden" id="entry" value="${entry}"/>
                             <input type="hidden" id="downloadChannel" value="${downloadChannel}"/>
                             <input type="hidden" id="sendUrl" value="${sendUrl}"/>
+                            <input type="hidden" id="demo" value="${status.index}"/>
                             <ul class="programa">
                                 <c:forEach items="${types}" var="type" varStatus="status">
-
                                     <c:if test="${type.location != 'right' && type.location != 'baike'}">
                                         <li ref="${type.id}">
-                                            <a ref="${type.id}" href="javascript:void(0);" title="${type.columnsName}"
-                                               class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
-                                        </li>
+                                        <a ref="${type.id}" href="javascript:void(0);" title="${type.columnsName}"
+                                           class="programa-title ${status.index==0?'active':''}">${fn:substring(type.columnsName,0,18)}</a>
+                                    </li>
                                     </c:if>
 
                                 </c:forEach>
@@ -110,21 +207,23 @@
                                     var entry=$('#entry').val();
                                     var downloadChannel=$('#downloadChannel').val();
                                     var sendUrl=$('#sendUrl').val();
+                                    var demo = $('#demo').val();
                                     localStorage.setItem("entry",entry);
                                     localStorage.setItem("downloadChannel",downloadChannel);
                                     localStorage.setItem("sendUrl",sendUrl);
+                                    localStorage.setItem("demo",demo);
                                 })
                             </script>
                         </div>
-                        <div class="infor-news">
+                        <div class="infor-news" >
                             <c:forEach items="${news}" var="item" varStatus="status">
-                                <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%>>
+                                <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%> value="${status.index}">
                                     <dt class="fl">
                                         <a href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
                                             <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                                 <c:choose>
                                                   <c:when test="${item.LitPic != null && item.LitPic.length() >= 10}">
-                                                         <div class="img-box">
+                                                         <div class="img-box" onclick="keio()">
                                                            <img class="lazy news-img" src="${defaultpic}"
                                                                 data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}" alt="${item.Title}"/>
                                                          </div>
@@ -140,8 +239,8 @@
                                         </a>
                                     </dt>
                                     <dd class="fl">
-                                        <h6 class="f18">
-                                            <a href="/${cityen}/detail/${item.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}" class="f000" target="_blank" title="${item.Title}">
+                                        <h6 class="f18"  id="divvv" onclick="keio()">
+                                            <a href="/${cityen}/detail/${item.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}&index=${status.index}" class="f000" target="_blank" title="${item.Title}">
                                                  ${fn:substring(item.Title , 0 , 27)}
                                                      <c:if test="${item.Title != null && item.Title.length() >= 28}">
                                                          <span>...</span>
@@ -172,6 +271,12 @@
                                 </dl>
                             </c:forEach>
                         </div>
+<%--                        <script>--%>
+<%--                            $('.infor-news-item').click(function(obj){--%>
+<%--                                console.log(obj);--%>
+<%--                            });--%>
+<%--                            console.log($('.infor-news-item').html())--%>
+<%--                        </script>--%>
                     </div>
                     <c:if test="${cityen == 'gz'}">
                         <div class="infor-index-banner fr">
