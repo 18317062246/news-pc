@@ -55,7 +55,7 @@
 					</a>
 				</div>
 					<ul class="expert-comment">
-					<c:forEach items="${right}" var="ri" begin="1" end="4">
+					<c:forEach items="${right}" var="ri" begin="0" end="3">
 						<li><a href="//${websiteSuffix}/${cityen}/detail/${ri.ID}.html" target="_blank">${fn:substring(ri.Title,0,28)}</a></li>
 					</c:forEach>
 				</ul>
