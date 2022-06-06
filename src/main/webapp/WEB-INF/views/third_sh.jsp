@@ -13,29 +13,29 @@
         <div class="wikipedia-main clearfix">
             <div class="wikipedia-left fl">
                 <a  target="_blank" href="${shleft[0].url}"><img src="${leftUp[0].LitPic}"alt="" class="bigphoto">
-                    <span class="tit">${leftUp[0].Title}</span>
-                    <span class="txt">${leftUp[0].Description}</span>
+                    <span title="${leftUp[0].Title}" class="tit">${leftUp[0].Title}</span>
+                    <span title="${leftUp[0].Description}" class="txt">${leftUp[0].Description}</span>
                 </a>
             </div>
             <div class="wikipedia-right fr">
                 <div class="head clearfix">
                     <div class="wiki-item fl">
                         <a target="_blank" href="${shleft[1].url}"><img src="${leftUp[1].LitPic}" alt="" class="photo">
-                            <span class="tit">${leftUp[1].Title}</span>
-                            <span class="txt">${leftUp[1].Description}</span>
+                            <span title="${leftUp[1].Title}" class="tit">${leftUp[1].Title}</span>
+                            <span title="${leftUp[1].Description}" class="txt">${leftUp[1].Description}</span>
                         </a>
                     </div>
                     <div class="wiki-item fr">
                         <a target="_blank" href="${shleft[2].url}"><img src="${leftUp[2].LitPic}" alt="" class="photo">
-                            <span class="tit">${leftUp[2].Title}</span>
-                            <span class="txt">${leftUp[2].Description}</span>
+                            <span title="${leftUp[2].Title}" class="tit">${leftUp[2].Title}</span>
+                            <span title="${leftUp[2].Description}" class="txt">${leftUp[2].Description}</span>
                         </a>
                     </div>
                 </div>
                 <div class="wikibot">
                     <a target="_blank" href="${shleft[3].url}"><img src="${leftUp[3].LitPic}" alt="" class="crossphoto">
-                        <span class="tit">${leftUp[3].Title}</span>
-                        <span class="txt">${leftUp[3].Description}</span>
+                        <span title="${leftUp[3].Title}" class="tit">${leftUp[3].Title}</span>
+                        <span title="${leftUp[3].Description}" class="txt">${leftUp[3].Description}</span>
                     </a>
                 </div>
             </div>
