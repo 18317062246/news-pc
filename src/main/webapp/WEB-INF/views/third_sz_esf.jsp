@@ -30,7 +30,10 @@
             </div>
             <ul class="expert-comment">
                 <c:forEach items="${leftUp}" var="l" begin="1" end="4">
-                    <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
+                    <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${fn:substring(l.Title,0,26)}
+                        <c:if test="${l.Title != null && l.Title.length() > 26}">
+                            <span>...</span>
+                        </c:if></a></li>
                 </c:forEach>
 
             </ul>
@@ -43,7 +46,10 @@
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${leftDown}" var="l" begin="0" end="4">
-                            <li><i></i><a  target="_blank" href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
+                            <li><i></i><a  target="_blank" href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${fn:substring(l.Title,0,26)}
+                                <c:if test="${l.Title != null && l.Title.length() > 26}">
+                                    <span>...</span>
+                                </c:if></a></li>
                         </c:forEach>
                     </ul>
                     <p class="bot"><a target="_blank" href="//${websiteSuffix}/${cityen}/list/c${types[1].id}/?entry=资讯tag" class="tdu f666">@${types[1].columnsName}</a></p>
@@ -55,7 +61,10 @@
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${right}" var="r" begin="0" end="3">
-                            <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" title="${r.Title}">${r.Title}</a></li>
+                            <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" title="${r.Title}">${fn:substring(r.Title,0,26)}
+                                <c:if test="${r.Title != null && r.Title.length() > 26}">
+                                    <span>...</span>
+                                </c:if></a></li>
                         </c:forEach>
                     </ul>
                     <p class="bot"><a target="_blank" href="//${websiteSuffix}/${cityen}/list/c${types[2].id}/?entry=资讯tag" class="tdu f666">@${types[2].columnsName}</a></p>
