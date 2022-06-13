@@ -14,7 +14,9 @@
     <div class="inform-side fl">
         <div class="expert">
             <div class="expert-phone">
-                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${leftUp[0].Title}</span>
+<%--                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${leftUp[0].Title}</span>--%>
+<%--                字数限制--%>
+                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${fn:substring(leftUp[0].Title,0,26)}</span>
                 <a  target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${leftUp[0].ID}.html" >
                     <c:choose>
                         <c:when test="${leftUp[0].LitPic != null && leftUp[0].LitPic.length() >= 10}">
