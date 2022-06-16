@@ -441,7 +441,8 @@ public class NewsController {
             , HttpServletResponse res
                          ) {
         log.info("detail id=>{}", id);
-
+        model.addAttribute(AttributeKeyHelper.INDEX_DATA, index);
+        System.err.println(index);
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
         //获取引用
         String referer = request.getHeader(AttributeKeyHelper.REFERER);
@@ -760,7 +761,6 @@ public class NewsController {
                 }
                 //获取集团资讯栏目下的文章
                 JSONObject jtResult = newsService.newsList(cityen, Arrays.asList(newsType.getId()), 1, 10, null, null ,null);
-
                 //若该栏目下的文章为空，将该文章对象添加到集合中
                 if (ObjectUtils.isEmpty(jtResult.get(NEWS_LIST))) {
                     newsTypesRemove.add(newsType);

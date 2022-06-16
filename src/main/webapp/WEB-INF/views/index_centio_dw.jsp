@@ -63,30 +63,20 @@
 <!-- S;centmain-wraper -->
 <!-- S;centmain-wraper -->
 
-<script charset='UTF-8' src="https://cdn.jsdelivr.net/npm/sa-sdk-javascript@1.19.3/sensorsdata.min.js"></script>
-<%--<script type="text/javascript">--%>
-<%--    $(function () {--%>
-<%--        $("a").click(function () {--%>
-<%--            var id = $(this).attr("id");--%>
-<%--        })--%>
-<%--    })--%>
-<%--</script>--%>
+<%--<script charset='UTF-8' src="https://cdn.jsdelivr.net/npm/sa-sdk-javascript-1.22.9/sensorsdata.min.js"></script>--%>
+<script charset='UTF-8' src="https://static.centanet.com/assets/js/sa-v1.22.9/sensorsdata.min.js"></script>
 <script>
-    $(function () {
-        $("a").click(function () {
-            var idi = $(this).attr("id");
-        })
-    })
-     function keio(){
-     // $(document).ready(function () {
-        var sendObj=new Object();
-         // var typeName=$('#type.id').text()
-         var typeName=$('#idi').text()
-         var div = $('#divvv').text()
-        var sensors = window['sensorsDataAnalytic201505'];
+     function keio(id){
+         var sendObj=new Object();
+         var title = document.getElementById("bt"+id).innerText
+         var subtitle = document.getElementById("fbt"+id).innerText
+         var time = document.getElementById("time"+id).innerText
+         var infotype = $('#infotype').text()
+         var post = id+1
+         var jumpurl = document.getElementById("zxwz"+id).getAttribute('href')
+         var sensors = window['sensorsDataAnalytic201505'];
         sensors.init({
             server_url: 'https://data.zhongyuanzhaofang.com/sa',
-            is_track_single_page: true, // 单页面配置，默认开启，若页面中有锚点设计，需要将该配置删除，否则触发锚点会多触发 $pageview 事件
             use_client_time: true,
             send_type: 'beacon',
             show_log: true,
@@ -97,57 +87,30 @@
                 scroll_notice_map: 'default'
             }
         });
-        sensors.track('sc_house_list_click',{
+        sensors.track('sc_information_list_click',{
             //业务类型
             sc_business_type:"information" ,
             sc_platform_type : "pc",
-            sc_current_page:typeName,
-            //房源名称
-            // sc_house_name:sc_house_name,
-            //房源id
-            // sc_house_id:$("#dwid").val(),
-            //当前页面
-            // sc_current_page:"首页_资讯首页_"+crrentTab,
-            //点击房源排序
-            // sc_house_sort :sendObj.sc_house_sort,
 
-            //消息标识
-            sc_message_index:"",
-            //小区
-            sc_housing_estate:"",
-            //小区编号
-            sc_housing_estate_code:"",
-            //区域
-            sc_area:"",
-            //板块
-            sc_subarea:"",
-            //单价
-            sc_unit_price:0,
-            //总价
-            sc_total_price:0,
-            //小区政府参考单价
-            sc_house_reference_unit_price:0,
-            //小区政府参考总价
-            sc_house_reference_price:0,
-            //面积
-            sc_build_area:"",
-            //房源类型
-            sc_house_type:"",
-            // 房源列表来源
-            sc_house_list_source:"",
-            //消息标识
-            sc_message_index:null,
+            //资讯标题
+            sc_information_title:title,
+            //资讯副标题
+            sc_information_title_2:subtitle,
+            // 发布时间
+            sc_post_time:time,
+            // 跳转链接
+            sc_jump_url:jumpurl,
+            //资讯类型
+            sc_information_type:infotype,
+            //资讯位置
+            sc_information_pos:"("+post+",1)",
 
         });
         sensors.registerPage(sendObj);
         sensors.quick('autoTrack');
-      };
+         };
 
 </script>
-
-
-
-
             <div class="centmain-wraper ">
                 <div class="centmain-inner">
                     <%-- 面包屑--%>
@@ -171,7 +134,7 @@
                 <span class="fsm">&gt;</span>
                 <a href="/${cityen}/" class="f123">${citycn}资讯</a>
                 <span class="fsm">&gt;</span>
-                <span class="colName"></span>
+                <span id="infotype" onclick="keio()" class="colName"></span>
             </div>
         </div>
         <div class="infor-index-wrapper">
@@ -217,13 +180,13 @@
                         </div>
                         <div class="infor-news" >
                             <c:forEach items="${news}" var="item" varStatus="status">
-                                <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%> value="${status.index}">
+                                <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%>onclick="keio(${status.index})" id="position${status.index}"  value="${status.index}">
                                     <dt class="fl">
-                                        <a href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
+                                        <a id="zxwz${status.index}" href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
                                             <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
                                                 <c:choose>
                                                   <c:when test="${item.LitPic != null && item.LitPic.length() >= 10}">
-                                                         <div class="img-box" onclick="keio()">
+                                                         <div class="img-box" >
                                                            <img class="lazy news-img" src="${defaultpic}"
                                                                 data-original="${fn:substring(item.LitPic, 0 , mfn:lastIndexOf(item.LitPic, "."))}_450x320_w${fn:substring(item.LitPic,mfn:lastIndexOf(item.LitPic, ".") , fn:length(item.LitPic))}" alt="${item.Title}"/>
                                                          </div>
@@ -239,15 +202,15 @@
                                         </a>
                                     </dt>
                                     <dd class="fl">
-                                        <h6 class="f18"  id="divvv" onclick="keio()">
-                                            <a href="/${cityen}/detail/${item.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}&index=${status.index}" class="f000" target="_blank" title="${item.Title}">
+                                        <h6 class="f18"  id="bt${status.index}" >
+                                            <a id="tzurl${status.index}" href="/${cityen}/detail/${item.ID}.html?entry=资讯tag&downloadChannel=${downloadChannel}&index=${status.index}" class="f000" target="_blank" title="${item.Title}">
                                                  ${fn:substring(item.Title , 0 , 27)}
                                                      <c:if test="${item.Title != null && item.Title.length() >= 28}">
                                                          <span>...</span>
                                                      </c:if>
                                             </a>
                                         </h6>
-                                        <p class="f14 f999">
+                                        <p id="fbt${status.index}" class="f14 f999">
                                                 ${item.Description}
                                                     <c:if test="${item.Description != null && item.Description.length() >= 64}">
                                                         <span>...</span>
@@ -255,7 +218,7 @@
 
                                             <a href="" class="cBlue ml_15"></a>
                                         </p>
-                                        <div class="tag clearfix">
+                                        <div id="time${status.index}" class="tag clearfix">
                                             <p class="news_time">
                                                 <jsp:useBean id="myDate" class="java.util.Date"/>
                                                 <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>
@@ -271,12 +234,6 @@
                                 </dl>
                             </c:forEach>
                         </div>
-<%--                        <script>--%>
-<%--                            $('.infor-news-item').click(function(obj){--%>
-<%--                                console.log(obj);--%>
-<%--                            });--%>
-<%--                            console.log($('.infor-news-item').html())--%>
-<%--                        </script>--%>
                     </div>
                     <c:if test="${cityen == 'gz'}">
                         <div class="infor-index-banner fr">
