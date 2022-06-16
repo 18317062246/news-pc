@@ -16,7 +16,7 @@
             <div class="expert-phone">
 <%--                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${leftUp[0].Title}</span>--%>
 <%--                字数限制--%>
-                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${fn:substring(leftUp[0].Title,0,26)}</span>
+                <span style="color: #FFF;background-color: #000;text-align: center;position: absolute;opacity: 0.6;height: 40px;width: 520px;line-height: 30px;bottom: 0px;font-size: 18px;}" title="${leftUp[0].Title}">${fn:substring(leftUp[0].Title,0,28)}</span>
                 <a  target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${leftUp[0].ID}.html" >
                     <c:choose>
                         <c:when test="${leftUp[0].LitPic != null && leftUp[0].LitPic.length() >= 10}">
@@ -30,10 +30,7 @@
             </div>
             <ul class="expert-comment">
                 <c:forEach items="${leftUp}" var="l" begin="1" end="4">
-                    <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${fn:substring(l.Title,0,26)}
-                        <c:if test="${l.Title != null && l.Title.length() > 26}">
-                            <span>...</span>
-                        </c:if></a></li>
+                    <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}
                 </c:forEach>
 
             </ul>
@@ -46,11 +43,7 @@
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${leftDown}" var="l" begin="0" end="4">
-                            <li><i></i><a  target="_blank" href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${fn:substring(l.Title,0,26)}
-                                <c:if test="${l.Title != null && l.Title.length() > 26}">
-                                    <span>...</span>
-                                </c:if></a></li>
-                        </c:forEach>
+                            <li><i></i><a  target="_blank" href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</c:forEach>
                     </ul>
                     <p class="bot"><a target="_blank" href="//${websiteSuffix}/${cityen}/list/c${types[1].id}/?entry=资讯tag" class="tdu f666">@${types[1].columnsName}</a></p>
                 </dd>
@@ -61,8 +54,8 @@
                 <dd>
                     <ul class="expert-comment">
                         <c:forEach items="${right}" var="r" begin="0" end="3">
-                            <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" title="${r.Title}">${fn:substring(r.Title,0,26)}
-                                <c:if test="${r.Title != null && r.Title.length() > 26}">
+                            <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" title="${r.Title}">${fn:substring(r.Title,0,28)}
+                                <c:if test="${r.Title != null && r.Title.length() > 28}">
                                     <span>...</span>
                                 </c:if></a></li>
                         </c:forEach>
