@@ -731,9 +731,8 @@ public class NewsController {
     @GetMapping("/{cityen}/detail/third_{type}.html")
     public String thirdInfo(Model model,
                             @PathVariable("cityen") String cityen,
-                            @PathVariable(value = "type", required = false) String type , HttpServletRequest request) {
+                            @PathVariable(value = "type", required = false) String type) {
         setCommon(model, cityen);
-        ServletContext context = request.getServletContext();
         //栏目类型
         List<NewsType> types =  newsService.typeList(cityen, null);
         //若类型为空，返回空页面
@@ -826,18 +825,18 @@ public class NewsController {
                 //取出子级栏目的第一个id
                 typeid = Arrays.asList(newsTypes.get(0).getId());
             }
-            JSONObject result = null;
-
-           Object test = context.getAttribute("result" + i + cityen);
-           if(Objects.nonNull(test)){
-               System.err.println("缓存取出...");
-               result = (JSONObject) test;
-           }else {
-               //先取出每条的资讯id
-               result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
-               context.setAttribute("result" + i + cityen , result);
-               System.err.println("调用api取出...");
-           }
+            JSONObject result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
+            //怀疑以下缓存会导致最新内容更新不出来 先行注解测试中...
+//           Object test = context.getAttribute("result" + i + cityen);
+//           if(Objects.nonNull(test)){
+//               System.err.println("缓存取出...");
+//               result = (JSONObject) test;
+//           }else {
+//               //先取出每条的资讯id
+//               result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
+//               context.setAttribute("result" + i + cityen , result);
+//               System.err.println("调用api取出...");
+//           }
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
                 if (cityen.equals("sh")){
                     JSONArray jsonArray = result.getJSONArray(NEWS_LIST);
