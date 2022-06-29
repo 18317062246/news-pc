@@ -76,7 +76,8 @@
          var jumpurl = document.getElementById("zxwz"+id).getAttribute('href')
          var sensors = window['sensorsDataAnalytic201505'];
         sensors.init({
-            server_url: 'https://data.zhongyuanzhaofang.com/sa',
+            // server_url: 'https://data.zhongyuanzhaofang.com/sa',
+            server_url: 'https://data.zhongyuanzhaofang.com/sa?project=production',//prod环境
             use_client_time: true,
             send_type: 'beacon',
             show_log: true,
