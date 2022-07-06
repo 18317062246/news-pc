@@ -74,6 +74,7 @@
          var infotype = $('#infotype').text()
          var post = id+1
          var jumpurl = document.getElementById("zxwz"+id).getAttribute('href')
+         var source = document.getElementById("position"+id).getAttribute('source')
          var sensors = window['sensorsDataAnalytic201505'];
         sensors.init({
             // server_url: 'https://data.zhongyuanzhaofang.com/sa',
@@ -93,6 +94,8 @@
             sc_business_type:"information" ,
             sc_platform_type : "pc",
 
+            //资讯文章作者
+            sc_information_author:source,
             //资讯标题
             sc_information_title:title,
             //资讯副标题
@@ -181,7 +184,7 @@
                         </div>
                         <div class="infor-news" >
                             <c:forEach items="${news}" var="item" varStatus="status">
-                                <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%>onclick="keio(${status.index})" id="position${status.index}"  value="${status.index}">
+                                <dl class="infor-news-item clearfix type${item.TypeID}" <%--style="display: none"--%>onclick="keio(${status.index})" id="position${status.index}"  value="${status.index}" source="${item.Source}">
                                     <dt class="fl">
                                         <a id="zxwz${status.index}" href="/${cityen}/detail/${item.ID}.html" target="_blank" title="${item.Title}">
                                             <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
