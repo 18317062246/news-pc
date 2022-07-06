@@ -42,3 +42,4 @@
         </div>
     </div>
 </div>
+<!-- <%= (new java.util.Date()).toLocaleString()%> -->
