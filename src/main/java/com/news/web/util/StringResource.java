@@ -146,6 +146,7 @@ public class StringResource implements Serializable {
      */
     public static String cityTelphone(String cityen) {
         Map map = new HashMap();
+        map.put(Cityen.SH,"400-818-8808");
         map.put(Cityen.BEIJING, "400-812-5166");
         map.put(Cityen.TIANJIN, "4008-985-666");
         map.put(Cityen.GUANGZHOU, "4008-103-313");

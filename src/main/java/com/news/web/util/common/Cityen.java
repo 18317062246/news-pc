@@ -9,6 +9,8 @@ public class Cityen {
 
     private Cityen(){}
 
+    //上海
+    public static final String SH = "sh";
     //北京
     public static final  String BEIJING = "bj";
     //天津

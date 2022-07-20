@@ -171,7 +171,44 @@
                 <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                     </c:when>
 
-                    <c:when test="${cityen == 'gz'}">
+                    <c:when test="${cityen == 'sh'}">
+                <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
+                <li ><a href="//${cityen}.centanet.com/ershoufang/" target="_blank">二手房</a>
+                    <div class="subnav" >
+                        <a href="//${cityen}.centanet.com/ershoufang/" target="_blank">在售房源</a>
+                        <a href="//${cityen}.centanet.com/ershoufang-ditie/" target="_blank">地铁找房</a>
+                        <i class="arrow"></i>
+                    </div>
+                </li>
+                <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
+                    <div class="subnav" >
+                        <a href="//${cityen}.centanet.com/xinfang/" target="_blank">全部新房</a>
+                        <a href="//${cityen}.centanet.com/xinfang/ditie/" target="_blank">地铁找房</a>
+                        <a href="//${cityen}.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
+                        <i class="arrow"></i>
+                    </div>
+                </li>
+                <li><a href="//${cityen}.centanet.com/zufang/" target="_blank">租房</a></li>
+                <li><a href="//${cityen}.centanet.com/xiaoqu/" target="_blank">小区</a></li>
+                <li><a href="//${cityen}.centanet.com/xiezilou/" target="_blank">写字楼</a></li>
+                <li><a href="//${cityen}.centanet.com/gongshangpu/" target="_blank">商铺</a></li>
+
+                <li><a href="//${cityen}.centanet.com/jingjiren/"  target="_blank">经纪人</a>
+                    <div class="subnav" >
+                        <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
+                        <a href="//${cityen}.centanet.com/mendian/" target="_blank">门店</a>
+                        <i class="arrow"></i>
+                    </div>
+                </li>
+                <li><a href="//${cityen}.centanet.com/faxian/" target="_blank">房产资讯</a></li>
+
+                <li><a href="//${cityen}.centanet.com/entrust/jtsale/" target="_blank">发布房源</a></li>
+                <li><a href="${researchUrl}" target="_blank">中原研究院</a>
+
+                    </c:when>
+
+
+                <c:when test="${cityen == 'gz'}">
                 <li><a href="//${cityen}.centanet.com/" target="_blank">首页</a></li>
                 <li ><a href="//${cityen}.centanet.com/ershoufang/" target="_blank">二手房</a>
                     <div class="subnav" >
@@ -662,12 +699,7 @@
                         <li class="curr"><a href="/${cityen}/" target="_blank">资讯<span>·</span>百科</a></li>
                     </c:otherwise>
                 </c:choose>
-                <li class="appdown"><a href="javascript:;" rel="nofollow"><i class="phone-icon"></i>APP下载</a>
-                    <div class="subnav">
-                        <img alt="" src="https://static.centanet.com/pcweb/v8.6.6/images/download_app1.jpg?v8.6.6">
-                        <i class="arrow"></i>
-                    </div>
-                </li>
+
                 <li><a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
                     <div class="subnav" >
                         <a href="//${cityen}.centanet.com/jingjiren/" target="_blank">经纪人</a>
@@ -1141,6 +1173,8 @@
         <div class="clear"></div>
     </div>
 </div>
+
+
 <script type="text/javascript">
 
     $(function() {
