@@ -188,9 +188,6 @@ public class NewsServiceImpl implements NewsService {
         map.put(TYPE_ID, typeIds.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
         map.put("page", page);
         map.put("pagesize", pagesize);
-        if (cityen.equals("sh")){
-            order = 3;
-        }
         map.put("order", order);
         map.put("pubdate", CommonUtil.getCurrentMills());
         if (StringUtils.hasText(key)) {
