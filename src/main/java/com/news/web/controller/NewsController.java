@@ -826,40 +826,7 @@ public class NewsController {
                 typeid = Arrays.asList(newsTypes.get(0).getId());
             }
             JSONObject result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
-            //怀疑以下缓存会导致最新内容更新不出来 先行注解测试中...
-//           Object test = context.getAttribute("result" + i + cityen);
-//           if(Objects.nonNull(test)){
-//               System.err.println("缓存取出...");
-//               result = (JSONObject) test;
-//           }else {
-//               //先取出每条的资讯id
-//               result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
-//               context.setAttribute("result" + i + cityen , result);
-//               System.err.println("调用api取出...");
-//           }
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
-                if (cityen.equals("sh")){
-                    JSONArray jsonArray = result.getJSONArray(NEWS_LIST);
-                    //资讯id集合
-                    ArrayList<Integer> ids = new ArrayList<>();
-                    for (int x = 0; x<jsonArray.size();x++){
-                        JSONObject obj = jsonArray.getJSONObject(x);
-                        Object id = obj.get("ID");
-                        ids.add((Integer) id);
-                    }
-                    ArrayList<Object> urls = new ArrayList<>();
-                    for (Integer id : ids) {
-                        //跳转url集合
-                        JSONObject url = restTemplate.getForObject(apiurl + "getnewsforshurl?newsid=" + id + "&cityen="+cityen+"&platform=pc", JSONObject.class);
-                        JSONObject jsonObject = url.getJSONObject(RESULT);
-                        urls.add(jsonObject);
-
-                    }
-                    //处理url集合字段存入map集合
-                    List<Map> url = JSON.parseArray(JSON.toJSONString(urls), Map.class);
-                    //新增一个shleft模块用来单独存放上海的资讯数据
-                    shleft.addAll(url);
-                }
                 List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
 
                 switch (i) {

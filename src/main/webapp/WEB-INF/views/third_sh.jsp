@@ -8,34 +8,34 @@
     <div class="section">
         <div class="title-box clearfix">
             <h5 class="title">房产百科</h5>
-            <p class="r-more fr"><a target="_blank" href="//sh.centanet.com/faxian/">更多房产资讯&nbsp;<span class="fSimSun">&gt;</span></a></p>
+            <p class="r-more fr"><a target="_blank" href="//news.centanet.com/sh/">更多房产资讯&nbsp;<span class="fSimSun">&gt;</span></a></p>
         </div>
         <div class="wikipedia-main clearfix">
             <div class="wikipedia-left fl">
-                <a  target="_blank" href="${shleft[0].url}"><img src="${leftUp[0].LitPic}"alt="" class="bigphoto">
-                    <span title="${leftUp[0].Title}" class="tit">${leftUp[0].Title}</span>
-                    <span title="${leftUp[0].Description}" class="txt">${leftUp[0].Description}</span>
+                <a  target="_blank" href="${right[0].fieldname}"><img src="${right[0].LitPic}"alt="" class="bigphoto">
+                    <span title="${right[0].Title}" class="tit">${right[0].Title}</span>
+                    <span title="${right[0].Description}" class="txt">${right[0].Description}</span>
                 </a>
             </div>
             <div class="wikipedia-right fr">
                 <div class="head clearfix">
                     <div class="wiki-item fl">
-                        <a target="_blank" href="${shleft[1].url}"><img src="${leftUp[1].LitPic}" alt="" class="photo">
-                            <span title="${leftUp[1].Title}" class="tit">${leftUp[1].Title}</span>
-                            <span title="${leftUp[1].Description}" class="txt">${leftUp[1].Description}</span>
+                        <a target="_blank" href="${right[1].fieldname}"><img src="${right[1].LitPic}" alt="" class="photo">
+                            <span title="${right[1].Title}" class="tit">${right[1].Title}</span>
+                            <span title="${right[1].Description}" class="txt">${right[1].Description}</span>
                         </a>
                     </div>
                     <div class="wiki-item fr">
-                        <a target="_blank" href="${shleft[2].url}"><img src="${leftUp[2].LitPic}" alt="" class="photo">
-                            <span title="${leftUp[2].Title}" class="tit">${leftUp[2].Title}</span>
-                            <span title="${leftUp[2].Description}" class="txt">${leftUp[2].Description}</span>
+                        <a target="_blank" href="${right[2].fieldname}"><img src="${right[2].LitPic}" alt="" class="photo">
+                            <span title="${right[2].Title}" class="tit">${right[2].Title}</span>
+                            <span title="${right[2].Description}" class="txt">${right[2].Description}</span>
                         </a>
                     </div>
                 </div>
                 <div class="wikibot">
-                    <a target="_blank" href="${shleft[3].url}"><img src="${leftUp[3].LitPic}" alt="" class="crossphoto">
-                        <span title="${leftUp[3].Title}" class="tit">${leftUp[3].Title}</span>
-                        <span title="${leftUp[3].Description}" class="txt">${leftUp[3].Description}</span>
+                    <a target="_blank" href="${right[3].fieldname}"><img src="${right[3].LitPic}" alt="" class="crossphoto">
+                        <span title="${right[3].Title}" class="tit">${right[3].Title}</span>
+                        <span title="${right[3].Description}" class="txt">${right[3].Description}</span>
                     </a>
                 </div>
             </div>
