@@ -43,6 +43,8 @@ public interface NewsService extends Serializable {
      */
     JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location);
 
+    JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location,String mark);
+
     /**
      * @param cityen 城市简称
      * @param typeIds 栏目id

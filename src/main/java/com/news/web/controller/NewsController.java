@@ -825,7 +825,8 @@ public class NewsController {
                 //取出子级栏目的第一个id
                 typeid = Arrays.asList(newsTypes.get(0).getId());
             }
-            JSONObject result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
+            //此处为嵌入式页面走getnewslist方法重载传入order=3,不影响new.centanet.com/cityen列表排序
+            JSONObject result = newsService.newsList(cityen, typeid, 1, 10, null, null, null,null);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
                 List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
 
