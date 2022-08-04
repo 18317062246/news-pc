@@ -200,7 +200,7 @@
                         <i class="arrow"></i>
                     </div>
                 </li>
-                <li><a href="//${cityen}.centanet.com/faxian/" target="_blank">房产资讯</a></li>
+                <li><a href="//news.centanet.com/${cityen}/" target="_blank">房产资讯</a></li>
 
                 <li><a href="//${cityen}.centanet.com/entrust/jtsale/" target="_blank">发布房源</a></li>
                 <li><a href="${researchUrl}" target="_blank">中原研究院</a>
