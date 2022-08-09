@@ -181,6 +181,7 @@
                                                 <c:set var="residenceStr" value="住宅"></c:set>
                                                 <c:set var="vilaResidenceStr" value="普通住宅"></c:set>
                                                 <c:set var="villaStr" value="别墅"></c:set>
+                                                <c:set var="szly" value="商住"></c:set>
                                                 <c:if test="${n.xinfangResult != null}">
 
                                                     <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/"  target="_blank" title="${n.xinfangResult.adName}">${n.xinfangResult.adName}</a>
@@ -208,9 +209,9 @@
                                                         <c:if test="${fn:contains(villaStr, n.esfResult.propertyType)}">
                                                             ${villaStr}
                                                         </c:if>
-                                                        <c:if test="${fn:contains(vilaResidenceStr, n.esfResult.propertyType)}">
-                                                            ${residenceStr}
-                                                        </c:if>
+<%--                                                        <c:if test="${fn:contains(vilaResidenceStr, n.esfResult.propertyType)}">--%>
+<%--                                                            ${residenceStr}--%>
+<%--                                                        </c:if>--%>
                                                     </label>
                                                 </c:if>
                                                 <c:if test="${n.xiaoQuResult != null}">
@@ -229,6 +230,9 @@
                                                         <c:if test="${fn:contains(villaStr, n.xiaoQuResult.propertyType)}">
                                                             ${villaStr}
                                                         </c:if>
+                                                        <c:if test="${fn:contains(szly, n.xiaoQuResult.propertyType)}">
+                                                            ${apartmentStr}
+                                                        </c:if>
                                                     </label>
                                                 </c:if>
                                                 <i for="" class=""></i>
@@ -241,7 +245,7 @@
                                                     【${n.esfResult.estateName}】
                                                 </c:if>
                                                     <%--                                                        由于页面重叠问题隐藏--%>
-                                            <%--                                                <c:if test="${n.xiaoQuResult != null}">--%>
+<%--                                                                                            <c:if test="${n.xiaoQuResult != null}">--%>
 <%--                                                    【${n.xiaoQuResult.estateName}】--%>
 <%--                                                </c:if>--%>
                                             </p>
