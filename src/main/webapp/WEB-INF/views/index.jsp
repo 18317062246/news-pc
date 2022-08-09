@@ -379,7 +379,14 @@
                 <c:forEach items="${jtTypes[0].childList}" var="t" varStatus="status">
                     <c:choose>
                         <%--深圳、深圳海外、北京海外、长沙、惠州、东莞隐藏品牌部、研究院、专家点评--%>
-                        <c:when test="${cityen == 'sz' || cityen == 'szworld' || cityen == 'bjworld' || cityen == 'cs' || cityen == 'hz' || cityen == 'dg'|| cityen == 'gz'}">
+                        <c:when test="${
+                        cityen == 'sz' || cityen == 'szworld' || cityen == 'bjworld' || cityen == 'cs' || cityen == 'hz' || cityen == 'dg'|| cityen == 'gz'||
+                        cityen == 'nb' || cityen == 'xa' || cityen == 'zs' || cityen == 'zq' || cityen == 'zz' || cityen == 'hq'|| cityen == 'nc'||
+                        cityen == 'fz' || cityen == 'sy' || cityen == 'nn' || cityen == 'fs' || cityen == 'hrb' || cityen == 'xm'|| cityen == 'wx'||
+                        cityen == 'xy' || cityen == 'zh' || cityen == 'zj' || cityen == 'ganzhou' || cityen == 'hf' || cityen == 'jn'|| cityen == 'km'||
+                        cityen == 'sh' || cityen == 'bj' || cityen == 'tj' || cityen == 'cd' || cityen == 'cq' || cityen == 'nj'|| cityen == 'wh'||
+                        cityen == 'cc' || cityen == 'dl'
+                        }">
 
                         </c:when>
                         <c:otherwise>

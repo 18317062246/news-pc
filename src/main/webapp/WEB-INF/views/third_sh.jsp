@@ -22,13 +22,13 @@
                     <div class="wiki-item fl">
                         <a target="_blank" href="${right[1].fieldname}"><img src="${right[1].LitPic}" alt="" class="photo">
                             <span title="${right[1].Title}" class="tit">${right[1].Title}</span>
-                            <span title="${right[1].Description}" class="txt">${right[1].Description}</span>
+                            <span title="${right[1].Description}" class="txt">${fn:substring(right[1].Description,0,37)}</span>
                         </a>
                     </div>
                     <div class="wiki-item fr">
                         <a target="_blank" href="${right[2].fieldname}"><img src="${right[2].LitPic}" alt="" class="photo">
                             <span title="${right[2].Title}" class="tit">${right[2].Title}</span>
-                            <span title="${right[2].Description}" class="txt">${right[2].Description}</span>
+                            <span title="${right[2].Description}" class="txt">${fn:substring(right[2].Description,0,37)}</span>
                         </a>
                     </div>
                 </div>
