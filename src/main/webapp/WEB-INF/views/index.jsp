@@ -247,8 +247,8 @@
                                         <c:forEach items="${rightNews}" var="n" begin="0" end="5" varStatus="status">
                                             <c:if test="${t.id==n.TypeID}">
                                                 <dt class="${status.count==1?'curr':''}"><i></i>
-                                                    <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,23)}
-                                                        <c:if test="${n.Title.length() >= 24}">
+                                                    <a href="javacript:void(0);" class="f333 f000" title="${n.Title}">${fn:substring(n.Title,0,19)}
+                                                        <c:if test="${n.Title.length() >= 20}">
                                                             <span>...</span>
                                                         </c:if>
                                                         <span class="index_time">
@@ -263,7 +263,7 @@
                                                         <c:choose>
                                                             <c:when test="${n.LitPic != null && n.LitPic.length() >= 10}">
                                                                 <img src="${fn:substring(n.LitPic, 0 , mfn:lastIndexOf(n.LitPic, "."))}_300x210_c${fn:substring(n.LitPic,mfn:lastIndexOf(n.LitPic, ".") , fn:length(n.LitPic))}"
-                                                                     alt="${n.Title}"/>
+                                                                     alt="${n.Title}" style="padding-bottom: 10px"/>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <img src="${defaultpic}" data-original="${defaultpic}" alt="${n.Title}"
@@ -354,8 +354,8 @@
                                         <c:forEach items="${rightNews}" var="n" varStatus="status">
                                             <c:if test="${t.id==n.TypeID}">
                                                 <li><i></i><a class="f000"
-                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,23)}
-                                                    <c:if test="${n.Title.length() >= 24}">
+                                                              href="/${cityen}/detail/${n.ID}.html" target="_blank" title="${n.Title}">${fn:substring(n.Title,0,19)}
+                                                    <c:if test="${n.Title.length() >= 20}">
                                                         <span>...</span>
                                                     </c:if>
                                                     <span class="index_time">

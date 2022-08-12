@@ -191,7 +191,7 @@ public class NewsServiceImpl implements NewsService {
      * @param location 位置信息
      * @return  获取指定栏目的资讯新闻列表信息
      */
-    private JSONObject getNewListByType(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
+    private JSONObject  getNewListByType(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
         Map<String, Object> map = new HashMap<>();
         map.put(CITYEN, cityen);
         List<Integer> empty = new ArrayList<>();
