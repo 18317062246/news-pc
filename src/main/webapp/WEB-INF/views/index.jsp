@@ -240,7 +240,9 @@
                                 <div class="infor-side-box">
                                     <p class="title-top">
                                         <span class="f18 f333 fb">${t.columnsName}</span>
-                                        <a href="/${cityen}/list/c${t.id}/" class="morelink f000" style="top:5px;">更多</a>
+                                        <c:if test="${rightNews.size() >= 5 }">
+                                            <a href="/${cityen}/list/c${t.id}/" class="morelink f000" style="top:5px;">更多</a>
+                                        </c:if>
                                     </p>
                                     <dl class="infor-side-pB">
                                             <%--遍历文章--%>
