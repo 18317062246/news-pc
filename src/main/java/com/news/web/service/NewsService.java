@@ -42,7 +42,6 @@ public interface NewsService extends Serializable {
      * @return 获取指定栏目的资讯新闻列表信息
      */
     JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location);
-
     JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location,String mark);
 
     /**
