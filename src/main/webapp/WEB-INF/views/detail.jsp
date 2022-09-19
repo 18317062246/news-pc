@@ -23,6 +23,9 @@
     <title> ${detail.Typename}－${citycn}中原地产</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
+    <c:if test="${cityen == 'sh'}">
+        <link rel="stylesheet" href="${staticurl}/css/footer.css">
+    </c:if>
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
