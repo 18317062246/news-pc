@@ -1140,7 +1140,12 @@
 <%--search--%>
 <div class="section-wrap section-search">
     <div class="section">
-        <h2 class="logo fl"><a href="">中原地产</a></h2>
+        <c:if test="${cityen == 'sh'}">
+            <h2 class="newlogo fl"><a href="">中原地产</a></h2>
+        </c:if>
+        <c:if test="${cityen != 'sh'}">
+            <h2 class="logo fl"><a href="">中原地产</a></h2>
+        </c:if>
         <c:if test="${cityen == 'szworld'}">
             <label for="" class="szworldLogo">新房</label>
         </c:if>
