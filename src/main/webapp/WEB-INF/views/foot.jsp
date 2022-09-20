@@ -202,15 +202,13 @@
             <a target="_blank" style="color: #939393;" rel="nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502004627"><img style="margin-right:5px;" src="https://static.centanet.com/pcweb/test/20211230182121/images/police.png?v20211230182121">粤公网安备 44030502004627号</a>
         </p>
         <c:if test="${cityen!='sh'}">
-            <div class="infotxt">
 
-                <img src="https://static.centanet.com/pcweb/v7.6.25/images/download_app3.jpg?v7.6.25" width="60px" height="60px">
-
-                <p>
-                    开发者：中原（中国）房地产代理有限公司<i class="double_words"></i>版本：${footInfo.version}<i class="double_words"></i>更新时间 ：${footInfo.currentDate}<i class="double_words"></i><a href="https://static.centanet.com/agreement/privacy.html" target="_blank" class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" target="_blank" class="tdu cRed">权限详情</a>
-                </p>
-
-            </div>
+            <p class="infotxt">
+                <img src="https://static.centanet.com/pcweb/v7.6.25/images/download_app3.jpg?v7.6.25" alt="" width="60" height="60">
+                开发者：中原（中国）房地产代理有限公司<i class="double_words"></i>版本：${footInfo.version}<i class="double_words">
+            </i>更新时间 ：${footInfo.currentDate}<i class="double_words"></i><a href="https://static.centanet.com/agreement/privacy.html" target="_blank"
+                                                                class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html"
+                                                                                                                        target="_blank" class="tdu cRed">权限详情</a></p>
         </c:if>
 <%--        若城市为上海则修改其页脚信息--%>
         <c:if test="${cityen=='sh'}">
