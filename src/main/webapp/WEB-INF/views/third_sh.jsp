@@ -8,7 +8,7 @@
     <div class="section">
         <div class="title-box clearfix">
             <h5 class="title">房产百科</h5>
-            <p class="r-more fr"><a target="_blank" href="//sh.centanet.com/faxian/">更多房产资讯&nbsp;<span class="fSimSun">&gt;</span></a></p>
+            <p class="r-more fr"><a target="_blank" href="//news.centanet.com/sh/">更多房产资讯&nbsp;<span class="fSimSun">&gt;</span></a></p>
         </div>
         <div class="wikipedia-main clearfix">
             <div class="wikipedia-left fl">
