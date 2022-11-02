@@ -26,9 +26,9 @@
     <dependencies>
         <!-- web start -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
         <!-- web end -->
 
         <!-- test start -->

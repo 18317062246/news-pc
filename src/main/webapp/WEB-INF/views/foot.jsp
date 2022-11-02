@@ -89,6 +89,16 @@
                     <a href="//${cityen}.centanet.com/contact/" target="_blank" rel="nofollow">联系我们</a>
                     <a href="//www.centaline.com.cn/" target="_blank">中原集团</a>
                 </c:if>
+                <c:if test="${cityen == 'sz'}">
+                    <a href="/${cityen}/" target="_blank">最新资讯</a>
+                    <a href="//${cityen}.centanet.com/ershoufang/u7/" target="_blank">最新房源</a>
+                    <a href="//${cityen}.centanet.com/about/" target="_blank">关于我们</a>
+                    <a href="//${cityen}.centanet.com/hr/" target="_blank">加入中原</a>
+                    <a href="//${cityen}.centanet.com/contact/" target="_blank">联系我们</a>
+                    <a href="//${cityen}.centanet.com/links/" target="_blank">友情链接</a>
+                    <a href="//${cityen}.centanet.com/sitemap/" target="_blank">网站地图</a>
+                    <a href="//www.centaline.com.cn/" target="_blank">其它城市</a>
+                </c:if>
 
 
             </p>
@@ -104,7 +114,7 @@
 <%--                            || cityen != 'km' || cityen != 'nb' || cityen != 'zq' || cityen != 'jn' || cityen != 'dl'|| cityen != 'hrb'--%>
 <%--                            || cityen != 'zj'  || cityen != 'cc' || cityen != 'yz' || cityen != 'lz' || cityen != 'zz' || cityen != 'wh'--%>
 <%--                            || cityen != 'nj'  || cityen != 'xa'}">--%>
-            <c:if test="${cityen == 'tj' || cityen == 'gz' || cityen == 'bj' || cityen == 'cd' || cityen == 'sy' || cityen == 'cq' || cityen == 'hq' }">
+            <c:if test="${cityen == 'tj' || cityen == 'gz' || cityen == 'bj' || cityen == 'cd' || cityen == 'sy' || cityen == 'cq' || cityen == 'hq' || cityen == 'hz' || cityen == 'dg' || cityen == 'sz' }">
                 <a href="javascript:;" data-hover="sub-2" onmouseover="cityOver2();" onmouseout="cityOut2();">相关信息</a>
                 <a href="javascript:;" data-hover="sub-3" onmouseover="cityOver3();" onmouseout="cityOut3();">小区检索</a>
             </c:if>
