@@ -69,7 +69,7 @@
                     <a href="//www.centaline.com.cn/" target="_blank">中原集团</a>
                 </c:if>
 
-                <c:if test="${cityen == 'xy' || cityen == 'fs' || cityen == 'nn' || cityen == 'hf' || cityen == 'xm' || cityen == 'wx'
+                <c:if test="${cityen == 'xy' || cityen == 'fs' || cityen == 'nn' || cityen == 'hf' || cityen == 'xm' || cityen == 'wx'|| cityen == 'fz'|| cityen == 'zh'|| cityen == 'zs'
                                 || cityen == 'km' || cityen == 'nb' || cityen == 'zq' || cityen == 'jn'|| cityen == 'hq'|| cityen == 'yz'|| cityen == 'lz'|| cityen == 'zz' }">
                     <a href="//${cityen}.centanet.com/about/" target="_blank" rel="nofollow">关于我们</a>
                     <a href="//${cityen}.centanet.com/contact/" target="_blank" rel="nofollow">联系我们</a>
