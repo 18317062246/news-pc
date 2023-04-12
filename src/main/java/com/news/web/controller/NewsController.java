@@ -932,6 +932,8 @@ public class NewsController {
             return StringResource.THIRD_XZL;
         }else if (StringResource.SH.equals(type)){//上海资讯新页面
             return StringResource.THIRD_SH;
+        }else if (StringResource.JT.equals(type)){//集团资讯新页面
+            return StringResource.THIRD_JT;
         }
         return StringResource.THIRD_HOT;
     }
