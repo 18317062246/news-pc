@@ -814,6 +814,9 @@ public class NewsController {
         List<Map> leftDown = new ArrayList<>();
         List<Map> right = new ArrayList<>();
         List<Map> shleft = new ArrayList<>();
+        List<Map> leftUpTemp = new ArrayList<>();
+        List<Map> leftDownTemp = new ArrayList<>();
+        List<Map> rightTemp = new ArrayList<>();
 
         for (int i = 0; i < types.size(); i++) {
             //文章列表
@@ -833,18 +836,42 @@ public class NewsController {
                 switch (i) {
                     case 0:
                         //左上
-                        leftUp.addAll(news);
+                        for (int i1 = 0; i1 < 10; i1++) {
+                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                leftUpTemp.add(news.get(i1));
+                            }
+                        }
+                        leftUp.addAll(leftUpTemp);
+//                        leftUp.addAll(news);
                         break;
                     case 1:
                         //左下
-                        leftDown.addAll(news);
+                        for (int i1 = 0; i1 < 10; i1++) {
+                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                leftDownTemp.add(news.get(i1));
+                            }
+                        }
+                        leftDown.addAll(leftDownTemp);
+//                        leftDown.addAll(news);
                         break;
                     case 2:
                         //右边
-                        right.addAll(news);
+                        for (int i1 = 0; i1 < 10; i1++) {
+                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                rightTemp.add(news.get(i1));
+                            }
+                        }
+                        right.addAll(rightTemp);
+//                        right.addAll(news);
                         break;
                     default:
-                        leftUp.addAll(news);
+                        for (int i1 = 0; i1 < 10; i1++) {
+                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                leftUpTemp.add(news.get(i1));
+                            }
+                        }
+                        leftUp.addAll(leftUpTemp);
+//                        leftUp.addAll(news);
                 }
             }
         }
