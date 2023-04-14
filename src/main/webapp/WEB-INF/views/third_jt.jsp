@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!-- 资讯-->
-<div class="section-wrap section-zixunlayer">sh
+<div class="section-wrap section-zixunlayer">
     <div class="section">
         <div class="title-box clearfix">
             <h5 class="title">热门资讯</h5>
