@@ -13,39 +13,39 @@
         </div>
         <div class="zixun-content-box clearfix">
             <div class="zixuncolumn-left fl">
-                <div class="zixun-bigpic-item" style="background-image:url(${leftUp[0].LitPic});">
-                    <a href="" class="zixun_link hide"></a>
-                    <p class="title">${leftUp[0].Title}</p>
+                <div class="zixun-bigpic-item" style="background-image:url(${leftUpTemp[0].LitPic})">
+                    <a href="//${websiteSuffix}/${cityen}/detail/${leftUpTemp[0].ID}.html" target="_blank" class="zixun_link"></a>
+                    <p class="title">${leftUpTemp[0].Title}</p>
                 </div>
-                <div class="zixun-bigpic-item hide" style="background-image:url(${leftDown[0].LitPic}) ;">
-                    <a href="" class="zixun_link"></a>
-                    <p class="title">${leftDown[0].Title}</p>
+                <div class="zixun-bigpic-item hide" style="background-image:url(${leftDownTemp[0].LitPic})">
+                    <a href="//${websiteSuffix}/${cityen}/detail/${leftDownTemp[0].ID}.html" target="_blank" class="zixun_link"></a>
+                    <p class="title">${leftDownTemp[0].Title}</p>
                 </div>
-                <div class="zixun-bigpic-item hide" style="background-image:url(${right[0].LitPic})">
-                    <a href="" class="zixun_link"></a>
-                    <p class="title">${right[0].Title}</p>
+                <div class="zixun-bigpic-item hide" style="background-image:url(${rightTemp[0].LitPic})">
+                    <a href="//${websiteSuffix}/${cityen}/detail/${rightTemp[0].ID}.html" target="_blank" class="zixun_link"></a>
+                    <p class="title">${rightTemp[0].Title}</p>
                 </div>
             </div>
             <div class="zixuncolumn-right fr">
                 <ul class="zixuntab-bar clearfix">
-                    <li class="active" index="0">${leftUp[0].TypeName}</li>
-                    <li class="" index="1">${leftDown[0].TypeName}</li>
-                    <li index="2" class="">${right[0].TypeName}</li>
+                    <li class="active" index="0">${leftUpTemp[0].TypeName}</li>
+                    <li class="" index="1">${leftDownTemp[0].TypeName}</li>
+                    <li index="2" class="">${rightTemp[0].TypeName}</li>
                 </ul>
                 <ul class="zixun-cont-list">
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${leftUp[1].ID}.html" target="_blank">${leftUp[1].Title}</a></li>
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${leftUp[2].ID}.html" target="_blank">${leftUp[2].Title}</a></li>
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${leftUp[3].ID}.html" target="_blank">${leftUp[3].Title}</a></li>
+                    <c:forEach items="${leftUp}" var="lp" begin="1" end="6">
+                        <li><a href="//${websiteSuffix}/${cityen}/detail/${lp.ID}.html" target="_blank">${lp.Title}</a></li>
+                    </c:forEach>
                 </ul>
                 <ul class="zixun-cont-list hide">
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${leftDown[1].ID}.html" target="_blank">${leftDown[1].Title}</a></li>
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${leftDown[2].ID}.html" target="_blank">${leftDown[2].Title}</a></li>
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${leftDown[3].ID}.html" target="_blank">${leftDown[3].Title}</a></li>
+                    <c:forEach items="${leftDown}" var="ld" begin="1" end="6">
+                        <li><a href="//${websiteSuffix}/${cityen}/detail/${ld.ID}.html" target="_blank">${ld.Title}</a></li>
+                    </c:forEach>
                 </ul>
                 <ul class="zixun-cont-list hide">
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${right[1].ID}.html" target="_blank">${right[1].Title}</a></li>
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${right[2].ID}.html" target="_blank">${right[2].Title}</a></li>
-                    <li><a href="//${websiteSuffix}/${cityen}/detail/${right[3].ID}.html" target="_blank">${right[3].Title}</a></li>
+                    <c:forEach items="${right}" var="r" begin="1" end="6">
+                        <li><a href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" target="_blank">${r.Title}</a></li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
