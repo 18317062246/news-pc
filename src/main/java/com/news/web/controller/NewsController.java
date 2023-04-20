@@ -842,32 +842,44 @@ public class NewsController {
                 switch (i) {
                     case 0:
                         //左上
-                        for (int i1 = 0; i1 < 7; i1++) {
-                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
-                                leftUpConPic.add(news.get(i1));
+                        if (news.size()<7){
+                            leftUp.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                    leftUpConPic.add(news.get(i1));
+                                }
                             }
+                            leftUpTemp.addAll(leftUpConPic);
                         }
-                        leftUpTemp.addAll(leftUpConPic);
                         leftUp.addAll(news);
                         break;
                     case 1:
                         //左下
-                        for (int i1 = 0; i1 < 7; i1++) {
-                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
-                                leftDownConPic.add(news.get(i1));
+                        if (news.size()<7){
+                            leftDown.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                    leftDownConPic.add(news.get(i1));
+                                }
                             }
+                            leftDownTemp.addAll(leftDownConPic);
                         }
-                        leftDownTemp.addAll(leftDownConPic);
                         leftDown.addAll(news);
                         break;
                     case 2:
                         //右边
-                        for (int i1 = 0; i1 < 7; i1++) {
-                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
-                                rightConPic.add(news.get(i1));
+                        if (news.size()<7){
+                            right.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                    rightConPic.add(news.get(i1));
+                                }
                             }
+                            rightTemp.addAll(rightConPic);
                         }
-                        rightTemp.addAll(rightConPic);
                         right.addAll(news);
                         break;
                     default:
