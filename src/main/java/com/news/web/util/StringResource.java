@@ -55,7 +55,9 @@ public class StringResource implements Serializable {
     public static final String THIRD_HOT = "third_hot";
     public static final String THIRD_BAIKE = "third_baike";
     public static final String LEFT_UP = "leftUp";
+    public static final String LEFT_UP_TEMP = "leftUpTemp";
     public static final String LEFT_DOWN = "leftDown";
+    public static final String LEFT_DOWN_TEMP = "leftDownTemp";
     public static final String SH_LEFT = "shleft";
     public static final String THIRD_SH = "third_sh";
     public static final String SH = "sh";

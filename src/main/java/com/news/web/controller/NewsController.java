@@ -73,6 +73,7 @@ public class NewsController {
      */
     private static final String HOT = "热门专题";
     private static final String RIGHT = "right";
+    private static final String RIGHT_TEMP = "rightTemp";
     private static final String BAIKE = "baike";
     private static final String CENTANET = "jtyy";
     private static final String BAIKE_TYPE = "baiketype";
@@ -814,9 +815,14 @@ public class NewsController {
         List<Map> leftDown = new ArrayList<>();
         List<Map> right = new ArrayList<>();
         List<Map> shleft = new ArrayList<>();
-        List<Map> leftUpTemp = new ArrayList<>();
+        //这是筛选存储只带图片资讯
+        List<Map> leftUpConPic = new ArrayList<>();
+        List<Map> leftDownConPic = new ArrayList<>();
+        List<Map> rightConPic = new ArrayList<>();
+        //带有图片的集合
         List<Map> leftDownTemp = new ArrayList<>();
         List<Map> rightTemp = new ArrayList<>();
+        List<Map> leftUpTemp = new ArrayList<>();
 
         for (int i = 0; i < types.size(); i++) {
             //文章列表
@@ -836,42 +842,46 @@ public class NewsController {
                 switch (i) {
                     case 0:
                         //左上
-                        for (int i1 = 0; i1 < 10; i1++) {
+                        for (int i1 = 0; i1 < 7; i1++) {
                             if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
-                                leftUpTemp.add(news.get(i1));
+                                leftUpConPic.add(news.get(i1));
                             }
                         }
-                        leftUp.addAll(leftUpTemp);
-//                        leftUp.addAll(news);
+                        leftUpTemp.addAll(leftUpConPic);
+                        leftUp.addAll(news);
                         break;
                     case 1:
                         //左下
-                        for (int i1 = 0; i1 < 10; i1++) {
+                        for (int i1 = 0; i1 < 7; i1++) {
                             if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
-                                leftDownTemp.add(news.get(i1));
+                                leftDownConPic.add(news.get(i1));
                             }
                         }
-                        leftDown.addAll(leftDownTemp);
-//                        leftDown.addAll(news);
+                        leftDownTemp.addAll(leftDownConPic);
+                        leftDown.addAll(news);
                         break;
                     case 2:
                         //右边
-                        for (int i1 = 0; i1 < 10; i1++) {
+                        for (int i1 = 0; i1 < 7; i1++) {
                             if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
-                                rightTemp.add(news.get(i1));
+                                rightConPic.add(news.get(i1));
                             }
                         }
-                        right.addAll(rightTemp);
-//                        right.addAll(news);
+                        rightTemp.addAll(rightConPic);
+                        right.addAll(news);
                         break;
                     default:
-                        for (int i1 = 0; i1 < 10; i1++) {
-                            if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
-                                leftUpTemp.add(news.get(i1));
+                        if (news.size()<7){
+                            leftUp.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))) {
+                                    leftUpConPic.add(news.get(i1));
+                                }
                             }
+                            leftUpTemp.addAll(leftUpConPic);
                         }
-                        leftUp.addAll(leftUpTemp);
-//                        leftUp.addAll(news);
+                        leftUp.addAll(news);
                 }
             }
         }
@@ -925,9 +935,12 @@ public class NewsController {
 
 
         model.addAttribute(StringResource.LEFT_UP, leftUp);
+        model.addAttribute(StringResource.LEFT_UP_TEMP, leftUpTemp);
         model.addAttribute(StringResource.SH_LEFT, shleft);
         model.addAttribute(StringResource.LEFT_DOWN, leftDown);
+        model.addAttribute(StringResource.LEFT_DOWN_TEMP, leftDownTemp);
         model.addAttribute(RIGHT, right);
+        model.addAttribute(RIGHT_TEMP, rightTemp);
         model.addAttribute(TYPES, types);
         if (StringResource.INDEX.equals(type)) {//二手房
             return StringResource.THIRD_ESF;
