@@ -28,9 +28,9 @@
             </div>
             <div class="zixuncolumn-right fr">
                 <ul class="zixuntab-bar clearfix">
-                    <li class="active" index="0">${leftUpTemp[0].TypeName}</li>
-                    <li class="" index="1">${leftDownTemp[0].TypeName}</li>
-                    <li index="2" class="">${rightTemp[0].TypeName}</li>
+                    <li class="active" index="0">${leftUp[0].TypeName}</li>
+                    <li class="" index="1">${leftDown[0].TypeName}</li>
+                    <li index="2" class="">${right[0].TypeName}</li>
                 </ul>
                 <ul class="zixun-cont-list">
                     <c:forEach items="${leftUp}" var="lp" begin="1" end="6">

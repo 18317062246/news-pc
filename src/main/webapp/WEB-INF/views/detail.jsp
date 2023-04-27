@@ -26,7 +26,8 @@
     <c:if test="${cityen == 'sh'}">
         <link rel="stylesheet" href="${staticurl}/css/footer.css">
     </c:if>
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+<%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
+    <link rel="stylesheet" href="${staticurl}/css/keio.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">

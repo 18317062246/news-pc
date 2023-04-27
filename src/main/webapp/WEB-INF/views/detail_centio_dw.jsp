@@ -50,7 +50,7 @@
 </head>
 <body onload="loadNewsViewHistory();">
 <%--head--%>
-<%@include file="/WEB-INF/views/head.jsp" %>
+<%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>
 <!-- S;centmain-wraper -->
 <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
 <div class="centmain-wraper centmain-wraper-infor">

@@ -1099,6 +1099,12 @@
                     </c:when>
                     </c:choose>
             </ul>
+
+    <c:if test="${cityen == 'sz'}">
+        <p class="hot-phone fr" style="width: 175px;font-size:10px;">监督管理电话：${cityComplaintTelphone}</p>
+    </c:if>
+<%--    <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 186px;font-size:10px;' :'width: 200px;'}">${cityen == 'sz' ? '&nbsp;&nbsp;咨询' : ''}热线：${cityTelphone}</p>--%>
+    <p class="hot-phone fr"><i class="phone-ico"></i>${cityTelphone}</p>
 <%--            深圳登录页面--%>
 <%--            <div class="login-iframe_sz fl">--%>
 <%--                <div class="login-info" id="loginInfo">--%>
@@ -1109,9 +1115,17 @@
 <%--            </div>--%>
     <c:if test="${cityen != 'sz'}">
             <div class="login-iframe fr" >
-<%--                我的中原--%>
-                <iframe src="https://passport.centanet.com/top/" id="iframeA" name="iframeA"  loginsrc="https://passport.centanet.com/top/" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
-
+<%--我的中原--%>
+    <div class="login-info">
+        <a class="first" href="//testwap.centanet.com/login?reurl=http://tj-testweb.centaline.com.cn/xinfang/"><i class="user-ico"></i>我的中原</a>
+        <div class="login_tip" style="display: none;">
+            <div class="mui-mbar-arr">◆</div>
+            <a href="//testwap.centanet.com/login?reurl=http://tj-testweb.centaline.com.cn/xinfang/" style="display:block" class="yellow_btn">登录</a>
+            <a href="//testwap.centanet.com/entrust?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的房源</a>
+            <a href="//testwap.centanet.com/searchhistory?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的意向</a>
+            <a href="//testwap.centanet.com/care/ershoufang/?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的关注</a>
+        </div>
+    </div>
              </div>
     </c:if>
 
@@ -1128,56 +1142,102 @@
             </div>
     </c:if>
 
-        <c:if test="${cityen == 'sz'}">
-            <p class="hot-phone fr" style="width: 175px;font-size:10px;">监督管理电话：${cityComplaintTelphone}</p>
-        </c:if>
-        <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 186px;font-size:10px;' :'width: 200px;'}">${cityen == 'sz' ? '&nbsp;&nbsp;咨询' : ''}热线：${cityTelphone}</p>
-
 
     </div>
 </div>
 </c:if>
-<%--search--%>
-<div class="section-wrap section-search">
-    <div class="section">
-        <c:if test="${cityen == 'sh'}">
-            <h2 class="newlogo fl"><a href="">中原地产</a></h2>
-        </c:if>
-        <c:if test="${cityen != 'sh'}">
-            <h2 class="logo fl"><a href="">中原地产</a></h2>
-        </c:if>
-        <c:if test="${cityen == 'szworld'}">
-            <label for="" class="szworldLogo">新房</label>
-        </c:if>
 
-        <div class="clear"></div>
-        <div class="search-box fl">
-            <div class="search-entry">
-                <div class="sear_choosebox" id="">
-                    <c:if test="${cityen == 'szworld'}">
-                        <span class="type-txt">新房</span>
-                        <input id="J_searchtype" value="1" type="hidden"/>
-                    </c:if>
-                    <c:if test="${cityen != 'szworld'}">
+
+<%--  集团城市搜索框页面 新页面版本号v10-p1  --%>
+
+    <div class="section-wrap section-search">
+        <div class="section">
+            <a href="/" title="天津中原地产" class="logo fl">中原地产</a>
+            <label for="" class="column"></label>
+            <div class="fr download-app">
+                <a href="/app/download/" target="_blank"><i class="icons-phone"></i></a>
+            </div>
+            <div class="search-box fl">
+                <div class="search-entry ">
+                    <div class="sear_choosebox" id="">
+
+
                         <span class="type-txt">资讯</span>
-                        <input id="J_searchtype" value="0" type="hidden"/>
-                    </c:if>
+                        <input id="J_searchtype" value="0" type="hidden">
+
+
+                    </div>
+                    <span class="line"></span>
+
+                    <span class="icons-search"></span>
+
+                    <input class="search-ipt" placeholder="请输入资讯标题或内容" type="text" value="">
+
 
                 </div>
-                <span class="line"></span>
-                <span class="icons-search"></span>
-                <c:if test="${cityen != 'szworld'}">
-                    <input class="search-ipt" placeholder="请输入资讯标题或内容" type="text" value="${key}">
-                </c:if>
-                <c:if test="${cityen == 'szworld'}">
-                    <input class="search-ipt" placeholder="请输入国家/城市/楼盘名" type="text">
-                </c:if>
-            </div><button type="image" class="icons-searchred-btn"><span>马上搜</span></button>
+
+            </div>
+            <div id="searchHotKey" data-source="99" style="width: 330px;" class="fl"></div>
+            <div></div>
+            <div class="clear"></div>
+
         </div>
-        <%--<a href="" class="icons-map fl"></a>--%>
-        <div class="clear"></div>
     </div>
-</div>
+
+
+
+
+
+
+
+
+<%--原始搜索框页面  湾区城市搜索框页面--%>
+<%--<c:if test="${cityen == 'sz' || cityen == 'zh' || cityen == 'dg'  || cityen == 'cs' || cityen == 'zs' || cityen == 'gz' || cityen == 'fz'}">--%>
+<%--&lt;%&ndash;<c:if test="${cityen ==sz} || ${cityen ==zh}||${cityen ==dg}||${cityen ==cs}||${cityen ==zs}||${cityen ==gz}||${cityen ==fz} ">&ndash;%&gt;--%>
+<%--<c:if test="${cityen == 'zh'}">--%>
+<%--    <div class="section-wrap section-search">--%>
+<%--        <div class="section">--%>
+<%--            <c:if test="${cityen == 'sh'}">--%>
+<%--                <h2 class="newlogo fl"><a href="">中原地产</a></h2>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${cityen != 'sh'}">--%>
+<%--                <h2 class="logo fl"><a href="">中原地产</a></h2>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${cityen == 'szworld'}">--%>
+<%--                <label for="" class="szworldLogo">新房</label>--%>
+<%--            </c:if>--%>
+
+<%--            <div class="clear"></div>--%>
+<%--            <div class="search-box fl">--%>
+<%--                <div class="search-entry">--%>
+<%--                    <div class="sear_choosebox" id="">--%>
+<%--                        <c:if test="${cityen == 'szworld'}">--%>
+<%--                            <span class="type-txt">新房</span>--%>
+<%--                            <input id="J_searchtype" value="1" type="hidden"/>--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${cityen != 'szworld'}">--%>
+<%--                            <span class="type-txt">资讯</span>--%>
+<%--                            <input id="J_searchtype" value="0" type="hidden"/>--%>
+<%--                        </c:if>--%>
+
+<%--                    </div>--%>
+<%--                    <span class="line"></span>--%>
+<%--                    <span class="icons-search"></span>--%>
+<%--                    <c:if test="${cityen != 'szworld'}">--%>
+<%--                        <input class="search-ipt" placeholder="请输入资讯标题或内容" type="text" value="${key}">--%>
+<%--                    </c:if>--%>
+<%--                    <c:if test="${cityen == 'szworld'}">--%>
+<%--                        <input class="search-ipt" placeholder="请输入国家/城市/楼盘名" type="text">--%>
+<%--                    </c:if>--%>
+<%--                </div><button type="image" class="icons-searchred-btn"><span>马上搜</span></button>--%>
+<%--            </div>--%>
+<%--                &lt;%&ndash;<a href="" class="icons-map fl"></a>&ndash;%&gt;--%>
+<%--            <div class="clear"></div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</c:if>--%>
+<%--</c:if>--%>
+
 
 
 <script type="text/javascript">

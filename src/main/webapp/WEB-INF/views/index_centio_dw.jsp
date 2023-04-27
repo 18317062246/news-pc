@@ -53,7 +53,7 @@
 <body>
 <%--head--%>
 <c:if test="${cityen != 'sz'}">
-    <%@include file="/WEB-INF/views/head.jsp" %>
+    <%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>
 </c:if>
 <c:if test="${cityen == 'sz'}">
     <%@include file="/WEB-INF/views/head_sz.jsp" %>

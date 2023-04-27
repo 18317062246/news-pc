@@ -16,7 +16,8 @@
     <title>${citycn}房地产资讯_${citycn}最新房产新闻－${citycn}中原地产</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+<%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
+    <link rel="stylesheet" href="${staticurl}/css/keio.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">

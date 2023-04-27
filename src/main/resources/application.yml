@@ -17,9 +17,8 @@ log:
 #静态文件版本号
 static:
     #url: http://static.dev.com.cn:8118
-#  url: https://static.centanet.com/news/2022080470/pc
-#  url: https://static.centanet.com/news/2023042075/pc
-  url: https://static.centanet.com/news/2022091673/pc
+#  url: https://static.centanet.com/news/2023042075/5/pc
+  url: https://static.centanet.com/news/2023042776/pc
 
 
 #城市集合
@@ -36,5 +35,5 @@ deal:
 centanet:
   research: http://ccdata.com.cn/
 dw:
-  citys: sz,zs,zh
+  citys: sz,zs,zh,fz,dg,cs,hk,gz,nc,ganzhou
 
