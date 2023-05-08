@@ -30,7 +30,9 @@
                 <ul class="zixuntab-bar clearfix">
                     <li class="active" index="0">${leftUp[0].TypeName}</li>
                     <li class="" index="1">${leftDown[0].TypeName}</li>
-                    <li index="2" class="">${right[0].TypeName}</li>
+                    <c:if test="${right.size() != 0}">
+                        <li index="2" class="">${right[0].TypeName}</li>
+                    </c:if>
                 </ul>
                 <ul class="zixun-cont-list">
                     <c:forEach items="${leftUp}" var="lp" begin="1" end="6">
