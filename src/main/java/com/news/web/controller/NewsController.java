@@ -47,7 +47,6 @@ public class NewsController {
 
     @Value("${api.domain}")
     public String apiurl;
-
     @Value("${static.url}")
     public String staticurl;
     @Value("${deal.citys}")
@@ -361,9 +360,12 @@ public class NewsController {
         //获取集团资讯的栏目类型
         List<NewsType> jtyyTypes =  newsService.typeList(CENTANET, null);
         //判断当前的分类id是否和集团右侧栏目的id相等，若相等，就取出对应的栏目名称
-        List<NewsType> jtyyCurrTypes = jtyyTypes.get(0).getChildList().stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
-        if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
-            model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
+        if (jtyyTypes.size()!=0){
+            List<NewsType> jtyyCurrTypes = jtyyTypes.get(0).getChildList().stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
+            if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
+                model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
+        }
+
         }
 
         //判断是否为搜索页面
@@ -387,13 +389,16 @@ public class NewsController {
         }
         //文章列表
         JSONObject result = newsService.newsList(cityen, typeid, page, pagesize, null, key, null);
-        for (NewsType t : jtyyTypes.get(0).getChildList()) {
-            //若是集团栏目类型用jtyy查询获取文章列表
-            if (!ObjectUtils.isEmpty(type) && type.equals(t.getId())) {
-                log.info("当前栏目type是集团栏目类型=>{}", type);
-                result = newsService.newsList(CENTANET, typeid, page, pagesize, null, key, null);
+        if (jtyyTypes.size() != 0){
+            for (NewsType t : jtyyTypes.get(0).getChildList()) {
+                //若是集团栏目类型用jtyy查询获取文章列表
+                if (!ObjectUtils.isEmpty(type) && type.equals(t.getId())) {
+                    log.info("当前栏目type是集团栏目类型=>{}", type);
+                    result = newsService.newsList(CENTANET, typeid, page, pagesize, null, key, null);
+                }
             }
         }
+
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
         //是否有百科栏目
         List<NewsType> baiketype =  newsService.typeList(cityen, BAIKE);
