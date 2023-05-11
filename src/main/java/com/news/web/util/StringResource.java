@@ -63,6 +63,8 @@ public class StringResource implements Serializable {
     public static final String SH = "sh";
     public static final String JT = "jt";
     public static final String THIRD_JT = "third_jt";
+    public static final String TJ_SIDE = "tjside";
+    public static final String THIRD_TJSIDE = "third_tjside";
 
     /**
      * 定义获取当前年的格式
