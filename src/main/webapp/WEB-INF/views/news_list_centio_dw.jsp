@@ -16,7 +16,13 @@
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/pager_inner.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    <c:if test="${cityen == 'sz'}">
+        <link rel="stylesheet" href="${staticurl}/css/headp2_sz.css">
+    </c:if>
+    <c:if test="${cityen != 'sz'}">
+        <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    </c:if>
+<%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
@@ -43,7 +49,12 @@
 </head>
 <body>
 <%--head--%>
-<%@include file="/WEB-INF/views/head.jsp" %>
+<c:if test="${cityen != 'sz'}">
+    <%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>
+</c:if>
+<c:if test="${cityen == 'sz'}">
+    <%@include file="/WEB-INF/views/head_sz.jsp" %>
+</c:if>
 
 <div class="centmain-wraper centmain-wraper-infor">
     <div class="centmain-inner">
