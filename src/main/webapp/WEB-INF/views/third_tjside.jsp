@@ -17,7 +17,7 @@
         <a href="https://news.centanet.com/tj/list/c1010/" target="_blank" class="more-link">查看更多<span class="fSimSun">&gt;</span></a>
     </div>
     <ul class="brokerquestion-list">
-            <c:forEach items="${leftUp}" var="l" begin="0" end="5">
+            <c:forEach items="${leftUp}" var="l" begin="0" end="15">
                 <li class="ask-item"><a href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" target="_blank">${l.Title}</a><span class="date"><jsp:useBean id="myDate" class="java.util.Date"/>
                 <c:set target="${myDate}" property="time" value="${l.PublishDate*1000}"/>
                 <fmt:formatDate pattern="yyyy-MM-dd" value="${myDate}" type="both"/></span></li>
