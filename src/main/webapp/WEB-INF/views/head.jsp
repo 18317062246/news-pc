@@ -1279,7 +1279,7 @@
         }
     }
     //点击搜索
-    $(".icons-searchred-btn").click(function () {
+    $(".icons-search").click(function () {
         let type = $("#J_searchtype").val() || 0;
         location.href = getlink(type);
     })
