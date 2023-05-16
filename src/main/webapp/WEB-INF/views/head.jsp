@@ -1117,15 +1117,16 @@
             <div class="login-iframe fr" >
 <%--我的中原--%>
     <div class="login-info">
-        <a class="first" href="//testwap.centanet.com/login?reurl=http://tj-testweb.centaline.com.cn/xinfang/"><i class="user-ico"></i>我的中原</a>
+        <a class="first" href="//passport.centanet.com/login?reurl=http://news.centanet.com/${cityen}/"><i class="user-ico"></i>我的中原</a>
         <div class="login_tip" style="display: none;">
             <div class="mui-mbar-arr">◆</div>
-            <a href="//testwap.centanet.com/login?reurl=http://tj-testweb.centaline.com.cn/xinfang/" style="display:block" class="yellow_btn">登录</a>
-            <a href="//testwap.centanet.com/entrust?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的房源</a>
-            <a href="//testwap.centanet.com/searchhistory?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的意向</a>
-            <a href="//testwap.centanet.com/care/ershoufang/?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的关注</a>
+            <a href="//passport.centanet.com/login?reurl=http://news.centanet.com/${cityen}/" style="display:block" class="yellow_btn">登录</a>
+            <a href="//passport.centanet.com/entrust/">我的委托</a>
+            <a href="//passport.centanet.com/searchhistory/">我的意向</a>
+            <a href="//passport.centanet.com/care/ershoufang/">我的关注</a>
         </div>
     </div>
+
              </div>
     </c:if>
 
