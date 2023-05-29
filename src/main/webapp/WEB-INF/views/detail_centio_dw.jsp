@@ -17,7 +17,9 @@
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
-    <title> ${detail.Typename}－${citycn}中原地产</title>
+<%--    <title> ${detail.Typename}－${citycn}中原地产</title>--%>
+<%--    湾区城市title修改为当前资讯标题--%>
+    <title> ${detail.Title}_${citycn}中原找房</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
