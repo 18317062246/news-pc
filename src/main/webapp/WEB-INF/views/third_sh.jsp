@@ -12,7 +12,7 @@
         </div>
         <div class="wikipedia-main clearfix">
             <div class="wikipedia-left fl">
-                <a  target="_blank" href="${right[0].fieldname}"><img src="${right[0].LitPic}"alt="" class="bigphoto">
+                <a  target="_blank" href="${right[0].fieldname}"><img src="${right[0].LitPic}"alt="${right[0].Title}" class="bigphoto">
                     <span title="${right[0].Title}" class="tit">${right[0].Title}</span>
                     <span title="${right[0].Description}" class="txt">${right[0].Description}</span>
                 </a>
@@ -20,20 +20,20 @@
             <div class="wikipedia-right fr">
                 <div class="head clearfix">
                     <div class="wiki-item fl">
-                        <a target="_blank" href="${right[1].fieldname}"><img src="${right[1].LitPic}" alt="" class="photo">
+                        <a target="_blank" href="${right[1].fieldname}"><img src="${right[1].LitPic}" alt="${right[1].Title}" class="photo">
                             <span title="${right[1].Title}" class="tit">${right[1].Title}</span>
                             <span title="${right[1].Description}" class="txt">${fn:substring(right[1].Description,0,37)}</span>
                         </a>
                     </div>
                     <div class="wiki-item fr">
-                        <a target="_blank" href="${right[2].fieldname}"><img src="${right[2].LitPic}" alt="" class="photo">
+                        <a target="_blank" href="${right[2].fieldname}"><img src="${right[2].LitPic}" alt="${right[2].Title}" class="photo">
                             <span title="${right[2].Title}" class="tit">${right[2].Title}</span>
                             <span title="${right[2].Description}" class="txt">${fn:substring(right[2].Description,0,37)}</span>
                         </a>
                     </div>
                 </div>
                 <div class="wikibot">
-                    <a target="_blank" href="${right[3].fieldname}"><img src="${right[3].LitPic}" alt="" class="crossphoto">
+                    <a target="_blank" href="${right[3].fieldname}"><img src="${right[3].LitPic}" alt="${right[3].Title}" class="crossphoto">
                         <span title="${right[3].Title}" class="tit">${right[3].Title}</span>
                         <span title="${right[3].Description}" class="txt">${right[3].Description}</span>
                     </a>
