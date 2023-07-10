@@ -28,7 +28,6 @@ static:
 #    - sh: 上海
 #成交走势信息
 deal:
-  #citys: bj,dg,nj,fs,zq
   citys: dg,gz,hz
   url: https://act.centanet.com/www/scripts/loader4app.php
 # 配置信息
