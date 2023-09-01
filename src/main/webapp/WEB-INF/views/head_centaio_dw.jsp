@@ -1107,7 +1107,12 @@
 
                         </div>
                     </c:if>
-                    <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 186px;font-size:10px;' :'width: 200px;'}">${cityen == 'sz' ? '&nbsp;&nbsp;咨询' : ''}热线：${cityTelphone}</p>
+                    <c:if test="${cityen == 'gz'}">
+                        <p class="hot-phone fr" style="${'width: 280px;'}">咨询热线：${cityTelphone}</p>
+                    </c:if>
+                    <c:if test="${cityen != 'gz'}">
+                        <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 186px;font-size:10px;' :'width: 200px;'}">${cityen == 'sz' ? '&nbsp;&nbsp;咨询' : ''}热线：${cityTelphone}</p>
+                    </c:if>
 <%--            <p class="hot-phone fr"><i class="phone-ico"></i>${cityTelphone}</p>--%>
                 <%--            深圳登录页面--%>
                 <%--            <div class="login-iframe_sz fl">--%>

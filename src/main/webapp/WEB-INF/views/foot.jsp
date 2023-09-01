@@ -103,9 +103,13 @@
 
             </p>
 
+            <c:if test="${cityen == 'gz'}">
+                <p class="side">咨询热线 <span class="cRed">${cityTelphone}</span> </p>
+            </c:if>
+            <c:if test="${cityen != 'gz'}">
+                <p class="side">拨打热线 <span class="cRed">${cityTelphone}</span> </p>
+            </c:if>
 
-
-            <p class="side">拨打热线 <span class="cRed">${cityTelphone}</span> </p>
         </div>
         <p class="sub-link">
             <a href="javascript:;" data-hover="sub-1" onmouseover="cityOver();"  onmouseout="cityOut();">热门城市</a>
