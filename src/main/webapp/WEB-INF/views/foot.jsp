@@ -231,9 +231,12 @@
                     <img src="https://static.centanet.com/news/2022080470/pc/images/mlicense.jpg" alt="">
                 </a>
                 <div class="js_gio_code" data-type="dibu" data-size="60"><img src="https://static.centanet.com/pcweb/v7.6.25/images/download_app3.jpg?v7.6.25" alt="" width="60" height="60"></div>
-                <span class="block">开发者：中原（中国）房地产代理有限公司</span>
-                <span class="block">版本：${footInfo.version}</span>
-                <span class="block">更新时间 ：${footInfo.currentDate}<i class="double_words"></i><a href="https://static.centanet.com/agreement/privacy.html" target="_blank" class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" target="_blank" class="tdu cRed permissions_btn">权限详情</a></span>
+                <div class="js_appinfo"><span class="block">APP名称：中原找房<i class="double_words"></i>版本号：7.42.6<i class="double_words"></i>更新：2023年09月21日</span><span class="block">开发运营商：中原（中国）房地产代理有限公司</span><span class="block"><a href="https://static.centanet.com/agreement/privacy.html" class="tdu cRed" target="_blank">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" class="tdu cRed" target="_blank">权限列表</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/product.html" class="tdu cRed" target="_blank">产品功能</a></span></div>
+<%--                <span class="block">开发者：中原（中国）房地产代理有限公司</span>--%>
+<%--                <span class="block">版本：${footInfo.version}</span>--%>
+<%--                <span class="block">更新时间 ：${footInfo.currentDate}<i class="double_words"></i><a href="https://static.centanet.com/agreement/privacy.html" target="_blank" class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" target="_blank" class="tdu cRed permissions_btn">权限详情</a>--%>
+<%--                <i class="double_words"></i><a href="https://static.centanet.com/agreement/product.html" class="tdu cRed" target="_blank">产品功能</a>--%>
+<%--                </span>--%>
             </div>
         </c:if>
 
