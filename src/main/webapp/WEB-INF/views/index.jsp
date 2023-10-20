@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
-<c:if test="${cityen == 'sh'}">
+<%--<c:if test="${cityen == 'sh'}">--%>
     <link rel="stylesheet" href="${staticurl}/css/footer.css">
-</c:if>
+<%--</c:if>--%>
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/js/jquery.slides.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>

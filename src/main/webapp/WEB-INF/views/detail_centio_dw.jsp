@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    <link rel="stylesheet" href="${staticurl}/css/footer.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">

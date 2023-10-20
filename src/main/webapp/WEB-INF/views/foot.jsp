@@ -114,10 +114,6 @@
         <p class="sub-link">
             <a href="javascript:;" data-hover="sub-1" onmouseover="cityOver();"  onmouseout="cityOut();">热门城市</a>
 <%--            以下城市都没有相关信息以及小区查询--%>
-<%--            <c:if test="${cityen != 'xy'  || cityen != 'fs' || cityen != 'nn' || cityen != 'hf' || cityen != 'xm' || cityen != 'wx'--%>
-<%--                            || cityen != 'km' || cityen != 'nb' || cityen != 'zq' || cityen != 'jn' || cityen != 'dl'|| cityen != 'hrb'--%>
-<%--                            || cityen != 'zj'  || cityen != 'cc' || cityen != 'yz' || cityen != 'lz' || cityen != 'zz' || cityen != 'wh'--%>
-<%--                            || cityen != 'nj'  || cityen != 'xa'}">--%>
             <c:if test="${cityen == 'tj' || cityen == 'gz' || cityen == 'bj' || cityen == 'cd' || cityen == 'sy' || cityen == 'cq' || cityen == 'hq' || cityen == 'hz' || cityen == 'dg' || cityen == 'sz' }">
                 <a href="javascript:;" data-hover="sub-2" onmouseover="cityOver2();" onmouseout="cityOut2();">相关信息</a>
                 <a href="javascript:;" data-hover="sub-3" onmouseover="cityOver3();" onmouseout="cityOut3();">小区检索</a>
@@ -215,30 +211,40 @@
         <p class="police">
             <a target="_blank" style="color: #939393;" rel="nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502004627"><img style="margin-right:5px;" src="https://static.centanet.com/pcweb/test/20211230182121/images/police.png?v20211230182121">粤公网安备 44030502004627号</a>
         </p>
-        <c:if test="${cityen!='sh'}">
+<%--        其余城市页脚--%>
+        <c:if test="${cityen !='sh'}">
 
-            <p class="infotxt">
-                <img src="https://static.centanet.com/pcweb/v7.6.25/images/download_app3.jpg?v7.6.25" alt="" width="60" height="60">
-                开发者：中原（中国）房地产代理有限公司<i class="double_words"></i>版本：${footInfo.version}<i class="double_words">
-            </i>更新时间 ：${footInfo.currentDate}<i class="double_words"></i><a href="https://static.centanet.com/agreement/privacy.html" target="_blank"
-                                                                class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html"
-                                                                                                                        target="_blank" class="tdu cRed">权限详情</a></p>
-        </c:if>
-<%--        若城市为上海则修改其页脚信息--%>
-        <c:if test="${cityen=='sh'}">
             <div class="infotxt clearfix">
-                <a href="https://sh.centanet.com/about/#6F" class="license" target="_blank">
-                    <img src="https://static.centanet.com/news/2022080470/pc/images/mlicense.jpg" alt="">
+                <a href="" class="zyzflogo">
+                    <img src="https://static.centanet.com/news/2023042075/6/20231020/pc/images/zyzflogo.png" alt="">
                 </a>
-                <div class="js_gio_code" data-type="dibu" data-size="60"><img src="https://static.centanet.com/pcweb/v7.6.25/images/download_app3.jpg?v7.6.25" alt="" width="60" height="60"></div>
-                <div class="js_appinfo"><span class="block">APP名称：中原找房<i class="double_words"></i>版本号：7.42.6<i class="double_words"></i>更新：2023年09月21日</span><span class="block">开发运营商：中原（中国）房地产代理有限公司</span><span class="block"><a href="https://static.centanet.com/agreement/privacy.html" class="tdu cRed" target="_blank">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" class="tdu cRed" target="_blank">权限列表</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/product.html" class="tdu cRed" target="_blank">产品功能</a></span></div>
-<%--                <span class="block">开发者：中原（中国）房地产代理有限公司</span>--%>
-<%--                <span class="block">版本：${footInfo.version}</span>--%>
-<%--                <span class="block">更新时间 ：${footInfo.currentDate}<i class="double_words"></i><a href="https://static.centanet.com/agreement/privacy.html" target="_blank" class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" target="_blank" class="tdu cRed permissions_btn">权限详情</a>--%>
-<%--                <i class="double_words"></i><a href="https://static.centanet.com/agreement/product.html" class="tdu cRed" target="_blank">产品功能</a>--%>
-<%--                </span>--%>
+                <div class="js_gio_code" data-type="dibu" data-size="60"><img src="https://static.centanet.com/news/2023042075/6/20231020/pc/images/twocodeimg.jpg" alt="" width="60" height="60"></div>
+
+                <div class="fl js_appinfo"><span class="block">APP名称：中原找房<i class="double_words"></i>版本号：${footInfo.version}<i class="double_words"></i>更新：${footInfo.currentDate}</span>
+                    <span class="block">开发运营商：中原（中国）房地产代理有限公司</span>
+                    <span class="block"><a href="https://static.centanet.com/agreement/privacy.html" target="_blank" class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" target="_blank" class="tdu cRed permissions_btn">权限列表</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/product.html" target="_blank" class="tdu cRed">产品功能</a></span></div>
             </div>
         </c:if>
+
+
+<%--        上海城市页脚信息--%>
+        <c:if test="${cityen == 'sh'}">
+            <div class="infotxt clearfix">
+                <a href="" class="zyzflogo">
+                    <img src="https://static.centanet.com/news/2023042075/6/20231020/pc/images/zyzflogo.png" alt="">
+                </a>
+                <a href="" class="license">
+                    <img src="https://static.centanet.com/news/2023042075/6/20231020/pc/images/mlicense.jpg" alt="">
+                </a>
+                <div class="js_gio_code" data-type="dibu" data-size="60"><img src="https://static.centanet.com/news/2023042075/6/20231020/pc/images/twocodeimg.jpg" alt="" width="60" height="60"></div>
+
+                <div class="fl js_appinfo"><span class="block">APP名称：中原找房<i class="double_words"></i>版本号：${footInfo.version}<i class="double_words"></i>更新：${footInfo.currentDate}</span>
+                    <span class="block">开发运营商：中原（中国）房地产代理有限公司</span>
+                    <span class="block"><a href="https://static.centanet.com/agreement/privacy.html" target="_blank" class="tdu cRed">隐私政策</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/authority.html" target="_blank" class="tdu cRed permissions_btn">权限列表</a><i class="double_words"></i><a href="https://static.centanet.com/agreement/product.html" target="_blank" class="tdu cRed">产品功能</a></span></div>
+            </div>
+
+        </c:if>
+
 
     </div>
 </div>

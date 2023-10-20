@@ -17,8 +17,8 @@ log:
 #静态文件版本号
 static:
     #url: http://static.dev.com.cn:8118
-#  url: https://static.centanet.com/news/2023042075/5/pc
-  url: https://static.centanet.com/news/2023042776/pc
+  url: https://static.centanet.com/news/2023042075/6/20231020/pc
+#  url: https://static.centanet.com/news/2023042776/pc
 
 
 #城市集合
