@@ -13,15 +13,15 @@
         </div>
         <div class="zixun-content-box clearfix">
             <div class="zixuncolumn-left fl">
-                <div class="zixun-bigpic-item" style="background-image:url(${leftUpTemp[0].LitPic})">
+                <div class="zixun-bigpic-item" style="background-image:url(${leftUpTemp[0].LitPic});background-position: center center;background-size: cover;">
                     <a href="//${websiteSuffix}/${cityen}/detail/${leftUpTemp[0].ID}.html" target="_blank" class="zixun_link"></a>
                     <p class="title">${leftUpTemp[0].Title}</p>
                 </div>
-                <div class="zixun-bigpic-item hide" style="background-image:url(${leftDownTemp[0].LitPic})">
+                <div class="zixun-bigpic-item hide" style="background-image:url(${leftDownTemp[0].LitPic});background-position: center center;background-size: cover;">
                     <a href="//${websiteSuffix}/${cityen}/detail/${leftDownTemp[0].ID}.html" target="_blank" class="zixun_link"></a>
                     <p class="title">${leftDownTemp[0].Title}</p>
                 </div>
-                <div class="zixun-bigpic-item hide" style="background-image:url(${rightTemp[0].LitPic})">
+                <div class="zixun-bigpic-item hide" style="background-image:url(${rightTemp[0].LitPic});background-position: center center;background-size: cover;">
                     <a href="//${websiteSuffix}/${cityen}/detail/${rightTemp[0].ID}.html" target="_blank" class="zixun_link"></a>
                     <p class="title">${rightTemp[0].Title}</p>
                 </div>
