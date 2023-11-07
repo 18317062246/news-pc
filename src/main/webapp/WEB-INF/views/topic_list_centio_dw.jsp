@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     <link rel="stylesheet" href="${staticurl}/css/topic_list_cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
+    <link rel="stylesheet" href="${staticurl}/css/footer.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>
     <script src="${staticurl}/sidebar/quick_links.js"></script>

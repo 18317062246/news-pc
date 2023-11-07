@@ -22,6 +22,7 @@
     <c:if test="${cityen != 'sz'}">
         <link rel="stylesheet" href="${staticurl}/css/headp2.css">
     </c:if>
+    <link rel="stylesheet" href="${staticurl}/css/footer.css">
 <%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
