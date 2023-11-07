@@ -64,6 +64,7 @@
                     <a href="//${cityen}.centanet.com/sitemap/" target="_blank">网站地图</a>
                     <a href="//${cityen}.centanet.com/about/" target="_blank" rel="nofollow">关于我们</a>
                     <a href="//${cityen}.centanet.com/job/" target="_blank">招聘专区</a>
+                    <a href="//act.centanet.com/actfile/cd/site/20181016zhaomu/index.html" target="_blank">招募合作方</a>
                     <a href="//${cityen}.centanet.com/contact/" target="_blank" rel="nofollow">联系我们</a>
                     <a href="//www.centaline.com.cn/" target="_blank">中原集团</a>
                 </c:if>
