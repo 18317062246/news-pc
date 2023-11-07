@@ -16,7 +16,7 @@
     <link rel="icon" href="${staticurl}/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+    <link rel="stylesheet" href="${staticurl}/css/keio.css">
     <link rel="stylesheet" href="${staticurl}/css/topic_list_cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
