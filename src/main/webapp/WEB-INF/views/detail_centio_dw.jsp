@@ -309,8 +309,17 @@
             var arr1 = sc_post_time_str.split(" ");
             var sdate = arr1[0].split('-');
             var sc_post_time = new Date(sdate[0], sdate[1]-1, sdate[2]);
-
-            var entry=localStorage.getItem("entry");
+            <%
+                String referer = request.getHeader("Referer");
+                String entry;
+                if (referer.contains("list")){
+                     entry = "更多资讯按钮";
+                }
+                else {
+                     entry = "资讯tab";
+                }
+            %>
+            var entryReal = '<%= entry %>';
             var downloadChannel=localStorage.getItem("downloadChannel");
             var sendUrl=localStorage.getItem("sendUrl");
             //封装发送的对象
@@ -319,8 +328,8 @@
             sendObj.sc_post_time=sc_post_time;
             sendObj.sc_platform_type="pc";
 
-            if(entry !=null && entry!='' ){
-                sendObj.sc_click_entry=entry;
+            if(entryReal !=null && entryReal!='' ){
+                sendObj.sc_click_entry=entryReal;
             }
             if(downloadChannel !=null && downloadChannel!='' ){
                 sendObj.sc_downloadchannel=downloadChannel;
@@ -345,17 +354,17 @@
                 send_type: 'beacon',
                 show_log:true
             });
-          /*  sensors.use('SiteLinker',
-                {linker: [
-                        {part_url: sendUrl, after_hash: false}
-                    ]}
-            );*/
-            sensors.track('sc_information_read',{
+                /*  sensors.use('SiteLinker',
+                      {linker: [
+                              {part_url: sendUrl, after_hash: false}
+                          ]}
+                  );*/
+                sensors.registerPage(sendObj);
+                sensors.track('sc_information_read',{
                 sc_platform_type : "pc",
                 sc_city: $("#citycn").val()
             });
-            sensors.registerPage(sendObj);
-            sensors.quick('autoTrack');
+                sensors.quick('autoTrack');
             }
         });
     </script>
