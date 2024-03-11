@@ -40,7 +40,7 @@
 </head>
 <body>
 <%--head--%>
-<%@include file="/WEB-INF/views/head.jsp" %>
+<%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>
 <!-- S;centmain-wraper -->
 <div class="centmain-wraper centmain-wraper-infor" >
     <div class="centmain-inner">
