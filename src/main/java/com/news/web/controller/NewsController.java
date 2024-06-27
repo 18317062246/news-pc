@@ -77,6 +77,7 @@ public class NewsController {
     private static final String CENTANET = "jtyy";
     private static final String BAIKE_TYPE = "baiketype";
     private static final String TYPES = "types";
+    private static final String JINGJIREN = "jingjiren";
     private static final String CITYEN = "cityen";
     private static final String COL_NAME = "colName";
     private static final String TYPE_ID = "typeid";
@@ -291,7 +292,7 @@ public class NewsController {
      * @description: 公共变量
      * @return:
      * @author: zouyuan1
-     * @date: 2020-05-27
+     * @date: 2020-05-2733333333333333333333333333333
      */
     private void setCommon(Model model, String cityen) {
         //获取公共底部的日期和时间
@@ -820,6 +821,11 @@ public class NewsController {
         List<Map> leftDown = new ArrayList<>();
         List<Map> right = new ArrayList<>();
         List<Map> shleft = new ArrayList<>();
+        /**
+         * 专家经纪人页面新增根据资讯上传时间前三条资讯进行展示
+         * https://svn.centaline.com.cn/svn/SaleHouse/document/%E6%96%B0%E5%AE%98%E7%BD%91/%e6%96%b0%e5%ae%98%e7%bd%912024%20V11-P1/%e5%8e%9f%e5%9e%8b/start.html#g=1&p=%E4%B8%93%E5%AE%B6%E7%BB%8F%E7%BA%AA%E4%BA%BA%E5%88%97%E8%A1%A8
+         */
+        List<Map> jingjiren = new ArrayList<>();
         //这是筛选存储只带图片资讯
         List<Map> leftUpConPic = new ArrayList<>();
         List<Map> leftDownConPic = new ArrayList<>();
@@ -857,6 +863,7 @@ public class NewsController {
                             }
                             leftUpTemp.addAll(leftUpConPic);
                         }
+                        jingjiren.addAll(news.subList(0,3));
                         leftUp.addAll(news);
                         break;
                     case 1:
@@ -871,6 +878,7 @@ public class NewsController {
                             }
                             leftDownTemp.addAll(leftDownConPic);
                         }
+                        jingjiren.addAll(news.subList(0,3));
                         leftDown.addAll(news);
                         break;
                     case 2:
@@ -885,6 +893,7 @@ public class NewsController {
                             }
                             rightTemp.addAll(rightConPic);
                         }
+                        jingjiren.addAll(news.subList(0,3));
                         right.addAll(news);
                         break;
                     default:
@@ -902,6 +911,26 @@ public class NewsController {
                 }
             }
         }
+        //根据上传时间排序选出前三进行展示
+        // 定义一个比较器
+        Comparator<Map> comparator = new Comparator<Map>() {
+            @Override
+            public int compare(Map o1, Map o2) {
+                String pubdata1 = (String) o1.get("pubdate");
+                String pubdata2 = (String) o2.get("pubdate");
+                // 根据上传时间进行比较
+                return pubdata1.compareTo(pubdata2);
+            }
+        };
+
+// 使用比较器对jingjiren集合进行排序
+        Collections.sort(jingjiren, comparator);
+
+// 只保留前三个元素
+        if (jingjiren.size() > 3) {
+            jingjiren = jingjiren.subList(jingjiren.size()-3, jingjiren.size());
+        }
+
         if (BAIKE.equals(type)) {//购房百科
             JSONObject result = newsService.newsList(cityen, null, 0, 2, null, null, BAIKE);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
@@ -959,6 +988,7 @@ public class NewsController {
         model.addAttribute(RIGHT, right);
         model.addAttribute(RIGHT_TEMP, rightTemp);
         model.addAttribute(TYPES, types);
+        model.addAttribute(JINGJIREN, jingjiren);
         if (StringResource.INDEX.equals(type)) {//二手房
             return StringResource.THIRD_ESF;
         } else if (StringResource.INFO.equals(type)) {//新房
@@ -993,6 +1023,8 @@ public class NewsController {
             return StringResource.THIRD_JT;
         }else if (StringResource.TJ_SIDE.equals(type)){//集团资讯新页面
             return StringResource.THIRD_TJSIDE;
+        }else if (StringResource.JJR.equals(type)){
+            return StringResource.THIRD_JJR;
         }
         return StringResource.THIRD_HOT;
     }
