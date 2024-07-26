@@ -15,3 +15,16 @@ Disallow: /
 
 User-agent:360Spider
 Disallow: /
+
+User-agent: Baiduspider
+Disallow: /sz
+Disallow: /sh
+Disallow: /gz
+Disallow: /zs
+Disallow: /fz
+Disallow: /zh
+Disallow: /dg
+Disallow: /cs
+Disallow: /hk
+Disallow: /nc
+Disallow: /ganzhou

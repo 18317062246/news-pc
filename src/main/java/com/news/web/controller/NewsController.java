@@ -57,6 +57,8 @@ public class NewsController {
     public String dwCitys;
     @Value("${website.suffix}")
     public String websiteSuffix;
+    @Value("${notallow.citys}")
+    public String notallowcitys;
 
 
     private static final String GUANG_ZHOU = "gz";
@@ -104,6 +106,11 @@ public class NewsController {
                         @PathVariable(name = "type", required = false) Integer type,
                         @RequestParam(value = "entry", required = false) String entry,
                         @RequestParam(value = "downloadChannel", required = false) String downloadChannel,HttpServletRequest request) {
+       //如果城市为notallowcitys的话 直接报错处理
+        if (notallowcitys.contains(cityen)){
+            throw new IllegalArgumentException("City code  "+ cityen +"  is not allowed.");
+        }
+
 
         //判断是否为Android/ios/ipad，如果是，就重定向到其他页面
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
