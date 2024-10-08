@@ -58,7 +58,7 @@ public class NewsController {
     @Value("${website.suffix}")
     public String websiteSuffix;
     @Value("${notallow.citys}")
-    public String notallowcitys;
+    public String notallowCitys;
 
 
     private static final String GUANG_ZHOU = "gz";
@@ -106,8 +106,12 @@ public class NewsController {
                         @PathVariable(name = "type", required = false) Integer type,
                         @RequestParam(value = "entry", required = false) String entry,
                         @RequestParam(value = "downloadChannel", required = false) String downloadChannel,HttpServletRequest request) {
-       //如果城市为notallowcitys的话 直接报错处理
-        if (notallowcitys.contains(cityen)){
+       //如果城市为notallowcitys的话 直接报错处理 2024-10-08放开珠海(珠海不涉及抄袭)
+       //  if (cityen.equals("sz") || cityen.equals("zs") ||cityen.equals("fz") ||cityen.equals("dg") ||cityen.equals("hk") ||
+       //          cityen.equals("gz") ||cityen.equals("nc") ||cityen.equals("sh") ||cityen.equals("ganzhou") ||cityen.equals("cs") ){
+        //数据处理
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(notallowCitys.split(",")));
+        if (list.contains(cityen)){
             throw new IllegalArgumentException("City code  "+ cityen +"  is not allowed.");
         }
 
