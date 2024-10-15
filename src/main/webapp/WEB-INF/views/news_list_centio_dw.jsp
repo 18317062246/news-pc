@@ -16,12 +16,14 @@
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/pager_inner.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <c:if test="${cityen == 'sz'}">
-        <link rel="stylesheet" href="${staticurl}/css/headp2_sz.css">
-    </c:if>
-    <c:if test="${cityen != 'sz'}">
-        <link rel="stylesheet" href="${staticurl}/css/headp2.css">
-    </c:if>
+    <c:choose>
+        <c:when test="${cityen == 'sz'}">
+            <link rel="stylesheet" href="${staticurl}/css/headp2_sz.css">
+        </c:when>
+        <c:otherwise>
+            <link rel="stylesheet" href="${staticurl}/css/basev6.css">
+        </c:otherwise>
+    </c:choose>
     <link rel="stylesheet" href="${staticurl}/css/footer.css">
 <%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
@@ -51,7 +53,8 @@
 <body>
 <%--head--%>
 <c:if test="${cityen != 'sz'}">
-    <%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>
+<%--    <%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>--%>
+    <%@include file="/WEB-INF/views/head_zh.jsp" %>
 </c:if>
 <c:if test="${cityen == 'sz'}">
     <%@include file="/WEB-INF/views/head_sz.jsp" %>

@@ -1052,6 +1052,7 @@
                 <li><a href="${researchUrl}" target="_blank">中原研究院</a>
                     </c:when>
                     <c:when test="${cityen == 'zh'}">
+                <li><a href="//zh-testweb.centaline.com.cn/" target="_blank">首页</a></li>
                 <li><a href="//${cityen}-testweb.centaline.com.cn/ershoufang/" target="_blank">二手房</a>
                     <div class="subnav" >
                         <a href="//${cityen}-testweb.centaline.com.cn/ershoufang/" target="_blank">在售房源</a>
@@ -1125,43 +1126,10 @@
                     <c:if test="${cityen != 'gz'}">
                         <p class="hot-phone fr" style="${cityen == 'sz' ? 'width: 186px;font-size:10px;' :'width: 200px;'}">${cityen == 'sz' ? '&nbsp;&nbsp;咨询' : ''}热线：${cityTelphone}</p>
                     </c:if>
-<%--            <p class="hot-phone fr"><i class="phone-ico"></i>${cityTelphone}</p>--%>
-                <%--            深圳登录页面--%>
-                <%--            <div class="login-iframe_sz fl">--%>
-                <%--                <div class="login-info" id="loginInfo">--%>
-                <%--                    <a class="first" href>--%>
-                <%--                        <i class="user-ico"></i>--%>
-                <%--                    </a>--%>
-                <%--                </div>--%>
-                <%--            </div>--%>
-
-
-
-<%--                <div class="login-iframe fr" >--%>
-<%--                        &lt;%&ndash;我的中原&ndash;%&gt;--%>
-<%--                    <div class="login-info">--%>
-<%--                        <a class="first" href="//testwap.centanet.com/login?reurl=http://tj-testweb.centaline.com.cn/xinfang/"><i class="user-ico"></i>我的中原</a>--%>
-<%--                        <div class="login_tip" style="display: none;">--%>
-<%--                            <div class="mui-mbar-arr">◆</div>--%>
-<%--                            <a href="//testwap.centanet.com/login?reurl=http://tj-testweb.centaline.com.cn/xinfang/" style="display:block" class="yellow_btn">登录</a>--%>
-<%--                            <a href="//testwap.centanet.com/entrust?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的房源</a>--%>
-<%--                            <a href="//testwap.centanet.com/searchhistory?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的意向</a>--%>
-<%--                            <a href="//testwap.centanet.com/care/ershoufang/?reurl=http://tj-testweb.centaline.com.cn/xinfang/">我的关注</a>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-
-
-
-
 
         </div>
     </div>
 </c:if>
-
-
-
-
 
 <%--原始搜索框页面  湾区城市搜索框页面--%>
 <%--<c:if test="${cityen == 'sz' || cityen == 'zh' || cityen == 'dg'  || cityen == 'cs' || cityen == 'zs' || cityen == 'gz' || cityen == 'fz'}">--%>

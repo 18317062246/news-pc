@@ -20,8 +20,10 @@
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <link rel="stylesheet" href="${staticurl}/css/footer.css">
+<%--    此处修改了珠海的相关样式--%>
     <c:if test="${cityen != 'sz'}">
-        <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+<%--        <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
+        <link rel="stylesheet" href="${staticurl}/css/basev6.css">
     </c:if>
     <%--    因为深圳创建了一个独立的head头部需求所以此处做了一个判断--%>
     <c:if test="${cityen == 'sz'}">
@@ -53,12 +55,20 @@
 
 <body>
 <%--head--%>
-<c:if test="${cityen != 'sz'}">
-    <%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>
-</c:if>
-<c:if test="${cityen == 'sz'}">
+<c:choose>
+<c:when test="${cityen == 'sz'}">
     <%@include file="/WEB-INF/views/head_sz.jsp" %>
-</c:if>
+</c:when>
+
+<c:when test="${cityen == 'zh'}">
+    <%@include file="/WEB-INF/views/head_zh.jsp" %>
+</c:when>
+
+    <c:otherwise>
+        <%@include file="/WEB-INF/views/head_centaio_dw.jsp" %>
+    </c:otherwise>
+
+</c:choose>
 <%--    <%@include file="/WEB-INF/views/head_sz.jsp" %>--%>
 
 <!-- S;centmain-wraper -->
