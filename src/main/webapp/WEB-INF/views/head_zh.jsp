@@ -9,31 +9,24 @@
 <div class="section-wrap section-header visible-desktop">
     <div class="section">
         <ul class="nav-header fl">
-            <li class=""><a href="/">首页</a></li>
-            <li class="xinfang_class"> <a href="/xinfang/">新房</a>
-                <div class="subnav">
-                    <a href="/xinfang/">全部新房</a>
-                    <a href="/xinfang/ditu/">地图找房</a>
-                    <a href="https://esf.centanet.com/tools/grandbay/?zh" target="_blank">粤港澳大湾区</a>
+            <li><a href="//zh-testweb.centaline.com.cn/" target="_blank">首页</a></li>
+            <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
+                <div class="subnav" >
+                    <a href="//zh.centanet.com/xinfang/" target="_blank">全部新房</a>
+                    <a href="//zh.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
+                    <a href="://esf.centanet.com/tools/grandbay/?zh" target="_blank">粤港澳大湾区</a>
                     <i class="arrow"></i>
                 </div>
             </li>
-            <li class="recently_class"><a href="/xinfang/k1/">当月开盘</a></li>
-            <li class="xinfangmap_class"><a href="/xinfang/ditu/">地图找房</a></li>
-            <li class="news_class">
-
-            </li>
-
-
-            <li class=""><a href="http://ccdata.com.cn/" target="_blank" rel="nofollow">中原研究院</a> </li>
-
+            <li><a href="//zh.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
+            <li><a href="//zh.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
+            <li><a href="${researchUrl}" target="_blank">中原研究院</a>
             <li><a href="javascript:;" rel="nofollow"><i class="phone-icon"></i>APP下载</a>
                 <div class="subnav">
                     <img alt="" src="https://static.centanet.com/pcweb/test/20241008152847/images/download_app1.jpg?v20241008152847">
                     <i class="arrow"></i>
                 </div>
             </li>
-
         </ul>
 
         <p class="hot-phone fr">
