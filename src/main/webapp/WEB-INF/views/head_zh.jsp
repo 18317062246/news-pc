@@ -9,17 +9,26 @@
 <div class="section-wrap section-header visible-desktop">
     <div class="section">
         <ul class="nav-header fl">
-            <li><a href="//zh-testweb.centaline.com.cn/" target="_blank">首页</a></li>
+            <li><a href="//zh.centanet.com/" target="_blank">首页</a></li>
+            <li><a href="//zh.centanet.com/ershoufang/" target="_blank">二手房</a>
+                <div class="subnav" >
+                    <a href="//zh.centanet.com/ershoufang/" target="_blank">在售房源</a>
+                    <a href="//zh.centanet.com/entrust/sale/" target="_blank">发布房源</a>
+                </div>
+            </li>
             <li><a href="//${cityen}.centanet.com/xinfang/" target="_blank">新房</a>
                 <div class="subnav" >
                     <a href="//zh.centanet.com/xinfang/" target="_blank">全部新房</a>
                     <a href="//zh.centanet.com/xinfang/ditu/" target="_blank">地图找房</a>
-                    <a href="://esf.centanet.com/tools/grandbay/?zh" target="_blank">粤港澳大湾区</a>
+                    <a href="//esf.centanet.com/tools/grandbay/?dg" target="_blank">粤港澳大湾区</a>
                     <i class="arrow"></i>
                 </div>
             </li>
-            <li><a href="//zh.centanet.com/xinfang/k1/" target="_blank">当月开盘</a></li>
-            <li><a href="//zh.centanet.com/xinfang/ditu/" target="_blank">地图找房</a></li>
+            <li><a href="//zh.centanet.com/zufang/" target="_blank">租房</a></li>
+            <li><a href="//zh.centanet.com/xiaoqu/" target="_blank">小区</a></li>
+            <li><a href="//news.centanet.com/zh/" target="_blank">资讯</a></li>
+            <li><a href="//zh.centanet.com/jingjiren/" target="_blank">经纪人</a></li>
+            <li><a href="//zh.centanet.com/entrust/" target="_blank">发布房源</a></li>
             <li><a href="${researchUrl}" target="_blank">中原研究院</a>
             <li><a href="javascript:;" rel="nofollow"><i class="phone-icon"></i>APP下载</a>
                 <div class="subnav">
