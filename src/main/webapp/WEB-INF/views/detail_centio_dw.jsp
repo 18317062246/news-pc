@@ -312,7 +312,7 @@
             <%
                 String referer = request.getHeader("Referer");
                 String entry;
-                if (referer.contains("list")){
+                if (referer != null && referer.contains("list")){
                      entry = "更多资讯按钮";
                 }
                 else {
