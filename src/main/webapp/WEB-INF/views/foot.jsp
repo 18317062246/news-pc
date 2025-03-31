@@ -200,7 +200,7 @@
         </dl>
         <p class="copyright">
         本站所载各种成交信息和数据仅供参考，不构成任何投资建议；公司不对成交数据的准确性作出承诺，也不对任何错误负任何法律责任。所有合同均以最终签约为准。<br>
-        安全中介&nbsp;&nbsp;选中原&nbsp;Copyright ©2024 Centanet.com&nbsp;版权所有&nbsp;&nbsp;<a target="_blank" style="color: #939393;" rel="nofollow" href="https://beian.miit.gov.cn">粤ICP备16080050号</a> &nbsp;<a target="_blank" style="color: #939393;" rel="nofollow" href="https://static.centanet.com/pcweb/test/20211230182121/images/licencephoto.jpg?v20211230182121">增值电信业务经营许可证：合字B2-20210337</a> &nbsp;
+        安全中介&nbsp;&nbsp;选中原&nbsp;Copyright ©2025 Centanet.com&nbsp;版权所有&nbsp;&nbsp;<a target="_blank" style="color: #939393;" rel="nofollow" href="https://beian.miit.gov.cn">粤ICP备16080050号</a> &nbsp;<a target="_blank" style="color: #939393;" rel="nofollow" href="https://static.centanet.com/pcweb/test/20211230182121/images/licencephoto.jpg?v20211230182121">增值电信业务经营许可证：合字B2-20210337</a> &nbsp;
             <c:if test="${cityen == 'tj'}">
                 客服邮箱：<a href="mailto:tjzytsjbyx@centaline.com.cn" target="_blank">tjzytsjbyx@centaline.com.cn</a>
             </c:if>
