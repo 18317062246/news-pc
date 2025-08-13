@@ -174,7 +174,7 @@ public class StringResource implements Serializable {
         map.put(Cityen.XIAMEN, "400-819-7679");
         map.put(Cityen.WUXI, "400-928-0668");
         map.put(Cityen.XIANGYANG, "400-810-0188");
-        map.put(Cityen.ZHUHAI, "400-819-0196");
+        map.put(Cityen.ZHUHAI, "4008191012转8888");
         map.put(Cityen.CHANGSHA, "400-810-0388");
         map.put(Cityen.HANGZHOU, "400-819-7103");
         map.put(Cityen.GANZHOU, "400-819-6038");
