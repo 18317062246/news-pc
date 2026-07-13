@@ -129,7 +129,6 @@
                 <a target="_blank" href="https://mo.centanet.com/" title="澳门中原">澳门中原</a>
                 <a target="_blank" href="https://cq.centanet.com/" title="重庆中原">重庆中原</a>
                 <a target="_blank" href="https://cd.centanet.com/" title="成都中原">成都中原</a>
-                <a target="_blank" href="https://nj.centanet.com/" title="南京中原">南京中原</a>
                 <a target="_blank" href="https://wh.centanet.com/" title="武汉中原">武汉中原</a>
                 <a target="_blank" href="https://cs.centanet.com/" title="长沙中原">长沙中原</a>
                 <a target="_blank" href="https://hz.centanet.com/" title="惠州中原">惠州中原</a>
