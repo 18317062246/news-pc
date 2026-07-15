@@ -17,10 +17,17 @@
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
+         <c:if test="${cityen == 'dg'}">
+          <title> ${detail.Title}</title>
+        </c:if>
     <title> ${detail.Typename}－${citycn}中原地产</title>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+<%--    <c:if test="${cityen == 'sh'}">--%>
+        <link rel="stylesheet" href="${staticurl}/css/footer.css">
+<%--    </c:if>--%>
+<%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
+    <link rel="stylesheet" href="${staticurl}/css/keio.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
@@ -178,6 +185,7 @@
                                                 <c:set var="residenceStr" value="住宅"></c:set>
                                                 <c:set var="vilaResidenceStr" value="普通住宅"></c:set>
                                                 <c:set var="villaStr" value="别墅"></c:set>
+                                                <c:set var="szly" value="商住"></c:set>
                                                 <c:if test="${n.xinfangResult != null}">
 
                                                     <a href="//${cityen}.centanet.com/xinfang/lp-${n.xinfangResult.oid}/"  target="_blank" title="${n.xinfangResult.adName}">${n.xinfangResult.adName}</a>
@@ -205,9 +213,9 @@
                                                         <c:if test="${fn:contains(villaStr, n.esfResult.propertyType)}">
                                                             ${villaStr}
                                                         </c:if>
-                                                        <c:if test="${fn:contains(vilaResidenceStr, n.esfResult.propertyType)}">
-                                                            ${residenceStr}
-                                                        </c:if>
+<%--                                                        <c:if test="${fn:contains(vilaResidenceStr, n.esfResult.propertyType)}">--%>
+<%--                                                            ${residenceStr}--%>
+<%--                                                        </c:if>--%>
                                                     </label>
                                                 </c:if>
                                                 <c:if test="${n.xiaoQuResult != null}">
@@ -219,11 +227,15 @@
                                                         <c:if test="${fn:contains(residenceStr, n.xiaoQuResult.propertyType)}">
                                                             ${residenceStr}
                                                         </c:if>
-                                                        <c:if test="${fn:contains(vilaResidenceStr, n.xiaoQuResult.propertyType)}">
-                                                            ${residenceStr}
-                                                        </c:if>
+<%--                                                        由于页面重叠问题隐藏--%>
+<%--                                                        <c:if test="${fn:contains(vilaResidenceStr, n.xiaoQuResult.propertyType)}">--%>
+<%--                                                            ${residenceStr}--%>
+<%--                                                        </c:if>--%>
                                                         <c:if test="${fn:contains(villaStr, n.xiaoQuResult.propertyType)}">
                                                             ${villaStr}
+                                                        </c:if>
+                                                        <c:if test="${fn:contains(szly, n.xiaoQuResult.propertyType)}">
+                                                            ${apartmentStr}
                                                         </c:if>
                                                     </label>
                                                 </c:if>
@@ -236,11 +248,12 @@
                                                 <c:if test="${n.esfResult != null}">
                                                     【${n.esfResult.estateName}】
                                                 </c:if>
-                                                <c:if test="${n.xiaoQuResult != null}">
-                                                    【${n.xiaoQuResult.estateName}】
-                                                </c:if>
-
+                                                    <%--                                                        由于页面重叠问题隐藏--%>
+<%--                                                                                            <c:if test="${n.xiaoQuResult != null}">--%>
+<%--                                                    【${n.xiaoQuResult.estateName}】--%>
+<%--                                                </c:if>--%>
                                             </p>
+
                                             <p>
                                                 <c:if test="${n.xinfangResult != null}">
                                                     <span class="tipTriggerB" tip="${n.xinfangResult.baseNewProp.address}">${n.xinfangResult.baseNewProp.address}</span>
@@ -367,7 +380,7 @@
     if(!flag){
         let locationAddress = window.location;
         $.get(
-            "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&cityen=${cityen}&url="+locationAddress+"&platform=pc&Referer=${referer}",
+            "https://news.centanet.com/api/NewsAddToVisit?newsid=${newsId}&amp;cityen=${cityen}&url="+locationAddress+"&platform=pc&Referer=${referer}",
                 function (data) {
 
         });

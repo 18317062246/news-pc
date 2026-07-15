@@ -9,7 +9,8 @@ server:
 #api地址
 api:
 #  domain: http://10.58.2.65:8017/api/
-  domain: https://news.centanet.com/api/
+#  domain: https://news.centanet.com/api/
+  domain: https://testnews.centanet.com/api/
   xinfang:
     other:
       city: http://10.4.18.227:8080/lion/json/reply/NewPropExtInfoRequest
@@ -29,3 +30,5 @@ logapi:
   url: http://api-testpassport.centaline.com.cn/json/reply/
 bizcom:
   foot-url: http://api-testweb.centaline.com.cn/bizcom/json/reply/AppVersionRequest?cityen=%s&platform=pc
+website:
+  suffix: testnews.centanet.com

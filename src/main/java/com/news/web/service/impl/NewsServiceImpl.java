@@ -152,6 +152,17 @@ public class NewsServiceImpl implements NewsService {
         return newsList;
     }
 
+    @Override
+    public JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location, String mark) {
+        //获取指定栏目的资讯新闻列表信息
+        JSONObject jSONObject = getNewListByType(cityen, typeIds, page,pagesize, order, key, location,mark);
+        JSONObject newsList = jSONObject.getJSONObject(RESULT);
+        if (newsList.isEmpty()) {
+            log.error(ARTICLE_LIST_IS_NULL, newsList);
+        }
+        return newsList;
+    }
+
     /**
      * @param cityen 城市简称
      * @param typeIds 栏目id
@@ -180,7 +191,7 @@ public class NewsServiceImpl implements NewsService {
      * @param location 位置信息
      * @return  获取指定栏目的资讯新闻列表信息
      */
-    private JSONObject getNewListByType(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
+    private JSONObject  getNewListByType(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location) {
         Map<String, Object> map = new HashMap<>();
         map.put(CITYEN, cityen);
         List<Integer> empty = new ArrayList<>();
@@ -188,6 +199,31 @@ public class NewsServiceImpl implements NewsService {
         map.put(TYPE_ID, typeIds.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
         map.put("page", page);
         map.put("pagesize", pagesize);
+        map.put("order", order);
+        map.put("pubdate", CommonUtil.getCurrentMills());
+        if (StringUtils.hasText(key)) {
+            map.put(TYPE_ID, null);
+        }
+        map.put("title", key);
+        map.put("description", key);
+        map.put(LOCATION, location);
+        JSONObject jSONObject = restTemplate.getForObject(apiurl +
+                        "GetNewsList?cityen={cityen}&platform=pc&typeid={typeid}&page={page}&pagesize={pagesize}&order={order}&title={title}&description={description}&location={location}&pubdate={pubdate}"
+                , JSONObject.class, map);
+        return jSONObject;
+    }
+
+    private JSONObject getNewListByType(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location ,String mark) {
+        Map<String, Object> map = new HashMap<>();
+        map.put(CITYEN, cityen);
+        List<Integer> empty = new ArrayList<>();
+        typeIds = ObjectUtils.isEmpty(typeIds) ? empty : typeIds;
+        map.put(TYPE_ID, typeIds.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
+        map.put("page", page);
+        map.put("pagesize", pagesize);
+        if (cityen.equals("sh")){
+            order = 3;
+        }
         map.put("order", order);
         map.put("pubdate", CommonUtil.getCurrentMills());
         if (StringUtils.hasText(key)) {
@@ -422,7 +458,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void insertLog(HttpServletRequest request , String cityShort, Integer newsId) {
+    public void insertLog(HttpServletRequest request , String cityShort, Integer newsId , String title , String downloadChannel) {
         //获取请求头
         String ua = request.getHeader(StringResource.USER_AGENT);
         String cityCode = "";
@@ -471,7 +507,7 @@ public class NewsServiceImpl implements NewsService {
             }
         }
         //封装对象
-        InsertLogParam param = NewsParser.build(appName , cityCode , ClientIP , jPushId , String.valueOf(newsId) , postId , sourceChild , trackId , userId);
+        InsertLogParam param = NewsParser.build(appName , cityCode , ClientIP , jPushId , String.valueOf(newsId) , postId , sourceChild , trackId , userId , title , downloadChannel);
         try{
             String abc=httpUtil.post(String.format(StringResource.INSERT_VIEW_HISTORY_REQUEST_BY_RABBIT , apiConfig.getUrl()) , param);
         } catch (IOException e) {

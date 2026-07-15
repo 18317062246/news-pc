@@ -16,10 +16,14 @@
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/pager_inner.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
-    <link rel="stylesheet" href="${staticurl}/css/headp2.css">
+<%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
+    <link rel="stylesheet" href="${staticurl}/css/keio.css">
     <link rel="stylesheet" href="${staticurl}/css/cent_information.css">
     <link rel="stylesheet" href="${staticurl}/css/time_style.css">
     <link rel="stylesheet" href="${staticurl}/sidebar/sidebar.css">
+<%--    <c:if test="${cityen == 'sh'}">--%>
+        <link rel="stylesheet" href="${staticurl}/css/footer.css">
+<%--    </c:if>--%>
     <script src="${staticurl}/js/jquery-1.7.min.js"></script>
     <script src="${staticurl}/js/jquery.slides.min.js"></script>
     <script src="${staticurl}/sidebar/common.js"></script>

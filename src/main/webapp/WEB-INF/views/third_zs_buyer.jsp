@@ -8,13 +8,13 @@
         <div class="section" >
             <div class="top_caption">
                 <h5 class="tit">买房帮手</h5>
-                <p><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tu f9">全部买房帮手<%--${baike}--%></a></p>
+                <p><a href="//${websiteSuffix}/${cityen}/list/c${types[1].id}/?entry=资讯tag" class="tu f9">全部买房帮手<%--${baike}--%></a></p>
             </div>
             <ul class="encyclo-list">
                 <c:forEach items="${leftDown}" var="item" begin="0" end="1">
                     <li>
                         <i></i>
-                        <a href="//news.centanet.com/${cityen}/detail/${item.ID}.html" class="f3" target="_blank" title="${item.Title}">${fn:substring(item.Title,0,20)}</a>
+                        <a href="//${websiteSuffix}/${cityen}/detail/${item.ID}.html" class="f3" target="_blank" title="${item.Title}">${fn:substring(item.Title,0,20)}</a>
                         <span class="date f9">
                                 <jsp:useBean id="myDate" class="java.util.Date"/>
                                 <c:set target="${myDate}" property="time" value="${item.PublishDate*1000}"/>

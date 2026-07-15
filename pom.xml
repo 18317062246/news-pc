@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+        <version>2.0.5.RELEASE</version>
     </parent>
 
     <properties>
@@ -26,9 +26,9 @@
     <dependencies>
         <!-- web start -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
         <!-- web end -->
 
         <!-- test start -->
@@ -89,6 +89,14 @@
             <version>3.141.59</version>
         </dependency>
 
+        <!--hutool start-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.5.7</version>
+        </dependency>
+        <!--hutool end-->
+
         <!-- swagger start -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -114,18 +122,36 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!-- 打包编译插件start -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
-            </plugin>
-            <!-- 打包编译插件end -->
-        </plugins>
-    </build>
+    <plugins>
+        <!-- 打包编译插件start -->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <fork>true</fork>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.4.0.905</version>
+        </plugin>
+        <!-- 打包编译插件end -->
+    </plugins>
+</build>
 
+<profiles>
+    <profile>
+        <id>sonar</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <sonar.host.url>http://sonar.centaline.com.cn</sonar.host.url>
+            <sonar.login>wbliuyu</sonar.login>
+            <sonar.password>ly..19981223</sonar.password>
+        </properties>
+    </profile>
+</profiles>
 
 </project>

@@ -11,13 +11,13 @@
         <div class="title-box clearfix">
             <h5 class="title">热门专题</h5>
             <p class="description">楼市动态<i class="a_word"></i>一应俱全</p>
-            <p class="r-more fr"><a href="//news.centanet.com/${cityen}/" >更多新鲜资讯&nbsp;<span class="fSimSun">&gt;</span></a></p>
+            <p class="r-more fr"><a href="//${websiteSuffix}/${cityen}/?entry=资讯tag" >更多新鲜资讯&nbsp;<span class="fSimSun">&gt;</span></a></p>
         </div>
         <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
         <div class="inform-side fl ">
             <div class="expert">
                 <div class="expert-phone">
-                    <a href="//news.centanet.com/${cityen}/detail/${leftUp[0].ID}.html" target="_blank" title="${leftUp[0].Title}">
+                    <a href="//${websiteSuffix}/${cityen}/detail/${leftUp[0].ID}.html" target="_blank" title="${leftUp[0].Title}">
                         <c:choose>
                             <c:when test="${leftUp[0].LitPic != null && leftUp[0].LitPic.length() >= 10}">
                                 <img src="${leftUp[0].LitPic}" alt="${leftUp[0].Title}">
@@ -33,10 +33,10 @@
                 </div>
                 <ul class="expert-comment">
                     <c:forEach items="${leftUp}" var="l" begin="1" end="4">
-                        <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
+                        <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
                     </c:forEach>
                 </ul>
-                <p class="bot "><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="tdu ">@${types[0].columnsName}</a></p>
+                <p class="bot "><a href="//${websiteSuffix}/${cityen}/list/c${types[0].id}/?entry=资讯tag" class="tdu ">@${types[0].columnsName}</a></p>
             </div>
         </div>
         <div class="inform-main fl ">
@@ -45,10 +45,10 @@
                     <dd>
                         <ul class="expert-comment">
                             <c:forEach items="${leftDown}" var="l" begin="0" end="4">
-                                <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
+                                <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${l.ID}.html" title="${l.Title}">${l.Title}</a></li>
                             </c:forEach>
                         </ul>
-                        <p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[1].id}/" class="tdu">@${types[1].columnsName}</a></p>
+                        <p class="bot"><a href="//${websiteSuffix}/${cityen}/list/c${types[1].id}/?entry=资讯tag" class="tdu">@${types[1].columnsName}</a></p>
                     </dd>
                 </dl>
             </div>
@@ -57,10 +57,10 @@
                     <dd>
                         <ul class="expert-comment">
                             <c:forEach items="${right}" var="r" begin="0" end="3">
-                                <li><i></i><a   target="_blank"  href="//news.centanet.com/${cityen}/detail/${r.ID}.html" title="${r.Title}">${r.Title}</a></li>
+                                <li><i></i><a   target="_blank"  href="//${websiteSuffix}/${cityen}/detail/${r.ID}.html" title="${r.Title}">${r.Title}</a></li>
                             </c:forEach>
                         </ul>
-                        <p class="bot"><a href="//news.centanet.com/${cityen}/list/c${types[2].id}/" class="tdu">@${types[2].columnsName}</a></p>
+                        <p class="bot"><a href="//${websiteSuffix}/${cityen}/list/c${types[2].id}/?entry=资讯tag" class="tdu">@${types[2].columnsName}</a></p>
                     </dd>
                 </dl>
             </div>

@@ -42,6 +42,7 @@ public interface NewsService extends Serializable {
      * @return 获取指定栏目的资讯新闻列表信息
      */
     JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location);
+    JSONObject newsList(String cityen, List<Integer> typeIds, Integer page, Integer pagesize, Integer order, String key, String location,String mark);
 
     /**
      * @param cityen 城市简称
@@ -100,7 +101,7 @@ public interface NewsService extends Serializable {
     /**
      * 记录日志
      */
-    void insertLog(HttpServletRequest request , String cityShort , Integer newsId);
+    void insertLog(HttpServletRequest request , String cityShort , Integer newsId , String title , String downloadChannel);
 
     /**
      * 获取工信部审核的最新日期和时间

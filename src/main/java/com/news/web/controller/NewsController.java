@@ -4,14 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
+import com.news.web.model.ApiResult;
 import com.news.web.model.NewsRelated;
 import com.news.web.model.NewsType;
 import com.news.web.model.common.CommonFootInfo;
 import com.news.web.model.common.CommonHouseResult;
+import com.news.web.model.request.NewsDetailRequest;
+import com.news.web.model.response.NewsDetailResponse;
 import com.news.web.service.NewsService;
-import com.news.web.util.AttributeKeyHelper;
-import com.news.web.util.PageUtil;
-import com.news.web.util.StringResource;
+import com.news.web.util.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +27,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -44,13 +47,18 @@ public class NewsController {
 
     @Value("${api.domain}")
     public String apiurl;
-
     @Value("${static.url}")
     public String staticurl;
     @Value("${deal.citys}")
     public String dealCitys;
     @Value("${centanet.research}")
     public String researchUrl;
+    @Value("${dw.citys}")
+    public String dwCitys;
+    @Value("${website.suffix}")
+    public String websiteSuffix;
+    @Value("${notallow.citys}")
+    public String notallowCitys;
 
 
     private static final String GUANG_ZHOU = "gz";
@@ -66,10 +74,12 @@ public class NewsController {
      */
     private static final String HOT = "热门专题";
     private static final String RIGHT = "right";
+    private static final String RIGHT_TEMP = "rightTemp";
     private static final String BAIKE = "baike";
     private static final String CENTANET = "jtyy";
     private static final String BAIKE_TYPE = "baiketype";
     private static final String TYPES = "types";
+    private static final String JINGJIREN = "jingjiren";
     private static final String CITYEN = "cityen";
     private static final String COL_NAME = "colName";
     private static final String TYPE_ID = "typeid";
@@ -93,7 +103,18 @@ public class NewsController {
     @GetMapping(value = {"/{cityen}/", "/{cityen}/c{type}/"})
     public String index(Model model,
                         @PathVariable(name = "cityen") String cityen,
-                        @PathVariable(name = "type", required = false) Integer type, HttpServletRequest request) {
+                        @PathVariable(name = "type", required = false) Integer type,
+                        @RequestParam(value = "entry", required = false) String entry,
+                        @RequestParam(value = "downloadChannel", required = false) String downloadChannel,HttpServletRequest request) {
+       //如果城市为notallowcitys的话 直接报错处理 2024-10-08放开珠海(珠海不涉及抄袭)
+       //  if (cityen.equals("sz") || cityen.equals("zs") ||cityen.equals("fz") ||cityen.equals("dg") ||cityen.equals("hk") ||
+       //          cityen.equals("gz") ||cityen.equals("nc") ||cityen.equals("sh") ||cityen.equals("ganzhou") ||cityen.equals("cs") ){
+        //数据处理
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(notallowCitys.split(",")));
+        if (list.contains(cityen)){
+            throw new IllegalArgumentException("City code  "+ cityen +"  is not allowed.");
+        }
+
 
         //判断是否为Android/ios/ipad，如果是，就重定向到其他页面
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -257,6 +278,12 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.RIGHT_TYPE, rightTypeAdd);
         model.addAttribute(AttributeKeyHelper.TAB_TYPE, types.get(0).getId());
         model.addAttribute(AttributeKeyHelper.NEWS, leftNews);
+
+        //大湾区埋点 神策数据
+        if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
+            DwMaiDianUtiil.setModel(model,entry,cityen,downloadChannel,request);
+            return DwMaiDianUtiil.INDEX_CENTIO_DW_PAGE;
+        }
         return AttributeKeyHelper.INDEX_PAGE;
     }
 
@@ -276,7 +303,7 @@ public class NewsController {
      * @description: 公共变量
      * @return:
      * @author: zouyuan1
-     * @date: 2020-05-27
+     * @date: 2020-05-2733333333333333333333333333333
      */
     private void setCommon(Model model, String cityen) {
         //获取公共底部的日期和时间
@@ -285,9 +312,12 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.FOOT_INFO, footInfo);
         model.addAttribute(AttributeKeyHelper.STATIC_URL, staticurl);
         model.addAttribute(AttributeKeyHelper.CITY_CN, StringResource.citymap(cityen));
+        model.addAttribute(AttributeKeyHelper.CITY_CODE, StringResource.getCityCode(cityen));
         model.addAttribute(AttributeKeyHelper.CITY_TELPHONE, StringResource.cityTelphone(cityen));
+        model.addAttribute(AttributeKeyHelper.CITY_COMPLAINT_TELPHONE, StringResource.cityComplaintTelephone(cityen));
         model.addAttribute(AttributeKeyHelper.RESEARCH_URL, researchUrl);
         model.addAttribute(AttributeKeyHelper.CURRENT_YEAR, StringResource.getCurrentYear());
+        model.addAttribute(AttributeKeyHelper.WEBSITE_SUFFIX, websiteSuffix);
     }
 
 
@@ -305,7 +335,9 @@ public class NewsController {
             , @PathVariable(name = "type", required = false) Integer type
             , @PathVariable(name = "page", required = false) Integer page
             , @RequestParam(value = "key", required = false) String key
-            , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize , HttpServletRequest request) {
+            , @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize ,
+                        @RequestParam(value = "entry", required = false) String entry,
+                        @RequestParam(value = "downloadChannel", required = false) String downloadChannel,HttpServletRequest request) {
 
         //判断是否为Android/ios/ipad，如果是，就重定向到其他页面
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
@@ -340,9 +372,12 @@ public class NewsController {
         //获取集团资讯的栏目类型
         List<NewsType> jtyyTypes =  newsService.typeList(CENTANET, null);
         //判断当前的分类id是否和集团右侧栏目的id相等，若相等，就取出对应的栏目名称
-        List<NewsType> jtyyCurrTypes = jtyyTypes.get(0).getChildList().stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
-        if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
-            model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
+        if (jtyyTypes.size()!=0){
+            List<NewsType> jtyyCurrTypes = jtyyTypes.get(0).getChildList().stream().filter(t -> t.getId().equals(type)).collect(Collectors.toList());
+            if (jtyyTypes != null && !jtyyCurrTypes.isEmpty()) {
+                model.addAttribute(COL_NAME, jtyyCurrTypes.get(0).getColumnsName());
+        }
+
         }
 
         //判断是否为搜索页面
@@ -366,13 +401,16 @@ public class NewsController {
         }
         //文章列表
         JSONObject result = newsService.newsList(cityen, typeid, page, pagesize, null, key, null);
-        for (NewsType t : jtyyTypes.get(0).getChildList()) {
-            //若是集团栏目类型用jtyy查询获取文章列表
-            if (!ObjectUtils.isEmpty(type) && type.equals(t.getId())) {
-                log.info("当前栏目type是集团栏目类型=>{}", type);
-                result = newsService.newsList(CENTANET, typeid, page, pagesize, null, key, null);
+        if (jtyyTypes.size() != 0){
+            for (NewsType t : jtyyTypes.get(0).getChildList()) {
+                //若是集团栏目类型用jtyy查询获取文章列表
+                if (!ObjectUtils.isEmpty(type) && type.equals(t.getId())) {
+                    log.info("当前栏目type是集团栏目类型=>{}", type);
+                    result = newsService.newsList(CENTANET, typeid, page, pagesize, null, key, null);
+                }
             }
         }
+
         List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
         //是否有百科栏目
         List<NewsType> baiketype =  newsService.typeList(cityen, BAIKE);
@@ -389,11 +427,17 @@ public class NewsController {
         PageUtil p = new PageUtil(pageCount, page, pagesize);
         model.addAttribute(AttributeKeyHelper.PAGE_UTIL_BY_P, p);
 
+        //大湾区埋点 神策数据
+        if(dwCitys.contains(cityen)&& DwMaiDianUtiil.isMaiDianON){
+            DwMaiDianUtiil.setModel(model,entry,cityen,downloadChannel , request);
+        }
 
         //如果是热门专题，跳往热门专题列表
         if (hotTypeId != null && hotTypeId > 0 && hotTypeId.equals(type)) {
+            if(dwCitys.contains(cityen)) return DwMaiDianUtiil.TOPIC_LIST_CENTIO_DW_PAGE;
             return AttributeKeyHelper.TOPIC_LIST_PAGE;
         }
+        if(dwCitys.contains(cityen)) return DwMaiDianUtiil.NEW_LIST_CENTIO_DW_PAGE;
         return AttributeKeyHelper.NEWS_LIST_PAGE;
     }
 
@@ -409,9 +453,14 @@ public class NewsController {
     @GetMapping("/{cityen}/detail/{id}.html")
     public String detail(Model model
             , @PathVariable("cityen") String cityen
-            , @PathVariable("id") String id , HttpServletRequest request) {
+            , @PathVariable("id") String id
+            , @RequestParam(value = "index",required = false) Integer index
+            , HttpServletRequest request
+            , HttpServletResponse res
+                         ) {
         log.info("detail id=>{}", id);
-
+        model.addAttribute(AttributeKeyHelper.INDEX_DATA, index);
+        System.err.println(index);
         String osName = request.getHeader(AttributeKeyHelper.USER_AGENT);
         //获取引用
         String referer = request.getHeader(AttributeKeyHelper.REFERER);
@@ -560,6 +609,18 @@ public class NewsController {
         model.addAttribute(AttributeKeyHelper.DETAIL, detail);
         model.addAttribute(AttributeKeyHelper.NEWS_ID, id);
         model.addAttribute(AttributeKeyHelper.REFERER, referer);
+        //大湾区埋点 神策数据
+        if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
+            //获取参数
+            String json = CommonUtil.getQuerysParam(request);
+            NewsDetailRequest detailRequest = null;
+            if(!StringUtils.isEmpty(json)){
+                detailRequest = JSON.parseObject(json , NewsDetailRequest.class);
+            }
+            model.addAttribute(AttributeKeyHelper.DOWNLOAD_CHANNEL, Objects.nonNull(detailRequest) ? detailRequest.getDownloadChannel() : StringResource.EMPTY_STR);
+
+            return DwMaiDianUtiil.DETAIL_CENTIO_DW_PAGE;
+        }
         return AttributeKeyHelper.DETAIL_PAGE;
     }
 
@@ -569,9 +630,14 @@ public class NewsController {
     @ResponseBody
     @GetMapping("/{cityen}/detail/loadNewsViewHistory")
     public void insertLog(HttpServletRequest request , @PathVariable(name = "cityen") String cityen
-    ,@RequestParam(name = "newsId") Integer newsId){
-        //记录log
-        newsService.insertLog(request , cityen , newsId);
+    ,@RequestParam(name = "newsId") Integer newsId, @RequestParam(name = "downloadChannel" , required = false) String downloadChannel){
+        //详情信息
+        ApiResult<NewsDetailResponse> result = restTemplate.getForObject(String.format(StringResource.GET_NEWS_CONTENT_FORMAT , apiurl , newsId , cityen), ApiResult.class);
+        if (result != null) {
+            NewsDetailResponse response = JSON.parseObject(JSON.toJSONString(result.getResult()), NewsDetailResponse.class);
+            //记录log
+            newsService.insertLog(request, cityen, newsId, response.getTitle(), downloadChannel);
+        }
     }
 
     /**
@@ -586,7 +652,10 @@ public class NewsController {
     public String baike(Model model, @PathVariable("cityen") String cityen,
                         @PathVariable(value = "type", required = false) Integer type,
                         @PathVariable(value = "page", required = false) Integer page,
-                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize) {
+                        @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize,
+                        @RequestParam(value = "entry", required = false) String entry,
+                        @RequestParam(value = "downloadChannel", required = false) String downloadChannel,
+                        HttpServletRequest request) {
 
         page = ObjectUtils.isEmpty(page) ? 1 : page;
         //栏目类型
@@ -655,6 +724,12 @@ public class NewsController {
         //存储百科左侧栏目大小
         model.addAttribute(AttributeKeyHelper.TYPES_SIZE, baikeTypes.size());
 
+        //大湾区埋点 神策数据
+        if(dwCitys.contains(cityen)&&DwMaiDianUtiil.isMaiDianON){
+            DwMaiDianUtiil.setModel(model,entry,cityen,downloadChannel , request);
+            return DwMaiDianUtiil.BAIKE_CENTIO_DW_PAGE;
+        }
+
         model.addAttribute(AttributeKeyHelper.NEWS, news);
         Integer pageCount = result.getInteger(AttributeKeyHelper.PAGE_TOTAL);
         PageUtil p = new PageUtil(pageCount, page, pagesize);
@@ -683,7 +758,7 @@ public class NewsController {
             return StringResource.EMPTY;
         }
         //如果type的id为464，那么取出东三省的默认第一个栏目
-        if(Objects.equals(types.get(1).getId() , 464)){
+        if(Objects.equals(types.get(0).getId() , 464)){
             //取出子级栏目
             List<NewsType> newsTypes = JSONArray.parseArray(JSON.toJSONString(types.get(1).getChildList()), NewsType.class);
             //取出子级栏目的默认第一个栏目
@@ -756,6 +831,20 @@ public class NewsController {
         List<Map> leftUp = new ArrayList<>();
         List<Map> leftDown = new ArrayList<>();
         List<Map> right = new ArrayList<>();
+        List<Map> shleft = new ArrayList<>();
+        /**
+         * 专家经纪人页面新增根据资讯上传时间前三条资讯进行展示
+         * https://svn.centaline.com.cn/svn/SaleHouse/document/%E6%96%B0%E5%AE%98%E7%BD%91/%e6%96%b0%e5%ae%98%e7%bd%912024%20V11-P1/%e5%8e%9f%e5%9e%8b/start.html#g=1&p=%E4%B8%93%E5%AE%B6%E7%BB%8F%E7%BA%AA%E4%BA%BA%E5%88%97%E8%A1%A8
+         */
+        List<Map> jingjiren = new ArrayList<>();
+        //这是筛选存储只带图片资讯
+        List<Map> leftUpConPic = new ArrayList<>();
+        List<Map> leftDownConPic = new ArrayList<>();
+        List<Map> rightConPic = new ArrayList<>();
+        //带有图片的集合
+        List<Map> leftDownTemp = new ArrayList<>();
+        List<Map> rightTemp = new ArrayList<>();
+        List<Map> leftUpTemp = new ArrayList<>();
 
         for (int i = 0; i < types.size(); i++) {
             //文章列表
@@ -767,27 +856,92 @@ public class NewsController {
                 //取出子级栏目的第一个id
                 typeid = Arrays.asList(newsTypes.get(0).getId());
             }
-            JSONObject result = newsService.newsList(cityen, typeid, 1, 10, null, null, null);
+            //此处为嵌入式页面走getnewslist方法重载传入order=3,不影响new.centanet.com/cityen列表排序
+            JSONObject result = newsService.newsList(cityen, typeid, 1, 10, null, null, null,null);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
                 List<Map> news = JSON.parseArray(JSON.toJSONString(result.get(NEWS_LIST)), Map.class);
+
                 switch (i) {
                     case 0:
                         //左上
+                        if (news.size()<7){
+                            leftUp.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                    leftUpConPic.add(news.get(i1));
+                                }
+                            }
+                            leftUpTemp.addAll(leftUpConPic);
+                        }
+                        jingjiren.addAll(news.subList(0,3));
                         leftUp.addAll(news);
                         break;
                     case 1:
                         //左下
+                        if (news.size()<7){
+                            leftDown.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                    leftDownConPic.add(news.get(i1));
+                                }
+                            }
+                            leftDownTemp.addAll(leftDownConPic);
+                        }
+                        jingjiren.addAll(news.subList(0,3));
                         leftDown.addAll(news);
                         break;
                     case 2:
                         //右边
+                        if (news.size()<7){
+                            right.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))){
+                                    rightConPic.add(news.get(i1));
+                                }
+                            }
+                            rightTemp.addAll(rightConPic);
+                        }
+                        jingjiren.addAll(news.subList(0,3));
                         right.addAll(news);
                         break;
                     default:
+                        if (news.size()<7){
+                            leftUp.addAll(news);
+                        }else {
+                            for (int i1 = 0; i1 < 7; i1++) {
+                                if (!StringUtils.isEmpty(news.get(i1).get("LitPic"))) {
+                                    leftUpConPic.add(news.get(i1));
+                                }
+                            }
+                            leftUpTemp.addAll(leftUpConPic);
+                        }
                         leftUp.addAll(news);
                 }
             }
         }
+        //根据上传时间排序选出前三进行展示
+        // 定义一个比较器
+        Comparator<Map> comparator = new Comparator<Map>() {
+            @Override
+            public int compare(Map o1, Map o2) {
+                String pubdata1 = (String) o1.get("pubdate");
+                String pubdata2 = (String) o2.get("pubdate");
+                // 根据上传时间进行比较
+                return pubdata1.compareTo(pubdata2);
+            }
+        };
+
+// 使用比较器对jingjiren集合进行排序
+        Collections.sort(jingjiren, comparator);
+
+// 只保留前三个元素
+        if (jingjiren.size() > 3) {
+            jingjiren = jingjiren.subList(jingjiren.size()-3, jingjiren.size());
+        }
+
         if (BAIKE.equals(type)) {//购房百科
             JSONObject result = newsService.newsList(cityen, null, 0, 2, null, null, BAIKE);
             if (!ObjectUtils.isEmpty(result.get(NEWS_LIST))) {
@@ -838,10 +992,14 @@ public class NewsController {
 
 
         model.addAttribute(StringResource.LEFT_UP, leftUp);
+        model.addAttribute(StringResource.LEFT_UP_TEMP, leftUpTemp);
+        model.addAttribute(StringResource.SH_LEFT, shleft);
         model.addAttribute(StringResource.LEFT_DOWN, leftDown);
+        model.addAttribute(StringResource.LEFT_DOWN_TEMP, leftDownTemp);
         model.addAttribute(RIGHT, right);
+        model.addAttribute(RIGHT_TEMP, rightTemp);
         model.addAttribute(TYPES, types);
-
+        model.addAttribute(JINGJIREN, jingjiren);
         if (StringResource.INDEX.equals(type)) {//二手房
             return StringResource.THIRD_ESF;
         } else if (StringResource.INFO.equals(type)) {//新房
@@ -866,6 +1024,18 @@ public class NewsController {
             return StringResource.THIRD_INFO_NEW;
         }else if (StringResource.ESF_NEW.equals(type)) {//二手房新页面
             return StringResource.THIRD_ESF_NEW;
+        }else if (StringResource.THIRD_XA_NEW.equals(type)){//西安新布局
+            return StringResource.XA_NEW;
+        } else if (StringResource.XZL.equals(type)) {//二手房新页面,写字楼
+            return StringResource.THIRD_XZL;
+        }else if (StringResource.SH.equals(type)){//上海资讯新页面
+            return StringResource.THIRD_SH;
+        }else if (StringResource.JT.equals(type)){//集团资讯新页面
+            return StringResource.THIRD_JT;
+        }else if (StringResource.TJ_SIDE.equals(type)){//集团资讯新页面
+            return StringResource.THIRD_TJSIDE;
+        }else if (StringResource.JJR.equals(type)){
+            return StringResource.THIRD_JJR;
         }
         return StringResource.THIRD_HOT;
     }

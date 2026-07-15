@@ -922,14 +922,14 @@
                 piwikScript["defer"] = "defer";
                 piwikScript["onload"] = function(){
                 try {
-                var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 41);
+                var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
                 piwikTracker.trackPageView();piwikTracker.enableLinkTracking();
                 } catch( err ) {}
                 };
                 piwikScript["src"] = pkBaseURL + "piwik.js";
                 var head = document.head || document.getElementsByTagName('head')[0];
                 head.appendChild(piwikScript);
-                })();</script><noscript><p><img src="//sznewpiwik.centanet.com/stat/piwik.php?idsite=41" style="border:0" alt="" /></p></noscript>
+                })();</script><noscript><p><img src="//sznewpiwik.centanet.com/stat/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
         </c:when>
 
         <c:when test="${cityen == 'tj'}">
@@ -1015,6 +1015,18 @@
             <noscript><p><img src="//statistics.centanet.com/stat/piwik.php?idsite=36" style="border:0" alt="" /></p></noscript>
         </c:when>
 
+<%--        上海百度统计代码--%>
+        <c:when test="${cityen == 'sh'}">
+            <script>
+                var _hmt = _hmt || [];
+                (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?cca621fa3a3d819c5f22f0cf33e5e2d8";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+            </script>
+        </c:when>
         <c:when test="${cityen == 'zs'}">
             <script type="text/javascript">
                 var _hmt = _hmt || [];

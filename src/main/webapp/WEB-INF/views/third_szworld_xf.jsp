@@ -12,7 +12,7 @@
             <div class="sidephoto fl">
                 <div class="photo">
                     <c:set var="defaultpic" value="https://static.centanet.com/v7p20415/images/error/220x165_loading.gif?v202005111"></c:set>
-                    <a href="//news.centanet.com/${cityen}/detail/${cityNewsList[0].ID}.html" target="_blank">
+                    <a href="//${websiteSuffix}/${cityen}/detail/${cityNewsList[0].ID}.html" target="_blank">
                         <c:choose>
                             <c:when test="${cityNewsList[0].LitPic != null && cityNewsList[0].LitPic.length() >= 10}">
                                 <img src="${cityNewsList[0].LitPic}" alt="${cityNewsList[0].Title}">
@@ -24,7 +24,7 @@
                     </a>
                 </div>
                 <p class="infor">
-                    <a href="//news.centanet.com/${cityen}/detail/${cityNewsList[0].ID}.html" class="title" target="_blank">
+                    <a href="//${websiteSuffix}/${cityen}/detail/${cityNewsList[0].ID}.html" class="title" target="_blank">
                         ${fn:substring(cityNewsList[0].Title,0,24)}
                         <c:if test="${cityNewsList[0].Title != null && cityNewsList[0].Title.length() >= 25}">
                             ...
@@ -44,7 +44,7 @@
                     <c:forEach items="${cityNewsList}" var="item" begin="1" end="4">
                         <li>
                                 <p class="top clearfix">
-                                    <i class="dott"></i><a href="//news.centanet.com/${cityen}/detail/${item.ID}.html" class="title" target="_blank">${item.Title}</a>
+                                    <i class="dott"></i><a href="//${websiteSuffix}/${cityen}/detail/${item.ID}.html" class="title" target="_blank">${item.Title}</a>
                                     <span class="date">
                                           <jsp:useBean id="myDate1" class="java.util.Date"/>
                                           <c:set target="${myDate1}" property="time" value="${item.PublishDate*1000}"/>
@@ -60,7 +60,7 @@
                         </li>
                     </c:forEach>
                 </ul>
-                <p class="base tr"><a href="//news.centanet.com/${cityen}/list/c${types[0].id}/" class="cBlue" target="_blank">@房产要闻</a></p>
+                <p class="base tr"><a href="//${websiteSuffix}/${cityen}/list/c${types[0].id}/?entry=资讯tag" class="cBlue" target="_blank">@房产要闻</a></p>
             </div>
         </div>
 

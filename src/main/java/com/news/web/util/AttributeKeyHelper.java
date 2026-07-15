@@ -64,6 +64,8 @@ public interface AttributeKeyHelper extends Serializable {
      */
     String HZ_CITY_EN = "hz";
 
+    String GZ_CITY_EN = "gz";
+
     /**
      * 武汉，城市简称
      */
@@ -145,9 +147,19 @@ public interface AttributeKeyHelper extends Serializable {
     String CITY_CN = "citycn";
 
     /**
+     * 城市编号
+     */
+    String CITY_CODE = "citycode";
+
+    /**
      * 城市400联系电话
      */
     String CITY_TELPHONE = "cityTelphone";
+
+    /**
+     * 城市投诉电话
+     */
+    String CITY_COMPLAINT_TELPHONE = "cityComplaintTelphone";
 
     /**
      * 研究院地址
@@ -305,6 +317,16 @@ public interface AttributeKeyHelper extends Serializable {
     String DETAIL_PAGE = "detail";
 
     /**
+     * 详情埋点页面
+     */
+    String DETAIL_CENTIO_DW_PAGE = "detail_centio_dw";
+
+    /**
+     * 主页埋点页面
+     */
+    String INDEX_CENTIO_DW_PAGE = "index_centio_dw";
+
+    /**
      * 资讯下架页面
      */
     String OFF_SHELF_NEWS = "off_shelf_news";
@@ -324,5 +346,16 @@ public interface AttributeKeyHelper extends Serializable {
      */
     String FOOT_INFO = "footInfo";
 
+    /**
+     * 网站访问前缀
+     */
+    String WEBSITE_SUFFIX = "websiteSuffix";
+
+    /**
+     * 下载渠道
+     */
+    String DOWNLOAD_CHANNEL = "downloadChannel";
+
+    String INDEX_DATA = "indexData";
 
 }
