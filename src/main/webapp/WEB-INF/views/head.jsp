@@ -6,7 +6,7 @@
 </head>
 <body>
 <%--head--%>
-<c:if test="${cityen != 'jtdr'}">
+<c:if test="${cityen != 'jtdr' && cityen != 'ccdata'}">
     <div class="section-wrap section-header">
         <div class="section">
 <%--            <ul class="nav-header fl" style="${cityen == 'sz' ? 'width:53%;' : 'width:60%;'}">--%>
@@ -1126,11 +1126,34 @@
 
     <div class="section-wrap section-search">
         <div class="section">
-            <a href="/" title="天津中原地产" class="logo fl">中原地产</a>
+<%--            <a href="/" title="中原地产" class="logo fl">中原地产</a>--%>
+<%--ccdata要求点击中原地产不进行跳转--%>
+            <c:choose>
+                <c:when test="${cityen == 'ccdata'}">
+                    <a href="javascript:void(0);"
+                       onclick="return false;"
+                       title="中原地产"
+                       style="cursor: default"
+                       class="logo fl">
+                        中原地产
+                    </a>
+                </c:when>
+
+                <c:otherwise>
+                    <a href="/"
+                       title="中原地产"
+                       class="logo fl">
+                        中原地产
+                    </a>
+                </c:otherwise>
+            </c:choose>
+
             <label for="" class="column"></label>
             <div class="fr download-app">
                 <a href="/app/download/" target="_blank"><i class="icons-phone"></i></a>
             </div>
+<%--ccdata(研究部)说不需要搜索框--%>
+ <c:if test="${cityen != 'ccdata'}">
             <div class="search-box fl">
                 <div class="search-entry ">
                     <div class="sear_choosebox" id="">
@@ -1151,6 +1174,8 @@
                 </div>
 
             </div>
+ </c:if>
+
             <div id="searchHotKey" data-source="99" style="width: 330px;" class="fl"></div>
             <div></div>
             <div class="clear"></div>

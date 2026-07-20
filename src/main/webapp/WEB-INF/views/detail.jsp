@@ -20,7 +20,15 @@
          <c:if test="${cityen == 'dg'}">
           <title> ${detail.Title}</title>
         </c:if>
-    <title> ${detail.Typename}－${citycn}中原地产</title>
+
+    <c:choose>
+        <c:when test="${cityen == 'ccdata'}">
+            <title>中原地产_研究院观点</title>
+        </c:when>
+        <c:otherwise>
+            <title> ${detail.Typename}－${citycn}中原地产</title>
+        </c:otherwise>
+    </c:choose>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
 <%--    <c:if test="${cityen == 'sh'}">--%>
@@ -73,6 +81,9 @@
                    <c:when test="${cityen == 'jtdr'}">
                        <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
                    </c:when>
+                   <c:when test="${cityen == 'ccdata'}">
+
+                   </c:when>
                    <c:otherwise>
                        <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
                    </c:otherwise>
@@ -81,9 +92,13 @@
                    <span class="fsm">&gt;</span>
                    <a href="//${cityen}.centanet.com/xinfang/" class="f123">${citycn}新房</a>
                </c:if>
-               <span class="fsm">&gt;</span>
-               <a href="/${cityen}/" class="f123">${citycn}资讯</a>
-               <span class="fsm">&gt;</span>
+               <c:if test="${cityen != 'ccdata'}">
+                   <span class="fsm">&gt;</span>
+               </c:if>
+               <c:if test="${cityen != 'ccdata'}">
+                   <a href="/${cityen}/" class="f123">${citycn}资讯</a>
+                   <span class="fsm">&gt;</span>
+               </c:if>
                <c:if test="${baikeFlag}">
                    <a href="/${cityen}/baike/c${detail.Typeid}/p1/" class="f123">${detail.Typename}</a><span class="fsm">&gt;</span>
                </c:if>

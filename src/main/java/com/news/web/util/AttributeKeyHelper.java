@@ -42,7 +42,7 @@ public interface AttributeKeyHelper extends Serializable {
     /**
      * 重定向到M站的具体栏目列表地址
      */
-    String REDIRECT_M_BY_TYPE_LIST_ADDRESS = "redirect://news.centanet.com/m/%s/c%s/";
+    String REDIRECT_M_BY_TYPE_LIST_ADDRESS = "redirect://news.centanet.com/m/%s/list/c%s/";
 
     /**
      * 重定向到M站的首页地址

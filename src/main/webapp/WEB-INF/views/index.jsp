@@ -13,7 +13,14 @@
     <meta name="keywords" content="${citycn}最新房产新闻,${citycn}房产资讯,${citycn}楼市政策,${citycn}房产资讯,${citycn}房地产新闻">
     <meta name="description"
           content="${citycn}房产新闻,${citycn}中原地产提供最及时${citycn}房产新闻、${citycn}房地产资讯，为您解读${citycn}房产最新政策，预测${citycn}房价走势，分析${citycn}楼市成交数据。中原地产最资深最可靠的房地产网站。"/>
-    <title>${citycn}房地产资讯_${citycn}最新房产新闻－${citycn}中原地产</title>
+    <c:choose>
+        <c:when test="${cityen == 'ccdata'}">
+            <title>中原地产_研究院观点</title>
+        </c:when>
+        <c:otherwise>
+            <title>${citycn}房地产资讯_${citycn}最新房产新闻－${citycn}中原地产</title>
+        </c:otherwise>
+    </c:choose>
     <link rel="stylesheet" href="${staticurl}/css/cent_basev3.css">
     <link rel="stylesheet" href="${staticurl}/css/icons.css">
 <%--    <link rel="stylesheet" href="${staticurl}/css/headp2.css">--%>
@@ -65,6 +72,9 @@
                     <c:when test="${cityen == 'jtdr'}">
                         <a href="//esf.centanet.com/tools/grandbay/" class="f123">中原地产</a>
                     </c:when>
+                    <c:when test="${cityen == 'ccdata'}">
+
+                    </c:when>
                     <c:otherwise>
                         <a href="//${cityen}.centanet.com" class="f123">${citycn}中原地产</a>
                     </c:otherwise>
@@ -75,9 +85,13 @@
                     <a href="//${cityen}.centanet.com/xinfang/" class="f123">${citycn}新房</a>
                 </c:if>
 
-                <span class="fsm">&gt;</span>
-                <a href="/${cityen}/" class="f123">${citycn}资讯</a>
-                <span class="fsm">&gt;</span>
+                <c:if test="${cityen != 'ccdata'}">
+                    <span class="fsm">&gt;</span>
+                </c:if>
+                <c:if test="${cityen != 'ccdata'}">
+                    <a href="/${cityen}/" class="f123">${citycn}资讯</a>
+                    <span class="fsm">&gt;</span>
+                </c:if>
                 <span class="colName"></span>
             </div>
         </div>

@@ -83,4 +83,6 @@ public class Cityen {
     public static final  String FUZHOU = "fz";
     //北京海外
     public static final  String BJWORLD = "BJworld";
+    //香港
+    public static final  String XIANGGANG = "ccdata";
 }

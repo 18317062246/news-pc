@@ -103,12 +103,19 @@
 
             </p>
 
-            <c:if test="${cityen == 'gz'}">
-                <p class="side">咨询热线 <span class="cRed">${cityTelphone}</span> </p>
-            </c:if>
-            <c:if test="${cityen != 'gz'}">
-                <p class="side">拨打热线 <span class="cRed">${cityTelphone}</span> </p>
-            </c:if>
+            <c:choose>
+                <c:when test="${cityen == 'gz'}">
+                    <p class="side">咨询热线 <span class="cRed">${cityTelphone}</span> </p>
+                </c:when>
+                <c:when test="${cityen == 'ccdata'}">
+
+                </c:when>
+                <c:otherwise>
+                    <p class="side">拨打热线 <span class="cRed">${cityTelphone}</span> </p>
+                </c:otherwise>
+            </c:choose>
+
+
 
         </div>
         <p class="sub-link">
