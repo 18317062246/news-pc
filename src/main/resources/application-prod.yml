@@ -8,7 +8,9 @@ server:
 #api地址
 api:
 #  domain: http://10.58.2.27:8066/api/
-  domain: http://127.0.0.1:8044/api/
+#  domain: http://127.0.0.1:8044/api/
+  domain: https://testnews.centanet.com/api/
+
   xinfang:
     other:
       city: http://api-web.centaline.com.cn/lion/json/reply/NewPropExtInfoRequest
